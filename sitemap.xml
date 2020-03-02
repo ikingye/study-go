@@ -8,11 +8,6 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/appendix/interview/</loc>
-    <lastmod>2020-02-29T20:35:34+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/grammar/</loc>
     <lastmod>2020-02-29T20:09:56+08:00</lastmod>
   </url>
@@ -23,8 +18,8 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/appendix/</loc>
-    <lastmod>2020-02-29T20:35:34+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/practice/spec/</loc>
+    <lastmod>2020-03-02T22:10:55+08:00</lastmod>
   </url>
   
   <url>
@@ -33,18 +28,33 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/practice/</loc>
-    <lastmod>2020-02-29T20:09:56+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/practice/package/</loc>
+    <lastmod>2020-03-02T22:10:55+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://ikingye.github.io/study-go/docs/design/</loc>
-    <lastmod>2020-02-29T20:09:56+08:00</lastmod>
+    <lastmod>2020-03-02T22:10:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/appendix/interview/</loc>
+    <lastmod>2020-03-02T22:10:55+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://ikingye.github.io/study-go/docs/source/</loc>
-    <lastmod>2020-02-29T20:09:56+08:00</lastmod>
+    <lastmod>2020-03-02T22:10:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/appendix/</loc>
+    <lastmod>2020-03-02T22:10:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/practice/</loc>
+    <lastmod>2020-03-02T22:10:55+08:00</lastmod>
   </url>
   
   <url>
