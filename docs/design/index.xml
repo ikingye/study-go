@@ -9,5 +9,18 @@
 	<atom:link href="https://ikingye.github.io/study-go/docs/design/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Go 初始化</title>
+      <link>https://ikingye.github.io/study-go/docs/design/runtime/init/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/design/runtime/init/</guid>
+      <description>Go 初始化 golang 程序初始化先于 main 函数执行，由 runtime 进行初始化，初始化顺序如下：
+ 初始化导入的包（包的初始化顺序并不是按导入顺序（“从上到下”）执行的，runtime 需要解析包依赖关系，没有依赖的包最先初始化，与变量初始化依赖关系类似，参见 golang 变量的初始化）； 初始化包作用域的变量（该作用域的变量的初始化也并非按照 “从上到下、从左到右” 的顺序，runtime 解析变量依赖关系，没有依赖的变量最先初始化，参见 golang 变量的初始化）； 执行包的 init 函数；   变量初始化 -&amp;gt;init ()-&amp;gt;main () 由于 pack 包的初始化依赖 test_util，因此运行时先初始化 test_util 再初始化 pack 包；   同一个包不同源文件的 init 函数执行顺序，golang spec 没做说明  一般是源文件名称的字典序，但不能依赖这个假定     在每一个初始化周期，运行时（runtime）会挑选一个没有任何依赖的变量初始化  该过程一直持续到所有的变量均被初始化或者出现依赖嵌套的情形   同一个 package 下多个文件的变量初始化依赖也遵循相同的规则   变量初始化 不同作用域类型的变量初始化顺序不同
+函数作用域内的局部变量 初始化顺序：从左到右、从上到下
+package 级别的变量 初始化顺序与初始化依赖有关
+ </description>
+    </item>
+    
   </channel>
 </rss>
