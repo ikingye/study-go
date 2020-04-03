@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="关注"><meta property="og:title" content="关注" />
+<meta property="og:description" content="关注 golang/go  kubernetes/kubernetes  moby/moby  etcd-io/etcd  Distributed reliable key-value store for the most critical data of a distributed system
+containous/traefik  The Cloud Native Edge Router https://traefik.io
+ Web 框架 gin-gonic/gin  Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.com/" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/appendix/attention/" />
+<meta property="article:modified_time" content="2020-04-04T01:01:33+08:00" />
+<title>关注 | Go 学习笔记</title>
+<link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/study-go/book.min.33dd7934182d4abfe269db67d0d9821bdd866c149d8327944bc47573db5a4d82.css" integrity="sha256-M915NBgtSr/iadtn0NmCG92GbBSdgyeUS8R1c9taTYI=">
+
+
+<script defer src="/study-go/en.search.min.d8c50c2d5050465f4d7eb3c0f779361a549d69fb8157e9576660c0eff21ae8bc.js" integrity="sha256-2MUMLVBQRl9NfrPA93k2GlSdafuBV&#43;lXZmDA7/Ia6Lw="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/study-go"><span>Go 学习笔记</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+
+
+
+
+
+ 
+  
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      <span>第一部分 基础入门</span>
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      <span>第一章 Go 基本语法</span>
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/study-go/docs/basic/grammar/keyword/" >
+      1.1 关键字
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/study-go/docs/basic/grammar/datastruct/" >
+      1.2 数据结构
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-go/docs/basic/grammar/func/" >
+      函数
+  </a>
+
+
+    
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-go/docs/basic/practice/" >
+      最佳实践
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-go/docs/basic/practice/spec/" >
+      编程规范
+  </a>
+
+
+    
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/study-go/docs/basic/practice/package/" >
+      常用 package
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      <span>第二部分 设计</span>
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/study-go/docs/design/runtime/init/" >
+      Go 初始化
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      <span>第三部分 源码实现</span>
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      <span>第四部分 附录</span>
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/study-go/docs/appendix/tutorial/" >
+      教程
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-go/docs/appendix/interview/" >
+      面试题
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/study-go/docs/appendix/interview/basic/" >
+      基础
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/study-go/docs/appendix/interview/advanced/" >
+      进阶
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/study-go/docs/appendix/interview/expert/" >
+      高阶
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/study-go/docs/appendix/attention/"  class="active">
+      关注
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>关注</strong>
+
+  <label for="toc-control">
+    <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">关注</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#golanggohttpsgithubcomgolanggo-github-starshttpsimgshieldsiogithubstarsgolanggosvg">golang/go Github stars</a></li>
+            <li><a href="#kuberneteskuberneteshttpsgithubcomkuberneteskubernetes-github-starshttpsimgshieldsiogithubstarskuberneteskubernetessvg">kubernetes/kubernetes Github stars</a></li>
+            <li><a href="#mobymobyhttpsgithubcommobymoby-github-starshttpsimgshieldsiogithubstarsmobymobysvg">moby/moby Github stars</a></li>
+            <li><a href="#etcd-ioetcdhttpsgithubcometcd-ioetcd-github-starshttpsimgshieldsiogithubstarsetcd-ioetcdsvg">etcd-io/etcd Github stars</a></li>
+            <li><a href="#containoustraefikhttpsgithubcomcontainoustraefik-github-starshttpsimgshieldsiogithubstarscontainoustraefiksvg">containous/traefik Github stars</a></li>
+          </ul>
+        </li>
+        <li><a href="#web-">Web 框架</a>
+          <ul>
+            <li><a href="#gin-gonicginhttpsgithubcomgin-gonicgin-github-starshttpsimgshieldsiogithubstarsgin-gonicginsvg">gin-gonic/gin Github stars</a></li>
+            <li><a href="#astaxiebeegohttpsgithubcomastaxiebeego-github-starshttpsimgshieldsiogithubstarsastaxiebeegosvg">astaxie/beego Github stars</a></li>
+          </ul>
+        </li>
+        <li><a href="#heading-1">工具</a>
+          <ul>
+            <li><a href="#junegunnfzfhttpsgithubcomjunegunnfzf-github-starshttpsimgshieldsiogithubstarsjunegunnfzfsvg">junegunn/fzf Github stars</a></li>
+          </ul>
+        </li>
+        <li><a href="#heading-2">其他</a>
+          <ul>
+            <li><a href="#avelinoawesome-gohttpsgithubcomavelinoawesome-go-github-starshttpsimgshieldsiogithubstarsavelinoawesome-gosvg">avelino/awesome-go Github stars</a></li>
+            <li><a href="#fatedierfrphttpsgithubcomfatedierfrp-github-starshttpsimgshieldsiogithubstarsfatedierfrpsvg">fatedier/frp Github stars</a></li>
+            <li><a href="#gogsgogshttpsgithubcomgogsgogs-github-starshttpsimgshieldsiogithubstarsgogsgogssvg">gogs/gogs Github stars</a></li>
+            <li><a href="#caddyservercaddyhttpsgithubcomcaddyservercaddy-github-starshttpsimgshieldsiogithubstarscaddyservercaddysvg">caddyserver/caddy Github stars</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown"><h1 id="heading">关注</h1>
+<h3 id="golanggohttpsgithubcomgolanggo-github-starshttpsimgshieldsiogithubstarsgolanggosvg"><a href="https://github.com/golang/go">golang/go</a> <img src="https://img.shields.io/github/stars/golang/go.svg" alt="Github stars"></h3>
+<h3 id="kuberneteskuberneteshttpsgithubcomkuberneteskubernetes-github-starshttpsimgshieldsiogithubstarskuberneteskubernetessvg"><a href="https://github.com/kubernetes/kubernetes">kubernetes/kubernetes</a> <img src="https://img.shields.io/github/stars/kubernetes/kubernetes.svg" alt="Github stars"></h3>
+<h3 id="mobymobyhttpsgithubcommobymoby-github-starshttpsimgshieldsiogithubstarsmobymobysvg"><a href="https://github.com/moby/moby">moby/moby</a> <img src="https://img.shields.io/github/stars/moby/moby.svg" alt="Github stars"></h3>
+<h3 id="etcd-ioetcdhttpsgithubcometcd-ioetcd-github-starshttpsimgshieldsiogithubstarsetcd-ioetcdsvg"><a href="https://github.com/etcd-io/etcd">etcd-io/etcd</a> <img src="https://img.shields.io/github/stars/etcd-io/etcd.svg" alt="Github stars"></h3>
+<p>Distributed reliable key-value store for the most critical data of a distributed system</p>
+<h3 id="containoustraefikhttpsgithubcomcontainoustraefik-github-starshttpsimgshieldsiogithubstarscontainoustraefiksvg"><a href="https://github.com/containous/traefik">containous/traefik</a> <img src="https://img.shields.io/github/stars/containous/traefik.svg" alt="Github stars"></h3>
+<p>The Cloud Native Edge Router
+<a href="https://traefik.io">https://traefik.io</a></p>
+<hr>
+<h2 id="web-">Web 框架</h2>
+<h3 id="gin-gonicginhttpsgithubcomgin-gonicgin-github-starshttpsimgshieldsiogithubstarsgin-gonicginsvg"><a href="https://github.com/gin-gonic/gin">gin-gonic/gin</a> <img src="https://img.shields.io/github/stars/gin-gonic/gin.svg" alt="Github stars"></h3>
+<p>Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin.
+<a href="https://gin-gonic.com/">https://gin-gonic.com/</a></p>
+<h3 id="astaxiebeegohttpsgithubcomastaxiebeego-github-starshttpsimgshieldsiogithubstarsastaxiebeegosvg"><a href="https://github.com/astaxie/beego">astaxie/beego</a> <img src="https://img.shields.io/github/stars/astaxie/beego.svg" alt="Github stars"></h3>
+<p>beego is an open-source, high-performance web framework for the Go programming language.</p>
+<hr>
+<h2 id="heading-1">工具</h2>
+<h3 id="junegunnfzfhttpsgithubcomjunegunnfzf-github-starshttpsimgshieldsiogithubstarsjunegunnfzfsvg"><a href="https://github.com/junegunn/fzf">junegunn/fzf</a> <img src="https://img.shields.io/github/stars/junegunn/fzf.svg" alt="Github stars"></h3>
+<hr>
+<h2 id="heading-2">其他</h2>
+<h3 id="avelinoawesome-gohttpsgithubcomavelinoawesome-go-github-starshttpsimgshieldsiogithubstarsavelinoawesome-gosvg"><a href="https://github.com/avelino/awesome-go">avelino/awesome-go</a> <img src="https://img.shields.io/github/stars/avelino/awesome-go.svg" alt="Github stars"></h3>
+<h3 id="fatedierfrphttpsgithubcomfatedierfrp-github-starshttpsimgshieldsiogithubstarsfatedierfrpsvg"><a href="https://github.com/fatedier/frp">fatedier/frp</a> <img src="https://img.shields.io/github/stars/fatedier/frp.svg" alt="Github stars"></h3>
+<p>A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.</p>
+<h3 id="gogsgogshttpsgithubcomgogsgogs-github-starshttpsimgshieldsiogithubstarsgogsgogssvg"><a href="https://github.com/gogs/gogs">gogs/gogs</a> <img src="https://img.shields.io/github/stars/gogs/gogs.svg" alt="Github stars"></h3>
+<p>Gogs is a painless self-hosted Git service</p>
+<h3 id="caddyservercaddyhttpsgithubcomcaddyservercaddy-github-starshttpsimgshieldsiogithubstarscaddyservercaddysvg"><a href="https://github.com/caddyserver/caddy">caddyserver/caddy</a> <img src="https://img.shields.io/github/stars/caddyserver/caddy.svg" alt="Github stars"></h3>
+<p>Fast, multi-platform web server with automatic HTTPS</p>
+<p>fzf is a general-purpose command-line fuzzy finder.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/407575f76cd37d7e4cf0d3e842d5b656c976dc46" title='Last modified by yewang | 2020-04-04' target="_blank" rel="noopener">
+      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2020-04-04</span>
+    </a>
+  </div>
+
+
+
+</div>
+
+ 
+        
+  
+  <div class="book-comments">
+<script src="https://utteranc.es/client.js"
+  repo="ikingye/study-go"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>
+
+</div>
+  
+ 
+      </footer>
+      
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">关注</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#golanggohttpsgithubcomgolanggo-github-starshttpsimgshieldsiogithubstarsgolanggosvg">golang/go Github stars</a></li>
+            <li><a href="#kuberneteskuberneteshttpsgithubcomkuberneteskubernetes-github-starshttpsimgshieldsiogithubstarskuberneteskubernetessvg">kubernetes/kubernetes Github stars</a></li>
+            <li><a href="#mobymobyhttpsgithubcommobymoby-github-starshttpsimgshieldsiogithubstarsmobymobysvg">moby/moby Github stars</a></li>
+            <li><a href="#etcd-ioetcdhttpsgithubcometcd-ioetcd-github-starshttpsimgshieldsiogithubstarsetcd-ioetcdsvg">etcd-io/etcd Github stars</a></li>
+            <li><a href="#containoustraefikhttpsgithubcomcontainoustraefik-github-starshttpsimgshieldsiogithubstarscontainoustraefiksvg">containous/traefik Github stars</a></li>
+          </ul>
+        </li>
+        <li><a href="#web-">Web 框架</a>
+          <ul>
+            <li><a href="#gin-gonicginhttpsgithubcomgin-gonicgin-github-starshttpsimgshieldsiogithubstarsgin-gonicginsvg">gin-gonic/gin Github stars</a></li>
+            <li><a href="#astaxiebeegohttpsgithubcomastaxiebeego-github-starshttpsimgshieldsiogithubstarsastaxiebeegosvg">astaxie/beego Github stars</a></li>
+          </ul>
+        </li>
+        <li><a href="#heading-1">工具</a>
+          <ul>
+            <li><a href="#junegunnfzfhttpsgithubcomjunegunnfzf-github-starshttpsimgshieldsiogithubstarsjunegunnfzfsvg">junegunn/fzf Github stars</a></li>
+          </ul>
+        </li>
+        <li><a href="#heading-2">其他</a>
+          <ul>
+            <li><a href="#avelinoawesome-gohttpsgithubcomavelinoawesome-go-github-starshttpsimgshieldsiogithubstarsavelinoawesome-gosvg">avelino/awesome-go Github stars</a></li>
+            <li><a href="#fatedierfrphttpsgithubcomfatedierfrp-github-starshttpsimgshieldsiogithubstarsfatedierfrpsvg">fatedier/frp Github stars</a></li>
+            <li><a href="#gogsgogshttpsgithubcomgogsgogs-github-starshttpsimgshieldsiogithubstarsgogsgogssvg">gogs/gogs Github stars</a></li>
+            <li><a href="#caddyservercaddyhttpsgithubcomcaddyservercaddy-github-starshttpsimgshieldsiogithubstarscaddyservercaddysvg">caddyserver/caddy Github stars</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+<a href="https://github.com/ikingye/study-go" 
+class="github-corner" aria-label="View source on GitHub">
+<svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+  <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+  <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+  <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+</svg></a>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

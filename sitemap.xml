@@ -9,7 +9,7 @@
   
   <url>
     <loc>https://ikingye.github.io/study-go/docs/appendix/tutorial/</loc>
-    <lastmod>2020-03-27T14:36:25+08:00</lastmod>
+    <lastmod>2020-04-04T01:01:33+08:00</lastmod>
   </url>
   
   <url>
@@ -38,6 +38,11 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/appendix/interview/basic/</loc>
+    <lastmod>2020-04-04T01:01:33+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/practice/package/</loc>
     <lastmod>2020-03-30T18:09:14+08:00</lastmod>
   </url>
@@ -48,6 +53,11 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/appendix/interview/advanced/</loc>
+    <lastmod>2020-04-04T01:01:33+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/appendix/interview/</loc>
     <lastmod>2020-03-02T22:10:55+08:00</lastmod>
   </url>
@@ -55,6 +65,11 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/source/</loc>
     <lastmod>2020-03-02T22:10:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/appendix/interview/expert/</loc>
+    <lastmod>2020-04-04T01:01:33+08:00</lastmod>
   </url>
   
   <url>
@@ -70,6 +85,11 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/grammar/func/init/</loc>
     <lastmod>2020-04-02T23:25:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/appendix/attention/</loc>
+    <lastmod>2020-04-04T01:01:33+08:00</lastmod>
   </url>
   
   <url>
