@@ -4,16 +4,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="教程"><meta property="og:title" content="教程" />
-<meta property="og:description" content="Go 教程 基础 astaxie/build-web-application-with-golang  A golang ebook intro how to build a web with golang
-mmcgrana/gobyexample  Go by Example
-中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/
-geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列
-进阶 Go 语言设计与实现 by Draveness 高阶 " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/appendix/tutorial/" />
-<meta property="article:modified_time" content="2020-04-04T01:01:33+08:00" />
-<title>教程 | Go 学习笔记</title>
+<meta name="description" content="版本"><meta property="og:title" content="版本" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/version/" />
+
+<title>版本 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -22,6 +18,7 @@ geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列
 
 <script defer src="/study-go/en.search.min.2e914fd5e8b19e5e4907a7df5f67bda4699802b3f2630864da267b798f13b705.js" integrity="sha256-LpFP1eixnl5JB6ffX2e9pGmYArPyYwhk2iZ7eY8TtwU="></script>
 
+<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/version/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -198,7 +195,7 @@ https://github.com/alex-shpak/hugo-book
     
       
 
-  <a href="/study-go/docs/basic/version/" >
+  <a href="/study-go/docs/basic/version/"  class="active">
       版本
   </a>
 
@@ -382,7 +379,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/appendix/tutorial/"  class="active">
+  <a href="/study-go/docs/appendix/tutorial/" >
       教程
   </a>
 
@@ -512,7 +509,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>教程</strong>
+  <strong>版本</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -526,21 +523,34 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-">Go 教程</a>
+    <li><a href="#go-">Go 版本</a>
       <ul>
-        <li><a href="#heading">基础</a>
+        <li><a href="#golanggohttpsgithubcomgolanggo-github-starshttpsimgshieldsiogithubstarsgolanggosvg-go-versionhttpsimgshieldsiogithubgo-modgo-versiongolanggo">golang/go Github stars Go version</a></li>
+        <li><a href="#heading">版本控制</a>
           <ul>
-            <li><a href="#astaxiebuild-web-application-with-golanghttpsgithubcomastaxiebuild-web-application-with-golang-github-starshttpsimgshieldsiogithubstarsastaxiebuild-web-application-with-golangsvg">astaxie/build-web-application-with-golang Github stars</a></li>
-            <li><a href="#mmcgranagobyexamplehttpsgithubcommmcgranagobyexample-github-starshttpsimgshieldsiogithubstarsmmcgranagobyexamplesvg">mmcgrana/gobyexample Github stars</a></li>
-            <li><a href="#geektutu7days-golanghttpsgithubcomgeektutu7days-golang-github-starshttpsimgshieldsiogithubstarsgeektutu7days-golangsvg">geektutu/7days-golang Github stars</a></li>
+            <li><a href="#moovwebgvmhttpsgithubcommoovwebgvm-github-starshttpsimgshieldsiogithubstarsmoovwebgvmsvg">moovweb/gvm Github stars</a></li>
           </ul>
         </li>
-        <li><a href="#heading-1">进阶</a>
+        <li><a href="#httpsgolangorgdocdevelreleasehtml">版本历史</a>
           <ul>
-            <li><a href="#go--by-dravenesshttpsdravenessmegolang">Go 语言设计与实现 by Draveness</a></li>
+            <li><a href="#114-20200225">1.14 (2020/02/25)</a></li>
+            <li><a href="#114-20200225-1">1.14 (2020/02/25)</a></li>
+            <li><a href="#113-20190903">1.13 (2019/09/03)</a></li>
+            <li><a href="#112-20190225">1.12 (2019/02/25)</a></li>
+            <li><a href="#111-20180824">1.11 (2018/08/24)</a></li>
+            <li><a href="#110-20180216">1.10 (2018/02/16)</a></li>
+            <li><a href="#19-20170824">1.9 (2017/08/24)</a></li>
+            <li><a href="#18-20170216">1.8 (2017/02/16)</a></li>
+            <li><a href="#17-20160815">1.7 (2016/08/15)</a></li>
+            <li><a href="#16-20160217">1.6 (2016/02/17)</a></li>
+            <li><a href="#15-20150819">1.5 (2015/08/19)</a></li>
+            <li><a href="#14-20141210">1.4 (2014/12/10)</a></li>
+            <li><a href="#13-20140618">1.3 (2014/06/18)</a></li>
+            <li><a href="#12-20131201">1.2 (2013/12/01)</a></li>
+            <li><a href="#11-20130513">1.1 (2013/05/13)</a></li>
+            <li><a href="#1-20120328">1 (2012/03/28)</a></li>
           </ul>
         </li>
-        <li><a href="#heading-2">高阶</a></li>
       </ul>
     </li>
   </ul>
@@ -554,18 +564,31 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-<article class="markdown"><h1 id="go-">Go 教程</h1>
-<h2 id="heading">基础</h2>
-<h3 id="astaxiebuild-web-application-with-golanghttpsgithubcomastaxiebuild-web-application-with-golang-github-starshttpsimgshieldsiogithubstarsastaxiebuild-web-application-with-golangsvg"><a href="https://github.com/astaxie/build-web-application-with-golang">astaxie/build-web-application-with-golang</a> <img src="https://img.shields.io/github/stars/astaxie/build-web-application-with-golang.svg" alt="Github stars"></h3>
-<p>A golang ebook intro how to build a web with golang</p>
-<h3 id="mmcgranagobyexamplehttpsgithubcommmcgranagobyexample-github-starshttpsimgshieldsiogithubstarsmmcgranagobyexamplesvg"><a href="https://github.com/mmcgrana/gobyexample">mmcgrana/gobyexample</a> <img src="https://img.shields.io/github/stars/mmcgrana/gobyexample.svg" alt="Github stars"></h3>
-<p><a href="https://gobyexample.com/">Go by Example</a></p>
-<p>中文翻译：<a href="https://github.com/gobyexample-cn/gobyexample">通过例子学 Golang</a>：https://gobyexample-cn.github.io/</p>
-<h3 id="geektutu7days-golanghttpsgithubcomgeektutu7days-golang-github-starshttpsimgshieldsiogithubstarsgeektutu7days-golangsvg"><a href="https://github.com/geektutu/7days-golang">geektutu/7days-golang</a> <img src="https://img.shields.io/github/stars/geektutu/7days-golang.svg" alt="Github stars"></h3>
-<p>7 天用 Go 动手写 / 从零实现系列</p>
-<h2 id="heading-1">进阶</h2>
-<h3 id="go--by-dravenesshttpsdravenessmegolang"><a href="https://draveness.me/golang/">Go 语言设计与实现 by Draveness</a></h3>
-<h2 id="heading-2">高阶</h2>
+<article class="markdown"><h1 id="go-">Go 版本</h1>
+<h2 id="golanggohttpsgithubcomgolanggo-github-starshttpsimgshieldsiogithubstarsgolanggosvg-go-versionhttpsimgshieldsiogithubgo-modgo-versiongolanggo"><a href="https://github.com/golang/go">golang/go</a> <img src="https://img.shields.io/github/stars/golang/go.svg" alt="Github stars"> <img src="https://img.shields.io/github/go-mod/go-version/golang/go" alt="Go version"></h2>
+<h2 id="heading">版本控制</h2>
+<h3 id="moovwebgvmhttpsgithubcommoovwebgvm-github-starshttpsimgshieldsiogithubstarsmoovwebgvmsvg"><a href="https://github.com/moovweb/gvm">moovweb/gvm</a> <img src="https://img.shields.io/github/stars/moovweb/gvm.svg" alt="Github stars"></h3>
+<p>安装：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zsh &lt; &lt;<span style="color:#f92672">(</span>curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer<span style="color:#f92672">)</span>
+</code></pre></div><h2 id="httpsgolangorgdocdevelreleasehtml"><a href="https://golang.org/doc/devel/release.html">版本历史</a></h2>
+<h3 id="114-20200225">1.14 (2020/02/25)</h3>
+<h3 id="114-20200225-1">1.14 (2020/02/25)</h3>
+<h3 id="113-20190903">1.13 (2019/09/03)</h3>
+<h3 id="112-20190225">1.12 (2019/02/25)</h3>
+<h3 id="111-20180824">1.11 (2018/08/24)</h3>
+<h3 id="110-20180216">1.10 (2018/02/16)</h3>
+<h3 id="19-20170824">1.9 (2017/08/24)</h3>
+<h3 id="18-20170216">1.8 (2017/02/16)</h3>
+<h3 id="17-20160815">1.7 (2016/08/15)</h3>
+<h3 id="16-20160217">1.6 (2016/02/17)</h3>
+<h3 id="15-20150819">1.5 (2015/08/19)</h3>
+<p>Go 1.5 开始，使用 Go 自举实现。</p>
+<h3 id="14-20141210">1.4 (2014/12/10)</h3>
+<p>Go 1.4 之前是 C 实现。</p>
+<h3 id="13-20140618">1.3 (2014/06/18)</h3>
+<h3 id="12-20131201">1.2 (2013/12/01)</h3>
+<h3 id="11-20130513">1.1 (2013/05/13)</h3>
+<h3 id="1-20120328">1 (2012/03/28)</h3>
 </article>
  
       
@@ -578,9 +601,9 @@ https://github.com/alex-shpak/hugo-book
 
   <div>
     
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/407575f76cd37d7e4cf0d3e842d5b656c976dc46" title='Last modified by yewang | 2020-04-04' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/02efcbe320c9763a210b2a46623acfc6c82a6cdd" title='Last modified by yewang | 2020-04-09' target="_blank" rel="noopener">
       <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-04-04</span>
+      <span>2020-04-09</span>
     </a>
   </div>
 
@@ -614,21 +637,34 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-">Go 教程</a>
+    <li><a href="#go-">Go 版本</a>
       <ul>
-        <li><a href="#heading">基础</a>
+        <li><a href="#golanggohttpsgithubcomgolanggo-github-starshttpsimgshieldsiogithubstarsgolanggosvg-go-versionhttpsimgshieldsiogithubgo-modgo-versiongolanggo">golang/go Github stars Go version</a></li>
+        <li><a href="#heading">版本控制</a>
           <ul>
-            <li><a href="#astaxiebuild-web-application-with-golanghttpsgithubcomastaxiebuild-web-application-with-golang-github-starshttpsimgshieldsiogithubstarsastaxiebuild-web-application-with-golangsvg">astaxie/build-web-application-with-golang Github stars</a></li>
-            <li><a href="#mmcgranagobyexamplehttpsgithubcommmcgranagobyexample-github-starshttpsimgshieldsiogithubstarsmmcgranagobyexamplesvg">mmcgrana/gobyexample Github stars</a></li>
-            <li><a href="#geektutu7days-golanghttpsgithubcomgeektutu7days-golang-github-starshttpsimgshieldsiogithubstarsgeektutu7days-golangsvg">geektutu/7days-golang Github stars</a></li>
+            <li><a href="#moovwebgvmhttpsgithubcommoovwebgvm-github-starshttpsimgshieldsiogithubstarsmoovwebgvmsvg">moovweb/gvm Github stars</a></li>
           </ul>
         </li>
-        <li><a href="#heading-1">进阶</a>
+        <li><a href="#httpsgolangorgdocdevelreleasehtml">版本历史</a>
           <ul>
-            <li><a href="#go--by-dravenesshttpsdravenessmegolang">Go 语言设计与实现 by Draveness</a></li>
+            <li><a href="#114-20200225">1.14 (2020/02/25)</a></li>
+            <li><a href="#114-20200225-1">1.14 (2020/02/25)</a></li>
+            <li><a href="#113-20190903">1.13 (2019/09/03)</a></li>
+            <li><a href="#112-20190225">1.12 (2019/02/25)</a></li>
+            <li><a href="#111-20180824">1.11 (2018/08/24)</a></li>
+            <li><a href="#110-20180216">1.10 (2018/02/16)</a></li>
+            <li><a href="#19-20170824">1.9 (2017/08/24)</a></li>
+            <li><a href="#18-20170216">1.8 (2017/02/16)</a></li>
+            <li><a href="#17-20160815">1.7 (2016/08/15)</a></li>
+            <li><a href="#16-20160217">1.6 (2016/02/17)</a></li>
+            <li><a href="#15-20150819">1.5 (2015/08/19)</a></li>
+            <li><a href="#14-20141210">1.4 (2014/12/10)</a></li>
+            <li><a href="#13-20140618">1.3 (2014/06/18)</a></li>
+            <li><a href="#12-20131201">1.2 (2013/12/01)</a></li>
+            <li><a href="#11-20130513">1.1 (2013/05/13)</a></li>
+            <li><a href="#1-20120328">1 (2012/03/28)</a></li>
           </ul>
         </li>
-        <li><a href="#heading-2">高阶</a></li>
       </ul>
     </li>
   </ul>

@@ -4,16 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="教程"><meta property="og:title" content="教程" />
-<meta property="og:description" content="Go 教程 基础 astaxie/build-web-application-with-golang  A golang ebook intro how to build a web with golang
-mmcgrana/gobyexample  Go by Example
-中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/
-geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列
-进阶 Go 语言设计与实现 by Draveness 高阶 " />
+<meta name="description" content="Receiver"><meta property="og:title" content="Receiver" />
+<meta property="og:description" content="Receiver 结构体类型实现的接口，该结构体的指针类型也算实现了
+使用规则  必须使用指针  struct，且包含 sync.Mutex 类型字段   建议使用指针  比较大的 struct/array  struct 或者 array 中的元素个数超过 3 个，则认为比较大，反之，则认为比较小   struct、array 或 slice，其中指针元素所指的内容可能在方法内被修改   建议使用 value 类型  比较小的 struct/array   必须使用 value 类型（编程规范）  map、函数或者 chan 类型 slice，并且方法不会进行 reslice 或者重新分配 slice    method expression package main import ( &#34;fmt&#34; ) type Ball struct { Name string } func (b *Ball) Ping() { fmt." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/appendix/tutorial/" />
-<meta property="article:modified_time" content="2020-04-04T01:01:33+08:00" />
-<title>教程 | Go 学习笔记</title>
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/func/receiver/" />
+<meta property="article:modified_time" content="2020-04-09T21:31:58+08:00" />
+<title>Receiver | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -164,7 +161,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/basic/grammar/func/receiver/" >
+  <a href="/study-go/docs/basic/grammar/func/receiver/"  class="active">
       Receiver
   </a>
 
@@ -382,7 +379,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/appendix/tutorial/"  class="active">
+  <a href="/study-go/docs/appendix/tutorial/" >
       教程
   </a>
 
@@ -512,7 +509,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>教程</strong>
+  <strong>Receiver</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -526,21 +523,10 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-">Go 教程</a>
+    <li><a href="#receiver">Receiver</a>
       <ul>
-        <li><a href="#heading">基础</a>
-          <ul>
-            <li><a href="#astaxiebuild-web-application-with-golanghttpsgithubcomastaxiebuild-web-application-with-golang-github-starshttpsimgshieldsiogithubstarsastaxiebuild-web-application-with-golangsvg">astaxie/build-web-application-with-golang Github stars</a></li>
-            <li><a href="#mmcgranagobyexamplehttpsgithubcommmcgranagobyexample-github-starshttpsimgshieldsiogithubstarsmmcgranagobyexamplesvg">mmcgrana/gobyexample Github stars</a></li>
-            <li><a href="#geektutu7days-golanghttpsgithubcomgeektutu7days-golang-github-starshttpsimgshieldsiogithubstarsgeektutu7days-golangsvg">geektutu/7days-golang Github stars</a></li>
-          </ul>
-        </li>
-        <li><a href="#heading-1">进阶</a>
-          <ul>
-            <li><a href="#go--by-dravenesshttpsdravenessmegolang">Go 语言设计与实现 by Draveness</a></li>
-          </ul>
-        </li>
-        <li><a href="#heading-2">高阶</a></li>
+        <li><a href="#heading">使用规则</a></li>
+        <li><a href="#method-expression">method expression</a></li>
       </ul>
     </li>
   </ul>
@@ -554,19 +540,63 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-<article class="markdown"><h1 id="go-">Go 教程</h1>
-<h2 id="heading">基础</h2>
-<h3 id="astaxiebuild-web-application-with-golanghttpsgithubcomastaxiebuild-web-application-with-golang-github-starshttpsimgshieldsiogithubstarsastaxiebuild-web-application-with-golangsvg"><a href="https://github.com/astaxie/build-web-application-with-golang">astaxie/build-web-application-with-golang</a> <img src="https://img.shields.io/github/stars/astaxie/build-web-application-with-golang.svg" alt="Github stars"></h3>
-<p>A golang ebook intro how to build a web with golang</p>
-<h3 id="mmcgranagobyexamplehttpsgithubcommmcgranagobyexample-github-starshttpsimgshieldsiogithubstarsmmcgranagobyexamplesvg"><a href="https://github.com/mmcgrana/gobyexample">mmcgrana/gobyexample</a> <img src="https://img.shields.io/github/stars/mmcgrana/gobyexample.svg" alt="Github stars"></h3>
-<p><a href="https://gobyexample.com/">Go by Example</a></p>
-<p>中文翻译：<a href="https://github.com/gobyexample-cn/gobyexample">通过例子学 Golang</a>：https://gobyexample-cn.github.io/</p>
-<h3 id="geektutu7days-golanghttpsgithubcomgeektutu7days-golang-github-starshttpsimgshieldsiogithubstarsgeektutu7days-golangsvg"><a href="https://github.com/geektutu/7days-golang">geektutu/7days-golang</a> <img src="https://img.shields.io/github/stars/geektutu/7days-golang.svg" alt="Github stars"></h3>
-<p>7 天用 Go 动手写 / 从零实现系列</p>
-<h2 id="heading-1">进阶</h2>
-<h3 id="go--by-dravenesshttpsdravenessmegolang"><a href="https://draveness.me/golang/">Go 语言设计与实现 by Draveness</a></h3>
-<h2 id="heading-2">高阶</h2>
-</article>
+<article class="markdown"><h1 id="receiver">Receiver</h1>
+<p>结构体类型实现的接口，该结构体的<strong>指针类型</strong>也算实现了</p>
+<h2 id="heading">使用规则</h2>
+<ul>
+<li>必须使用指针
+<ul>
+<li>struct，且包含 sync.Mutex 类型字段</li>
+</ul>
+</li>
+<li>建议使用指针
+<ul>
+<li>比较<strong>大</strong>的 struct/array
+<ul>
+<li>struct 或者 array 中的元素个数超过 3 个，则认为比较大，反之，则认为比较小</li>
+</ul>
+</li>
+<li>struct、array 或 slice，其中指针元素所指的内容可能在方法内被<strong>修改</strong></li>
+</ul>
+</li>
+<li>建议使用 value 类型
+<ul>
+<li>比较<strong>小</strong>的 struct/array</li>
+</ul>
+</li>
+<li>必须使用 value 类型（<em>编程规范</em>）
+<ul>
+<li>map、函数或者 chan 类型</li>
+<li>slice，并且方法不会进行 reslice 或者重新分配 slice</li>
+</ul>
+</li>
+</ul>
+<h2 id="method-expression">method expression</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;fmt&#34;</span>
+)
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Ball</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">b</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Ball</span>) <span style="color:#a6e22e">Ping</span>() {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;ping&#34;</span>)
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">b</span> <span style="color:#a6e22e">Ball</span>) <span style="color:#a6e22e">Pong</span>() {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;pong&#34;</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Ball</span>{}
+
+    <span style="color:#a6e22e">Ball</span>.<span style="color:#a6e22e">Ping</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">v</span>)
+    <span style="color:#a6e22e">Ball</span>.<span style="color:#a6e22e">Pong</span>(<span style="color:#a6e22e">v</span>)
+}
+</code></pre></div></article>
  
       
 
@@ -578,9 +608,9 @@ https://github.com/alex-shpak/hugo-book
 
   <div>
     
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/407575f76cd37d7e4cf0d3e842d5b656c976dc46" title='Last modified by yewang | 2020-04-04' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/02efcbe320c9763a210b2a46623acfc6c82a6cdd" title='Last modified by yewang | 2020-04-09' target="_blank" rel="noopener">
       <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-04-04</span>
+      <span>2020-04-09</span>
     </a>
   </div>
 
@@ -614,21 +644,10 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-">Go 教程</a>
+    <li><a href="#receiver">Receiver</a>
       <ul>
-        <li><a href="#heading">基础</a>
-          <ul>
-            <li><a href="#astaxiebuild-web-application-with-golanghttpsgithubcomastaxiebuild-web-application-with-golang-github-starshttpsimgshieldsiogithubstarsastaxiebuild-web-application-with-golangsvg">astaxie/build-web-application-with-golang Github stars</a></li>
-            <li><a href="#mmcgranagobyexamplehttpsgithubcommmcgranagobyexample-github-starshttpsimgshieldsiogithubstarsmmcgranagobyexamplesvg">mmcgrana/gobyexample Github stars</a></li>
-            <li><a href="#geektutu7days-golanghttpsgithubcomgeektutu7days-golang-github-starshttpsimgshieldsiogithubstarsgeektutu7days-golangsvg">geektutu/7days-golang Github stars</a></li>
-          </ul>
-        </li>
-        <li><a href="#heading-1">进阶</a>
-          <ul>
-            <li><a href="#go--by-dravenesshttpsdravenessmegolang">Go 语言设计与实现 by Draveness</a></li>
-          </ul>
-        </li>
-        <li><a href="#heading-2">高阶</a></li>
+        <li><a href="#heading">使用规则</a></li>
+        <li><a href="#method-expression">method expression</a></li>
       </ul>
     </li>
   </ul>

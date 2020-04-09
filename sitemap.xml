@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</loc>
-    <lastmod>2020-02-29T20:09:56+08:00</lastmod>
+    <lastmod>2020-04-09T21:31:58+08:00</lastmod>
   </url>
   
   <url>
@@ -19,7 +19,7 @@
   
   <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/grammar/</loc>
-    <lastmod>2020-02-29T20:09:56+08:00</lastmod>
+    <lastmod>2020-04-09T21:31:58+08:00</lastmod>
   </url>
   
   <url>
@@ -29,12 +29,7 @@
   
   <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/practice/spec/</loc>
-    <lastmod>2020-03-16T20:10:02+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/datastruct/</loc>
-    <lastmod>2020-02-29T20:09:56+08:00</lastmod>
+    <lastmod>2020-04-09T21:31:58+08:00</lastmod>
   </url>
   
   <url>
@@ -45,6 +40,11 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/practice/package/</loc>
     <lastmod>2020-03-30T18:09:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/datastruct/</loc>
+    <lastmod>2020-04-09T21:31:58+08:00</lastmod>
   </url>
   
   <url>
@@ -78,6 +78,11 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/version/</loc>
+    <lastmod>2020-04-09T21:31:58+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/design/runtime/init/</loc>
     <lastmod>2020-04-02T23:25:09+08:00</lastmod>
   </url>
@@ -88,13 +93,18 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/func/receiver/</loc>
+    <lastmod>2020-04-09T21:31:58+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/appendix/attention/</loc>
-    <lastmod>2020-04-04T01:01:33+08:00</lastmod>
+    <lastmod>2020-04-09T21:31:58+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/grammar/func/</loc>
-    <lastmod>2020-04-02T23:25:09+08:00</lastmod>
+    <lastmod>2020-04-09T21:31:58+08:00</lastmod>
   </url>
   
   <url>

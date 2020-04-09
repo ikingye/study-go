@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/study-go/book.min.33dd7934182d4abfe269db67d0d9821bdd866c149d8327944bc47573db5a4d82.css" integrity="sha256-M915NBgtSr/iadtn0NmCG92GbBSdgyeUS8R1c9taTYI=">
 
 
-<script defer src="/study-go/en.search.min.d8c50c2d5050465f4d7eb3c0f779361a549d69fb8157e9576660c0eff21ae8bc.js" integrity="sha256-2MUMLVBQRl9NfrPA93k2GlSdafuBV&#43;lXZmDA7/Ia6Lw="></script>
+<script defer src="/study-go/en.search.min.2e914fd5e8b19e5e4907a7df5f67bda4699802b3f2630864da267b798f13b705.js" integrity="sha256-LpFP1eixnl5JB6ffX2e9pGmYArPyYwhk2iZ7eY8TtwU="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/practice/spec/index.xml" title="Go 学习笔记" />
 <!--
@@ -110,7 +110,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
 
   <a href="/study-go/docs/basic/grammar/keyword/" >
-      1.1 关键字
+      关键字
   </a>
 
 </li>
@@ -120,7 +120,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
 
   <a href="/study-go/docs/basic/grammar/datastruct/" >
-      1.2 数据结构
+      数据结构
   </a>
 
 </li>
@@ -145,12 +145,70 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/study-go/docs/basic/grammar/func/init/" >
+      init 函数
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/study-go/docs/basic/grammar/func/receiver/" >
+      Receiver
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
 
 
   </li>
 
 
       
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-go/docs/basic/version/" >
+      版本
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
     
   </ul>
   
@@ -481,7 +539,35 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-">Go 编程规范</a></li>
+    <li><a href="#go-">Go 编程规范</a>
+      <ul>
+        <li><a href="#heading">代码组织</a></li>
+        <li><a href="#heading-1">语言规范</a>
+          <ul>
+            <li><a href="#-slice">申明 slice</a></li>
+            <li><a href="#embeddinghttpgolangorgdoceffective-gohtmlembedding">embedding</a></li>
+            <li><a href="#heading-2">函数参数和返回值</a></li>
+            <li><a href="#heading-3">缩进</a></li>
+            <li><a href="#heading-4">空格</a></li>
+          </ul>
+        </li>
+        <li><a href="#heading-5">命名</a>
+          <ul>
+            <li><a href="#heading-6">文件名</a></li>
+            <li><a href="#--">函数名 / 变量名</a></li>
+            <li><a href="#heading-7">常量</a></li>
+          </ul>
+        </li>
+        <li><a href="#heading-8">编程实践</a>
+          <ul>
+            <li><a href="#error-string">error string</a></li>
+            <li><a href="#dont-panic">Don't panic</a></li>
+            <li><a href="#-lock-">关于 lock 的保护</a></li>
+            <li><a href="#unsafe-package">unsafe package</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -494,6 +580,180 @@ https://github.com/alex-shpak/hugo-book
       
       
 <article class="markdown"><h1 id="go-">Go 编程规范</h1>
+<h2 id="heading">代码组织</h2>
+<p>建议文件按以下顺序进行布局：</p>
+<ul>
+<li>General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。</li>
+<li>package: 当前 package 定义</li>
+<li>imports: 包含的头文件</li>
+<li>Constants: 常量</li>
+<li>Typedefs: 类型定义</li>
+<li>Globals: 全局变量定义</li>
+<li>functions: 函数实现</li>
+</ul>
+<hr>
+<h2 id="heading-1">语言规范</h2>
+<h3 id="-slice">申明 slice</h3>
+<p>申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// GOOD:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">t</span> []<span style="color:#66d9ef">string</span>
+
+<span style="color:#75715e">// BAD:
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">string</span>{}
+</code></pre></div><h3 id="embeddinghttpgolangorgdoceffective-gohtmlembedding"><a href="http://golang.org/doc/effective_go.html#embedding">embedding</a></h3>
+<ul>
+<li>embedding 只用于 &ldquo;is a&rdquo; 的语义下，而不用于 &ldquo;has a&rdquo; 的语义下
+<ul>
+<li>语义上 embedding 是一种<strong>继承关系</strong>，而不是<strong>成员关系</strong></li>
+</ul>
+</li>
+<li>一个定义内，多于一个的 embedding 尽量少用
+<ul>
+<li>一个定义内有多个 embedding，则很难判断某个成员变量或函数是从哪里继承得到的</li>
+<li>一个定义内有多个 embedding，危害和在 python 中使用 <code>from xxx import *</code> 是类似的</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Automobile</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Engine</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#75715e">// ....
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">// GOOD:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Car</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Automobile</span>         <span style="color:#75715e">//  Car is a Automobile
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">engine</span> <span style="color:#a6e22e">Engine</span>      <span style="color:#75715e">//  Car has a Engine
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">// BAD:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Car</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Automobile</span>      <span style="color:#75715e">//  Car is a Automobile
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">Engine</span>          <span style="color:#75715e">//  Car has a Engine, but Car is NOT a Engine
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h3 id="heading-2">函数参数和返回值</h3>
+<ul>
+<li>
+<p>必须</p>
+<ul>
+<li>函数返回值小于等于 3 个，大于 3 个时必须通过 struct 进行包装</li>
+</ul>
+</li>
+<li>
+<p>建议</p>
+<ul>
+<li>函数参数不建议超过 3 个，大于 3 个时建议通过 struct 进行包装</li>
+<li>函数返回值
+<ul>
+<li>逻辑判断型：返回值的意义代表 “真” 或 “假”，返回值类型定义为 bool</li>
+<li>操作型：返回值的意义代表 “成功” 或 “失败”，返回值类型定义为 error</li>
+<li>获取数据型：返回值的意义代表 “有数据” 或 “无数据 / 获取数据失败”，返回值类型定义为（data, error）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-3">缩进</h3>
+<ul>
+<li>使用 tab 进行缩进。</li>
+<li>跨行的缩进使用 gofmt 的缩进方式。</li>
+<li>设置 <code>tabstop=4</code></li>
+</ul>
+<h3 id="heading-4">空格</h3>
+<ul>
+<li>圆括号、方括号、花括号内侧都不加空格</li>
+<li>逗号、冒号（slice 中冒号除外）前不加空格，后边加一个空格</li>
+<li>所有二元运算符前后各加一个空格（<strong>作为函数参数时除外</strong>）</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> (
+    <span style="color:#a6e22e">s</span> = make([]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">10</span>)
+)
+
+<span style="color:#75715e">// GOOD：
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">foo</span>() {
+    <span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;language&#34;</span>: <span style="color:#e6db74">&#34;golang&#34;</span>}
+    <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#a6e22e">func1</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>)
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">m</span>[<span style="color:#e6db74">&#34;language&#34;</span>])
+}
+
+<span style="color:#75715e">// BAD：
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">foo</span>() {
+    <span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>{ <span style="color:#e6db74">&#34;language&#34;</span> : <span style="color:#e6db74">&#34;golang&#34;</span> }
+    <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>
+    <span style="color:#a6e22e">func1</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>)
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">m</span>[ <span style="color:#e6db74">&#34;language&#34;</span> ])
+}
+</code></pre></div><hr>
+<h2 id="heading-5">命名</h2>
+<h3 id="heading-6">文件名</h3>
+<p>文件名都使用小写字母，如果需要，可以使用下划线分割</p>
+<p>文件名的后缀使用小写字母</p>
+<h3 id="--">函数名 / 变量名</h3>
+<p>采用驼峰方式命名，禁止使用下划线命名</p>
+<p>首字母是否大写，根据是否需要外部访问来决定</p>
+<h3 id="heading-7">常量</h3>
+<p>尽量不要在程序中直接写数字，特殊字符串，全部用常量替代</p>
+<hr>
+<h2 id="heading-8">编程实践</h2>
+<h3 id="error-string">error string</h3>
+<p>error string 尽量使用小写字母，并且结尾不带标点符号</p>
+<h3 id="dont-panic">Don't panic</h3>
+<p>除非出现不可恢复的程序错误，不要使用 panic，用多返回值和 error。</p>
+<h3 id="-lock-">关于 lock 的保护</h3>
+<ul>
+<li>如果临界区内的逻辑较复杂、无法完全避免 panic 的发生，则要求适用 <strong>defer</strong> 来调用 Unlock，即使在临界区过程中发生了 panic，也会在函数退出时调用 Unlock 释放锁
+<ul>
+<li>go 提供了 recover，可以对 panic 进行捕获，但如果 panic 发生在临界区内，则可能导致对锁的使用没有释放</li>
+<li>这种情况下，即使 panic 不会导致整个程序的奔溃，也会由于” 锁不释放 “的问题而使临界区无法被后续的调用访问</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>上述操作如果造成临界区扩大后，需要建立单独的一个函数访问临界区。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">doDemo</span>() {
+    <span style="color:#a6e22e">lock</span>.<span style="color:#a6e22e">Lock</span>()
+
+    <span style="color:#75715e">// step1: 临界区内的操作
+</span><span style="color:#75715e"></span>
+    <span style="color:#a6e22e">lock</span>.<span style="color:#a6e22e">Unlock</span>()
+
+    <span style="color:#75715e">// step2: 临界区外的操作
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">// 如果改造为 defer 的方式，变为如下代码，实际上扩大了临界区的范围（step2 的操作也被放置在临界区了）
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">doDemo</span>() {
+    <span style="color:#a6e22e">lock</span>.<span style="color:#a6e22e">Lock</span>()
+    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">lock</span>.<span style="color:#a6e22e">Unlock</span>()
+
+    <span style="color:#75715e">// step1: 临界区内的操作
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// step2: 临界区外的操作
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">// 需要使用单独的匿名函数，专门用于访问临界区
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">doDemo</span>() {
+    <span style="color:#66d9ef">func</span>() {
+        <span style="color:#a6e22e">lock</span>.<span style="color:#a6e22e">Lock</span>()
+        <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">lock</span>.<span style="color:#a6e22e">Unlock</span>()
+
+        <span style="color:#75715e">// step1: 临界区内的操作操作
+</span><span style="color:#75715e"></span>
+    }()
+
+    <span style="color:#75715e">// step2: 临界区外的操作
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h3 id="unsafe-package">unsafe package</h3>
+<ul>
+<li>除非特殊原因，不建议使用 unsafe package
+<ul>
+<li>比如进行指针和数值 uintptr 之间转换就是一个特殊原因</li>
+</ul>
+</li>
+</ul>
 </article>
  
       
@@ -506,9 +766,9 @@ https://github.com/alex-shpak/hugo-book
 
   <div>
     
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/bb87a802e3f66787ec9c7e3d8171a1da9058ab9d" title='Last modified by yewang | 2020-03-16' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/02efcbe320c9763a210b2a46623acfc6c82a6cdd" title='Last modified by yewang | 2020-04-09' target="_blank" rel="noopener">
       <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-03-16</span>
+      <span>2020-04-09</span>
     </a>
   </div>
 
@@ -542,7 +802,35 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-">Go 编程规范</a></li>
+    <li><a href="#go-">Go 编程规范</a>
+      <ul>
+        <li><a href="#heading">代码组织</a></li>
+        <li><a href="#heading-1">语言规范</a>
+          <ul>
+            <li><a href="#-slice">申明 slice</a></li>
+            <li><a href="#embeddinghttpgolangorgdoceffective-gohtmlembedding">embedding</a></li>
+            <li><a href="#heading-2">函数参数和返回值</a></li>
+            <li><a href="#heading-3">缩进</a></li>
+            <li><a href="#heading-4">空格</a></li>
+          </ul>
+        </li>
+        <li><a href="#heading-5">命名</a>
+          <ul>
+            <li><a href="#heading-6">文件名</a></li>
+            <li><a href="#--">函数名 / 变量名</a></li>
+            <li><a href="#heading-7">常量</a></li>
+          </ul>
+        </li>
+        <li><a href="#heading-8">编程实践</a>
+          <ul>
+            <li><a href="#error-string">error string</a></li>
+            <li><a href="#dont-panic">Don't panic</a></li>
+            <li><a href="#-lock-">关于 lock 的保护</a></li>
+            <li><a href="#unsafe-package">unsafe package</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

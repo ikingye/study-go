@@ -10,7 +10,7 @@
     
     
     <item>
-      <title>1.1 关键字</title>
+      <title>关键字</title>
       <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -41,15 +41,6 @@ geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列
     </item>
     
     <item>
-      <title>1.2 数据结构</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/datastruct/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/datastruct/</guid>
-      <description>Go 语言数据结构 字符串 数组 切片 哈希表 </description>
-    </item>
-    
-    <item>
       <title>基础</title>
       <link>https://ikingye.github.io/study-go/docs/appendix/interview/basic/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -68,6 +59,15 @@ geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列
 githubnemo/CompileDaemon  Watches your .go files in a directory and invokes go build if a file changed.
 Usage:
 ./CompileDaemon -directory=yourproject/</description>
+    </item>
+    
+    <item>
+      <title>数据结构</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/datastruct/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/datastruct/</guid>
+      <description>Go 语言数据结构 字符串 数组 切片 哈希表 </description>
     </item>
     
     <item>
@@ -109,6 +109,16 @@ package 级别的变量 初始化顺序与初始化依赖有关
       <guid>https://ikingye.github.io/study-go/docs/basic/grammar/func/init/</guid>
       <description>init 函数  作用  初始化不能采用初始化表达式初始化的变量 程序运行前的注册 实现 sync.Once 功能   特点  init 函数先于 main 函数自动执行 init 不能被其他函数调用 init 函数没有输入参数、返回值 每个包可以有多个 init 函数  包的每个源文件也可以有多个 init 函数   同一个包的 init 执行顺序，golang 没有明确定义，编程时要注意程序不要依赖这个执行顺序 不同包的 init 函数按照包导入的依赖关系决定执行顺序   问答 只想调用该包的 init 函数，不使用包导出的变量或者方法 import _ &amp;#34;net/http/pprof&amp;#34; 执行上述导入后，init 函数会启动一个异步协程采集该进程实例的资源占用情况，并以 http 服务接口方式提供给用户查询。
  参考 </description>
+    </item>
+    
+    <item>
+      <title>Receiver</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/func/receiver/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/func/receiver/</guid>
+      <description>Receiver 结构体类型实现的接口，该结构体的指针类型也算实现了
+使用规则  必须使用指针  struct，且包含 sync.Mutex 类型字段   建议使用指针  比较大的 struct/array  struct 或者 array 中的元素个数超过 3 个，则认为比较大，反之，则认为比较小   struct、array 或 slice，其中指针元素所指的内容可能在方法内被修改   建议使用 value 类型  比较小的 struct/array   必须使用 value 类型（编程规范）  map、函数或者 chan 类型 slice，并且方法不会进行 reslice 或者重新分配 slice    method expression package main import ( &amp;#34;fmt&amp;#34; ) type Ball struct { Name string } func (b *Ball) Ping() { fmt.</description>
     </item>
     
     <item>
