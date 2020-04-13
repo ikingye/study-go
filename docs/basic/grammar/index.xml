@@ -15,7 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</guid>
-      <description>Go 语言关键字 for 与 range select defer panic 与 recover make 与 new </description>
+      <description>Go 语言关键字 break default func interface select case defer go map struct chan else goto package switch const fallthrough if range type continue for import return var for 与 range select defer panic 与 recover make 与 new </description>
     </item>
     
     <item>

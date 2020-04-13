@@ -4,16 +4,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 初始化"><meta property="og:title" content="Go 初始化" />
-<meta property="og:description" content="Go 初始化 golang 程序初始化先于 main 函数执行，由 runtime 进行初始化，初始化顺序如下：
- 初始化导入的包（包的初始化顺序并不是按导入顺序（“从上到下”）执行的，runtime 需要解析包依赖关系，没有依赖的包最先初始化，与变量初始化依赖关系类似，参见 golang 变量的初始化）； 初始化包作用域的变量（该作用域的变量的初始化也并非按照 “从上到下、从左到右” 的顺序，runtime 解析变量依赖关系，没有依赖的变量最先初始化，参见 golang 变量的初始化）； 执行包的 init 函数；   变量初始化 -&gt;init ()-&gt;main () 由于 pack 包的初始化依赖 test_util，因此运行时先初始化 test_util 再初始化 pack 包；   同一个包不同源文件的 init 函数执行顺序，golang spec 没做说明  一般是源文件名称的字典序，但不能依赖这个假定     在每一个初始化周期，运行时（runtime）会挑选一个没有任何依赖的变量初始化  该过程一直持续到所有的变量均被初始化或者出现依赖嵌套的情形   同一个 package 下多个文件的变量初始化依赖也遵循相同的规则   变量初始化 不同作用域类型的变量初始化顺序不同
-函数作用域内的局部变量 初始化顺序：从左到右、从上到下
-package 级别的变量 初始化顺序与初始化依赖有关
- " />
+<meta name="description" content="Go 调度"><meta property="og:title" content="Go 调度" />
+<meta property="og:description" content="Go 调度 参考 Scheduling In Go  Scheduling In Go : Part I - OS Scheduler Scheduling In Go : Part II - Go Scheduler Scheduling In Go : Part III - Concurrency  Garbage Collection In Go  Garbage Collection In Go : Part I - Semantics Garbage Collection In Go : Part II - GC Traces Garbage Collection In Go : Part III - GC Pacing  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/design/runtime/init/" />
-<meta property="article:modified_time" content="2020-04-02T23:25:09+08:00" />
-<title>Go 初始化 | Go 学习笔记</title>
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/design/scheduling/" />
+
+<title>Go 调度 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -314,7 +310,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/design/runtime/init/"  class="active">
+  <a href="/study-go/docs/design/runtime/init/" >
       Go 初始化
   </a>
 
@@ -324,7 +320,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/design/scheduling/" >
+  <a href="/study-go/docs/design/scheduling/"  class="active">
       Go 调度
   </a>
 
@@ -547,7 +543,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Go 初始化</strong>
+  <strong>Go 调度</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -561,12 +557,12 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-">Go 初始化</a>
+    <li><a href="#go-">Go 调度</a>
       <ul>
-        <li><a href="#heading">变量初始化</a>
+        <li><a href="#heading">参考</a>
           <ul>
-            <li><a href="#heading-1">函数作用域内的局部变量</a></li>
-            <li><a href="#package-">package 级别的变量</a></li>
+            <li><a href="#scheduling-in-gohttpswwwardanlabscomblog201808scheduling-in-go-part1html">Scheduling In Go</a></li>
+            <li><a href="#garbage-collection-in-gohttpswwwardanlabscomblog201812garbage-collection-in-go-part1-semanticshtml">Garbage Collection In Go</a></li>
           </ul>
         </li>
       </ul>
@@ -581,40 +577,20 @@ https://github.com/alex-shpak/hugo-book
       </header>
 
       
-<article class="markdown"><h1 id="go-">Go 初始化</h1>
-<p>golang 程序初始化先于 main 函数执行，由 runtime 进行初始化，初始化顺序如下：</p>
-<ul>
-<li>初始化导入的包（包的初始化顺序并不是按导入顺序（“从上到下”）执行的，runtime 需要解析包依赖关系，没有依赖的包最先初始化，与变量初始化依赖关系类似，参见 golang 变量的初始化）；</li>
-<li>初始化包作用域的变量（该作用域的变量的初始化也并非按照 “从上到下、从左到右” 的顺序，runtime 解析变量依赖关系，没有依赖的变量最先初始化，参见 golang 变量的初始化）；</li>
-<li>执行包的 init 函数；</li>
-</ul>
-<ul>
-<li>变量初始化 -&gt;init ()-&gt;main ()</li>
-<li>由于 pack 包的初始化依赖 test_util，因此运行时先初始化 test_util 再初始化 pack 包；</li>
-</ul>
-<ul>
-<li>同一个包不同源文件的 init 函数执行顺序，golang spec 没做说明
-<ul>
-<li>一般是源文件名称的字典序，但不能依赖这个假定</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>在每一个初始化周期，运行时（runtime）会挑选一个没有任何依赖的变量初始化
-<ul>
-<li>该过程一直持续到所有的变量均被初始化或者出现依赖嵌套的情形</li>
-</ul>
-</li>
-<li>同一个 package 下多个文件的变量初始化依赖也遵循相同的规则</li>
-</ul>
-<hr>
-<h2 id="heading">变量初始化</h2>
-<p>不同作用域类型的变量初始化顺序不同</p>
-<h3 id="heading-1">函数作用域内的局部变量</h3>
-<p>初始化顺序：从左到右、从上到下</p>
-<h3 id="package-">package 级别的变量</h3>
-<p>初始化顺序与<code>初始化依赖</code>有关</p>
-<hr>
+<article class="markdown"><h1 id="go-">Go 调度</h1>
+<h2 id="heading">参考</h2>
+<h3 id="scheduling-in-gohttpswwwardanlabscomblog201808scheduling-in-go-part1html"><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html">Scheduling In Go</a></h3>
+<ol>
+<li><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html">Scheduling In Go : Part I - OS Scheduler</a></li>
+<li><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part2.html">Scheduling In Go : Part II - Go Scheduler</a></li>
+<li><a href="https://www.ardanlabs.com/blog/2018/12/scheduling-in-go-part3.html">Scheduling In Go : Part III - Concurrency</a></li>
+</ol>
+<h3 id="garbage-collection-in-gohttpswwwardanlabscomblog201812garbage-collection-in-go-part1-semanticshtml"><a href="https://www.ardanlabs.com/blog/2018/12/garbage-collection-in-go-part1-semantics.html">Garbage Collection In Go</a></h3>
+<ol>
+<li><a href="https://www.ardanlabs.com/blog/2018/12/garbage-collection-in-go-part1-semantics.html">Garbage Collection In Go : Part I - Semantics</a></li>
+<li><a href="https://www.ardanlabs.com/blog/2019/05/garbage-collection-in-go-part2-gctraces.html">Garbage Collection In Go : Part II - GC Traces</a></li>
+<li><a href="https://www.ardanlabs.com/blog/2019/07/garbage-collection-in-go-part3-gcpacing.html">Garbage Collection In Go : Part III - GC Pacing</a></li>
+</ol>
 </article>
  
 
@@ -623,14 +599,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/76b0f2960c93fa1e71638b99203a3d1fbd889d68" title='Last modified by yewang | 2020-04-02' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-04-02</span>
-    </a>
-  </div>
 
 
 
@@ -660,12 +628,12 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-">Go 初始化</a>
+    <li><a href="#go-">Go 调度</a>
       <ul>
-        <li><a href="#heading">变量初始化</a>
+        <li><a href="#heading">参考</a>
           <ul>
-            <li><a href="#heading-1">函数作用域内的局部变量</a></li>
-            <li><a href="#package-">package 级别的变量</a></li>
+            <li><a href="#scheduling-in-gohttpswwwardanlabscomblog201808scheduling-in-go-part1html">Scheduling In Go</a></li>
+            <li><a href="#garbage-collection-in-gohttpswwwardanlabscomblog201812garbage-collection-in-go-part1-semanticshtml">Garbage Collection In Go</a></li>
           </ul>
         </li>
       </ul>

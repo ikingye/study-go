@@ -15,7 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</guid>
-      <description>Go 语言关键字 for 与 range select defer panic 与 recover make 与 new </description>
+      <description>Go 语言关键字 break default func interface select case defer go map struct chan else goto package switch const fallthrough if range type continue for import return var for 与 range select defer panic 与 recover make 与 new </description>
     </item>
     
     <item>
@@ -28,6 +28,7 @@
 mmcgrana/gobyexample Go by Example
 中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/
 geektutu/7days-golang 7 天用 Go 动手写 / 从零实现系列
+ 练习 ardanlabs/gotraining Go Training Class Material : http://www.ArdanLabs.com
 进阶 Go 语言设计与实现 by Draveness 高阶 </description>
     </item>
     
@@ -102,6 +103,15 @@ package 级别的变量 初始化顺序与初始化依赖有关
     </item>
     
     <item>
+      <title>Go 调度</title>
+      <link>https://ikingye.github.io/study-go/docs/design/scheduling/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/design/scheduling/</guid>
+      <description>Go 调度 参考 Scheduling In Go  Scheduling In Go : Part I - OS Scheduler Scheduling In Go : Part II - Go Scheduler Scheduling In Go : Part III - Concurrency  Garbage Collection In Go  Garbage Collection In Go : Part I - Semantics Garbage Collection In Go : Part II - GC Traces Garbage Collection In Go : Part III - GC Pacing  </description>
+    </item>
+    
+    <item>
       <title>init 函数</title>
       <link>https://ikingye.github.io/study-go/docs/basic/grammar/func/init/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -109,6 +119,17 @@ package 级别的变量 初始化顺序与初始化依赖有关
       <guid>https://ikingye.github.io/study-go/docs/basic/grammar/func/init/</guid>
       <description>init 函数  作用  初始化不能采用初始化表达式初始化的变量 程序运行前的注册 实现 sync.Once 功能   特点  init 函数先于 main 函数自动执行 init 不能被其他函数调用 init 函数没有输入参数、返回值 每个包可以有多个 init 函数  包的每个源文件也可以有多个 init 函数   同一个包的 init 执行顺序，golang 没有明确定义，编程时要注意程序不要依赖这个执行顺序 不同包的 init 函数按照包导入的依赖关系决定执行顺序   问答 只想调用该包的 init 函数，不使用包导出的变量或者方法 import _ &amp;#34;net/http/pprof&amp;#34; 执行上述导入后，init 函数会启动一个异步协程采集该进程实例的资源占用情况，并以 http 服务接口方式提供给用户查询。
  参考 </description>
+    </item>
+    
+    <item>
+      <title>interface</title>
+      <link>https://ikingye.github.io/study-go/docs/design/interface/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/design/interface/</guid>
+      <description>interface Go Data Structures: Interfaces
+读完这篇 go 作者的 blog，interface 就没什么秘密可言了。每个 interface 至少包含两个字段，type 和 data，不论什么形式，然后是 itable 什么时候生成，如何调用。
+结合 Comparison operators，记住 interface 的 compare 规则。</description>
     </item>
     
     <item>
