@@ -20,7 +20,7 @@ package 级别的变量 初始化顺序与初始化依赖有关
 <link rel="stylesheet" href="/study-go/book.min.66d2f6926159dd697150bdcd901eead56a7adc9408513ccb9ab553939262dd4c.css" integrity="sha256-ZtL2kmFZ3WlxUL3NkB7q1Wp63JQIUTzLmrVTk5Ji3Uw=">
 
 
-<script defer src="/study-go/en.search.min.2b7fc3836399cc2dd75c09df759bd72abfc35d05a8d20a8dbf7cf7e6f52a0790.js" integrity="sha256-K3/Dg2OZzC3XXAnfdZvXKr/DXQWo0gqNv3z35vUqB5A="></script>
+<script defer src="/study-go/en.search.min.b7bdfe89da44b7a5155451792a1c087cc44b509a8f68c520826e24170f28de07.js" integrity="sha256-t73&#43;idpEt6UVVFF5KhwIfMRLUJqPaMUggm4kFw8o3gc="></script>
 
 <!--
 Made with Book Theme
@@ -173,6 +173,8 @@ https://github.com/alex-shpak/hugo-book
   </li>
 
 
+      
+    
       
     
   </ul>
@@ -561,12 +563,12 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-">Go 初始化</a>
+    <li><a href="#go-初始化">Go 初始化</a>
       <ul>
-        <li><a href="#heading">变量初始化</a>
+        <li><a href="#变量初始化">变量初始化</a>
           <ul>
-            <li><a href="#heading-1">函数作用域内的局部变量</a></li>
-            <li><a href="#package-">package 级别的变量</a></li>
+            <li><a href="#函数作用域内的局部变量">函数作用域内的局部变量</a></li>
+            <li><a href="#package-级别的变量">package 级别的变量</a></li>
           </ul>
         </li>
       </ul>
@@ -581,7 +583,7 @@ https://github.com/alex-shpak/hugo-book
       </header>
 
       
-<article class="markdown"><h1 id="go-">Go 初始化</h1>
+<article class="markdown"><h1 id="go-初始化">Go 初始化</h1>
 <p>golang 程序初始化先于 main 函数执行，由 runtime 进行初始化，初始化顺序如下：</p>
 <ul>
 <li>初始化导入的包（包的初始化顺序并不是按导入顺序（“从上到下”）执行的，runtime 需要解析包依赖关系，没有依赖的包最先初始化，与变量初始化依赖关系类似，参见 golang 变量的初始化）；</li>
@@ -608,11 +610,11 @@ https://github.com/alex-shpak/hugo-book
 <li>同一个 package 下多个文件的变量初始化依赖也遵循相同的规则</li>
 </ul>
 <hr>
-<h2 id="heading">变量初始化</h2>
+<h2 id="变量初始化">变量初始化</h2>
 <p>不同作用域类型的变量初始化顺序不同</p>
-<h3 id="heading-1">函数作用域内的局部变量</h3>
+<h3 id="函数作用域内的局部变量">函数作用域内的局部变量</h3>
 <p>初始化顺序：从左到右、从上到下</p>
-<h3 id="package-">package 级别的变量</h3>
+<h3 id="package-级别的变量">package 级别的变量</h3>
 <p>初始化顺序与<code>初始化依赖</code>有关</p>
 <hr>
 </article>
@@ -660,12 +662,12 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-">Go 初始化</a>
+    <li><a href="#go-初始化">Go 初始化</a>
       <ul>
-        <li><a href="#heading">变量初始化</a>
+        <li><a href="#变量初始化">变量初始化</a>
           <ul>
-            <li><a href="#heading-1">函数作用域内的局部变量</a></li>
-            <li><a href="#package-">package 级别的变量</a></li>
+            <li><a href="#函数作用域内的局部变量">函数作用域内的局部变量</a></li>
+            <li><a href="#package-级别的变量">package 级别的变量</a></li>
           </ul>
         </li>
       </ul>

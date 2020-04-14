@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/study-go/book.min.66d2f6926159dd697150bdcd901eead56a7adc9408513ccb9ab553939262dd4c.css" integrity="sha256-ZtL2kmFZ3WlxUL3NkB7q1Wp63JQIUTzLmrVTk5Ji3Uw=">
 
 
-<script defer src="/study-go/en.search.min.2b7fc3836399cc2dd75c09df759bd72abfc35d05a8d20a8dbf7cf7e6f52a0790.js" integrity="sha256-K3/Dg2OZzC3XXAnfdZvXKr/DXQWo0gqNv3z35vUqB5A="></script>
+<script defer src="/study-go/en.search.min.b7bdfe89da44b7a5155451792a1c087cc44b509a8f68c520826e24170f28de07.js" integrity="sha256-t73&#43;idpEt6UVVFF5KhwIfMRLUJqPaMUggm4kFw8o3gc="></script>
 
 <!--
 Made with Book Theme
@@ -170,6 +170,8 @@ https://github.com/alex-shpak/hugo-book
   </li>
 
 
+      
+    
       
     
   </ul>
@@ -558,16 +560,16 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#init-">init 函数</a>
+    <li><a href="#init-函数">init 函数</a>
       <ul>
-        <li><a href="#heading">作用</a></li>
-        <li><a href="#heading-1">特点</a></li>
-        <li><a href="#heading-2">问答</a>
+        <li><a href="#作用">作用</a></li>
+        <li><a href="#特点">特点</a></li>
+        <li><a href="#问答">问答</a>
           <ul>
-            <li><a href="#-init-">只想调用该包的 init 函数，不使用包导出的变量或者方法</a></li>
+            <li><a href="#只想调用该包的-init-函数不使用包导出的变量或者方法">只想调用该包的 init 函数，不使用包导出的变量或者方法</a></li>
           </ul>
         </li>
-        <li><a href="#heading-3">参考</a></li>
+        <li><a href="#参考">参考</a></li>
       </ul>
     </li>
   </ul>
@@ -580,16 +582,16 @@ https://github.com/alex-shpak/hugo-book
       </header>
 
       
-<article class="markdown"><h1 id="init-">init 函数</h1>
+<article class="markdown"><h1 id="init-函数">init 函数</h1>
 <hr>
-<h2 id="heading">作用</h2>
+<h2 id="作用">作用</h2>
 <ul>
 <li>初始化不能采用<strong>初始化表达式</strong>初始化的变量</li>
 <li>程序运行前的注册</li>
 <li>实现 sync.Once 功能</li>
 </ul>
 <hr>
-<h2 id="heading-1">特点</h2>
+<h2 id="特点">特点</h2>
 <ul>
 <li>init 函数先于 main 函数自动执行</li>
 <li>init 不能被其他函数调用</li>
@@ -603,12 +605,12 @@ https://github.com/alex-shpak/hugo-book
 <li>不同包的 init 函数按照包导入的依赖关系决定执行顺序</li>
 </ul>
 <hr>
-<h2 id="heading-2">问答</h2>
-<h3 id="-init-">只想调用该包的 init 函数，不使用包导出的变量或者方法</h3>
+<h2 id="问答">问答</h2>
+<h3 id="只想调用该包的-init-函数不使用包导出的变量或者方法">只想调用该包的 init 函数，不使用包导出的变量或者方法</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> <span style="color:#a6e22e">_</span> <span style="color:#e6db74">&#34;net/http/pprof&#34;</span>
 </code></pre></div><p>执行上述导入后，init 函数会启动一个异步协程采集该进程实例的资源占用情况，并以 http 服务接口方式提供给用户查询。</p>
 <hr>
-<h2 id="heading-3">参考</h2>
+<h2 id="参考">参考</h2>
 </article>
  
 
@@ -654,16 +656,16 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#init-">init 函数</a>
+    <li><a href="#init-函数">init 函数</a>
       <ul>
-        <li><a href="#heading">作用</a></li>
-        <li><a href="#heading-1">特点</a></li>
-        <li><a href="#heading-2">问答</a>
+        <li><a href="#作用">作用</a></li>
+        <li><a href="#特点">特点</a></li>
+        <li><a href="#问答">问答</a>
           <ul>
-            <li><a href="#-init-">只想调用该包的 init 函数，不使用包导出的变量或者方法</a></li>
+            <li><a href="#只想调用该包的-init-函数不使用包导出的变量或者方法">只想调用该包的 init 函数，不使用包导出的变量或者方法</a></li>
           </ul>
         </li>
-        <li><a href="#heading-3">参考</a></li>
+        <li><a href="#参考">参考</a></li>
       </ul>
     </li>
   </ul>
