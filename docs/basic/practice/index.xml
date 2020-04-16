@@ -21,5 +21,26 @@ Usage:
 ./CompileDaemon -directory=yourproject/</description>
     </item>
     
+    <item>
+      <title>Go 命令</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/practice/command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/practice/command/</guid>
+      <description>Go 命令 go get go get [-d] [-f] [-t] [-u] [-v] [-fix] [-insecure] [build flags] [packages] go get -d go get -d library 表示只下载，不安装
+go get == go install go get -d == go list The -d flag instructs get to download the source code needed to build the named packages, including downloading necessary dependencies, but not to build and install them.
+With no package arguments, &amp;lsquo;go get&amp;rsquo; applies to Go package in the current directory, if any.</description>
+    </item>
+    
+    <item>
+      <title>编译</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/practice/compile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/practice/compile/</guid>
+      <description>编译 交叉编译 golang 交叉编译很简单的，只要设置几个环境变量就可以了
+# mac上编译linux和windows二进制 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # linux上编译mac和windows二进制 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # windows上编译mac和linux二进制 SET CGO_ENABLED=0 SET GOOS=darwin SET GOARCH=amd64 go build main.go SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build main.go </description>
+    </item>
+    
   </channel>
 </rss>

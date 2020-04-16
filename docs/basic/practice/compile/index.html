@@ -4,12 +4,14 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="函数 "><meta property="og:title" content="函数" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/func/" />
+<meta name="description" content="编译 交叉编译 golang 交叉编译很简单的，只要设置几个环境变量就可以了
+# mac上编译linux和windows二进制 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # linux上编译mac和windows二进制 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # windows上编译mac和linux二进制 SET CGO_ENABLED=0 SET GOOS=darwin SET GOARCH=amd64 go build main.go SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build main.go "><meta property="og:title" content="编译" />
+<meta property="og:description" content="编译 交叉编译 golang 交叉编译很简单的，只要设置几个环境变量就可以了
+# mac上编译linux和windows二进制 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # linux上编译mac和windows二进制 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # windows上编译mac和linux二进制 SET CGO_ENABLED=0 SET GOOS=darwin SET GOARCH=amd64 go build main.go SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build main.go " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/practice/compile/" />
 
-<title>函数 | Go 学习笔记</title>
+<title>编译 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -18,7 +20,6 @@
 
 <script defer src="/study-go/en.search.min.925b0a0bca4f1c67828fb33147178c1749fc839dd7b93fe91afb8b8cc3749c21.js" integrity="sha256-klsKC8pPHGeCj7MxRxeMF0n8g53XuT/pGvuLjMN0nCE="></script>
 
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/grammar/func/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -139,7 +140,7 @@ https://github.com/alex-shpak/hugo-book
     
 
   
-  <a href="/study-go/docs/basic/grammar/func/" class="active">函数</a>
+  <a href="/study-go/docs/basic/grammar/func/" class="">函数</a>
   
 
 
@@ -288,7 +289,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
 
   
-  <a href="/study-go/docs/basic/practice/compile/" class="">编译</a>
+  <a href="/study-go/docs/basic/practice/compile/" class="active">编译</a>
   
 
 </li>
@@ -574,7 +575,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>函数</strong>
+  <strong>编译</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -588,7 +589,11 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#函数">函数</a></li>
+    <li><a href="#编译">编译</a>
+      <ul>
+        <li><a href="#交叉编译">交叉编译</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -600,8 +605,21 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="函数">函数</h1>
-</article>
+  <article class="markdown"><h1 id="编译">编译</h1>
+<h2 id="交叉编译">交叉编译</h2>
+<p>golang 交叉编译很简单的，只要设置几个环境变量就可以了</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># mac上编译linux和windows二进制</span>
+CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>linux GOARCH<span style="color:#f92672">=</span>amd64 go build
+CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>windows GOARCH<span style="color:#f92672">=</span>amd64 go build
+
+<span style="color:#75715e"># linux上编译mac和windows二进制</span>
+CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>darwin GOARCH<span style="color:#f92672">=</span>amd64 go build
+CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>windows GOARCH<span style="color:#f92672">=</span>amd64 go build
+
+<span style="color:#75715e"># windows上编译mac和linux二进制</span>
+SET CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> SET GOOS<span style="color:#f92672">=</span>darwin SET GOARCH<span style="color:#f92672">=</span>amd64 go build main.go
+SET CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> SET GOOS<span style="color:#f92672">=</span>linux SET GOARCH<span style="color:#f92672">=</span>amd64 go build main.go
+</code></pre></div></article>
  
       
 
@@ -610,14 +628,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/02efcbe320c9763a210b2a46623acfc6c82a6cdd" title='Last modified by yewang | 2020-04-09' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-04-09</span>
-    </a>
-  </div>
 
 
 
@@ -650,7 +660,11 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#函数">函数</a></li>
+    <li><a href="#编译">编译</a>
+      <ul>
+        <li><a href="#交叉编译">交叉编译</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

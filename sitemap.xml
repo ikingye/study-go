@@ -88,6 +88,10 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/practice/command/</loc>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/design/scheduling/</loc>
   </url>
   
@@ -118,6 +122,10 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/practice/</loc>
     <lastmod>2020-03-06T23:30:26+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/practice/compile/</loc>
   </url>
   
   <url>

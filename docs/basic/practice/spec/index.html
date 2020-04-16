@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="编程规范"><meta property="og:title" content="编程规范" />
+<meta name="description" content="Go 编程规范 代码组织 建议文件按以下顺序进行布局：
+ General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。 package: 当前 package 定义 imports: 包含的头文件 Constants: 常量 Typedefs: 类型定义 Globals: 全局变量定义 functions: 函数实现   语言规范 申明 slice 申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式
+// GOOD: var t []string // BAD: t := []string{} embedding  embedding 只用于 &ldquo;is a&rdquo; 的语义下，而不用于 &ldquo;has a&rdquo; 的语义下  语义上 embedding 是一种继承关系，而不是成员关系   一个定义内，多于一个的 embedding 尽量少用  一个定义内有多个 embedding，则很难判断某个成员变量或函数是从哪里继承得到的 一个定义内有多个 embedding，危害和在 python 中使用 from xxx import * 是类似的    type Automobile struct { // ."><meta property="og:title" content="编程规范" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/practice/spec/" />
@@ -13,10 +15,10 @@
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/study-go/book.min.66d2f6926159dd697150bdcd901eead56a7adc9408513ccb9ab553939262dd4c.css" integrity="sha256-ZtL2kmFZ3WlxUL3NkB7q1Wp63JQIUTzLmrVTk5Ji3Uw=">
+<link rel="stylesheet" href="/study-go/book.min.63eb88daa545365405ecdbb21033286a325c60a36cfa6d22d21e7c3bc9286941.css" integrity="sha256-Y&#43;uI2qVFNlQF7NuyEDMoajJcYKNs&#43;m0i0h58O8koaUE=">
 
 
-<script defer src="/study-go/en.search.min.b7bdfe89da44b7a5155451792a1c087cc44b509a8f68c520826e24170f28de07.js" integrity="sha256-t73&#43;idpEt6UVVFF5KhwIfMRLUJqPaMUggm4kFw8o3gc="></script>
+<script defer src="/study-go/en.search.min.925b0a0bca4f1c67828fb33147178c1749fc839dd7b93fe91afb8b8cc3749c21.js" integrity="sha256-klsKC8pPHGeCj7MxRxeMF0n8g53XuT/pGvuLjMN0nCE="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/practice/spec/index.xml" title="Go 学习笔记" />
 <!--
@@ -49,6 +51,12 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+
+
+
+
+
+
   
 
   
@@ -71,10 +79,13 @@ https://github.com/alex-shpak/hugo-book
       
         
 
-  <li >
+  <li>
     
-      <span>第一部分 基础入门</span>
-    
+
+  
+  <span>第一部分 基础入门</span>
+  
+
 
     
 
@@ -87,10 +98,13 @@ https://github.com/alex-shpak/hugo-book
       
         
 
-  <li >
+  <li>
     
-      <span>第一章 Go 基本语法</span>
-    
+
+  
+  <span>第一章 Go 基本语法</span>
+  
+
 
     
 
@@ -103,9 +117,9 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/basic/grammar/keyword/" >
-      关键字
-  </a>
+  
+  <a href="/study-go/docs/basic/grammar/keyword/" class="">关键字</a>
+  
 
 </li>
       
@@ -113,9 +127,9 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/basic/grammar/datastruct/" >
-      数据结构
-  </a>
+  
+  <a href="/study-go/docs/basic/grammar/datastruct/" class="">数据结构</a>
+  
 
 </li>
       
@@ -123,16 +137,13 @@ https://github.com/alex-shpak/hugo-book
       
         
 
-  <li >
+  <li>
     
-      
 
-  <a href="/study-go/docs/basic/grammar/func/" >
-      函数
-  </a>
+  
+  <a href="/study-go/docs/basic/grammar/func/" class="">函数</a>
+  
 
-
-    
 
     
 
@@ -145,9 +156,9 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/basic/grammar/func/init/" >
-      init 函数
-  </a>
+  
+  <a href="/study-go/docs/basic/grammar/func/init/" class="">init 函数</a>
+  
 
 </li>
       
@@ -155,9 +166,9 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/basic/grammar/func/receiver/" >
-      Receiver
-  </a>
+  
+  <a href="/study-go/docs/basic/grammar/func/receiver/" class="">Receiver</a>
+  
 
 </li>
       
@@ -187,192 +198,13 @@ https://github.com/alex-shpak/hugo-book
       
         
 
-  <li >
+  <li>
     
-      
-
-  <a href="/study-go/docs/basic/version/" >
-      版本
-  </a>
-
-
-    
-
-    
-
-
-
 
   
-  <ul>
-    
-  </ul>
+  <a href="/study-go/docs/basic/version/" class="">版本</a>
   
 
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li >
-    
-      
-
-  <a href="/study-go/docs/basic/practice/" >
-      最佳实践
-  </a>
-
-
-    
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        
-
-  <li >
-    
-      
-
-  <a href="/study-go/docs/basic/practice/spec/"  class="active">
-      编程规范
-  </a>
-
-
-    
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        <li>
-
-  <a href="/study-go/docs/basic/practice/spec/baidu/" >
-      百度
-  </a>
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  <a href="/study-go/docs/basic/practice/package/" >
-      常用 package
-  </a>
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li >
-    
-      <span>第二部分 设计</span>
-    
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        <li>
-
-  <a href="/study-go/docs/design/runtime/init/" >
-      Go 初始化
-  </a>
-
-</li>
-      
-    
-      
-        <li>
-
-  <a href="/study-go/docs/design/scheduling/" >
-      Go 调度
-  </a>
-
-</li>
-      
-    
-      
-        <li>
-
-  <a href="/study-go/docs/design/interface/" >
-      interface
-  </a>
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li >
-    
-      <span>第三部分 源码实现</span>
-    
 
     
 
@@ -395,10 +227,32 @@ https://github.com/alex-shpak/hugo-book
       
         
 
-  <li >
+  <li>
     
-      <span>第四部分 附录</span>
+
+  
+  <a href="/study-go/docs/basic/practice/" class="">最佳实践</a>
+  
+
+
     
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/practice/spec/" class="collapsed active">编程规范</a>
+  
+
 
     
 
@@ -411,26 +265,83 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/appendix/tutorial/" >
-      教程
-  </a>
+  
+  <a href="/study-go/docs/basic/practice/spec/baidu/" class="">百度</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/package/" class="">常用 package</a>
+  
 
 </li>
       
     
       
-        
+        <li>
 
-  <li >
+  
+  <a href="/study-go/docs/basic/practice/command/" class="">Go 命令</a>
+  
+
+</li>
+      
     
       
+        <li>
 
-  <a href="/study-go/docs/appendix/interview/" >
-      面试题
-  </a>
+  
+  <a href="/study-go/docs/basic/practice/compile/" class="">编译</a>
+  
 
-
+</li>
+      
     
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <span>第二部分 设计</span>
+  
+
 
     
 
@@ -443,9 +354,9 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/appendix/interview/basic/" >
-      基础
-  </a>
+  
+  <a href="/study-go/docs/design/runtime/init/" class="">Go 初始化</a>
+  
 
 </li>
       
@@ -453,9 +364,9 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/appendix/interview/advanced/" >
-      进阶
-  </a>
+  
+  <a href="/study-go/docs/design/scheduling/" class="">Go 调度</a>
+  
 
 </li>
       
@@ -463,9 +374,9 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-go/docs/appendix/interview/expert/" >
-      高阶
-  </a>
+  
+  <a href="/study-go/docs/design/interface/" class="">interface</a>
+  
 
 </li>
       
@@ -481,11 +392,59 @@ https://github.com/alex-shpak/hugo-book
       
     
       
+        
+
+  <li>
+    
+
+  
+  <span>第三部分 源码实现</span>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <span>第四部分 附录</span>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
         <li>
 
-  <a href="/study-go/docs/appendix/attention/" >
-      关注
-  </a>
+  
+  <a href="/study-go/docs/appendix/tutorial/" class="">教程</a>
+  
 
 </li>
       
@@ -493,16 +452,82 @@ https://github.com/alex-shpak/hugo-book
       
         
 
-  <li >
+  <li>
+    
+
+  
+  <a href="/study-go/docs/appendix/interview/" class="">面试题</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
     
       
+        <li>
 
-  <a href="/study-go/docs/appendix/snippet/" >
-      代码片段
-  </a>
+  
+  <a href="/study-go/docs/appendix/interview/basic/" class="">基础</a>
+  
 
-
+</li>
+      
     
+      
+        <li>
+
+  
+  <a href="/study-go/docs/appendix/interview/advanced/" class="">进阶</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/appendix/interview/expert/" class="">高阶</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/appendix/attention/" class="">关注</a>
+  
+
+</li>
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/appendix/snippet/" class="collapsed ">代码片段</a>
+  
+
 
     
 
@@ -532,6 +557,11 @@ https://github.com/alex-shpak/hugo-book
 
 
   
+
+
+
+
+
 
 
 
@@ -615,7 +645,8 @@ https://github.com/alex-shpak/hugo-book
       </header>
 
       
-<article class="markdown"><h1 id="go-编程规范">Go 编程规范</h1>
+      
+  <article class="markdown"><h1 id="go-编程规范">Go 编程规范</h1>
 <h2 id="代码组织">代码组织</h2>
 <p>建议文件按以下顺序进行布局：</p>
 <ul>
@@ -792,6 +823,7 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </article>
  
+      
 
       <footer class="book-footer">
         
@@ -813,6 +845,9 @@ https://github.com/alex-shpak/hugo-book
 
  
         
+      </footer>
+
+      
   
   <div class="book-comments">
 <script src="https://utteranc.es/client.js"
@@ -826,8 +861,8 @@ https://github.com/alex-shpak/hugo-book
 </div>
   
  
-      </footer>
-      
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     
