@@ -8,7 +8,7 @@
 <meta property="og:description" content="Go 调度 参考 Scheduling In Go  Scheduling In Go : Part I - OS Scheduler Scheduling In Go : Part II - Go Scheduler Scheduling In Go : Part III - Concurrency  Garbage Collection In Go  Garbage Collection In Go : Part I - Semantics Garbage Collection In Go : Part II - GC Traces Garbage Collection In Go : Part III - GC Pacing  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/design/scheduling/" />
-
+<meta property="article:modified_time" content="2020-04-16T22:38:37+08:00" />
 <title>Go 调度 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.796a9c2d3a1884860b5da73a7d45664c4b3cc78c890d89cfe058c64f52ddced7.js" integrity="sha256-eWqcLToYhIYLXac6fUVmTEs8x4yJDYnP4FjGT1Ldztc="></script>
+<script defer src="/study-go/en.search.min.a23e21833781b2e4c184ed9a6f6dc2faeae6b580d9bc5cc71eab8cf22b056d28.js" integrity="sha256-oj4hgzeBsuTBhO2ab23C&#43;urmtYDZvFzHHquM8isFbSg="></script>
 
 <!--
 Made with Book Theme
@@ -99,155 +99,7 @@ https://github.com/alex-shpak/hugo-book
     
 
   
-  <span>第一章 Go 基本语法</span>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/keyword/" class="">关键字</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/datastruct/" class="">数据结构</a>
-  
-
-</li>
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/func/" class="">函数</a>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/func/init/" class="">init 函数</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/func/receiver/" class="">Receiver</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/version/" class="">版本</a>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/practice/" class="">最佳实践</a>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/practice/spec/" class="collapsed ">编程规范</a>
+  <a href="/study-go/docs/basic/grammar/" class="collapsed ">语法</a>
   
 
 
@@ -264,37 +116,43 @@ https://github.com/alex-shpak/hugo-book
       
     
       
-        <li>
+        
+
+  <li>
+    
 
   
-  <a href="/study-go/docs/basic/practice/package/" class="">常用 package</a>
+  <a href="/study-go/docs/basic/version/" class="collapsed ">版本</a>
   
 
-</li>
+
+    
+
+
+
+
+
+
+  </li>
+
+
       
     
       
-        <li>
+        
 
-  
-  <a href="/study-go/docs/basic/practice/command/" class="">Go 命令</a>
-  
-
-</li>
-      
+  <li>
     
-      
-        <li>
 
   
-  <a href="/study-go/docs/basic/practice/compile/" class="">编译</a>
+  <a href="/study-go/docs/basic/practice/" class="collapsed ">最佳实践</a>
   
 
-</li>
-      
+
     
-  </ul>
-  
+
+
+
 
 
 
@@ -437,7 +295,7 @@ https://github.com/alex-shpak/hugo-book
     
 
   
-  <a href="/study-go/docs/appendix/interview/" class="">面试题</a>
+  <a href="/study-go/docs/appendix/snippet/" class="collapsed ">代码片段</a>
   
 
 
@@ -445,42 +303,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/appendix/interview/basic/" class="">基础</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/appendix/interview/advanced/" class="">进阶</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/appendix/interview/expert/" class="">高阶</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
 
 
 
@@ -506,7 +328,7 @@ https://github.com/alex-shpak/hugo-book
     
 
   
-  <a href="/study-go/docs/appendix/snippet/" class="collapsed ">代码片段</a>
+  <a href="/study-go/docs/appendix/interview/" class="collapsed ">面试题</a>
   
 
 
@@ -631,6 +453,14 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/6107642e7b756afcb637327b1da5641964ca6408" title='Last modified by yewang | 2020-04-16' target="_blank" rel="noopener">
+      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2020-04-16</span>
+    </a>
+  </div>
 
 
 
