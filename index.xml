@@ -57,7 +57,8 @@ golang101/golang101 Go 语言 101 : 一本侧重于 Go 语言语法和语义的�
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/practice/package/</guid>
-      <description>Go 常用 package web gorilla/mux A powerful HTTP router and URL matcher for building Go web servers
+      <description>Go 常用 package cmd spf13/cobra A Commander for modern Go CLI interactions
+web gorilla/mux A powerful HTTP router and URL matcher for building Go web servers
 githubnemo/CompileDaemon Watches your .go files in a directory and invokes go build if a file changed.
 Usage:
 ./CompileDaemon -directory=yourproject/</description>
