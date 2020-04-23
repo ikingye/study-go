@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="代码片段 "><meta property="og:title" content="代码片段" />
+<meta name="description" content="代码片段 slice // 最前面插入一个元素 append([]int{1,2}, []int{3,4}...) 参考： How to prepend int to slice"><meta property="og:title" content="代码片段" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/appendix/snippet/" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.e4ad6f52bc0acf179a2d232d4154e1e3a43bead184a306835a5a8f16ef4ed510.js" integrity="sha256-5K1vUrwKzxeaLSMtQVTh46Q76tGEowaDWlqPFu9O1RA="></script>
+<script defer src="/study-go/en.search.min.6834f08f111e544952d02cb767ca7dd4ccacd0cfb7c3b3559ba1eb2dd1f43bbc.js" integrity="sha256-aDTwjxEeVElS0Cy3Z8p91Mys0M&#43;3w7NVm6HrLdH0O7w="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/appendix/snippet/index.xml" title="Go 学习笔记" />
 <!--
@@ -416,7 +416,11 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#代码片段">代码片段</a></li>
+    <li><a href="#代码片段">代码片段</a>
+      <ul>
+        <li><a href="#slice">slice</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -429,6 +433,11 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="代码片段">代码片段</h1>
+<h2 id="slice">slice</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 最前面插入一个元素
+</span><span style="color:#75715e"></span>append([]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>}, []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>}<span style="color:#f92672">...</span>)
+</code></pre></div><p>参考：
+<a href="https://stackoverflow.com/questions/53737435/how-to-prepend-int-to-slice">How to prepend int to slice</a></p>
 </article>
  
       
@@ -478,7 +487,11 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#代码片段">代码片段</a></li>
+    <li><a href="#代码片段">代码片段</a>
+      <ul>
+        <li><a href="#slice">slice</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

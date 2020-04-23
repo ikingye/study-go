@@ -43,11 +43,10 @@
       
       <guid>https://ikingye.github.io/study-go/docs/basic/practice/package/</guid>
       <description>Go 常用 package net imroc/req Go 语言人性化 HTTP 请求库
-cmd spf13/cobra A Commander for modern Go CLI interactions
-web gorilla/mux A powerful HTTP router and URL matcher for building Go web servers
-githubnemo/CompileDaemon Watches your .go files in a directory and invokes go build if a file changed.
-Usage:
-./CompileDaemon -directory=yourproject/</description>
+ cmd spf13/cobra A Commander for modern Go CLI interactions
+quick start typically a Cobra-based application will follow the following organizational structure:
+▾ appName/ ▾ cmd/ add.go your.go commands.go here.go main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
+package main import ( &amp;#34;{pathToYourApp}/cmd&amp;#34; ) func main() { cmd.Execute() } Ideally you place this in app/cmd/root.</description>
     </item>
     
     <item>

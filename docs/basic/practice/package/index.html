@@ -5,17 +5,15 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Go 常用 package net imroc/req Go 语言人性化 HTTP 请求库
-cmd spf13/cobra A Commander for modern Go CLI interactions
-web gorilla/mux A powerful HTTP router and URL matcher for building Go web servers
-githubnemo/CompileDaemon Watches your .go files in a directory and invokes go build if a file changed.
-Usage:
-./CompileDaemon -directory=yourproject/"><meta property="og:title" content="常用 package" />
+ cmd spf13/cobra A Commander for modern Go CLI interactions
+quick start typically a Cobra-based application will follow the following organizational structure:
+▾ appName/ ▾ cmd/ add.go your.go commands.go here.go main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
+package main import ( &#34;{pathToYourApp}/cmd&#34; ) func main() { cmd.Execute() } Ideally you place this in app/cmd/root."><meta property="og:title" content="常用 package" />
 <meta property="og:description" content="Go 常用 package net imroc/req Go 语言人性化 HTTP 请求库
-cmd spf13/cobra A Commander for modern Go CLI interactions
-web gorilla/mux A powerful HTTP router and URL matcher for building Go web servers
-githubnemo/CompileDaemon Watches your .go files in a directory and invokes go build if a file changed.
-Usage:
-./CompileDaemon -directory=yourproject/" />
+ cmd spf13/cobra A Commander for modern Go CLI interactions
+quick start typically a Cobra-based application will follow the following organizational structure:
+▾ appName/ ▾ cmd/ add.go your.go commands.go here.go main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
+package main import ( &#34;{pathToYourApp}/cmd&#34; ) func main() { cmd.Execute() } Ideally you place this in app/cmd/root." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/practice/package/" />
 <meta property="article:modified_time" content="2020-04-19T23:52:12+08:00" />
@@ -26,7 +24,7 @@ Usage:
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.e4ad6f52bc0acf179a2d232d4154e1e3a43bead184a306835a5a8f16ef4ed510.js" integrity="sha256-5K1vUrwKzxeaLSMtQVTh46Q76tGEowaDWlqPFu9O1RA="></script>
+<script defer src="/study-go/en.search.min.6834f08f111e544952d02cb767ca7dd4ccacd0cfb7c3b3559ba1eb2dd1f43bbc.js" integrity="sha256-aDTwjxEeVElS0Cy3Z8p91Mys0M&#43;3w7NVm6HrLdH0O7w="></script>
 
 <!--
 Made with Book Theme
@@ -487,7 +485,11 @@ https://github.com/alex-shpak/hugo-book
         </li>
         <li><a href="#cmd">cmd</a>
           <ul>
-            <li><a href="#spf13cobrahttpsgithubcomspf13cobra"><a href="https://github.com/spf13/cobra">spf13/cobra</a></a></li>
+            <li><a href="#spf13cobrahttpsgithubcomspf13cobra"><a href="https://github.com/spf13/cobra">spf13/cobra</a></a>
+              <ul>
+                <li><a href="#quick-start">quick start</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li><a href="#web">web</a>
@@ -514,10 +516,49 @@ https://github.com/alex-shpak/hugo-book
 <h3 id="imrocreqhttpsgithubcomimrocreq"><a href="https://github.com/imroc/req">imroc/req</a></h3>
 <p><img src="https://img.shields.io/github/stars/imroc/req.svg" alt="Github stars" /></p>
 <p>Go 语言人性化 HTTP 请求库</p>
+<hr>
 <h2 id="cmd">cmd</h2>
 <h3 id="spf13cobrahttpsgithubcomspf13cobra"><a href="https://github.com/spf13/cobra">spf13/cobra</a></h3>
 <p><img src="https://img.shields.io/github/stars/spf13/cobra.svg" alt="Github stars" /></p>
 <p>A Commander for modern Go CLI interactions</p>
+<h4 id="quick-start">quick start</h4>
+<p>typically a Cobra-based application will follow the following organizational structure:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  ▾ appName/
+    ▾ cmd/
+        add.go
+        your.go
+        commands.go
+        here.go
+      main.go
+</code></pre></div><p>In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+  <span style="color:#e6db74">&#34;{pathToYourApp}/cmd&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+  <span style="color:#a6e22e">cmd</span>.<span style="color:#a6e22e">Execute</span>()
+}
+</code></pre></div><p>Ideally you place this in app/cmd/root.go:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">rootCmd</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>{
+  <span style="color:#a6e22e">Use</span>:   <span style="color:#e6db74">&#34;hugo&#34;</span>,
+  <span style="color:#a6e22e">Short</span>: <span style="color:#e6db74">&#34;Hugo is a very fast static site generator&#34;</span>,
+  <span style="color:#a6e22e">Long</span>: <span style="color:#e6db74">`A Fast and Flexible Static Site Generator built with
+</span><span style="color:#e6db74">                love by spf13 and friends in Go.
+</span><span style="color:#e6db74">                Complete documentation is available at http://hugo.spf13.com`</span>,
+  <span style="color:#a6e22e">Run</span>: <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">cmd</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>, <span style="color:#a6e22e">args</span> []<span style="color:#66d9ef">string</span>) {
+    <span style="color:#75715e">// 在这里写应用逻辑
+</span><span style="color:#75715e"></span>  },
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Execute</span>() {
+  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rootCmd</span>.<span style="color:#a6e22e">Execute</span>(); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+    <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">1</span>)
+  }
+}
+</code></pre></div><hr>
 <h2 id="web">web</h2>
 <h3 id="gorillamuxhttpsgithubcomgorillamux"><a href="https://github.com/gorilla/mux">gorilla/mux</a></h3>
 <p><img src="https://img.shields.io/github/stars/gorilla/mux.svg" alt="Github stars" /></p>
@@ -585,7 +626,11 @@ https://github.com/alex-shpak/hugo-book
         </li>
         <li><a href="#cmd">cmd</a>
           <ul>
-            <li><a href="#spf13cobrahttpsgithubcomspf13cobra"><a href="https://github.com/spf13/cobra">spf13/cobra</a></a></li>
+            <li><a href="#spf13cobrahttpsgithubcomspf13cobra"><a href="https://github.com/spf13/cobra">spf13/cobra</a></a>
+              <ul>
+                <li><a href="#quick-start">quick start</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li><a href="#web">web</a>
