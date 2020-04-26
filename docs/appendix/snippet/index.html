@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="代码片段 slice // 最前面插入一个元素 append([]int{1,2}, []int{3,4}...) 参考： How to prepend int to slice"><meta property="og:title" content="代码片段" />
+<meta name="description" content="代码片段 slice // 最前面插入一个元素 x = append([]int{1}, x...) // An allocation is only necessary when there is no spare slice capacity. x = append(x, 0) copy(x[1:], x) x[0] = 1 参考： How to prepend int to slice"><meta property="og:title" content="代码片段" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/appendix/snippet/" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.6834f08f111e544952d02cb767ca7dd4ccacd0cfb7c3b3559ba1eb2dd1f43bbc.js" integrity="sha256-aDTwjxEeVElS0Cy3Z8p91Mys0M&#43;3w7NVm6HrLdH0O7w="></script>
+<script defer src="/study-go/en.search.min.480535420a4ea185fc7c862d5492313130cad60f0db3ef1bdd9d4e77e9b7bee4.js" integrity="sha256-SAU1QgpOoYX8fIYtVJIxMTDK1g8Ns&#43;8b3Z1Od&#43;m3vuQ="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/appendix/snippet/index.xml" title="Go 学习笔记" />
 <!--
@@ -146,7 +146,7 @@ https://github.com/alex-shpak/hugo-book
     
 
   
-  <a href="/study-go/docs/basic/practice/" class="collapsed ">最佳实践</a>
+  <a href="/study-go/docs/basic/practice/" class="collapsed ">实践</a>
   
 
 
@@ -435,7 +435,12 @@ https://github.com/alex-shpak/hugo-book
   <article class="markdown"><h1 id="代码片段">代码片段</h1>
 <h2 id="slice">slice</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 最前面插入一个元素
-</span><span style="color:#75715e"></span>append([]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>}, []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>}<span style="color:#f92672">...</span>)
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">x</span> = append([]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>}, <span style="color:#a6e22e">x</span><span style="color:#f92672">...</span>)
+
+<span style="color:#75715e">// An allocation is only necessary when there is no spare slice capacity.
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">x</span> = append(<span style="color:#a6e22e">x</span>, <span style="color:#ae81ff">0</span>)
+copy(<span style="color:#a6e22e">x</span>[<span style="color:#ae81ff">1</span>:], <span style="color:#a6e22e">x</span>)
+<span style="color:#a6e22e">x</span>[<span style="color:#ae81ff">0</span>] = <span style="color:#ae81ff">1</span>
 </code></pre></div><p>参考：
 <a href="https://stackoverflow.com/questions/53737435/how-to-prepend-int-to-slice">How to prepend int to slice</a></p>
 </article>
@@ -450,9 +455,9 @@ https://github.com/alex-shpak/hugo-book
 
   <div>
     
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/6107642e7b756afcb637327b1da5641964ca6408" title='Last modified by yewang | 2020-04-16' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/223ed48c1dfdfade200da091f99de1775567fda8" title='Last modified by yewang | 2020-04-23' target="_blank" rel="noopener">
       <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-04-16</span>
+      <span>2020-04-23</span>
     </a>
   </div>
 
