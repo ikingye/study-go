@@ -42,8 +42,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/practice/package/</guid>
-      <description>Go 常用 package net imroc/req Go 语言人性化 HTTP 请求库
- cmd spf13/cobra A Commander for modern Go CLI interactions
+      <description>Go 常用 package net imroc/req  Go 语言人性化 HTTP 请求库
+ cmd spf13/cobra  A Commander for modern Go CLI interactions
 quick start typically a Cobra-based application will follow the following organizational structure:
 ▾ appName/ ▾ cmd/ add.go your.go commands.go here.go main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
 package main import ( &amp;#34;{pathToYourApp}/cmd&amp;#34; ) func main() { cmd.Execute() } Ideally you place this in app/cmd/root.</description>
@@ -146,12 +146,12 @@ With no package arguments, &amp;lsquo;go get&amp;rsquo; applies to Go package in
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/appendix/tutorial/</guid>
-      <description>Go 教程 基础 astaxie/build-web-application-with-golang A golang ebook intro how to build a web with golang
-mmcgrana/gobyexample Go by Example
+      <description>Go 教程 基础 astaxie/build-web-application-with-golang  A golang ebook intro how to build a web with golang
+mmcgrana/gobyexample  Go by Example
 中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/
-geektutu/7days-golang 7 天用 Go 动手写 / 从零实现系列
-golang101/golang101 Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.go101.org
- 练习 ardanlabs/gotraining Go Training Class Material : http://www.ArdanLabs.com
+geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列
+golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.go101.org
+ 练习 ardanlabs/gotraining  Go Training Class Material : http://www.ArdanLabs.com
 进阶 Go 语言设计与实现 by Draveness 高阶 </description>
     </item>
     
@@ -171,10 +171,9 @@ golang101/golang101 Go 语言 101 : 一本侧重于 Go 语言语法和语义的�
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/appendix/attention/</guid>
-      <description>关注 golang/go kubernetes/kubernetes moby/moby etcd-io/etcd Distributed reliable key-value store for the most critical data of a distributed system
-containous/traefik The Cloud Native Edge Router https://traefik.io
- Web 框架 gin-gonic/gin Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.com/
-astaxie/beego beego is an open-source, high-performance web framework for the Go programming language.</description>
+      <description>关注 golang/go  kubernetes/kubernetes  moby/moby  etcd-io/etcd  Distributed reliable key-value store for the most critical data of a distributed system
+containous/traefik  The Cloud Native Edge Router https://traefik.io
+ Web 框架 gin-gonic/gin  Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.com/</description>
     </item>
     
     <item>
