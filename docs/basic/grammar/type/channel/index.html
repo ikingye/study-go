@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=""><meta property="og:title" content="Categories" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/categories/" />
+<meta name="description" content="Chiannel 无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的 "><meta property="og:title" content="Chiannel" />
+<meta property="og:description" content="Chiannel 无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/" />
 
-<title>Categories | Go 学习笔记</title>
+<title>Chiannel | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -18,7 +18,6 @@
 
 <script defer src="/study-go/en.search.min.6d40c757b611b98184d7707bd9a67f6294e1c90d158ec61d8a0415829fd4e9be.js" integrity="sha256-bUDHV7YRuYGE13B72aZ/YpThyQ0VjsYdigQVgp/U6b4="></script>
 
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/categories/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -108,6 +107,130 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/keyword/" class="">关键字</a>
+  
+
+</li>
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/grammar/type/" class="">数据类型</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/type/interface/" class="">Interface</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/type/channel/" class="active">Chiannel</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/grammar/func/" class="">函数</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/func/init/" class="">init</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/func/receiver/" class="">Receiver</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/goroutine/" class="">goroutine</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
 
 
 
@@ -429,7 +552,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Categories</strong>
+  <strong>Chiannel</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -441,27 +564,15 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav>
+  <nav id="TableOfContents">
   <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
+    <li><a href="#chiannel">Chiannel</a>
       <ul>
-      
+        <li><a href="#无缓冲-chan-的发送和接收是否同步">无缓冲 chan 的发送和接收是否同步</a></li>
+        <li><a href="#channel-一定记得-close">channel 一定记得 close</a></li>
+        <li><a href="#channel-是通过注册相关-goroutine-id-实现消息通知的">channel 是通过注册相关 goroutine id 实现消息通知的</a></li>
       </ul>
     </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-      </ul>
-    </li>
-    
-  
   </ul>
 </nav>
 
@@ -473,10 +584,10 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-<article class="markdown">
-  <h1>Categories</h1>
-  
-  
+  <article class="markdown"><h1 id="chiannel">Chiannel</h1>
+<h2 id="无缓冲-chan-的发送和接收是否同步">无缓冲 chan 的发送和接收是否同步</h2>
+<h2 id="channel-一定记得-close">channel 一定记得 close</h2>
+<h2 id="channel-是通过注册相关-goroutine-id-实现消息通知的">channel 是通过注册相关 goroutine id 实现消息通知的</h2>
 </article>
  
       
@@ -497,6 +608,17 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+<script src="https://utteranc.es/client.js"
+  repo="ikingye/study-go"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -505,27 +627,15 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav>
+  <nav id="TableOfContents">
   <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
+    <li><a href="#chiannel">Chiannel</a>
       <ul>
-      
+        <li><a href="#无缓冲-chan-的发送和接收是否同步">无缓冲 chan 的发送和接收是否同步</a></li>
+        <li><a href="#channel-一定记得-close">channel 一定记得 close</a></li>
+        <li><a href="#channel-是通过注册相关-goroutine-id-实现消息通知的">channel 是通过注册相关 goroutine id 实现消息通知的</a></li>
       </ul>
     </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-      </ul>
-    </li>
-    
-  
   </ul>
 </nav>
 

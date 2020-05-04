@@ -10,15 +10,6 @@
     
     
     <item>
-      <title>关键字</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</guid>
-      <description>Go 语言关键字 break default func interface select case defer go map struct chan else goto package switch const fallthrough if range type continue for import return var for 与 range select defer panic 与 recover make 与 new </description>
-    </item>
-    
-    <item>
       <title>百度</title>
       <link>https://ikingye.github.io/study-go/docs/basic/practice/spec/baidu/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -47,15 +38,6 @@
 quick start typically a Cobra-based application will follow the following organizational structure:
 ▾ appName/ ▾ cmd/ add.go your.go commands.go here.go main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
 package main import ( &amp;#34;{pathToYourApp}/cmd&amp;#34; ) func main() { cmd.Execute() } Ideally you place this in app/cmd/root.</description>
-    </item>
-    
-    <item>
-      <title>数据结构</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/datastruct/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/datastruct/</guid>
-      <description>Go 语言数据结构 字符串 数组 切片 哈希表 m := make(map[string]string) </description>
     </item>
     
     <item>
@@ -110,7 +92,7 @@ With no package arguments, &amp;lsquo;go get&amp;rsquo; applies to Go package in
     </item>
     
     <item>
-      <title>init 函数</title>
+      <title>init</title>
       <link>https://ikingye.github.io/study-go/docs/basic/grammar/func/init/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -141,6 +123,15 @@ With no package arguments, &amp;lsquo;go get&amp;rsquo; applies to Go package in
     </item>
     
     <item>
+      <title>关键字</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</guid>
+      <description>Go 语言关键字 break default func interface select case defer go map struct chan else goto package switch const fallthrough if range type continue for import return var for 与 range select defer panic 与 recover make 与 new </description>
+    </item>
+    
+    <item>
       <title>教程</title>
       <link>https://ikingye.github.io/study-go/docs/appendix/tutorial/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -156,6 +147,15 @@ golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的
     </item>
     
     <item>
+      <title>类型系统</title>
+      <link>https://ikingye.github.io/study-go/docs/design/type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/design/type/</guid>
+      <description>Go 类型系统 Underlying Type  每一个类型都有自己的 Underlying Type  如果 T 是 Pre-declared type 或者 Type Literal，它们对应的 Underlying Type 就是自身 T  比如 type T int 的 Underlying Type 是 int  int 是 Pre-declared   type T map[int]string 的 Underlying Type 是 map[int]string  map[int]string 是 Type Literal     否则 T 的 Underlying Type 是 T 定义时引用的类型的 Underlying Type    Underlying Type 相同 如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：</description>
+    </item>
+    
+    <item>
       <title>编译</title>
       <link>https://ikingye.github.io/study-go/docs/basic/practice/compile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -163,6 +163,42 @@ golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的
       <guid>https://ikingye.github.io/study-go/docs/basic/practice/compile/</guid>
       <description>编译 交叉编译 golang 交叉编译很简单的，只要设置几个环境变量就可以了
 # mac上编译linux和windows二进制 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # linux上编译mac和windows二进制 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # windows上编译mac和linux二进制 SET CGO_ENABLED=0 SET GOOS=darwin SET GOARCH=amd64 go build main.go SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build main.go </description>
+    </item>
+    
+    <item>
+      <title>Interface</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/type/interface/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/interface/</guid>
+      <description>Go Interface </description>
+    </item>
+    
+    <item>
+      <title>Chiannel</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/</guid>
+      <description>Chiannel 无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的 </description>
+    </item>
+    
+    <item>
+      <title>goroutine</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/goroutine/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/goroutine/</guid>
+      <description>goroutine golang 并发模型 goroutine 记得 return 或者中断，不然容易造成 goroutine 占用大量 CPU </description>
+    </item>
+    
+    <item>
+      <title>Mutex</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/pkg/std/sync/mutex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/pkg/std/sync/mutex/</guid>
+      <description>Mutex Mutex 互斥锁  在一个 goroutine 获得 Mutex 后，其他 goroutine 只能等到这个 goroutine 释放该 Mutex 使用 Lock() 加锁后，不能再继续对其加锁，直到利用 Unlock() 解锁后才能再加锁  在同一个 goroutine 中的 Mutex 解锁之前再次进行加锁，会导致死锁   在 Lock() 之前使用 Unlock() 会导致 panic 异常 已经锁定的 Mutex 并不与特定的 goroutine 相关联，这样可以利用一个 goroutine 对其加锁，再利用其他 goroutine 对其解锁 适用于读写不确定，并且只有一个读或者写的场景  type Mutex struct { // contains filtered or unexported fields } func (m *Mutex) Lock() func (m *Mutex) Unlock() RWMutex 读写锁（读多写少） RWMutex 基于 Mutex 实现</description>
     </item>
     
     <item>
@@ -174,15 +210,6 @@ golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的
       <description>关注 golang/go  kubernetes/kubernetes  moby/moby  etcd-io/etcd  Distributed reliable key-value store for the most critical data of a distributed system
 containous/traefik  The Cloud Native Edge Router https://traefik.io
  Web 框架 gin-gonic/gin  Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.com/</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/interface/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/interface/</guid>
-      <description></description>
     </item>
     
   </channel>

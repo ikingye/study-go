@@ -4,14 +4,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Receiver 结构体类型实现的接口，该结构体的指针类型也算实现了
-使用规则  必须使用指针  struct，且包含 sync.Mutex 类型字段   建议使用指针  比较大的 struct/array  struct 或者 array 中的元素个数超过 3 个，则认为比较大，反之，则认为比较小   struct、array 或 slice，其中指针元素所指的内容可能在方法内被修改   建议使用 value 类型  比较小的 struct/array   必须使用 value 类型（编程规范）  map、函数或者 chan 类型 slice，并且方法不会进行 reslice 或者重新分配 slice    method expression package main import ( &#34;fmt&#34; ) type Ball struct { Name string } func (b *Ball) Ping() { fmt."><meta property="og:title" content="Receiver" />
-<meta property="og:description" content="Receiver 结构体类型实现的接口，该结构体的指针类型也算实现了
-使用规则  必须使用指针  struct，且包含 sync.Mutex 类型字段   建议使用指针  比较大的 struct/array  struct 或者 array 中的元素个数超过 3 个，则认为比较大，反之，则认为比较小   struct、array 或 slice，其中指针元素所指的内容可能在方法内被修改   建议使用 value 类型  比较小的 struct/array   必须使用 value 类型（编程规范）  map、函数或者 chan 类型 slice，并且方法不会进行 reslice 或者重新分配 slice    method expression package main import ( &#34;fmt&#34; ) type Ball struct { Name string } func (b *Ball) Ping() { fmt." />
+<meta name="description" content="Go 类型系统 Underlying Type  每一个类型都有自己的 Underlying Type  如果 T 是 Pre-declared type 或者 Type Literal，它们对应的 Underlying Type 就是自身 T  比如 type T int 的 Underlying Type 是 int  int 是 Pre-declared   type T map[int]string 的 Underlying Type 是 map[int]string  map[int]string 是 Type Literal     否则 T 的 Underlying Type 是 T 定义时引用的类型的 Underlying Type    Underlying Type 相同 如果两个 type 的 Underlying Type 相同，则它们可以有以下特性："><meta property="og:title" content="类型系统" />
+<meta property="og:description" content="Go 类型系统 Underlying Type  每一个类型都有自己的 Underlying Type  如果 T 是 Pre-declared type 或者 Type Literal，它们对应的 Underlying Type 就是自身 T  比如 type T int 的 Underlying Type 是 int  int 是 Pre-declared   type T map[int]string 的 Underlying Type 是 map[int]string  map[int]string 是 Type Literal     否则 T 的 Underlying Type 是 T 定义时引用的类型的 Underlying Type    Underlying Type 相同 如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/func/receiver/" />
-<meta property="article:modified_time" content="2020-04-09T21:31:58+08:00" />
-<title>Receiver | Go 学习笔记</title>
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/design/type/" />
+
+<title>类型系统 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -109,130 +107,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/keyword/" class="">关键字</a>
-  
-
-</li>
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/type/" class="">数据类型</a>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/type/interface/" class="">Interface</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/type/channel/" class="">Chiannel</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/func/" class="">函数</a>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/func/init/" class="">init</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/func/receiver/" class="active">Receiver</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/goroutine/" class="">goroutine</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
 
 
 
@@ -373,7 +247,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
 
   
-  <a href="/study-go/docs/design/type/" class="">类型系统</a>
+  <a href="/study-go/docs/design/type/" class="active">类型系统</a>
   
 
 </li>
@@ -554,7 +428,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Receiver</strong>
+  <strong>类型系统</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -568,10 +442,13 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#receiver">Receiver</a>
+    <li><a href="#go-类型系统">Go 类型系统</a>
       <ul>
-        <li><a href="#使用规则">使用规则</a></li>
-        <li><a href="#method-expression">method expression</a></li>
+        <li><a href="#underlying-type"><code>Underlying Type</code></a>
+          <ul>
+            <li><a href="#underlying-type-相同">Underlying Type 相同</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -585,63 +462,71 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="receiver">Receiver</h1>
-<p>结构体类型实现的接口，该结构体的<strong>指针类型</strong>也算实现了</p>
-<h2 id="使用规则">使用规则</h2>
+  <article class="markdown"><h1 id="go-类型系统">Go 类型系统</h1>
+<h2 id="underlying-type"><code>Underlying Type</code></h2>
 <ul>
-<li>必须使用指针
+<li>每一个类型都有自己的 <code>Underlying Type</code>
 <ul>
-<li>struct，且包含 sync.Mutex 类型字段</li>
+<li>如果 <code>T</code> 是 <code>Pre-declared</code> type 或者 <code>Type Literal</code>，它们对应的 <code>Underlying Type</code> 就是自身 <code>T</code>
+<ul>
+<li>比如 <code>type T int</code> 的 <code>Underlying Type</code> 是 <code>int</code>
+<ul>
+<li><code>int</code> 是 <code>Pre-declared</code></li>
 </ul>
 </li>
-<li>建议使用指针
+<li><code>type T map[int]string</code> 的 <code>Underlying Type</code> 是 <code>map[int]string</code>
 <ul>
-<li>比较<strong>大</strong>的 struct/array
-<ul>
-<li>struct 或者 array 中的元素个数超过 3 个，则认为比较大，反之，则认为比较小</li>
-</ul>
-</li>
-<li>struct、array 或 slice，其中指针元素所指的内容可能在方法内被<strong>修改</strong></li>
-</ul>
-</li>
-<li>建议使用 value 类型
-<ul>
-<li>比较<strong>小</strong>的 struct/array</li>
-</ul>
-</li>
-<li>必须使用 value 类型（<em>编程规范</em>）
-<ul>
-<li>map、函数或者 chan 类型</li>
-<li>slice，并且方法不会进行 reslice 或者重新分配 slice</li>
+<li><code>map[int]string</code> 是 <code>Type Literal</code></li>
 </ul>
 </li>
 </ul>
-<h2 id="method-expression">method expression</h2>
+</li>
+<li>否则 <code>T</code> 的 <code>Underlying Type</code> 是 <code>T</code> 定义时引用的类型的 <code>Underlying Type</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="underlying-type-相同">Underlying Type 相同</h3>
+<p>如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：</p>
+<ul>
+<li>
+<p>如果两个 type 都是 named type ，彼此之间不能相互赋值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">NewString</span> <span style="color:#66d9ef">string</span>
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">my</span> <span style="color:#66d9ef">string</span> =<span style="color:#e6db74">&#34;a&#34;</span>
+<span style="color:#75715e">// cannot use my (type string) as type NewString in assignment
+</span><span style="color:#75715e">// 虽然它们的 Underlying Type 都是 string，但 string 类型的 my 不能赋值给 NewString 类型的 you
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">NewString</span> = <span style="color:#a6e22e">my</span>
+</code></pre></div></li>
+<li>
+<p>如果两个 type 其中一个是 Unnamed Type，彼此之间可以相互赋值</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
-<span style="color:#f92672">import</span> (
-    <span style="color:#e6db74">&#34;fmt&#34;</span>
-)
-
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Ball</span> <span style="color:#66d9ef">struct</span> {
-    <span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span>
-}
-
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">b</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Ball</span>) <span style="color:#a6e22e">Ping</span>() {
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;ping&#34;</span>)
-}
-
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">b</span> <span style="color:#a6e22e">Ball</span>) <span style="color:#a6e22e">Pong</span>() {
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;pong&#34;</span>)
-}
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Ptr</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">int</span>
+<span style="color:#75715e">//named type
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Map</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span>
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">MapMap</span> <span style="color:#a6e22e">Map</span>
 
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Ball</span>{}
-
-    <span style="color:#a6e22e">Ball</span>.<span style="color:#a6e22e">Ping</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">v</span>)
-    <span style="color:#a6e22e">Ball</span>.<span style="color:#a6e22e">Pong</span>(<span style="color:#a6e22e">v</span>)
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">p</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">int</span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mm</span> <span style="color:#a6e22e">Map</span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mmm</span> <span style="color:#a6e22e">MapMap</span>
+    <span style="color:#75715e">// m1 m2 是 Unnamed Type
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m1</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span> = <span style="color:#a6e22e">mm</span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m2</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span> = <span style="color:#a6e22e">mmm</span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ptr</span> <span style="color:#a6e22e">Ptr</span> = <span style="color:#a6e22e">p</span>
+    print(<span style="color:#a6e22e">ptr</span>)
+    print(<span style="color:#a6e22e">m1</span>)
+    print(<span style="color:#a6e22e">m2</span>)
 }
-</code></pre></div></article>
+</code></pre></div></li>
+</ul>
+<p>原因：
+如果为一个类型起了名字，说明你想要做区分，所以两个 named types 即使 Underlying Type 相同也是不能相互赋值的。</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://sanyuesha.com/2017/07/27/go-type/">理解 Go 类型系统</a></li>
+<li><a href="https://groups.google.com/forum/#!topic/golang-nuts/4Db2z2dEhfc">Google Group Topic</a></li>
+</ul>
+</article>
  
       
 
@@ -650,14 +535,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/02efcbe320c9763a210b2a46623acfc6c82a6cdd" title='Last modified by yewang | 2020-04-09' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-04-09</span>
-    </a>
-  </div>
 
 
 
@@ -690,10 +567,13 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#receiver">Receiver</a>
+    <li><a href="#go-类型系统">Go 类型系统</a>
       <ul>
-        <li><a href="#使用规则">使用规则</a></li>
-        <li><a href="#method-expression">method expression</a></li>
+        <li><a href="#underlying-type"><code>Underlying Type</code></a>
+          <ul>
+            <li><a href="#underlying-type-相同">Underlying Type 相同</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

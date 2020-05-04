@@ -3,8 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</loc>
-    <lastmod>2020-04-16T22:38:37+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/pkg/std/</loc>
   </url>
   
   <url>
@@ -30,11 +29,6 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/practice/package/</loc>
     <lastmod>2020-04-28T14:52:28+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/datastruct/</loc>
-    <lastmod>2020-04-17T00:53:48+08:00</lastmod>
   </url>
   
   <url>
@@ -93,8 +87,8 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/func/</loc>
-    <lastmod>2020-04-09T21:31:58+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</loc>
+    <lastmod>2020-04-16T22:38:37+08:00</lastmod>
   </url>
   
   <url>
@@ -103,8 +97,16 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/design/type/</loc>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/grammar/</loc>
     <lastmod>2020-04-16T23:24:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/type/</loc>
   </url>
   
   <url>
@@ -113,8 +115,37 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/type/interface/</loc>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/appendix/snippet/</loc>
     <lastmod>2020-04-26T23:07:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/func/</loc>
+    <lastmod>2020-04-09T21:31:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/goroutine/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/pkg/std/sync/mutex/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/pkg/std/sync/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/pkg/</loc>
   </url>
   
   <url>
@@ -135,11 +166,6 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/appendix/interview/</loc>
     <lastmod>2020-04-16T23:24:37+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/interface/</loc>
-    <lastmod>2020-04-16T22:38:37+08:00</lastmod>
   </url>
   
   <url>

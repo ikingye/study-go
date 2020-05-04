@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=""><meta property="og:title" content="Categories" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/categories/" />
+<meta name="description" content="Mutex Mutex 互斥锁  在一个 goroutine 获得 Mutex 后，其他 goroutine 只能等到这个 goroutine 释放该 Mutex 使用 Lock() 加锁后，不能再继续对其加锁，直到利用 Unlock() 解锁后才能再加锁  在同一个 goroutine 中的 Mutex 解锁之前再次进行加锁，会导致死锁   在 Lock() 之前使用 Unlock() 会导致 panic 异常 已经锁定的 Mutex 并不与特定的 goroutine 相关联，这样可以利用一个 goroutine 对其加锁，再利用其他 goroutine 对其解锁 适用于读写不确定，并且只有一个读或者写的场景  type Mutex struct { // contains filtered or unexported fields } func (m *Mutex) Lock() func (m *Mutex) Unlock() RWMutex 读写锁（读多写少） RWMutex 基于 Mutex 实现"><meta property="og:title" content="Mutex" />
+<meta property="og:description" content="Mutex Mutex 互斥锁  在一个 goroutine 获得 Mutex 后，其他 goroutine 只能等到这个 goroutine 释放该 Mutex 使用 Lock() 加锁后，不能再继续对其加锁，直到利用 Unlock() 解锁后才能再加锁  在同一个 goroutine 中的 Mutex 解锁之前再次进行加锁，会导致死锁   在 Lock() 之前使用 Unlock() 会导致 panic 异常 已经锁定的 Mutex 并不与特定的 goroutine 相关联，这样可以利用一个 goroutine 对其加锁，再利用其他 goroutine 对其解锁 适用于读写不确定，并且只有一个读或者写的场景  type Mutex struct { // contains filtered or unexported fields } func (m *Mutex) Lock() func (m *Mutex) Unlock() RWMutex 读写锁（读多写少） RWMutex 基于 Mutex 实现" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/pkg/std/sync/mutex/" />
 
-<title>Categories | Go 学习笔记</title>
+<title>Mutex | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -18,7 +18,6 @@
 
 <script defer src="/study-go/en.search.min.6d40c757b611b98184d7707bd9a67f6294e1c90d158ec61d8a0415829fd4e9be.js" integrity="sha256-bUDHV7YRuYGE13B72aZ/YpThyQ0VjsYdigQVgp/U6b4="></script>
 
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/categories/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -131,6 +130,80 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/pkg/std/" class="collapsed ">标准库</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/pkg/std/sync/" class="collapsed ">sync</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/pkg/std/sync/mutex/" class="active">Mutex</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
 
 
 
@@ -429,7 +502,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Categories</strong>
+  <strong>Mutex</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -441,27 +514,14 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav>
+  <nav id="TableOfContents">
   <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
+    <li><a href="#mutex">Mutex</a>
       <ul>
-      
+        <li><a href="#mutex-互斥锁">Mutex 互斥锁</a></li>
+        <li><a href="#rwmutex-读写锁读多写少">RWMutex 读写锁（读多写少）</a></li>
       </ul>
     </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-      </ul>
-    </li>
-    
-  
   </ul>
 </nav>
 
@@ -473,10 +533,50 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-<article class="markdown">
-  <h1>Categories</h1>
-  
-  
+  <article class="markdown"><h1 id="mutex">Mutex</h1>
+<h2 id="mutex-互斥锁">Mutex 互斥锁</h2>
+<ul>
+<li>在一个 goroutine 获得 Mutex 后，其他 goroutine 只能等到这个 goroutine 释放该 Mutex</li>
+<li>使用 Lock() 加锁后，不能再继续对其加锁，直到利用 Unlock() 解锁后才能再加锁
+<ul>
+<li>在同一个 goroutine 中的 Mutex 解锁之前再次进行加锁，会导致死锁</li>
+</ul>
+</li>
+<li>在 Lock() 之前使用 Unlock() 会导致 panic 异常</li>
+<li>已经锁定的 Mutex 并不与特定的 goroutine 相关联，这样可以利用一个 goroutine 对其加锁，再利用其他 goroutine 对其解锁</li>
+<li>适用于读写不确定，并且只有一个读或者写的场景</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Mutex</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#75715e">// contains filtered or unexported fields
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Mutex</span>) <span style="color:#a6e22e">Lock</span>()
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Mutex</span>) <span style="color:#a6e22e">Unlock</span>()
+</code></pre></div><h2 id="rwmutex-读写锁读多写少">RWMutex 读写锁（读多写少）</h2>
+<p>RWMutex 基于 Mutex 实现</p>
+<ul>
+<li>RWMutex 是单写多读锁，该锁可以加一个写锁或者多个读锁</li>
+<li>写锁会阻止其他 goroutine（无论读和写）进来，整个锁由该 goroutine 独占
+<ul>
+<li>Lock() 加写锁，Unlock() 解写锁</li>
+<li>在 Lock() 之前使用 Unlock() 会导致 panic 异常</li>
+<li>如果在加写锁之前已经有其他的读锁和写锁，则 Lock() 会阻塞直到该锁可用，为确保该锁可用，已经阻塞的 Lock() 调用会从获得的锁中排除新的读取器，即写锁权限高于读锁，有写锁时优先进行写锁定</li>
+</ul>
+</li>
+<li>读锁占用的情况下会阻止写，不会阻止读，多个 goroutine 可以同时获取读锁
+<ul>
+<li>RLock() 加读锁，RUnlock() 解读锁</li>
+<li>RLock() 加读锁时，如果存在写锁，则无法加读锁</li>
+<li>在没有读锁的情况下调用 RUnlock() 会导致 panic 错误
+<ul>
+<li>RUnlock() 的个数不得多余 RLock()，否则会导致 panic 错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>适用于<strong>读多写少</strong>的场景</li>
+</ul>
 </article>
  
       
@@ -497,6 +597,17 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+<script src="https://utteranc.es/client.js"
+  repo="ikingye/study-go"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -505,27 +616,14 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav>
+  <nav id="TableOfContents">
   <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
+    <li><a href="#mutex">Mutex</a>
       <ul>
-      
+        <li><a href="#mutex-互斥锁">Mutex 互斥锁</a></li>
+        <li><a href="#rwmutex-读写锁读多写少">RWMutex 读写锁（读多写少）</a></li>
       </ul>
     </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-      </ul>
-    </li>
-    
-  
   </ul>
 </nav>
 

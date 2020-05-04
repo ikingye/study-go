@@ -19,21 +19,12 @@
     </item>
     
     <item>
-      <title>数据结构</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/datastruct/</link>
+      <title>goroutine</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/goroutine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/datastruct/</guid>
-      <description>Go 语言数据结构 字符串 数组 切片 哈希表 m := make(map[string]string) </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/interface/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/interface/</guid>
-      <description></description>
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/goroutine/</guid>
+      <description>goroutine golang 并发模型 goroutine 记得 return 或者中断，不然容易造成 goroutine 占用大量 CPU </description>
     </item>
     
   </channel>
