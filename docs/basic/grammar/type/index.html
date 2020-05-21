@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.87118f58966df12c2daf79dd2262676242a70e7cd1232e64683019739f48350d.js" integrity="sha256-hxGPWJZt8Swtr3ndImJnYkKnDnzRIy5kaDAZc59INQ0="></script>
+<script defer src="/study-go/en.search.min.ff2b4e03b9fd6f294da1791cb9ce971d5679ef1ed7deb550a81e7eddaa0c94eb.js" integrity="sha256-/ytOA7n9bylNoXkcuc6XHVZ57x7X3rVQqB5&#43;3aoMlOs="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/grammar/type/index.xml" title="Go 学习笔记" />
 <!--
@@ -592,6 +592,11 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#map-类型">Map 类型</a></li>
           </ul>
         </li>
+        <li><a href="#类型转化">类型转化</a>
+          <ul>
+            <li><a href="#atoi">Atoi</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -730,6 +735,18 @@ https://github.com/alex-shpak/hugo-book
 <h3 id="接口类型interface">接口类型（interface）</h3>
 <h3 id="map-类型">Map 类型</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>)
+</code></pre></div><hr>
+<h2 id="类型转化">类型转化</h2>
+<h3 id="atoi">Atoi</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// string 到 int
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">Atoi</span>(<span style="color:#66d9ef">string</span>)
+<span style="color:#75715e">// string 到 int64
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int64</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">ParseInt</span>(<span style="color:#66d9ef">string</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">64</span>)
+
+<span style="color:#75715e">// int 到 string
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">string</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">Itoa</span>(<span style="color:#66d9ef">int</span>)
+<span style="color:#75715e">// int64 到 string
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">string</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">FormatInt</span>(<span style="color:#66d9ef">int64</span>, <span style="color:#ae81ff">10</span>)
 </code></pre></div></article>
  
       
@@ -802,6 +819,11 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#切片类型">切片类型</a></li>
             <li><a href="#接口类型interface">接口类型（interface）</a></li>
             <li><a href="#map-类型">Map 类型</a></li>
+          </ul>
+        </li>
+        <li><a href="#类型转化">类型转化</a>
+          <ul>
+            <li><a href="#atoi">Atoi</a></li>
           </ul>
         </li>
       </ul>
