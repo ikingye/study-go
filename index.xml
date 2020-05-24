@@ -123,6 +123,19 @@ With no package arguments, &amp;lsquo;go get&amp;rsquo; applies to Go package in
     </item>
     
     <item>
+      <title>优劣</title>
+      <link>https://ikingye.github.io/study-go/docs/design/pros-and-cons/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/design/pros-and-cons/</guid>
+      <description>Go 语言优劣 Go 的优点 部署简单  直接编译成机器码 不依赖其他库 直接运行即可部署  静态类型语言 编译时可检测出隐藏的大多数问题
+语言层面实现并发（goroutine） 强大的标准库  runtime 系统调度机制 高效的 GC（垃圾回收） 丰富的标准库  简单易学  25 个关键字 内嵌 C 语法支持（CGO） 面向对象 跨平台  背靠大厂（Google） 性能好  Go 的缺点 无泛化类型 传言 Go 2.0 会加上
+无 Exception，都用 Error 有争议
+包管理大部分在 Github 参考：
+ 2020 年以后是 Go 的天下吗？  </description>
+    </item>
+    
+    <item>
       <title>关键字</title>
       <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -180,7 +193,10 @@ golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/</guid>
-      <description>Chiannel 无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的 </description>
+      <description>Chiannel 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了.
+所以，一个重要的原则就是，在写管道之前，把所有可能的锁 unlock 掉.
+Related posts:
+ 异步编程语言的常见坑 CVPixelBufferRef 与 CVOpenGLTextureRef: 图像处理中内存与显存的交互 集成于 iphp 框架的 PHP 并发模型和工具 蛇形遍历数组 流式布局的原理和代码实现  参考  Golang chan 避免死锁  </description>
     </item>
     
     <item>

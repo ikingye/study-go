@@ -4,8 +4,14 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Chiannel 无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的 "><meta property="og:title" content="Chiannel" />
-<meta property="og:description" content="Chiannel 无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的 " />
+<meta name="description" content="Chiannel 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了.
+所以，一个重要的原则就是，在写管道之前，把所有可能的锁 unlock 掉.
+Related posts:
+ 异步编程语言的常见坑 CVPixelBufferRef 与 CVOpenGLTextureRef: 图像处理中内存与显存的交互 集成于 iphp 框架的 PHP 并发模型和工具 蛇形遍历数组 流式布局的原理和代码实现  参考  Golang chan 避免死锁  "><meta property="og:title" content="Chiannel" />
+<meta property="og:description" content="Chiannel 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了.
+所以，一个重要的原则就是，在写管道之前，把所有可能的锁 unlock 掉.
+Related posts:
+ 异步编程语言的常见坑 CVPixelBufferRef 与 CVOpenGLTextureRef: 图像处理中内存与显存的交互 集成于 iphp 框架的 PHP 并发模型和工具 蛇形遍历数组 流式布局的原理和代码实现  参考  Golang chan 避免死锁  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/" />
 <meta property="article:modified_time" content="2020-05-04T19:14:53+08:00" />
@@ -16,7 +22,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.ff2b4e03b9fd6f294da1791cb9ce971d5679ef1ed7deb550a81e7eddaa0c94eb.js" integrity="sha256-/ytOA7n9bylNoXkcuc6XHVZ57x7X3rVQqB5&#43;3aoMlOs="></script>
+<script defer src="/study-go/en.search.min.1065017ac855a3bdc159163c33f201fe171a39d3e953186de118e572c7aa457d.js" integrity="sha256-EGUBeshVo73BWRY8M/IB/hcaOdPpUxht4RjlcseqRX0="></script>
 
 <!--
 Made with Book Theme
@@ -371,6 +377,16 @@ https://github.com/alex-shpak/hugo-book
         <li>
 
   
+  <a href="/study-go/docs/design/pros-and-cons/" class="">优劣</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
   <a href="/study-go/docs/design/type/" class="">类型系统</a>
   
 
@@ -568,9 +584,9 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#chiannel">Chiannel</a>
       <ul>
-        <li><a href="#无缓冲-chan-的发送和接收是否同步">无缓冲 chan 的发送和接收是否同步</a></li>
-        <li><a href="#channel-一定记得-close">channel 一定记得 close</a></li>
-        <li><a href="#channel-是通过注册相关-goroutine-id-实现消息通知的">channel 是通过注册相关 goroutine id 实现消息通知的</a></li>
+        <li><a href="#注意点">注意点</a></li>
+        <li><a href="#golang-chan-避免死锁">Golang chan 避免死锁</a></li>
+        <li><a href="#参考">参考</a></li>
       </ul>
     </li>
   </ul>
@@ -585,9 +601,27 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="chiannel">Chiannel</h1>
-<h2 id="无缓冲-chan-的发送和接收是否同步">无缓冲 chan 的发送和接收是否同步</h2>
-<h2 id="channel-一定记得-close">channel 一定记得 close</h2>
-<h2 id="channel-是通过注册相关-goroutine-id-实现消息通知的">channel 是通过注册相关 goroutine id 实现消息通知的</h2>
+<h2 id="注意点">注意点</h2>
+<ul>
+<li>无缓冲 chan 的发送和接收是否同步</li>
+<li>channel 一定记得 close</li>
+<li>channel 是通过注册相关 goroutine id 实现消息通知的</li>
+</ul>
+<h2 id="golang-chan-避免死锁">Golang chan 避免死锁</h2>
+<p>Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了.</p>
+<p>所以，一个重要的原则就是，在写管道之前，把所有可能的锁 unlock 掉.</p>
+<p>Related posts:</p>
+<ol>
+<li><a href="http://www.ideawu.net/blog/archives/790.html" title="Permanent Link: 异步编程语言的常见坑">异步编程语言的常见坑</a></li>
+<li><a href="http://www.ideawu.net/blog/archives/1063.html" title="Permanent Link: CVPixelBufferRef 与 CVOpenGLTextureRef: 图像处理中内存与显存的交互">CVPixelBufferRef 与 CVOpenGLTextureRef: 图像处理中内存与显存的交互</a></li>
+<li><a href="http://www.ideawu.net/blog/archives/966.html" title="Permanent Link: 集成于 iphp 框架的 PHP 并发模型和工具">集成于 iphp 框架的 PHP 并发模型和工具</a></li>
+<li><a href="http://www.ideawu.net/blog/archives/1078.html" title="Permanent Link: 蛇形遍历数组">蛇形遍历数组</a></li>
+<li><a href="http://www.ideawu.net/blog/archives/868.html" title="Permanent Link: 流式布局的原理和代码实现">流式布局的原理和代码实现</a></li>
+</ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="http://www.ideawu.net/blog/archives/1129.html">Golang chan 避免死锁</a></li>
+</ul>
 </article>
  
       
@@ -639,9 +673,9 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#chiannel">Chiannel</a>
       <ul>
-        <li><a href="#无缓冲-chan-的发送和接收是否同步">无缓冲 chan 的发送和接收是否同步</a></li>
-        <li><a href="#channel-一定记得-close">channel 一定记得 close</a></li>
-        <li><a href="#channel-是通过注册相关-goroutine-id-实现消息通知的">channel 是通过注册相关 goroutine id 实现消息通知的</a></li>
+        <li><a href="#注意点">注意点</a></li>
+        <li><a href="#golang-chan-避免死锁">Golang chan 避免死锁</a></li>
+        <li><a href="#参考">参考</a></li>
       </ul>
     </li>
   </ul>

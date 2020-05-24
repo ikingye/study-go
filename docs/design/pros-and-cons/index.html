@@ -4,12 +4,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 实践 "><meta property="og:title" content="实践" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/practice/" />
+<meta name="description" content="Go 语言优劣 Go 的优点 部署简单  直接编译成机器码 不依赖其他库 直接运行即可部署  静态类型语言 编译时可检测出隐藏的大多数问题
+语言层面实现并发（goroutine） 强大的标准库  runtime 系统调度机制 高效的 GC（垃圾回收） 丰富的标准库  简单易学  25 个关键字 内嵌 C 语法支持（CGO） 面向对象 跨平台  背靠大厂（Google） 性能好  Go 的缺点 无泛化类型 传言 Go 2.0 会加上
+无 Exception，都用 Error 有争议
+包管理大部分在 Github 参考：
+ 2020 年以后是 Go 的天下吗？  "><meta property="og:title" content="优劣" />
+<meta property="og:description" content="Go 语言优劣 Go 的优点 部署简单  直接编译成机器码 不依赖其他库 直接运行即可部署  静态类型语言 编译时可检测出隐藏的大多数问题
+语言层面实现并发（goroutine） 强大的标准库  runtime 系统调度机制 高效的 GC（垃圾回收） 丰富的标准库  简单易学  25 个关键字 内嵌 C 语法支持（CGO） 面向对象 跨平台  背靠大厂（Google） 性能好  Go 的缺点 无泛化类型 传言 Go 2.0 会加上
+无 Exception，都用 Error 有争议
+包管理大部分在 Github 参考：
+ 2020 年以后是 Go 的天下吗？  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/design/pros-and-cons/" />
 
-<title>实践 | Go 学习笔记</title>
+<title>优劣 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -18,7 +26,6 @@
 
 <script defer src="/study-go/en.search.min.1065017ac855a3bdc159163c33f201fe171a39d3e953186de118e572c7aa457d.js" integrity="sha256-EGUBeshVo73BWRY8M/IB/hcaOdPpUxht4RjlcseqRX0="></script>
 
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/practice/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -169,7 +176,7 @@ https://github.com/alex-shpak/hugo-book
     
 
   
-  <a href="/study-go/docs/basic/practice/" class="collapsed active">实践</a>
+  <a href="/study-go/docs/basic/practice/" class="collapsed ">实践</a>
   
 
 
@@ -177,55 +184,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/practice/spec/" class="collapsed ">编程规范</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/practice/command/" class="">Go 命令</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/practice/compile/" class="">编译</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
 
 
 
@@ -297,7 +255,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
 
   
-  <a href="/study-go/docs/design/pros-and-cons/" class="">优劣</a>
+  <a href="/study-go/docs/design/pros-and-cons/" class="active">优劣</a>
   
 
 </li>
@@ -488,7 +446,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>实践</strong>
+  <strong>优劣</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -502,7 +460,28 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-实践">Go 实践</a></li>
+    <li><a href="#go-语言优劣">Go 语言优劣</a>
+      <ul>
+        <li><a href="#go-的优点">Go 的优点</a>
+          <ul>
+            <li><a href="#部署简单">部署简单</a></li>
+            <li><a href="#静态类型语言">静态类型语言</a></li>
+            <li><a href="#语言层面实现并发goroutine">语言层面实现并发（goroutine）</a></li>
+            <li><a href="#强大的标准库">强大的标准库</a></li>
+            <li><a href="#简单易学">简单易学</a></li>
+            <li><a href="#背靠大厂google">背靠大厂（Google）</a></li>
+            <li><a href="#性能好">性能好</a></li>
+          </ul>
+        </li>
+        <li><a href="#go-的缺点">Go 的缺点</a>
+          <ul>
+            <li><a href="#无泛化类型">无泛化类型</a></li>
+            <li><a href="#无-exception都用-error">无 Exception，都用 Error</a></li>
+            <li><a href="#包管理大部分在-github">包管理大部分在 Github</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -514,7 +493,44 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="go-实践">Go 实践</h1>
+  <article class="markdown"><h1 id="go-语言优劣">Go 语言优劣</h1>
+<h2 id="go-的优点">Go 的优点</h2>
+<h3 id="部署简单">部署简单</h3>
+<ol>
+<li>直接编译成机器码</li>
+<li>不依赖其他库</li>
+<li>直接运行即可部署</li>
+</ol>
+<h3 id="静态类型语言">静态类型语言</h3>
+<p>编译时可检测出隐藏的大多数问题</p>
+<h3 id="语言层面实现并发goroutine">语言层面实现并发（goroutine）</h3>
+<h3 id="强大的标准库">强大的标准库</h3>
+<ol>
+<li>runtime 系统调度机制</li>
+<li>高效的 GC（垃圾回收）</li>
+<li>丰富的标准库</li>
+</ol>
+<h3 id="简单易学">简单易学</h3>
+<ol>
+<li>25 个关键字</li>
+<li>内嵌 C 语法支持（CGO）</li>
+<li>面向对象</li>
+<li>跨平台</li>
+</ol>
+<h3 id="背靠大厂google">背靠大厂（Google）</h3>
+<h3 id="性能好">性能好</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200524204903.png" alt="" /></p>
+<hr>
+<h2 id="go-的缺点">Go 的缺点</h2>
+<h3 id="无泛化类型">无泛化类型</h3>
+<p>传言 Go 2.0 会加上</p>
+<h3 id="无-exception都用-error">无 Exception，都用 Error</h3>
+<p>有争议</p>
+<h3 id="包管理大部分在-github">包管理大部分在 Github</h3>
+<p>参考：</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/379439622/answer/1111390872">2020 年以后是 Go 的天下吗？</a></li>
+</ul>
 </article>
  
       
@@ -524,14 +540,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/07ea439afe7c6e91fb33732e4a46912c705b20bb" title='Last modified by yewang | 2020-04-26' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-04-26</span>
-    </a>
-  </div>
 
 
 
@@ -564,7 +572,28 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-实践">Go 实践</a></li>
+    <li><a href="#go-语言优劣">Go 语言优劣</a>
+      <ul>
+        <li><a href="#go-的优点">Go 的优点</a>
+          <ul>
+            <li><a href="#部署简单">部署简单</a></li>
+            <li><a href="#静态类型语言">静态类型语言</a></li>
+            <li><a href="#语言层面实现并发goroutine">语言层面实现并发（goroutine）</a></li>
+            <li><a href="#强大的标准库">强大的标准库</a></li>
+            <li><a href="#简单易学">简单易学</a></li>
+            <li><a href="#背靠大厂google">背靠大厂（Google）</a></li>
+            <li><a href="#性能好">性能好</a></li>
+          </ul>
+        </li>
+        <li><a href="#go-的缺点">Go 的缺点</a>
+          <ul>
+            <li><a href="#无泛化类型">无泛化类型</a></li>
+            <li><a href="#无-exception都用-error">无 Exception，都用 Error</a></li>
+            <li><a href="#包管理大部分在-github">包管理大部分在 Github</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

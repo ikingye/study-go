@@ -43,6 +43,19 @@ package 级别的变量 初始化顺序与初始化依赖有关
     </item>
     
     <item>
+      <title>优劣</title>
+      <link>https://ikingye.github.io/study-go/docs/design/pros-and-cons/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/design/pros-and-cons/</guid>
+      <description>Go 语言优劣 Go 的优点 部署简单  直接编译成机器码 不依赖其他库 直接运行即可部署  静态类型语言 编译时可检测出隐藏的大多数问题
+语言层面实现并发（goroutine） 强大的标准库  runtime 系统调度机制 高效的 GC（垃圾回收） 丰富的标准库  简单易学  25 个关键字 内嵌 C 语法支持（CGO） 面向对象 跨平台  背靠大厂（Google） 性能好  Go 的缺点 无泛化类型 传言 Go 2.0 会加上
+无 Exception，都用 Error 有争议
+包管理大部分在 Github 参考：
+ 2020 年以后是 Go 的天下吗？  </description>
+    </item>
+    
+    <item>
       <title>类型系统</title>
       <link>https://ikingye.github.io/study-go/docs/design/type/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
