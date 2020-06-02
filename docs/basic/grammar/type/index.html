@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.1065017ac855a3bdc159163c33f201fe171a39d3e953186de118e572c7aa457d.js" integrity="sha256-EGUBeshVo73BWRY8M/IB/hcaOdPpUxht4RjlcseqRX0="></script>
+<script defer src="/study-go/en.search.min.0d0b2c325eac3669c1dbe2a5f9cd16c867de792c1f57e53dc017c8c0f74663d0.js" integrity="sha256-DQssMl6sNmnB2&#43;Kl&#43;c0WyGfeeSwfV&#43;U9wBfIwPdGY9A="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/grammar/type/index.xml" title="Go 学习笔记" />
 <!--
@@ -597,7 +597,11 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#结构化类型-struct">结构化类型 (struct)</a></li>
             <li><a href="#channel-类型">Channel 类型</a></li>
             <li><a href="#函数类型">函数类型</a></li>
-            <li><a href="#切片类型">切片类型</a></li>
+            <li><a href="#切片类型">切片类型</a>
+              <ul>
+                <li><a href="#多维-slice">多维 slice</a></li>
+              </ul>
+            </li>
             <li><a href="#接口类型interface">接口类型（interface）</a></li>
             <li><a href="#map-类型">Map 类型</a></li>
           </ul>
@@ -742,6 +746,10 @@ https://github.com/alex-shpak/hugo-book
 <p>如果你要创建一个很长的 slice，尽量创建成一个 slice 里存引用，这样可以分批释放，避免 gc 在低配机器上 stop the world</p>
 <p>从 slice 创建 slice 的时候，注意原 slice 的操作可能导致底层数组变化</p>
 <p>JSON 标准库对 nil slice 和 空 slice 的处理是一致的吗？</p>
+<h4 id="多维-slice">多维 slice</h4>
+<p>Slice 可以组成多维数据结构。</p>
+<p>内部的 slice <strong>长度可以不一致</strong>，这一点和多维数组不同。</p>
+<hr>
 <h3 id="接口类型interface">接口类型（interface）</h3>
 <h3 id="map-类型">Map 类型</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>)
@@ -826,7 +834,11 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#结构化类型-struct">结构化类型 (struct)</a></li>
             <li><a href="#channel-类型">Channel 类型</a></li>
             <li><a href="#函数类型">函数类型</a></li>
-            <li><a href="#切片类型">切片类型</a></li>
+            <li><a href="#切片类型">切片类型</a>
+              <ul>
+                <li><a href="#多维-slice">多维 slice</a></li>
+              </ul>
+            </li>
             <li><a href="#接口类型interface">接口类型（interface）</a></li>
             <li><a href="#map-类型">Map 类型</a></li>
           </ul>
