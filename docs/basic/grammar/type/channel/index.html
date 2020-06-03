@@ -8,7 +8,7 @@
 <meta property="og:description" content="Chiannel // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&#34;ping&#34;` 到上面创建的 `messages` 通道中。 go func() { messages &lt;- &#34;ping&#34; }() // 使用 `&lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&#34;ping&#34;` 消息并将其打印出来。 msg := &lt;-messages fmt.Println(msg) // 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。 msg, ok := &lt;-messages 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/" />
-<meta property="article:modified_time" content="2020-05-25T00:37:39+08:00" />
+<meta property="article:modified_time" content="2020-06-04T00:17:41+08:00" />
 <title>Chiannel | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
@@ -643,9 +643,9 @@ https://github.com/alex-shpak/hugo-book
 
   <div>
     
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/f10a2fd3e1c7ee869dc0fb4470304cdacc480d73" title='Last modified by yewang | 2020-05-25' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/dd26ec4c24248d91b49fee2069320350e2d73847" title='Last modified by yewang | 2020-06-04' target="_blank" rel="noopener">
       <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-05-25</span>
+      <span>2020-06-04</span>
     </a>
   </div>
 
