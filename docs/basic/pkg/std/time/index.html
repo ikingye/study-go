@@ -4,16 +4,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 命令 go get go get [-d] [-f] [-t] [-u] [-v] [-fix] [-insecure] [build flags] [packages] go get -d go get -d library 表示只下载，不安装
-go get == go install go get -d == go list The -d flag instructs get to download the source code needed to build the named packages, including downloading necessary dependencies, but not to build and install them.
-With no package arguments, &lsquo;go get&rsquo; applies to Go package in the current directory, if any."><meta property="og:title" content="Go 命令" />
-<meta property="og:description" content="Go 命令 go get go get [-d] [-f] [-t] [-u] [-v] [-fix] [-insecure] [build flags] [packages] go get -d go get -d library 表示只下载，不安装
-go get == go install go get -d == go list The -d flag instructs get to download the source code needed to build the named packages, including downloading necessary dependencies, but not to build and install them.
-With no package arguments, &lsquo;go get&rsquo; applies to Go package in the current directory, if any." />
+<meta name="description" content="time 格式化 // 1 2 3 4 5 6 const ANSIC = &#34;Mon Jan _2 15:04:05 2006&#34; time.Now().Format(&#34;2006-01-02 15:04:05&#34;) "><meta property="og:title" content="time" />
+<meta property="og:description" content="time 格式化 // 1 2 3 4 5 6 const ANSIC = &#34;Mon Jan _2 15:04:05 2006&#34; time.Now().Format(&#34;2006-01-02 15:04:05&#34;) " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/practice/command/" />
-<meta property="article:modified_time" content="2020-04-17T00:53:48+08:00" />
-<title>Go 命令 | Go 学习笔记</title>
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/pkg/std/time/" />
+
+<title>time | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -135,6 +131,84 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/pkg/std/" class="collapsed ">标准库</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/pkg/std/sync/" class="collapsed ">sync</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/pkg/std/time/" class="active">time</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/pkg/common/" class="">常用 package</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
 
 
   </li>
@@ -180,55 +254,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/practice/spec/" class="collapsed ">编程规范</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/practice/command/" class="active">Go 命令</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/practice/compile/" class="">编译</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
 
 
 
@@ -491,7 +516,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Go 命令</strong>
+  <strong>time</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -505,19 +530,9 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-命令httpsgolangorgcmdgo"><a href="https://golang.org/cmd/go/">Go 命令</a></a>
+    <li><a href="#timehttpspkggodevtime"><a href="https://pkg.go.dev/time">time</a></a>
       <ul>
-        <li><a href="#go-gethttpsgolangorgcmdgohdr-add_dependencies_to_current_module_and_install_them"><a href="https://golang.org/cmd/go/#hdr-Add_dependencies_to_current_module_and_install_them">go get</a></a>
-          <ul>
-            <li><a href="#go-get--d">go get -d</a>
-              <ul>
-                <li><a href="#go-get--go-install">go get == go install</a></li>
-                <li><a href="#go-get--d--go-list">go get -d == go list</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="#go-list">go list</a></li>
+        <li><a href="#格式化">格式化</a></li>
       </ul>
     </li>
   </ul>
@@ -531,29 +546,13 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="go-命令httpsgolangorgcmdgo"><a href="https://golang.org/cmd/go/">Go 命令</a></h1>
-<h2 id="go-gethttpsgolangorgcmdgohdr-add_dependencies_to_current_module_and_install_them"><a href="https://golang.org/cmd/go/#hdr-Add_dependencies_to_current_module_and_install_them">go get</a></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go get <span style="color:#f92672">[</span>-d<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-t<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-u<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-v<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-fix<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-insecure<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>build flags<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>packages<span style="color:#f92672">]</span>
-</code></pre></div><h3 id="go-get--d">go get -d</h3>
-<p><code>go get -d library</code>
-表示只下载，不安装</p>
-<h4 id="go-get--go-install">go get == go install</h4>
-<h4 id="go-get--d--go-list">go get -d == go list</h4>
-<p>The -d flag instructs get to download the source code needed to build
-the named packages, including downloading necessary dependencies,
-but not to build and install them.</p>
-<p>With no package arguments, &lsquo;go get&rsquo; applies to Go package in the
-current directory, if any. In particular, &lsquo;go get -u&rsquo; and
-&lsquo;go get -u=patch&rsquo; update all the dependencies of that package.
-With no package arguments and also without -u, &lsquo;go get&rsquo; is not much more
-than &lsquo;go install&rsquo;, and &lsquo;go get -d&rsquo; not much more than &lsquo;go list&rsquo;.</p>
-<p>参考：</p>
-<ul>
-<li><a href="https://stackoverflow.com/questions/24878737/what-is-the-difference-between-go-get-and-go-install">What is the difference between go get and go install?</a></li>
-</ul>
-<hr>
-<h2 id="go-list">go list</h2>
-</article>
+  <article class="markdown"><h1 id="timehttpspkggodevtime"><a href="https://pkg.go.dev/time">time</a></h1>
+<h2 id="格式化">格式化</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 1 2 3 4 5 6
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ANSIC</span> = <span style="color:#e6db74">&#34;Mon Jan _2 15:04:05 2006&#34;</span>
+
+<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">Format</span>(<span style="color:#e6db74">&#34;2006-01-02 15:04:05&#34;</span>)
+</code></pre></div></article>
  
       
 
@@ -562,14 +561,6 @@ than &lsquo;go install&rsquo;, and &lsquo;go get -d&rsquo; not much more than &l
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/87184311f28310bdfa6427bfa11de6e6a34cc341" title='Last modified by yewang | 2020-04-17' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-04-17</span>
-    </a>
-  </div>
 
 
 
@@ -602,19 +593,9 @@ than &lsquo;go install&rsquo;, and &lsquo;go get -d&rsquo; not much more than &l
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-命令httpsgolangorgcmdgo"><a href="https://golang.org/cmd/go/">Go 命令</a></a>
+    <li><a href="#timehttpspkggodevtime"><a href="https://pkg.go.dev/time">time</a></a>
       <ul>
-        <li><a href="#go-gethttpsgolangorgcmdgohdr-add_dependencies_to_current_module_and_install_them"><a href="https://golang.org/cmd/go/#hdr-Add_dependencies_to_current_module_and_install_them">go get</a></a>
-          <ul>
-            <li><a href="#go-get--d">go get -d</a>
-              <ul>
-                <li><a href="#go-get--go-install">go get == go install</a></li>
-                <li><a href="#go-get--d--go-list">go get -d == go list</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="#go-list">go list</a></li>
+        <li><a href="#格式化">格式化</a></li>
       </ul>
     </li>
   </ul>

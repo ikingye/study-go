@@ -4,14 +4,8 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Chiannel 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了.
-所以，一个重要的原则就是，在写管道之前，把所有可能的锁 unlock 掉.
-Related posts:
- 异步编程语言的常见坑 CVPixelBufferRef 与 CVOpenGLTextureRef: 图像处理中内存与显存的交互 集成于 iphp 框架的 PHP 并发模型和工具 蛇形遍历数组 流式布局的原理和代码实现  参考  Golang chan 避免死锁  "><meta property="og:title" content="Chiannel" />
-<meta property="og:description" content="Chiannel 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了.
-所以，一个重要的原则就是，在写管道之前，把所有可能的锁 unlock 掉.
-Related posts:
- 异步编程语言的常见坑 CVPixelBufferRef 与 CVOpenGLTextureRef: 图像处理中内存与显存的交互 集成于 iphp 框架的 PHP 并发模型和工具 蛇形遍历数组 流式布局的原理和代码实现  参考  Golang chan 避免死锁  " />
+<meta name="description" content="Chiannel // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&#34;ping&#34;` 到上面创建的 `messages` 通道中。 go func() { messages &lt;- &#34;ping&#34; }() // 使用 `&lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&#34;ping&#34;` 消息并将其打印出来。 msg := &lt;-messages fmt.Println(msg) // 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。 msg, ok := &lt;-messages 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了."><meta property="og:title" content="Chiannel" />
+<meta property="og:description" content="Chiannel // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&#34;ping&#34;` 到上面创建的 `messages` 通道中。 go func() { messages &lt;- &#34;ping&#34; }() // 使用 `&lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&#34;ping&#34;` 消息并将其打印出来。 msg := &lt;-messages fmt.Println(msg) // 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。 msg, ok := &lt;-messages 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/" />
 <meta property="article:modified_time" content="2020-05-25T00:37:39+08:00" />
@@ -22,7 +16,7 @@ Related posts:
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.033333277533ec78cdb0b6d25e280a47b98f412b165dd093480e8a20f15f2797.js" integrity="sha256-AzMzJ3Uz7HjNsLbSXigKR7mPQSsWXdCTSA6KIPFfJ5c="></script>
+<script defer src="/study-go/en.search.min.f9960edb3695632a2694a23d9681c8b0c444b6ea6cb06248ebe5902b08561776.js" integrity="sha256-&#43;ZYO2zaVYyomlKI9loHIsMREtupssGJI6&#43;WQKwhWF3Y="></script>
 
 <!--
 Made with Book Theme
@@ -601,7 +595,22 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="chiannel">Chiannel</h1>
-<h2 id="注意点">注意点</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 使用 `make(chan val-type)` 创建一个新的通道。
+</span><span style="color:#75715e">// 通道类型就是他们需要传递值的类型。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">messages</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>)
+
+<span style="color:#75715e">// 使用 `channel &lt;-` 语法 _发送_ 一个新的值到通道中。
+</span><span style="color:#75715e">// 这里我们在一个新的协程中发送 `&#34;ping&#34;` 到上面创建的 `messages` 通道中。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() { <span style="color:#a6e22e">messages</span> <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;ping&#34;</span> }()
+
+<span style="color:#75715e">// 使用 `&lt;-channel` 语法从通道中 _接收_ 一个值。
+</span><span style="color:#75715e">// 这里我们会收到在上面发送的 `&#34;ping&#34;` 消息并将其打印出来。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">msg</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">messages</span>
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">msg</span>)
+
+<span style="color:#75715e">// 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">messages</span>
+</code></pre></div><h2 id="注意点">注意点</h2>
 <ul>
 <li>无缓冲 chan 的发送和接收是否同步</li>
 <li>channel 一定记得 close</li>

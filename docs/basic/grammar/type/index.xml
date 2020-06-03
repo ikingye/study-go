@@ -24,10 +24,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/</guid>
-      <description>Chiannel 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了.
-所以，一个重要的原则就是，在写管道之前，把所有可能的锁 unlock 掉.
-Related posts:
- 异步编程语言的常见坑 CVPixelBufferRef 与 CVOpenGLTextureRef: 图像处理中内存与显存的交互 集成于 iphp 框架的 PHP 并发模型和工具 蛇形遍历数组 流式布局的原理和代码实现  参考  Golang chan 避免死锁  </description>
+      <description>Chiannel // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &amp;lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&amp;#34;ping&amp;#34;` 到上面创建的 `messages` 通道中。 go func() { messages &amp;lt;- &amp;#34;ping&amp;#34; }() // 使用 `&amp;lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&amp;#34;ping&amp;#34;` 消息并将其打印出来。 msg := &amp;lt;-messages fmt.Println(msg) // 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。 msg, ok := &amp;lt;-messages 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了.</description>
     </item>
     
   </channel>

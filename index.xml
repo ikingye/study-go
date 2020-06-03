@@ -193,10 +193,7 @@ golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/</guid>
-      <description>Chiannel 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了.
-所以，一个重要的原则就是，在写管道之前，把所有可能的锁 unlock 掉.
-Related posts:
- 异步编程语言的常见坑 CVPixelBufferRef 与 CVOpenGLTextureRef: 图像处理中内存与显存的交互 集成于 iphp 框架的 PHP 并发模型和工具 蛇形遍历数组 流式布局的原理和代码实现  参考  Golang chan 避免死锁  </description>
+      <description>Chiannel // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &amp;lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&amp;#34;ping&amp;#34;` 到上面创建的 `messages` 通道中。 go func() { messages &amp;lt;- &amp;#34;ping&amp;#34; }() // 使用 `&amp;lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&amp;#34;ping&amp;#34;` 消息并将其打印出来。 msg := &amp;lt;-messages fmt.Println(msg) // 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。 msg, ok := &amp;lt;-messages 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了.</description>
     </item>
     
     <item>
@@ -215,6 +212,15 @@ Related posts:
       
       <guid>https://ikingye.github.io/study-go/docs/basic/pkg/std/sync/mutex/</guid>
       <description>Mutex Mutex 互斥锁  在一个 goroutine 获得 Mutex 后，其他 goroutine 只能等到这个 goroutine 释放该 Mutex 使用 Lock() 加锁后，不能再继续对其加锁，直到利用 Unlock() 解锁后才能再加锁  在同一个 goroutine 中的 Mutex 解锁之前再次进行加锁，会导致死锁   在 Lock() 之前使用 Unlock() 会导致 panic 异常 已经锁定的 Mutex 并不与特定的 goroutine 相关联，这样可以利用一个 goroutine 对其加锁，再利用其他 goroutine 对其解锁 适用于读写不确定，并且只有一个读或者写的场景  type Mutex struct { // contains filtered or unexported fields } func (m *Mutex) Lock() func (m *Mutex) Unlock() RWMutex 读写锁（读多写少） RWMutex 基于 Mutex 实现</description>
+    </item>
+    
+    <item>
+      <title>time</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/pkg/std/time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/pkg/std/time/</guid>
+      <description>time 格式化 // 1 2 3 4 5 6 const ANSIC = &amp;#34;Mon Jan _2 15:04:05 2006&amp;#34; time.Now().Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) </description>
     </item>
     
     <item>
