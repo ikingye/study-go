@@ -28,6 +28,17 @@
     </item>
     
     <item>
+      <title>select</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/select/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/select/</guid>
+      <description>select Go 的 选择器（select） 让你可以同时等待多个通道操作。
+将协程、通道和选择器结合，是 Go 的一个强大特性。
+// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string) // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() { time.Sleep(1 * time.Second) c1 &amp;lt;- &amp;#34;one&amp;#34; }() go func() { time.Sleep(2 * time.Second) c2 &amp;lt;- &amp;#34;two&amp;#34; }() // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &amp;lt; 2; i++ { select { case msg1 := &amp;lt;-c1: fmt.Println(&amp;#34;received&amp;#34;, msg1) case msg2 := &amp;lt;-c2: fmt.</description>
+    </item>
+    
+    <item>
       <title>goroutine</title>
       <link>https://ikingye.github.io/study-go/docs/basic/grammar/goroutine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

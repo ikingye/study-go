@@ -36,7 +36,8 @@ With no package arguments, &amp;lsquo;go get&amp;rsquo; applies to Go package in
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/practice/log/</guid>
-      <description>Go 日志 golang/glog  Leveled execution logs for Go</description>
+      <description>Go 日志 开源实现 sirupsen/logrus  Structured, pluggable logging for Go.
+golang/glog  Leveled execution logs for Go</description>
     </item>
     
   </channel>

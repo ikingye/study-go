@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 日志 golang/glog  Leveled execution logs for Go"><meta property="og:title" content="日志" />
-<meta property="og:description" content="Go 日志 golang/glog  Leveled execution logs for Go" />
+<meta name="description" content="Go 日志 开源实现 sirupsen/logrus  Structured, pluggable logging for Go.
+golang/glog  Leveled execution logs for Go"><meta property="og:title" content="日志" />
+<meta property="og:description" content="Go 日志 开源实现 sirupsen/logrus  Structured, pluggable logging for Go.
+golang/glog  Leveled execution logs for Go" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/practice/log/" />
-
+<meta property="article:modified_time" content="2020-06-04T17:54:41+08:00" />
 <title>日志 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
@@ -16,7 +18,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.4501da71a3a78928ca0a377bffb696756da881b75b2219437678336934558226.js" integrity="sha256-RQHacaOniSjKCjd7/7aWdW2ogbdbIhlDdngzaTRVgiY="></script>
+<script defer src="/study-go/en.search.min.fffa714057cfd92084f641fd54edd2acf4432665e5d9f36d13a7dde83c1a7d96.js" integrity="sha256-//pxQFfP2SCE9kH9VO3SrPRDJmXl2fNtE6fd6DwafZY="></script>
 
 <!--
 Made with Book Theme
@@ -513,7 +515,12 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#go-日志">Go 日志</a>
       <ul>
-        <li><a href="#golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars"></a></li>
+        <li><a href="#开源实现">开源实现</a>
+          <ul>
+            <li><a href="#sirupsenlogrushttpsgithubcomsirupsenlogrus-github-starshttpsimgshieldsiogithubstarssirupsenlogrussvg"><a href="https://github.com/sirupsen/logrus">sirupsen/logrus</a> <img src="https://img.shields.io/github/stars/sirupsen/logrus.svg" alt="Github stars"></a></li>
+            <li><a href="#golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars"></a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -528,7 +535,10 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="go-日志">Go 日志</h1>
-<h2 id="golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars" /></h2>
+<h2 id="开源实现">开源实现</h2>
+<h3 id="sirupsenlogrushttpsgithubcomsirupsenlogrus-github-starshttpsimgshieldsiogithubstarssirupsenlogrussvg"><a href="https://github.com/sirupsen/logrus">sirupsen/logrus</a> <img src="https://img.shields.io/github/stars/sirupsen/logrus.svg" alt="Github stars" /></h3>
+<p>Structured, pluggable logging for Go.</p>
+<h3 id="golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars" /></h3>
 <p>Leveled execution logs for Go</p>
 </article>
  
@@ -539,6 +549,14 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/7a9121ccb41e51802823406a42052fe32ef03b14" title='Last modified by yewang | 2020-06-04' target="_blank" rel="noopener">
+      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2020-06-04</span>
+    </a>
+  </div>
 
 
 
@@ -573,7 +591,12 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#go-日志">Go 日志</a>
       <ul>
-        <li><a href="#golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars"></a></li>
+        <li><a href="#开源实现">开源实现</a>
+          <ul>
+            <li><a href="#sirupsenlogrushttpsgithubcomsirupsenlogrus-github-starshttpsimgshieldsiogithubstarssirupsenlogrussvg"><a href="https://github.com/sirupsen/logrus">sirupsen/logrus</a> <img src="https://img.shields.io/github/stars/sirupsen/logrus.svg" alt="Github stars"></a></li>
+            <li><a href="#golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars"></a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

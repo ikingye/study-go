@@ -4,12 +4,16 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="goroutine golang 并发模型 goroutine 记得 return 或者中断，不然容易造成 goroutine 占用大量 CPU "><meta property="og:title" content="goroutine" />
-<meta property="og:description" content="goroutine golang 并发模型 goroutine 记得 return 或者中断，不然容易造成 goroutine 占用大量 CPU " />
+<meta name="description" content="select Go 的 选择器（select） 让你可以同时等待多个通道操作。
+将协程、通道和选择器结合，是 Go 的一个强大特性。
+// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string) // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() { time.Sleep(1 * time.Second) c1 &lt;- &#34;one&#34; }() go func() { time.Sleep(2 * time.Second) c2 &lt;- &#34;two&#34; }() // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &lt; 2; i&#43;&#43; { select { case msg1 := &lt;-c1: fmt.Println(&#34;received&#34;, msg1) case msg2 := &lt;-c2: fmt."><meta property="og:title" content="select" />
+<meta property="og:description" content="select Go 的 选择器（select） 让你可以同时等待多个通道操作。
+将协程、通道和选择器结合，是 Go 的一个强大特性。
+// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string) // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() { time.Sleep(1 * time.Second) c1 &lt;- &#34;one&#34; }() go func() { time.Sleep(2 * time.Second) c2 &lt;- &#34;two&#34; }() // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &lt; 2; i&#43;&#43; { select { case msg1 := &lt;-c1: fmt.Println(&#34;received&#34;, msg1) case msg2 := &lt;-c2: fmt." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/goroutine/" />
-<meta property="article:modified_time" content="2020-05-04T19:14:53+08:00" />
-<title>goroutine | Go 学习笔记</title>
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/select/" />
+
+<title>select | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -243,7 +247,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
 
   
-  <a href="/study-go/docs/basic/grammar/select/" class="">select</a>
+  <a href="/study-go/docs/basic/grammar/select/" class="active">select</a>
   
 
 </li>
@@ -253,7 +257,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
 
   
-  <a href="/study-go/docs/basic/grammar/goroutine/" class="active">goroutine</a>
+  <a href="/study-go/docs/basic/grammar/goroutine/" class="">goroutine</a>
   
 
 </li>
@@ -592,7 +596,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>goroutine</strong>
+  <strong>select</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -606,10 +610,9 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#goroutine">goroutine</a>
+    <li><a href="#select">select</a>
       <ul>
-        <li><a href="#golang-并发模型">golang 并发模型</a></li>
-        <li><a href="#goroutine-记得-return-或者中断不然容易造成-goroutine-占用大量-cpu">goroutine 记得 return 或者中断，不然容易造成 goroutine 占用大量 CPU</a></li>
+        <li><a href="#随机选则">随机选则</a></li>
       </ul>
     </li>
   </ul>
@@ -623,9 +626,36 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="goroutine">goroutine</h1>
-<h2 id="golang-并发模型">golang 并发模型</h2>
-<h2 id="goroutine-记得-return-或者中断不然容易造成-goroutine-占用大量-cpu">goroutine 记得 return 或者中断，不然容易造成 goroutine 占用大量 CPU</h2>
+  <article class="markdown"><h1 id="select">select</h1>
+<p>Go 的 <strong>选择器（select）</strong> 让你可以同时等待多个通道操作。</p>
+<p>将协程、通道和选择器结合，是 Go 的一个强大特性。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 在这个例子中，我们将从两个通道中选择。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">c1</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>)
+<span style="color:#a6e22e">c2</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>)
+
+<span style="color:#75715e">// 各个通道将在一定时间后接收一个值，
+</span><span style="color:#75715e">// 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+    <span style="color:#a6e22e">c1</span> <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;one&#34;</span>
+}()
+<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+    <span style="color:#a6e22e">c2</span> <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;two&#34;</span>
+}()
+
+<span style="color:#75715e">// 我们使用 `select` 关键字来同时等待这两个值，
+</span><span style="color:#75715e">// 并打印各自接收到的值。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">2</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+    <span style="color:#66d9ef">select</span> {
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">msg1</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c1</span>:
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;received&#34;</span>, <span style="color:#a6e22e">msg1</span>)
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">msg2</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c2</span>:
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;received&#34;</span>, <span style="color:#a6e22e">msg2</span>)
+    }
+}
+</code></pre></div><h2 id="随机选则">随机选则</h2>
+<p>除 default 外，如果有多个 case 语句评估通过，那么通过<strong>伪随机</strong>的方式随机选一个</p>
 </article>
  
       
@@ -635,14 +665,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/58b914ab8e65e5da4b0f1bc21daf344bc0388059" title='Last modified by yewang | 2020-05-04' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-05-04</span>
-    </a>
-  </div>
 
 
 
@@ -675,10 +697,9 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#goroutine">goroutine</a>
+    <li><a href="#select">select</a>
       <ul>
-        <li><a href="#golang-并发模型">golang 并发模型</a></li>
-        <li><a href="#goroutine-记得-return-或者中断不然容易造成-goroutine-占用大量-cpu">goroutine 记得 return 或者中断，不然容易造成 goroutine 占用大量 CPU</a></li>
+        <li><a href="#随机选则">随机选则</a></li>
       </ul>
     </li>
   </ul>

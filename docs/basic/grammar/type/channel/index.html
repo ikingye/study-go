@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Chiannel // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&#34;ping&#34;` 到上面创建的 `messages` 通道中。 go func() { messages &lt;- &#34;ping&#34; }() // 使用 `&lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&#34;ping&#34;` 消息并将其打印出来。 msg := &lt;-messages fmt.Println(msg) // 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。 msg, ok := &lt;-messages channel 类型 chan T // can be used to send and receive values of type T chan&lt;- float64 // can only be used to send float64s &lt;-chan int // can only be used to receive ints The &lt;- operator associates with the leftmost chan possible:"><meta property="og:title" content="Chiannel" />
-<meta property="og:description" content="Chiannel // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&#34;ping&#34;` 到上面创建的 `messages` 通道中。 go func() { messages &lt;- &#34;ping&#34; }() // 使用 `&lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&#34;ping&#34;` 消息并将其打印出来。 msg := &lt;-messages fmt.Println(msg) // 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。 msg, ok := &lt;-messages channel 类型 chan T // can be used to send and receive values of type T chan&lt;- float64 // can only be used to send float64s &lt;-chan int // can only be used to receive ints The &lt;- operator associates with the leftmost chan possible:" />
+<meta name="description" content="Chiannel channel 类型 chan T // can be used to send and receive values of type T chan&lt;- float64 // can only be used to send float64s &lt;-chan int // can only be used to receive ints The &lt;- operator associates with the leftmost chan possible:
+chan&lt;- chan int // same as chan&lt;- (chan int) chan&lt;- &lt;-chan int // same as chan&lt;- (&lt;-chan int) &lt;-chan &lt;-chan int // same as &lt;-chan (&lt;-chan int) chan (&lt;-chan int)  常见用法 // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&#34;ping&#34;` 到上面创建的 `messages` 通道中。 go func() { messages &lt;- &#34;ping&#34; }() // 使用 `&lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&#34;ping&#34;` 消息并将其打印出来。 msg := &lt;-messages fmt."><meta property="og:title" content="Chiannel" />
+<meta property="og:description" content="Chiannel channel 类型 chan T // can be used to send and receive values of type T chan&lt;- float64 // can only be used to send float64s &lt;-chan int // can only be used to receive ints The &lt;- operator associates with the leftmost chan possible:
+chan&lt;- chan int // same as chan&lt;- (chan int) chan&lt;- &lt;-chan int // same as chan&lt;- (&lt;-chan int) &lt;-chan &lt;-chan int // same as &lt;-chan (&lt;-chan int) chan (&lt;-chan int)  常见用法 // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&#34;ping&#34;` 到上面创建的 `messages` 通道中。 go func() { messages &lt;- &#34;ping&#34; }() // 使用 `&lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&#34;ping&#34;` 消息并将其打印出来。 msg := &lt;-messages fmt." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/" />
-<meta property="article:modified_time" content="2020-06-04T00:17:41+08:00" />
+<meta property="article:modified_time" content="2020-06-04T17:54:41+08:00" />
 <title>Chiannel | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
@@ -16,7 +18,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.4501da71a3a78928ca0a377bffb696756da881b75b2219437678336934558226.js" integrity="sha256-RQHacaOniSjKCjd7/7aWdW2ogbdbIhlDdngzaTRVgiY="></script>
+<script defer src="/study-go/en.search.min.fffa714057cfd92084f641fd54edd2acf4432665e5d9f36d13a7dde83c1a7d96.js" integrity="sha256-//pxQFfP2SCE9kH9VO3SrPRDJmXl2fNtE6fd6DwafZY="></script>
 
 <!--
 Made with Book Theme
@@ -234,6 +236,16 @@ https://github.com/alex-shpak/hugo-book
 
   
   <a href="/study-go/docs/basic/grammar/make/" class="">make</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/select/" class="">select</a>
   
 
 </li>
@@ -599,8 +611,17 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#chiannel">Chiannel</a>
       <ul>
         <li><a href="#channel-类型">channel 类型</a></li>
-        <li><a href="#注意点">注意点</a></li>
-        <li><a href="#golang-chan-避免死锁">Golang chan 避免死锁</a></li>
+        <li><a href="#常见用法">常见用法</a>
+          <ul>
+            <li><a href="#done-channel">done channel</a></li>
+          </ul>
+        </li>
+        <li><a href="#注意点">注意点</a>
+          <ul>
+            <li><a href="#关闭-channel">关闭 channel</a></li>
+            <li><a href="#golang-chan-避免死锁">Golang chan 避免死锁</a></li>
+          </ul>
+        </li>
         <li><a href="#参考">参考</a></li>
       </ul>
     </li>
@@ -616,6 +637,17 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="chiannel">Chiannel</h1>
+<h2 id="channel-类型">channel 类型</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">T</span>          <span style="color:#75715e">// can be used to send and receive values of type T
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">chan</span><span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">float64</span>  <span style="color:#75715e">// can only be used to send float64s
+</span><span style="color:#75715e"></span><span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>      <span style="color:#75715e">// can only be used to receive ints
+</span></code></pre></div><p>The <code>&lt;-</code> operator associates with the leftmost chan possible:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">chan</span><span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>    <span style="color:#75715e">// same as chan&lt;- (chan int)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">chan</span><span style="color:#f92672">&lt;-</span> <span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>  <span style="color:#75715e">// same as chan&lt;- (&lt;-chan int)
+</span><span style="color:#75715e"></span><span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>  <span style="color:#75715e">// same as &lt;-chan (&lt;-chan int)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">chan</span> (<span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+</code></pre></div><hr>
+<h2 id="常见用法">常见用法</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 使用 `make(chan val-type)` 创建一个新的通道。
 </span><span style="color:#75715e">// 通道类型就是他们需要传递值的类型。
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">messages</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>)
@@ -631,23 +663,57 @@ https://github.com/alex-shpak/hugo-book
 
 <span style="color:#75715e">// 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">messages</span>
-</code></pre></div><h2 id="channel-类型">channel 类型</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">T</span>          <span style="color:#75715e">// can be used to send and receive values of type T
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">chan</span><span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">float64</span>  <span style="color:#75715e">// can only be used to send float64s
-</span><span style="color:#75715e"></span><span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>      <span style="color:#75715e">// can only be used to receive ints
-</span></code></pre></div><p>The <code>&lt;-</code> operator associates with the leftmost chan possible:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">chan</span><span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>    <span style="color:#75715e">// same as chan&lt;- (chan int)
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">chan</span><span style="color:#f92672">&lt;-</span> <span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>  <span style="color:#75715e">// same as chan&lt;- (&lt;-chan int)
-</span><span style="color:#75715e"></span><span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>  <span style="color:#75715e">// same as &lt;-chan (&lt;-chan int)
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">chan</span> (<span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
-</code></pre></div><h2 id="注意点">注意点</h2>
+</code></pre></div><h3 id="done-channel">done channel</h3>
+<p>用于保证流水线上每个阶段 goroutine 的退出</p>
+<p>golang.org/x/net/context/ctxhttp 中 Do 方法的实现：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// https://github.com/golang/net/blob/release-branch.go1.7/context/ctxhttp/ctxhttp.go
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// Do sends an HTTP request with the provided http.Client and returns
+</span><span style="color:#75715e">// an HTTP response.
+</span><span style="color:#75715e">//
+</span><span style="color:#75715e">// If the client is nil, http.DefaultClient is used.
+</span><span style="color:#75715e">//
+</span><span style="color:#75715e">// The provided ctx must be non-nil. If it is canceled or times out,
+</span><span style="color:#75715e">// ctx.Err() will be returned.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Do</span>(<span style="color:#a6e22e">ctx</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Context</span>, <span style="color:#a6e22e">client</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Client</span>, <span style="color:#a6e22e">req</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Response</span>, <span style="color:#66d9ef">error</span>) {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">client</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+        <span style="color:#a6e22e">client</span> = <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">DefaultClient</span>
+    }
+    <span style="color:#a6e22e">resp</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Do</span>(<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">WithContext</span>(<span style="color:#a6e22e">ctx</span>))
+    <span style="color:#75715e">// If we got an error, and the context has been canceled,
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// the context&#39;s error is probably more useful.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+        <span style="color:#66d9ef">select</span> {
+        <span style="color:#66d9ef">case</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Done</span>():
+            <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Err</span>()
+        <span style="color:#66d9ef">default</span>:
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">resp</span>, <span style="color:#a6e22e">err</span>
+}
+</code></pre></div><hr>
+<h2 id="注意点">注意点</h2>
 <ul>
 <li>无缓冲 chan 的发送和接收是否同步</li>
 <li>channel 一定记得 close</li>
 <li>channel 是通过注册相关 goroutine id 实现消息通知的</li>
 </ul>
-<h2 id="golang-chan-避免死锁">Golang chan 避免死锁</h2>
-<p>Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了.</p>
+<h3 id="关闭-channel">关闭 channel</h3>
+<ul>
+<li>不要从接收端关闭 channel</li>
+<li>不要关闭有多个并发发送者的 channel</li>
+</ul>
+<p>如果 sender 是唯一的 sender 或是 channel 最后一个活跃的 sender，
+那么你应该在 sender 的 goroutine 关闭 channel，
+从而通知 receiver (s)(接收者们) 已经没有值可以读了。</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/d24dfbb33781">如何优雅地关闭 Go channel</a></li>
+</ul>
+<h3 id="golang-chan-避免死锁">Golang chan 避免死锁</h3>
+<p>Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，
+一旦管道满了，就相当于生产者直接调用消费者。</p>
+<p>如果生产者和消费者使用同一个锁，就是死锁了.</p>
 <p>所以，一个重要的原则就是，在写管道之前，把所有可能的锁 unlock 掉.</p>
 <p>Related posts:</p>
 <ol>
@@ -673,7 +739,7 @@ https://github.com/alex-shpak/hugo-book
 
   <div>
     
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/dd26ec4c24248d91b49fee2069320350e2d73847" title='Last modified by yewang | 2020-06-04' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/7a9121ccb41e51802823406a42052fe32ef03b14" title='Last modified by yewang | 2020-06-04' target="_blank" rel="noopener">
       <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>2020-06-04</span>
     </a>
@@ -713,8 +779,17 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#chiannel">Chiannel</a>
       <ul>
         <li><a href="#channel-类型">channel 类型</a></li>
-        <li><a href="#注意点">注意点</a></li>
-        <li><a href="#golang-chan-避免死锁">Golang chan 避免死锁</a></li>
+        <li><a href="#常见用法">常见用法</a>
+          <ul>
+            <li><a href="#done-channel">done channel</a></li>
+          </ul>
+        </li>
+        <li><a href="#注意点">注意点</a>
+          <ul>
+            <li><a href="#关闭-channel">关闭 channel</a></li>
+            <li><a href="#golang-chan-避免死锁">Golang chan 避免死锁</a></li>
+          </ul>
+        </li>
         <li><a href="#参考">参考</a></li>
       </ul>
     </li>
