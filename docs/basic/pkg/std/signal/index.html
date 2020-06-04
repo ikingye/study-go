@@ -4,20 +4,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 语言优劣 Go 的优点 部署简单  直接编译成机器码 不依赖其他库 直接运行即可部署  静态类型语言 编译时可检测出隐藏的大多数问题
-语言层面实现并发（goroutine） 强大的标准库  runtime 系统调度机制 高效的 GC（垃圾回收） 丰富的标准库  简单易学  25 个关键字 内嵌 C 语法支持（CGO） 面向对象 跨平台  背靠大厂（Google） 性能好  Go 的缺点 无泛化类型 传言 Go 2.0 会加上
-无 Exception，都用 Error 有争议
-包管理大部分在 Github 参考：
- 2020 年以后是 Go 的天下吗？  "><meta property="og:title" content="优劣" />
-<meta property="og:description" content="Go 语言优劣 Go 的优点 部署简单  直接编译成机器码 不依赖其他库 直接运行即可部署  静态类型语言 编译时可检测出隐藏的大多数问题
-语言层面实现并发（goroutine） 强大的标准库  runtime 系统调度机制 高效的 GC（垃圾回收） 丰富的标准库  简单易学  25 个关键字 内嵌 C 语法支持（CGO） 面向对象 跨平台  背靠大厂（Google） 性能好  Go 的缺点 无泛化类型 传言 Go 2.0 会加上
-无 Exception，都用 Error 有争议
-包管理大部分在 Github 参考：
- 2020 年以后是 Go 的天下吗？  " />
+<meta name="description" content="signal The signals SIGKILL and SIGSTOP may not be caught by a program, and therefore cannot be affected by this package.
+By default, a synchronous signal is converted into a run-time panic.
+A SIGHUP, SIGINT, or SIGTERM signal causes the program to exit.
+A SIGQUIT, SIGILL, SIGTRAP, SIGABRT, SIGSTKFLT, SIGEMT, or SIGSYS signal causes the program to exit with a stack dump.
+A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these signals are used by the shell for job control)."><meta property="og:title" content="signal" />
+<meta property="og:description" content="signal The signals SIGKILL and SIGSTOP may not be caught by a program, and therefore cannot be affected by this package.
+By default, a synchronous signal is converted into a run-time panic.
+A SIGHUP, SIGINT, or SIGTERM signal causes the program to exit.
+A SIGQUIT, SIGILL, SIGTRAP, SIGABRT, SIGSTKFLT, SIGEMT, or SIGSYS signal causes the program to exit with a stack dump.
+A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these signals are used by the shell for job control)." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/design/pros-and-cons/" />
-<meta property="article:modified_time" content="2020-05-25T00:37:39+08:00" />
-<title>优劣 | Go 学习笔记</title>
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/pkg/std/signal/" />
+
+<title>signal | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -139,6 +139,94 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/pkg/std/" class="collapsed ">标准库</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/pkg/std/signal/" class="active">signal</a>
+  
+
+</li>
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/pkg/std/sync/" class="collapsed ">sync</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/pkg/std/time/" class="">time</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/pkg/common/" class="">常用 package</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
 
 
   </li>
@@ -255,7 +343,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
 
   
-  <a href="/study-go/docs/design/pros-and-cons/" class="active">优劣</a>
+  <a href="/study-go/docs/design/pros-and-cons/" class="">优劣</a>
   
 
 </li>
@@ -446,7 +534,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>优劣</strong>
+  <strong>signal</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -460,26 +548,10 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-语言优劣">Go 语言优劣</a>
+    <li><a href="#signalhttpspkggodevsignal"><a href="https://pkg.go.dev/signal">signal</a></a>
       <ul>
-        <li><a href="#go-的优点">Go 的优点</a>
-          <ul>
-            <li><a href="#部署简单">部署简单</a></li>
-            <li><a href="#静态类型语言">静态类型语言</a></li>
-            <li><a href="#语言层面实现并发goroutine">语言层面实现并发（goroutine）</a></li>
-            <li><a href="#强大的标准库">强大的标准库</a></li>
-            <li><a href="#简单易学">简单易学</a></li>
-            <li><a href="#背靠大厂google">背靠大厂（Google）</a></li>
-            <li><a href="#性能好">性能好</a></li>
-          </ul>
-        </li>
-        <li><a href="#go-的缺点">Go 的缺点</a>
-          <ul>
-            <li><a href="#无泛化类型">无泛化类型</a></li>
-            <li><a href="#无-exception都用-error">无 Exception，都用 Error</a></li>
-            <li><a href="#包管理大部分在-github">包管理大部分在 Github</a></li>
-          </ul>
-        </li>
+        <li><a href="#synchronous-signals">Synchronous signals</a></li>
+        <li><a href="#asynchronous-signals">Asynchronous signals</a></li>
       </ul>
     </li>
   </ul>
@@ -493,44 +565,46 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="go-语言优劣">Go 语言优劣</h1>
-<h2 id="go-的优点">Go 的优点</h2>
-<h3 id="部署简单">部署简单</h3>
-<ol>
-<li>直接编译成机器码</li>
-<li>不依赖其他库</li>
-<li>直接运行即可部署</li>
-</ol>
-<h3 id="静态类型语言">静态类型语言</h3>
-<p>编译时可检测出隐藏的大多数问题</p>
-<h3 id="语言层面实现并发goroutine">语言层面实现并发（goroutine）</h3>
-<h3 id="强大的标准库">强大的标准库</h3>
-<ol>
-<li>runtime 系统调度机制</li>
-<li>高效的 GC（垃圾回收）</li>
-<li>丰富的标准库</li>
-</ol>
-<h3 id="简单易学">简单易学</h3>
-<ol>
-<li>25 个关键字</li>
-<li>内嵌 C 语法支持（CGO）</li>
-<li>面向对象</li>
-<li>跨平台</li>
-</ol>
-<h3 id="背靠大厂google">背靠大厂（Google）</h3>
-<h3 id="性能好">性能好</h3>
-<p><img src="https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200524204903.png" alt="" /></p>
-<hr>
-<h2 id="go-的缺点">Go 的缺点</h2>
-<h3 id="无泛化类型">无泛化类型</h3>
-<p>传言 Go 2.0 会加上</p>
-<h3 id="无-exception都用-error">无 Exception，都用 Error</h3>
-<p>有争议</p>
-<h3 id="包管理大部分在-github">包管理大部分在 Github</h3>
-<p>参考：</p>
+  <article class="markdown"><h1 id="signalhttpspkggodevsignal"><a href="https://pkg.go.dev/signal">signal</a></h1>
+<p>The signals <code>SIGKILL</code> and <code>SIGSTOP</code> may not be caught by a program,
+and therefore cannot be affected by this package.</p>
+<p>By default, a synchronous signal is converted into a run-time panic.</p>
+<p>A SIGHUP, SIGINT, or SIGTERM signal causes the program to exit.</p>
+<p>A SIGQUIT, SIGILL, SIGTRAP, SIGABRT, SIGSTKFLT, SIGEMT, or SIGSYS signal causes the program to exit <strong>with a stack dump</strong>.</p>
+<p>A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these signals are used by the shell for job control).</p>
+<p>The SIGPROF signal is handled directly by the Go runtime to implement runtime.CPUProfile.</p>
+<p>Other signals will be caught but no action will be taken.</p>
+<h2 id="synchronous-signals">Synchronous signals</h2>
 <ul>
-<li><a href="https://www.zhihu.com/question/379439622/answer/1111390872">2020 年以后是 Go 的天下吗？</a></li>
+<li><code>SIGBUS</code></li>
+<li><code>SIGFPE</code></li>
+<li><code>SIGSEGV</code></li>
 </ul>
+<p>These are only considered synchronous when caused by program execution,
+not when sent using <code>os.Process.Kill</code> or the kill program or some similar mechanism.</p>
+<p>Go programs will convert a synchronous signal into a <strong>run-time panic</strong>.</p>
+<h2 id="asynchronous-signals">Asynchronous signals</h2>
+<ul>
+<li><code>SIGTERM</code></li>
+<li><code>SIGINT</code>
+<ul>
+<li>the user at the controlling terminal presses the interrupt character, which by default is <code>^C</code> (Control-C).</li>
+</ul>
+</li>
+<li><code>SIGHUP</code>
+<ul>
+<li>a program loses its controlling terminal</li>
+</ul>
+</li>
+<li>SIGQUIT
+<ul>
+<li>the user at the controlling terminal presses the quit character, which by default is <code>^\</code> (Control-Backslash)</li>
+</ul>
+</li>
+<li>SIGILL</li>
+</ul>
+<p>The remaining signals are asynchronous signals.
+They are not triggered by program errors, but are instead sent from the kernel or from some other program.</p>
 </article>
  
       
@@ -540,14 +614,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/f10a2fd3e1c7ee869dc0fb4470304cdacc480d73" title='Last modified by yewang | 2020-05-25' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-05-25</span>
-    </a>
-  </div>
 
 
 
@@ -580,26 +646,10 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-语言优劣">Go 语言优劣</a>
+    <li><a href="#signalhttpspkggodevsignal"><a href="https://pkg.go.dev/signal">signal</a></a>
       <ul>
-        <li><a href="#go-的优点">Go 的优点</a>
-          <ul>
-            <li><a href="#部署简单">部署简单</a></li>
-            <li><a href="#静态类型语言">静态类型语言</a></li>
-            <li><a href="#语言层面实现并发goroutine">语言层面实现并发（goroutine）</a></li>
-            <li><a href="#强大的标准库">强大的标准库</a></li>
-            <li><a href="#简单易学">简单易学</a></li>
-            <li><a href="#背靠大厂google">背靠大厂（Google）</a></li>
-            <li><a href="#性能好">性能好</a></li>
-          </ul>
-        </li>
-        <li><a href="#go-的缺点">Go 的缺点</a>
-          <ul>
-            <li><a href="#无泛化类型">无泛化类型</a></li>
-            <li><a href="#无-exception都用-error">无 Exception，都用 Error</a></li>
-            <li><a href="#包管理大部分在-github">包管理大部分在 Github</a></li>
-          </ul>
-        </li>
+        <li><a href="#synchronous-signals">Synchronous signals</a></li>
+        <li><a href="#asynchronous-signals">Asynchronous signals</a></li>
       </ul>
     </li>
   </ul>

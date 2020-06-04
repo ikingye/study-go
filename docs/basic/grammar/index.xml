@@ -19,6 +19,15 @@
     </item>
     
     <item>
+      <title>make</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/make/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/make/</guid>
+      <description>make 运算符:= 是 make() 的语法糖</description>
+    </item>
+    
+    <item>
       <title>goroutine</title>
       <link>https://ikingye.github.io/study-go/docs/basic/grammar/goroutine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

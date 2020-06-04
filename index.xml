@@ -193,7 +193,27 @@ golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/</guid>
-      <description>Chiannel // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &amp;lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&amp;#34;ping&amp;#34;` 到上面创建的 `messages` 通道中。 go func() { messages &amp;lt;- &amp;#34;ping&amp;#34; }() // 使用 `&amp;lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&amp;#34;ping&amp;#34;` 消息并将其打印出来。 msg := &amp;lt;-messages fmt.Println(msg) // 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。 msg, ok := &amp;lt;-messages 注意点  无缓冲 chan 的发送和接收是否同步 channel 一定记得 close channel 是通过注册相关 goroutine id 实现消息通知的  Golang chan 避免死锁 Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，一旦管道满了，就相当于生产者直接调用消费者。如果生产者和消费者使用同一个锁，就是死锁了.</description>
+      <description>Chiannel // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &amp;lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&amp;#34;ping&amp;#34;` 到上面创建的 `messages` 通道中。 go func() { messages &amp;lt;- &amp;#34;ping&amp;#34; }() // 使用 `&amp;lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&amp;#34;ping&amp;#34;` 消息并将其打印出来。 msg := &amp;lt;-messages fmt.Println(msg) // 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。 msg, ok := &amp;lt;-messages channel 类型 chan T // can be used to send and receive values of type T chan&amp;lt;- float64 // can only be used to send float64s &amp;lt;-chan int // can only be used to receive ints The &amp;lt;- operator associates with the leftmost chan possible:</description>
+    </item>
+    
+    <item>
+      <title>make</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/make/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/make/</guid>
+      <description>make 运算符:= 是 make() 的语法糖</description>
+    </item>
+    
+    <item>
+      <title>Map</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/type/map/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/map/</guid>
+      <description>Map Golang 中的 map，实际上就是一个 hashtable
+在 golang 中，当 map 作为形参时，虽然是值传递，但是由于 make () 返回的是一个指针类型
+// makemap implements Go map creation for make(map[k]v, hint). // If the compiler has determined that the map or the first bucket // can be created on the stack, h and/or bucket may be non-nil. // If h != nil, the map can be created directly in h. // If h.buckets != nil, bucket pointed to can be used as the first bucket.</description>
     </item>
     
     <item>
@@ -215,6 +235,19 @@ golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的
     </item>
     
     <item>
+      <title>signal</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/pkg/std/signal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/pkg/std/signal/</guid>
+      <description>signal The signals SIGKILL and SIGSTOP may not be caught by a program, and therefore cannot be affected by this package.
+By default, a synchronous signal is converted into a run-time panic.
+A SIGHUP, SIGINT, or SIGTERM signal causes the program to exit.
+A SIGQUIT, SIGILL, SIGTRAP, SIGABRT, SIGSTKFLT, SIGEMT, or SIGSYS signal causes the program to exit with a stack dump.
+A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these signals are used by the shell for job control).</description>
+    </item>
+    
+    <item>
       <title>time</title>
       <link>https://ikingye.github.io/study-go/docs/basic/pkg/std/time/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -232,6 +265,15 @@ golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的
       <description>关注 golang/go  kubernetes/kubernetes  moby/moby  etcd-io/etcd  Distributed reliable key-value store for the most critical data of a distributed system
 containous/traefik  The Cloud Native Edge Router https://traefik.io
  Web 框架 gin-gonic/gin  Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.com/</description>
+    </item>
+    
+    <item>
+      <title>日志</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/practice/log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/practice/log/</guid>
+      <description>Go 日志 golang/glog  Leveled execution logs for Go</description>
     </item>
     
   </channel>
