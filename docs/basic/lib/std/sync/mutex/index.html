@@ -8,7 +8,7 @@
 <meta property="og:description" content="Mutex Mutex 互斥锁  在一个 goroutine 获得 Mutex 后，其他 goroutine 只能等到这个 goroutine 释放该 Mutex 使用 Lock() 加锁后，不能再继续对其加锁，直到利用 Unlock() 解锁后才能再加锁  在同一个 goroutine 中的 Mutex 解锁之前再次进行加锁，会导致死锁   在 Lock() 之前使用 Unlock() 会导致 panic 异常 已经锁定的 Mutex 并不与特定的 goroutine 相关联，这样可以利用一个 goroutine 对其加锁，再利用其他 goroutine 对其解锁 适用于读写不确定，并且只有一个读或者写的场景  type Mutex struct { // contains filtered or unexported fields } func (m *Mutex) Lock() func (m *Mutex) Unlock() RWMutex 读写锁（读多写少） RWMutex 基于 Mutex 实现" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/lib/std/sync/mutex/" />
-
+<meta property="article:modified_time" content="2020-06-07T13:34:01+08:00" />
 <title>Mutex | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.4f334f155caaff0ec500c499b0aafc8c0628a90dc077b3a7910749cfc19c2d96.js" integrity="sha256-TzNPFVyq/w7FAMSZsKr8jAYoqQ3Ad7OnkQdJz8GcLZY="></script>
+<script defer src="/study-go/en.search.min.5c7988a1317c4bf29bffde2aff2458a70aac83b6397b91acecc1691365bbc4e3.js" integrity="sha256-XHmIoTF8S/Kb/94q/yRYpwqsg7Y5e5Gs7MFpE2W7xOM="></script>
 
 <!--
 Made with Book Theme
@@ -580,6 +580,14 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/8c1902bb2fcdd0a18b5bf0d18b70b203a23011aa" title='Last modified by yewang | 2020-06-07' target="_blank" rel="noopener">
+      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2020-06-07</span>
+    </a>
+  </div>
 
 
 
