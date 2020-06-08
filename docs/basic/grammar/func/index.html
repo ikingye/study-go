@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="函数 函数参数 值传递 golang 中函数的参数传递采用的是值传递。
-在处理 map，channel 和 slice 等这些内置结构的数据时，其实处理的是一个指针类型的数据。"><meta property="og:title" content="函数" />
+在处理 map，channel 和 slice 等这些内置结构的数据时，其实处理的是一个指针类型的数据。
+可变参数 package main import &#34;fmt&#34; // 这个函数接受任意数量的 `int` 作为参数。 func sum(nums ...int) { fmt.Print(nums, &#34; &#34;) total := 0 for _, num := range nums { total &#43;= num } fmt.Println(total) } func main() { // 变参函数使用常规的调用方式，传入独立的参数。 	sum(1, 2) sum(1, 2, 3) // 如果你有一个含有多个值的 slice，想把它们作为参数使用， 	// 你需要这样调用 `func(slice...)`。 	nums := []int{1, 2, 3, 4} sum(nums...) } "><meta property="og:title" content="函数" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/func/" />
@@ -17,7 +18,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.5c7988a1317c4bf29bffde2aff2458a70aac83b6397b91acecc1691365bbc4e3.js" integrity="sha256-XHmIoTF8S/Kb/94q/yRYpwqsg7Y5e5Gs7MFpE2W7xOM="></script>
+<script defer src="/study-go/en.search.min.43a2abb3778822b20bcc17ae477d79607b8b93c187ed4243a60561af79e3ea72.js" integrity="sha256-Q6Krs3eIIrILzBeuR315YHuLk8GH7UJDpgVhr3nj6nI="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/grammar/func/index.xml" title="Go 学习笔记" />
 <!--
@@ -567,6 +568,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#函数参数">函数参数</a>
           <ul>
             <li><a href="#值传递">值传递</a></li>
+            <li><a href="#可变参数">可变参数</a></li>
           </ul>
         </li>
       </ul>
@@ -587,7 +589,33 @@ https://github.com/alex-shpak/hugo-book
 <h3 id="值传递">值传递</h3>
 <p>golang 中函数的参数传递采用的是值传递。</p>
 <p>在处理 map，channel 和 slice 等这些内置结构的数据时，其实处理的是一个指针类型的数据。</p>
-</article>
+<h3 id="可变参数">可变参数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#75715e">// 这个函数接受任意数量的 `int` 作为参数。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">nums</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">int</span>) {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Print</span>(<span style="color:#a6e22e">nums</span>, <span style="color:#e6db74">&#34; &#34;</span>)
+	<span style="color:#a6e22e">total</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">num</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">nums</span> {
+		<span style="color:#a6e22e">total</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">num</span>
+	}
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">total</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+
+	<span style="color:#75715e">// 变参函数使用常规的调用方式，传入独立的参数。
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)
+	<span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+
+	<span style="color:#75715e">// 如果你有一个含有多个值的 slice，想把它们作为参数使用，
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// 你需要这样调用 `func(slice...)`。
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">nums</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>}
+	<span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">nums</span><span style="color:#f92672">...</span>)
+}
+</code></pre></div></article>
  
       
 
@@ -641,6 +669,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#函数参数">函数参数</a>
           <ul>
             <li><a href="#值传递">值传递</a></li>
+            <li><a href="#可变参数">可变参数</a></li>
           </ul>
         </li>
       </ul>
