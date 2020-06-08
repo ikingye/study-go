@@ -18,7 +18,7 @@ chan&lt;- chan int // same as chan&lt;- (chan int) chan&lt;- &lt;-chan int // sa
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.43a2abb3778822b20bcc17ae477d79607b8b93c187ed4243a60561af79e3ea72.js" integrity="sha256-Q6Krs3eIIrILzBeuR315YHuLk8GH7UJDpgVhr3nj6nI="></script>
+<script defer src="/study-go/en.search.min.4f0f8cd72ec3be3b19a5c67c252c82a7236d807f2f0230127c7fd648795f19e1.js" integrity="sha256-Tw&#43;M1y7DvjsZpcZ8JSyCpyNtgH8vAjASfH/WSHlfGeE="></script>
 
 <!--
 Made with Book Theme
@@ -112,6 +112,16 @@ https://github.com/alex-shpak/hugo-book
 
   
   <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/error/" class="">error</a>
+  
+
+</li>
+      
     
       
         <li>
@@ -655,12 +665,54 @@ https://github.com/alex-shpak/hugo-book
 <h3 id="关闭-channel">关闭 channel</h3>
 <ul>
 <li>不要从接收端关闭 channel</li>
-<li>不要关闭有多个并发发送者的 channel</li>
+<li>不要关闭有<strong>多个并发发送者</strong>的 channel</li>
 </ul>
 <p>如果 sender 是唯一的 sender 或是 channel 最后一个活跃的 sender，
 那么你应该在 sender 的 goroutine 关闭 channel，
 从而通知 receiver (s)(接收者们) 已经没有值可以读了。</p>
-<p>参考：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// _关闭_ 一个通道意味着不能再向这个通道发送值了。
+</span><span style="color:#75715e">// 该特性可以向通道的接收方传达工作已经完成的信息。
+</span><span style="color:#75715e"></span>
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#75715e">// 在这个例子中，我们将使用一个 `jobs` 通道，将工作内容，
+</span><span style="color:#75715e">// 从 `main()` 协程传递到一个工作协程中。
+</span><span style="color:#75715e">// 当我们没有更多的任务传递给工作协程时，我们将 `close` 这个 `jobs` 通道。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">jobs</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">5</span>)
+	<span style="color:#a6e22e">done</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">bool</span>)
+
+	<span style="color:#75715e">// 这是工作协程。使用 `j, more := &lt;- jobs` 循环的从 `jobs` 接收数据。
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// 根据接收的第二个值，如果 `jobs` 已经关闭了，
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// 并且通道中所有的值都已经接收完毕，那么 `more` 的值将是 `false`。
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// 当我们完成所有的任务时，会使用这个特性通过 `done` 通道通知 main 协程。
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">for</span> {
+			<span style="color:#a6e22e">j</span>, <span style="color:#a6e22e">more</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">jobs</span>
+			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">more</span> {
+				<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;received job&#34;</span>, <span style="color:#a6e22e">j</span>)
+			} <span style="color:#66d9ef">else</span> {
+				<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;received all jobs&#34;</span>)
+				<span style="color:#a6e22e">done</span> <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">true</span>
+				<span style="color:#66d9ef">return</span>
+			}
+		}
+	}()
+
+	<span style="color:#75715e">// 使用 `jobs` 发送 3 个任务到工作协程中，然后关闭 `jobs`。
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">3</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> {
+		<span style="color:#a6e22e">jobs</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">j</span>
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;sent job&#34;</span>, <span style="color:#a6e22e">j</span>)
+	}
+	close(<span style="color:#a6e22e">jobs</span>)
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;sent all jobs&#34;</span>)
+
+	<span style="color:#75715e">// 使用前面学到的[通道同步](channel-synchronization)方法等待任务结束。
+</span><span style="color:#75715e"></span>	<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">done</span>
+}
+</code></pre></div><p>参考：</p>
 <ul>
 <li><a href="https://www.jianshu.com/p/d24dfbb33781">如何优雅地关闭 Go channel</a></li>
 </ul>

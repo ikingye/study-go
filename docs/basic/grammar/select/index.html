@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.43a2abb3778822b20bcc17ae477d79607b8b93c187ed4243a60561af79e3ea72.js" integrity="sha256-Q6Krs3eIIrILzBeuR315YHuLk8GH7UJDpgVhr3nj6nI="></script>
+<script defer src="/study-go/en.search.min.4f0f8cd72ec3be3b19a5c67c252c82a7236d807f2f0230127c7fd648795f19e1.js" integrity="sha256-Tw&#43;M1y7DvjsZpcZ8JSyCpyNtgH8vAjASfH/WSHlfGeE="></script>
 
 <!--
 Made with Book Theme
@@ -114,6 +114,16 @@ https://github.com/alex-shpak/hugo-book
 
   
   <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/error/" class="">error</a>
+  
+
+</li>
+      
     
       
         <li>
@@ -567,6 +577,11 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#select">select</a>
       <ul>
         <li><a href="#随机选则">随机选则</a></li>
+        <li><a href="#非阻塞">非阻塞</a>
+          <ul>
+            <li><a href="#default-为空">default 为空</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -610,7 +625,20 @@ https://github.com/alex-shpak/hugo-book
 }
 </code></pre></div><h2 id="随机选则">随机选则</h2>
 <p>除 default 外，如果有多个 case 语句评估通过，那么通过<strong>伪随机</strong>的方式随机选一个</p>
-</article>
+<h2 id="非阻塞">非阻塞</h2>
+<h3 id="default-为空">default 为空</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sendTime</span>(<span style="color:#a6e22e">c</span> <span style="color:#66d9ef">interface</span>{}, <span style="color:#a6e22e">seq</span> <span style="color:#66d9ef">uintptr</span>) {
+	<span style="color:#75715e">// Non-blocking send of time on c.
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// Used in NewTimer, it cannot block anyway (buffer).
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// Used in NewTicker, dropping sends on the floor is
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// the desired behavior when the reader gets behind,
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// because the sends are periodic.
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">select</span> {
+	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">c</span>.(<span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">Time</span>) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Now</span>():
+	<span style="color:#66d9ef">default</span>:
+	}
+}
+</code></pre></div></article>
  
       
 
@@ -662,6 +690,11 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#select">select</a>
       <ul>
         <li><a href="#随机选则">随机选则</a></li>
+        <li><a href="#非阻塞">非阻塞</a>
+          <ul>
+            <li><a href="#default-为空">default 为空</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
