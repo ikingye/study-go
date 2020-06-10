@@ -20,7 +20,10 @@ mmcgrana/gobyexample  Go by Example
 中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/
 geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列
 golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.go101.org
- 练习 ardanlabs/gotraining  Go Training Class Material : http://www.ArdanLabs.com
+polaris1119/The-Golang-Standard-Library-by-Example  Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。
+以示例驱动的方式讲解 Golang 的标准库。
+inancgumus/learngo  1000+ Hand-Crafted Go Examples, Exercises, and Quizzes
+ardanlabs/gotraining  Go Training Class Material : http://www.ArdanLabs.com
 进阶 Go 语言设计与实现 by Draveness 高阶 </description>
     </item>
     

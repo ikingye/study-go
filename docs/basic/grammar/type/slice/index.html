@@ -4,13 +4,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 标准库 教程 polaris1119/The-Golang-Standard-Library-by-Example  Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。
-以示例驱动的方式讲解 Golang 的标准库。"><meta property="og:title" content="标准库" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/lib/std/" />
+<meta name="description" content="Go 切片 "><meta property="og:title" content="切片" />
+<meta property="og:description" content="Go 切片 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/type/slice/" />
 
-<title>标准库 | Go 学习笔记</title>
+<title>切片 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -19,7 +18,6 @@
 
 <script defer src="/study-go/en.search.min.5c50cb6f66a44ea96a90073c9af346cec21075455d2a0ed560a563a8c7de79c7.js" integrity="sha256-XFDLb2akTqlqkAc8mvNGzsIQdUVdKg7VYKVjqMfeecc="></script>
 
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/lib/std/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -110,6 +108,200 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/defer/" class="">defer</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/error/" class="">error</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/keyword/" class="">关键字</a>
+  
+
+</li>
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/grammar/type/" class="">数据类型</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/type/slice/" class="active">切片</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/type/array/" class="">数组</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/type/interface/" class="">Interface</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/type/channel/" class="">Chiannel</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/type/map/" class="">Map</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/grammar/func/" class="">函数</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/func/init/" class="">init</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/func/receiver/" class="">Receiver</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/make/" class="">make</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/select/" class="">select</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/goroutine/" class="">goroutine</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
 
 
   </li>
@@ -132,104 +324,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/lib/std/" class="collapsed active">标准库</a>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/lib/std/sort/" class="">sort</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/lib/std/signal/" class="">signal</a>
-  
-
-</li>
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/lib/std/sync/" class="collapsed ">sync</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/lib/std/time/" class="">time</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/lib/common/" class="">常用 package</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
 
 
 
@@ -492,7 +586,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>标准库</strong>
+  <strong>切片</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -506,15 +600,7 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-标准库">Go 标准库</a>
-      <ul>
-        <li><a href="#教程">教程</a>
-          <ul>
-            <li><a href="#polaris1119the-golang-standard-library-by-examplehttpsgithubcompolaris1119the-golang-standard-library-by-example-github-starshttpsimgshieldsiogithubstarspolaris1119the-golang-standard-library-by-examplesvg"><a href="https://github.com/polaris1119/The-Golang-Standard-Library-by-Example">polaris1119/The-Golang-Standard-Library-by-Example</a> <img src="https://img.shields.io/github/stars/polaris1119/The-Golang-Standard-Library-by-Example.svg" alt="Github stars"></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
+    <li><a href="#go-切片">Go 切片</a></li>
   </ul>
 </nav>
 
@@ -526,11 +612,7 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="go-标准库">Go 标准库</h1>
-<h2 id="教程">教程</h2>
-<h3 id="polaris1119the-golang-standard-library-by-examplehttpsgithubcompolaris1119the-golang-standard-library-by-example-github-starshttpsimgshieldsiogithubstarspolaris1119the-golang-standard-library-by-examplesvg"><a href="https://github.com/polaris1119/The-Golang-Standard-Library-by-Example">polaris1119/The-Golang-Standard-Library-by-Example</a> <img src="https://img.shields.io/github/stars/polaris1119/The-Golang-Standard-Library-by-Example.svg" alt="Github stars" /></h3>
-<p>Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。</p>
-<p>以示例驱动的方式讲解 Golang 的标准库。</p>
+  <article class="markdown"><h1 id="go-切片">Go 切片</h1>
 </article>
  
       
@@ -540,14 +622,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/8c1902bb2fcdd0a18b5bf0d18b70b203a23011aa" title='Last modified by yewang | 2020-06-07' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-06-07</span>
-    </a>
-  </div>
 
 
 
@@ -580,15 +654,7 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-标准库">Go 标准库</a>
-      <ul>
-        <li><a href="#教程">教程</a>
-          <ul>
-            <li><a href="#polaris1119the-golang-standard-library-by-examplehttpsgithubcompolaris1119the-golang-standard-library-by-example-github-starshttpsimgshieldsiogithubstarspolaris1119the-golang-standard-library-by-examplesvg"><a href="https://github.com/polaris1119/The-Golang-Standard-Library-by-Example">polaris1119/The-Golang-Standard-Library-by-Example</a> <img src="https://img.shields.io/github/stars/polaris1119/The-Golang-Standard-Library-by-Example.svg" alt="Github stars"></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
+    <li><a href="#go-切片">Go 切片</a></li>
   </ul>
 </nav>
 

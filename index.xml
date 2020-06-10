@@ -10,6 +10,16 @@
     
     
     <item>
+      <title>sort</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/lib/std/sort/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/lib/std/sort/</guid>
+      <description>sort 自定义排序 实现 Len、Less 和 Swap 方法
+// 有时候，我们可能想根据自然顺序以外的方式来对集合进行排序。 // 例如，假设我们要按字符串的长度而不是按字母顺序对它们进行排序。 // 这儿有一个在 Go 中自定义排序的示例。  package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sort&amp;#34; ) // 为了在 Go 中使用自定义函数进行排序，我们需要一个对应的类型。 // 我们在这里创建了一个 `byLength` 类型，它只是内建类型 `[]string` 的别名。 type byLength []string // 我们为该类型实现了 `sort.Interface` 接口的 `Len`、`Less` 和 `Swap` 方法， // 这样我们就可以使用 `sort` 包的通用 `Sort` 方法了， // `Len` 和 `Swap` 在各个类型中的实现都差不多， // `Less` 将控制实际的自定义排序逻辑。 // 在这个的例子中，我们想按字符串长度递增的顺序来排序， // 所以这里使用了 `len(s[i])` 和 `len(s[j])` 来实现 `Less`。 func (s byLength) Len() int { return len(s) } func (s byLength) Swap(i, j int) { s[i], s[j] = s[j], s[i] } func (s byLength) Less(i, j int) bool { return len(s[i]) &amp;lt; len(s[j]) } // 一切准备就绪后，我们就可以通过将切片 `fruits` 强转为 `byLength` 类型的切片， // 然后对该切片使用 `sort.</description>
+    </item>
+    
+    <item>
       <title>百度</title>
       <link>https://ikingye.github.io/study-go/docs/basic/practice/spec/baidu/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -56,6 +66,18 @@ package main import ( &amp;#34;{pathToYourApp}/cmd&amp;#34; ) func main() { cmd.
       
       <guid>https://ikingye.github.io/study-go/docs/appendix/interview/expert/</guid>
       <description>高阶面试题 </description>
+    </item>
+    
+    <item>
+      <title>defer</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/defer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/defer/</guid>
+      <description>defer 用于确保程序在执行完成后，会调用某个函数，一般是执行清理工作。
+Defer 的用途跟其他语言的 ensure 或 finally 类似。
+当 defer 释放锁遇到尾递归 var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 { return i } i++ return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。
+根因是 golang 处理 defer 和 return 的顺序为， 计算 return 语句的返回值、赋值给匿名 / 有名返回值 -&amp;gt;defer-&amp;gt;RET 退出函数</description>
     </item>
     
     <item>
@@ -165,7 +187,10 @@ mmcgrana/gobyexample  Go by Example
 中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/
 geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列
 golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.go101.org
- 练习 ardanlabs/gotraining  Go Training Class Material : http://www.ArdanLabs.com
+polaris1119/The-Golang-Standard-Library-by-Example  Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。
+以示例驱动的方式讲解 Golang 的标准库。
+inancgumus/learngo  1000+ Hand-Crafted Go Examples, Exercises, and Quizzes
+ardanlabs/gotraining  Go Training Class Material : http://www.ArdanLabs.com
 进阶 Go 语言设计与实现 by Draveness 高阶 </description>
     </item>
     
@@ -176,6 +201,24 @@ golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的
       
       <guid>https://ikingye.github.io/study-go/docs/design/type/</guid>
       <description>Go 类型系统 Underlying Type  每一个类型都有自己的 Underlying Type  如果 T 是 Pre-declared type 或者 Type Literal，它们对应的 Underlying Type 就是自身 T  比如 type T int 的 Underlying Type 是 int  int 是 Pre-declared   type T map[int]string 的 Underlying Type 是 map[int]string  map[int]string 是 Type Literal     否则 T 的 Underlying Type 是 T 定义时引用的类型的 Underlying Type    Underlying Type 相同 如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：</description>
+    </item>
+    
+    <item>
+      <title>切片</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/type/slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/slice/</guid>
+      <description>Go 切片 </description>
+    </item>
+    
+    <item>
+      <title>数组</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/type/array/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/array/</guid>
+      <description>Go 数组 </description>
     </item>
     
     <item>
@@ -236,6 +279,15 @@ chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt
       <description>select Go 的 选择器（select） 让你可以同时等待多个通道操作。
 将协程、通道和选择器结合，是 Go 的一个强大特性。
 // 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string) // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() { time.Sleep(1 * time.Second) c1 &amp;lt;- &amp;#34;one&amp;#34; }() go func() { time.Sleep(2 * time.Second) c2 &amp;lt;- &amp;#34;two&amp;#34; }() // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &amp;lt; 2; i++ { select { case msg1 := &amp;lt;-c1: fmt.Println(&amp;#34;received&amp;#34;, msg1) case msg2 := &amp;lt;-c2: fmt.</description>
+    </item>
+    
+    <item>
+      <title>Cond</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/lib/std/sync/cond/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/lib/std/sync/cond/</guid>
+      <description>Cond type Cond struct { // L is held while observing or changing the condition 	L Locker // contains filtered or unexported fields } func (c *Cond) Broadcast() func (c *Cond) Signal() func (c *Cond) Wait()  条件  一个条件一定要有一个信号   信号  wait 等待的是信号 signal 发送的是信号 一个信号可以对应到多个条件    </description>
     </item>
     
     <item>

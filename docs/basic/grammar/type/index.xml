@@ -10,6 +10,24 @@
     
     
     <item>
+      <title>切片</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/type/slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/slice/</guid>
+      <description>Go 切片 </description>
+    </item>
+    
+    <item>
+      <title>数组</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/type/array/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/array/</guid>
+      <description>Go 数组 </description>
+    </item>
+    
+    <item>
       <title>Interface</title>
       <link>https://ikingye.github.io/study-go/docs/basic/grammar/type/interface/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

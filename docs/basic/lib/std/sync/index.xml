@@ -10,6 +10,15 @@
     
     
     <item>
+      <title>Cond</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/lib/std/sync/cond/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/lib/std/sync/cond/</guid>
+      <description>Cond type Cond struct { // L is held while observing or changing the condition 	L Locker // contains filtered or unexported fields } func (c *Cond) Broadcast() func (c *Cond) Signal() func (c *Cond) Wait()  条件  一个条件一定要有一个信号   信号  wait 等待的是信号 signal 发送的是信号 一个信号可以对应到多个条件    </description>
+    </item>
+    
+    <item>
       <title>Mutex</title>
       <link>https://ikingye.github.io/study-go/docs/basic/lib/std/sync/mutex/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
