@@ -49,5 +49,14 @@ golang/glog  Leveled execution logs for Go</description>
       <description>Go 最佳实践 </description>
     </item>
     
+    <item>
+      <title>测试</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/practice/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/practice/test/</guid>
+      <description>Go 测试 开源实现 onsi/ginkgo  BDD Testing Framework for Go</description>
+    </item>
+    
   </channel>
 </rss>
