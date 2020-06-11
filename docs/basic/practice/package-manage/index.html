@@ -4,12 +4,14 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=""><meta property="og:title" content="Categories" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/categories/" />
+<meta name="description" content="包管理 vendor modules GO111MODULE 为 on 使用 modules 功能，这种模式下，$GOPATH 不再作为 build 时导入的角色， 依赖包会存放在 $GOPATH/pkg/mod 目录下。
+GO111MODULE 为 off  优先使用 vendor 目录下面的包， 如果 vendor 下面没有搜索到，再搜索 $GOPATH/src 下面的包， 如果 $GOPATH 下面没有搜索到，那么搜索 $GOROOT/src 下面的包  "><meta property="og:title" content="包管理" />
+<meta property="og:description" content="包管理 vendor modules GO111MODULE 为 on 使用 modules 功能，这种模式下，$GOPATH 不再作为 build 时导入的角色， 依赖包会存放在 $GOPATH/pkg/mod 目录下。
+GO111MODULE 为 off  优先使用 vendor 目录下面的包， 如果 vendor 下面没有搜索到，再搜索 $GOPATH/src 下面的包， 如果 $GOPATH 下面没有搜索到，那么搜索 $GOROOT/src 下面的包  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/practice/package-manage/" />
 
-<title>Categories | Go 学习笔记</title>
+<title>包管理 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -18,7 +20,6 @@
 
 <script defer src="/study-go/en.search.min.2d004bf850b04e5b17c98f3a3e29dcfb4663775f02d2cf056b5434934636897f.js" integrity="sha256-LQBL&#43;FCwTlsXyY86Pinc&#43;0Zjd18C0s8Fa1Q0k0Y2iX8="></script>
 
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/categories/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -154,6 +155,187 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/practice/spec/" class="collapsed ">编程规范</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/command/" class="">Go 命令</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/package-manage/" class="active">包管理</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/compile/" class="">编译</a>
+  
+
+</li>
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/practice/pattern/" class="collapsed ">Go 设计模式</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/practice/algs/" class="collapsed ">Go 算法实现</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/practice/snippet/" class="collapsed ">代码片段</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/practice/version/" class="collapsed ">版本</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/log/" class="">日志</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/best/" class="">最佳实践</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/test/" class="">测试</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
 
 
 
@@ -393,7 +575,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Categories</strong>
+  <strong>包管理</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -405,27 +587,19 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" class="hidden" id="toc-control" />
     <aside class="hidden clearfix">
       
-  <nav>
+  <nav id="TableOfContents">
   <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
+    <li><a href="#包管理">包管理</a>
       <ul>
-      
+        <li><a href="#vendor">vendor</a></li>
+        <li><a href="#modules">modules</a>
+          <ul>
+            <li><a href="#go111module-为-on">GO111MODULE 为 on</a></li>
+            <li><a href="#go111module-为-off">GO111MODULE 为 off</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-      </ul>
-    </li>
-    
-  
   </ul>
 </nav>
 
@@ -437,10 +611,18 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-<article class="markdown">
-  <h1>Categories</h1>
-  
-  
+  <article class="markdown"><h1 id="包管理">包管理</h1>
+<h2 id="vendor">vendor</h2>
+<h2 id="modules">modules</h2>
+<h3 id="go111module-为-on">GO111MODULE 为 on</h3>
+<p>使用 modules 功能，这种模式下，<code>$GOPATH</code> 不再作为 build 时导入的角色，
+依赖包会存放在 <code>$GOPATH/pkg/mod</code> 目录下。</p>
+<h3 id="go111module-为-off">GO111MODULE 为 off</h3>
+<ol>
+<li>优先使用 <code>vendor</code> 目录下面的包，</li>
+<li>如果 <code>vendor</code> 下面没有搜索到，再搜索 <code>$GOPATH/src</code> 下面的包，</li>
+<li>如果 <code>$GOPATH</code> 下面没有搜索到，那么搜索 <code>$GOROOT/src</code> 下面的包</li>
+</ol>
 </article>
  
       
@@ -461,6 +643,17 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+<script src="https://utteranc.es/client.js"
+  repo="ikingye/study-go"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -469,27 +662,19 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav>
+  <nav id="TableOfContents">
   <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
+    <li><a href="#包管理">包管理</a>
       <ul>
-      
+        <li><a href="#vendor">vendor</a></li>
+        <li><a href="#modules">modules</a>
+          <ul>
+            <li><a href="#go111module-为-on">GO111MODULE 为 on</a></li>
+            <li><a href="#go111module-为-off">GO111MODULE 为 off</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-      </ul>
-    </li>
-    
-  
   </ul>
 </nav>
 

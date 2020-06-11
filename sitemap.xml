@@ -3,6 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/quick/</loc>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/lib/std/sort/</loc>
     <lastmod>2020-06-10T15:16:37+08:00</lastmod>
   </url>
@@ -130,6 +134,10 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/grammar/type/slice/</loc>
     <lastmod>2020-06-10T15:16:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/practice/package-manage/</loc>
   </url>
   
   <url>

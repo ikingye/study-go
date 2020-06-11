@@ -15,9 +15,19 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/practice/command/</guid>
-      <description>Go 命令 go get go get [-d] [-f] [-t] [-u] [-v] [-fix] [-insecure] [build flags] [packages] go get -d go get -d library 表示只下载，不安装
-go get == go install go get -d == go list The -d flag instructs get to download the source code needed to build the named packages, including downloading necessary dependencies, but not to build and install them.
-With no package arguments, &amp;lsquo;go get&amp;rsquo; applies to Go package in the current directory, if any.</description>
+      <description>Go 命令 go get 等于 go get -d 加 go install
+go get -d 只下载不安装 -u 强制使用网络去更新包和它的依赖包 -f 只有在你包含了 -u 参数的时候才有效，不让 -u 去验证 import 中的每一个都已经获取了，这对于本地 fork 的包特别有用 -v 显示执行的命令 -t 同时也下载需要为运行测试所需要的包 -fix 在获取源码之后先运行 fix，然后再去做其他的事情 -insecure 允许使用不安全的 HTTP 方式进行下载操作 go get 后面不带参数时  go get 等同于 go install go get -d 等同于 go list  参考：
+ What is the difference between go get and go install?   go install  第一步是生成结果文件（可执行文件或者 .</description>
+    </item>
+    
+    <item>
+      <title>包管理</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/practice/package-manage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/practice/package-manage/</guid>
+      <description>包管理 vendor modules GO111MODULE 为 on 使用 modules 功能，这种模式下，$GOPATH 不再作为 build 时导入的角色， 依赖包会存放在 $GOPATH/pkg/mod 目录下。
+GO111MODULE 为 off  优先使用 vendor 目录下面的包， 如果 vendor 下面没有搜索到，再搜索 $GOPATH/src 下面的包， 如果 $GOPATH 下面没有搜索到，那么搜索 $GOROOT/src 下面的包  </description>
     </item>
     
     <item>

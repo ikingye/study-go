@@ -10,6 +10,20 @@
     
     
     <item>
+      <title>Go 快速上手</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/quick/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/quick/</guid>
+      <description>Go 快速上手 Go 环境 GOROOT GOROOT: 指定安装 GO 的根目录
+Go 1.0 之后，go tool 利用 GOROOT 查找 Go 编译器（保存在 $GOROOT/pkg/tool/$GOOS_$GOARCH） 和标准库（在 $GOROOT/pkg/$GOOS_$GOARCH）
+可以将 GOROOT 理解为 Java 的 JAVA_HOME。
+我们不应该设置 GOROOT，是因为 Go 工具链已经内置了正确的值。 除非：
+ 如果你是 Linux、FreeBSD 或者 OS X 用户，下载了 zip 和 tarball 的二进制包安装环境。这些二进制的默认环境位于 /usr/local/go，建议你将 Go 安装到这个位置。如果选择不这么做，就必须设置到你指定的目录下。 如果你是 Windows 用户，使用 zip 二进制包安装，默认的 GOROOT 在 C:\Go 目录下。如果你将 Go 安装在其他位置，请设置 GOROOT 到指定的目录。  GOPATH GOPATH: go 包的位置
+GOOS vs GOARCH 随着 go tool 的引入，Go 1.</description>
+    </item>
+    
+    <item>
       <title>defer</title>
       <link>https://ikingye.github.io/study-go/docs/basic/grammar/defer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
