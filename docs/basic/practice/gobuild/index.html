@@ -4,14 +4,16 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="编译 交叉编译 golang 交叉编译很简单的，只要设置几个环境变量就可以了
-# mac上编译linux和windows二进制 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # linux上编译mac和windows二进制 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # windows上编译mac和linux二进制 SET CGO_ENABLED=0 SET GOOS=darwin SET GOARCH=amd64 go build main.go SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build main.go "><meta property="og:title" content="编译" />
-<meta property="og:description" content="编译 交叉编译 golang 交叉编译很简单的，只要设置几个环境变量就可以了
-# mac上编译linux和windows二进制 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # linux上编译mac和windows二进制 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # windows上编译mac和linux二进制 SET CGO_ENABLED=0 SET GOOS=darwin SET GOARCH=amd64 go build main.go SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build main.go " />
+<meta name="description" content="Go 热编译 Go 语言热编译工具 caixw/gobuild  gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。
+gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示 gobuild 和 Go 程序的版本信息； -r 是否搜索子目录，默认为 true； -i 是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示； -o 执行编译后的可执行文件名； -x 传递给编译程序的参数； -ext 需要监视的扩展名，默认值为&#34;go&#34;，区分大小写，会去掉每个扩展名的首尾空格。 若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件； -main 指定需要编译的文件，默认为&#34;&#34;。 dependents: 指定其它依赖的目录，只能出现在命令的尾部。 penggy/gobuild  EasyDarwin 依赖
+# go tools go get -u -v github.com/kardianos/govendor go get -u -v github.com/penggy/gobuild # npm tools npm i -g apidoc npm i -g rimraf "><meta property="og:title" content="Go 热编译" />
+<meta property="og:description" content="Go 热编译 Go 语言热编译工具 caixw/gobuild  gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。
+gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示 gobuild 和 Go 程序的版本信息； -r 是否搜索子目录，默认为 true； -i 是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示； -o 执行编译后的可执行文件名； -x 传递给编译程序的参数； -ext 需要监视的扩展名，默认值为&#34;go&#34;，区分大小写，会去掉每个扩展名的首尾空格。 若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件； -main 指定需要编译的文件，默认为&#34;&#34;。 dependents: 指定其它依赖的目录，只能出现在命令的尾部。 penggy/gobuild  EasyDarwin 依赖
+# go tools go get -u -v github.com/kardianos/govendor go get -u -v github.com/penggy/gobuild # npm tools npm i -g apidoc npm i -g rimraf " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/practice/compile/" />
-<meta property="article:modified_time" content="2020-04-16T22:38:37+08:00" />
-<title>编译 | Go 学习笔记</title>
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/practice/gobuild/" />
+
+<title>Go 热编译 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -196,7 +198,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
 
   
-  <a href="/study-go/docs/basic/practice/gobuild/" class="">Go 热编译</a>
+  <a href="/study-go/docs/basic/practice/gobuild/" class="active">Go 热编译</a>
   
 
 </li>
@@ -216,7 +218,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
 
   
-  <a href="/study-go/docs/basic/practice/compile/" class="active">编译</a>
+  <a href="/study-go/docs/basic/practice/compile/" class="">编译</a>
   
 
 </li>
@@ -585,7 +587,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>编译</strong>
+  <strong>Go 热编译</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -599,9 +601,17 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#编译">编译</a>
+    <li><a href="#go-热编译">Go 热编译</a>
       <ul>
-        <li><a href="#交叉编译">交叉编译</a></li>
+        <li><a href="#go-语言热编译工具">Go 语言热编译工具</a>
+          <ul>
+            <li><a href="#caixwgobuildhttpsgithubcomcaixwgobuild-github-starshttpsimgshieldsiogithubstarscaixwgobuildsvg"><a href="https://github.com/caixw/gobuild">caixw/gobuild</a> <img src="https://img.shields.io/github/stars/caixw/gobuild.svg" alt="Github stars"></a>
+              <ul>
+                <li><a href="#penggygobuildhttpsgithubcompenggygobuild-github-starshttpsimgshieldsiogithubstarspenggygobuildsvg"><a href="https://github.com/penggy/gobuild">penggy/gobuild</a> <img src="https://img.shields.io/github/stars/penggy/gobuild.svg" alt="Github stars"></a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -615,20 +625,34 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="编译">编译</h1>
-<h2 id="交叉编译">交叉编译</h2>
-<p>golang 交叉编译很简单的，只要设置几个环境变量就可以了</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># mac上编译linux和windows二进制</span>
-CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>linux GOARCH<span style="color:#f92672">=</span>amd64 go build
-CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>windows GOARCH<span style="color:#f92672">=</span>amd64 go build
+  <article class="markdown"><h1 id="go-热编译">Go 热编译</h1>
+<h2 id="go-语言热编译工具">Go 语言热编译工具</h2>
+<h3 id="caixwgobuildhttpsgithubcomcaixwgobuild-github-starshttpsimgshieldsiogithubstarscaixwgobuildsvg"><a href="https://github.com/caixw/gobuild">caixw/gobuild</a> <img src="https://img.shields.io/github/stars/caixw/gobuild.svg" alt="Github stars" /></h3>
+<p>gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gobuild <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>dependents<span style="color:#f92672">]</span>
 
-<span style="color:#75715e"># linux上编译mac和windows二进制</span>
-CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>darwin GOARCH<span style="color:#f92672">=</span>amd64 go build
-CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>windows GOARCH<span style="color:#f92672">=</span>amd64 go build
+options:
+ -h    显示当前帮助信息；
+ -v    显示 gobuild 和 Go 程序的版本信息；
+ -r    是否搜索子目录，默认为 true；
+ -i    是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示；
+ -o    执行编译后的可执行文件名；
+ -x    传递给编译程序的参数；
+ -ext  需要监视的扩展名，默认值为<span style="color:#e6db74">&#34;go&#34;</span>，区分大小写，会去掉每个扩展名的首尾空格。
+       若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件；
+ -main 指定需要编译的文件，默认为<span style="color:#e6db74">&#34;&#34;</span>。
 
-<span style="color:#75715e"># windows上编译mac和linux二进制</span>
-SET CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> SET GOOS<span style="color:#f92672">=</span>darwin SET GOARCH<span style="color:#f92672">=</span>amd64 go build main.go
-SET CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> SET GOOS<span style="color:#f92672">=</span>linux SET GOARCH<span style="color:#f92672">=</span>amd64 go build main.go
+dependents:
+ 指定其它依赖的目录，只能出现在命令的尾部。
+</code></pre></div><h4 id="penggygobuildhttpsgithubcompenggygobuild-github-starshttpsimgshieldsiogithubstarspenggygobuildsvg"><a href="https://github.com/penggy/gobuild">penggy/gobuild</a> <img src="https://img.shields.io/github/stars/penggy/gobuild.svg" alt="Github stars" /></h4>
+<p>EasyDarwin 依赖</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># go tools</span>
+go get -u -v github.com/kardianos/govendor
+go get -u -v github.com/penggy/gobuild
+
+<span style="color:#75715e"># npm tools</span>
+npm i -g apidoc
+npm i -g rimraf
 </code></pre></div></article>
  
       
@@ -638,14 +662,6 @@ SET CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/6107642e7b756afcb637327b1da5641964ca6408" title='Last modified by yewang | 2020-04-16' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-04-16</span>
-    </a>
-  </div>
 
 
 
@@ -678,9 +694,17 @@ SET CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#编译">编译</a>
+    <li><a href="#go-热编译">Go 热编译</a>
       <ul>
-        <li><a href="#交叉编译">交叉编译</a></li>
+        <li><a href="#go-语言热编译工具">Go 语言热编译工具</a>
+          <ul>
+            <li><a href="#caixwgobuildhttpsgithubcomcaixwgobuild-github-starshttpsimgshieldsiogithubstarscaixwgobuildsvg"><a href="https://github.com/caixw/gobuild">caixw/gobuild</a> <img src="https://img.shields.io/github/stars/caixw/gobuild.svg" alt="Github stars"></a>
+              <ul>
+                <li><a href="#penggygobuildhttpsgithubcompenggygobuild-github-starshttpsimgshieldsiogithubstarspenggygobuildsvg"><a href="https://github.com/penggy/gobuild">penggy/gobuild</a> <img src="https://img.shields.io/github/stars/penggy/gobuild.svg" alt="Github stars"></a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
