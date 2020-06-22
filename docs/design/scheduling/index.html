@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 调度 参考 Scheduling In Go  Scheduling In Go : Part I - OS Scheduler Scheduling In Go : Part II - Go Scheduler Scheduling In Go : Part III - Concurrency  Garbage Collection In Go  Garbage Collection In Go : Part I - Semantics Garbage Collection In Go : Part II - GC Traces Garbage Collection In Go : Part III - GC Pacing  "><meta property="og:title" content="Go 调度" />
-<meta property="og:description" content="Go 调度 参考 Scheduling In Go  Scheduling In Go : Part I - OS Scheduler Scheduling In Go : Part II - Go Scheduler Scheduling In Go : Part III - Concurrency  Garbage Collection In Go  Garbage Collection In Go : Part I - Semantics Garbage Collection In Go : Part II - GC Traces Garbage Collection In Go : Part III - GC Pacing  " />
+<meta name="description" content="Go 调度 Go 调度器的发展  单线程调度器・0.x  只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成；   多线程调度器・1.0  允许运行多线程的程序； 全局锁导致竞争严重；   任务窃取调度器・1.1  引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；   抢占式调度器・1.2 ~ 至今  基于协作的抢占式调度器 - 1.2 ~ 1.13  通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；   基于信号的抢占式调度器 - 1.14 ~ 至今  实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况；     非均匀存储访问调度器・提案  对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程；    除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。"><meta property="og:title" content="Go 调度" />
+<meta property="og:description" content="Go 调度 Go 调度器的发展  单线程调度器・0.x  只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成；   多线程调度器・1.0  允许运行多线程的程序； 全局锁导致竞争严重；   任务窃取调度器・1.1  引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；   抢占式调度器・1.2 ~ 至今  基于协作的抢占式调度器 - 1.2 ~ 1.13  通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；   基于信号的抢占式调度器 - 1.14 ~ 至今  实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况；     非均匀存储访问调度器・提案  对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程；    除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/design/scheduling/" />
 <meta property="article:modified_time" content="2020-04-16T22:38:37+08:00" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.520f18d271f146139848cda52c6b27fefdcfe0d1767743a2e0044cde5bc4a4d5.js" integrity="sha256-Ug8Y0nHxRhOYSM2lLGsn/v3P4NF2d0Oi4ARM3lvEpNU="></script>
+<script defer src="/study-go/en.search.min.e57e6e410786657c807772a0f2c0283bf7b1eeffad901b207724eb4ca03f5c9f.js" integrity="sha256-5X5uQQeGZXyAd3Kg8sAoO/ex7v&#43;tkBsgdyTrTKA/XJ8="></script>
 
 <!--
 Made with Book Theme
@@ -408,6 +408,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#go-调度">Go 调度</a>
       <ul>
+        <li><a href="#go-调度器的发展">Go 调度器的发展</a></li>
         <li><a href="#参考">参考</a>
           <ul>
             <li><a href="#scheduling-in-gohttpswwwardanlabscomblog201808scheduling-in-go-part1html"><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html">Scheduling In Go</a></a></li>
@@ -428,7 +429,58 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="go-调度">Go 调度</h1>
+<h2 id="go-调度器的发展">Go 调度器的发展</h2>
+<ul>
+<li>单线程调度器・<a href="https://github.com/golang/go/blob/96824000ed89d13665f6f24ddc10b3bf812e7f47/src/runtime/proc.c">0.x</a>
+<ul>
+<li>只包含 40 多行代码；</li>
+<li>程序中只能存在一个活跃线程，由 G-M 模型组成；</li>
+</ul>
+</li>
+<li>多线程调度器・<a href="https://github.com/golang/go/blob/go1.0.1/src/pkg/runtime/proc.c">1.0</a>
+<ul>
+<li>允许运行多线程的程序；</li>
+<li>全局锁导致竞争严重；</li>
+</ul>
+</li>
+<li>任务窃取调度器・<a href="https://github.com/golang/go/blob/779c45a50700bda0f6ec98429720802e6c1624e8/src/pkg/runtime/proc.c">1.1</a>
+<ul>
+<li>引入了处理器 P，构成了目前的  G-M-P  模型；</li>
+<li>在处理器 P 的基础上实现了基于工作窃取的调度器；</li>
+<li>在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题；</li>
+<li>时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；</li>
+</ul>
+</li>
+<li>抢占式调度器・<a href="https://github.com/golang/go/blob/go1.2/src/pkg/runtime/proc.c">1.2</a> ~ 至今
+<ul>
+<li>基于协作的抢占式调度器 - 1.2 ~ 1.13
+<ul>
+<li>通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度；</li>
+<li>Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；</li>
+</ul>
+</li>
+<li>基于信号的抢占式调度器 - 1.14 ~ 至今
+<ul>
+<li>实现基于信号的真抢占式调度；</li>
+<li>垃圾回收在扫描栈时会触发抢占调度；</li>
+<li>抢占的时间点不够多，还不能覆盖全部的边缘情况；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>非均匀存储访问调度器・提案
+<ul>
+<li>对运行时的各种资源进行分区；</li>
+<li>实现非常复杂，到今天还没有提上日程；</li>
+</ul>
+</li>
+</ul>
+<p>除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。</p>
+<hr>
 <h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-goroutine/">Go 语言调度器与 Goroutine 实现原理</a></li>
+</ul>
 <h3 id="scheduling-in-gohttpswwwardanlabscomblog201808scheduling-in-go-part1html"><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html">Scheduling In Go</a></h3>
 <ol>
 <li><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html">Scheduling In Go : Part I - OS Scheduler</a></li>
@@ -492,6 +544,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#go-调度">Go 调度</a>
       <ul>
+        <li><a href="#go-调度器的发展">Go 调度器的发展</a></li>
         <li><a href="#参考">参考</a>
           <ul>
             <li><a href="#scheduling-in-gohttpswwwardanlabscomblog201808scheduling-in-go-part1html"><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html">Scheduling In Go</a></a></li>
