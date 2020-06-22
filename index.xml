@@ -252,8 +252,11 @@ gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/practice/package-manage/</guid>
-      <description>包管理 vendor modules GO111MODULE 为 on 使用 modules 功能，这种模式下，$GOPATH 不再作为 build 时导入的角色， 依赖包会存放在 $GOPATH/pkg/mod 目录下。
-GO111MODULE 为 off  优先使用 vendor 目录下面的包， 如果 vendor 下面没有搜索到，再搜索 $GOPATH/src 下面的包， 如果 $GOPATH 下面没有搜索到，那么搜索 $GOROOT/src 下面的包  </description>
+      <description>包管理 Go 包管理概述 Go 1.4 及之前 所有的依赖包都是存放在 GOPATH 下，没有版本控制
+Go 1.5 每个项目的根目录下可以有一个 vendor 目录，里面存放了该项目的依赖的 package
+Go 1.10 及之前  必须设置 GOPATH 环境变量，且源代码必须存放在 GOPATH 下 拉取外部依赖包时，总是拉取最新的版本，无法指定需要的版本  设置 GOPATH 环境变量有两个原因：
+ 它规定了 go get 命令下载的依赖包的存储位置（$GOPATH/src） 通过设置 GOPATH，可以方便 Golang 计算出 import 的路径  Go 1.11 至 Go 1.12  默认使用的还是 GOPATH 的管理方式 运行 export GO111MODULE=on，使用 Go Modules  GO111MODULE 为 off
+ 优先使用 vendor 目录下面的包， 如果 vendor 下面没有搜索到，再搜索 $GOPATH/src 下面的包， 如果 $GOPATH 下面没有搜索到，那么搜索 $GOROOT/src 下面的包  Go 1.</description>
     </item>
     
     <item>
