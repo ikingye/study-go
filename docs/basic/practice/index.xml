@@ -32,6 +32,19 @@ gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示
     </item>
     
     <item>
+      <title>gopls</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/practice/gopls/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/practice/gopls/</guid>
+      <description>gopls gopls (pronounced: &amp;ldquo;go please&amp;rdquo;) is the official language server for the Go language.
+Go 扩展默认是使用大量的 Go 工具来提供各种功能的， 每个工具提供某个方面的能力，比如代码提示是依靠 gocode 的.
+不过微软在开发 VS Code 过程中，定义一种协议，语言服务器协议， Language Server Protocol.
+这可是个好东西，如果你需要开发编辑器或 IDE, 就不需要再为每种语言实现诸如自动完成，代码提示等功能了， 直接利用 语言服务器协议 就行了.
+gopls 就是官方的语言服务器，当前处于 alpha 状态.</description>
+    </item>
+    
+    <item>
       <title>包管理</title>
       <link>https://ikingye.github.io/study-go/docs/basic/practice/pm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

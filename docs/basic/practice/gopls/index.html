@@ -4,12 +4,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="进阶面试题 "><meta property="og:title" content="进阶" />
-<meta property="og:description" content="进阶面试题 " />
+<meta name="description" content="gopls gopls (pronounced: &ldquo;go please&rdquo;) is the official language server for the Go language.
+Go 扩展默认是使用大量的 Go 工具来提供各种功能的， 每个工具提供某个方面的能力，比如代码提示是依靠 gocode 的.
+不过微软在开发 VS Code 过程中，定义一种协议，语言服务器协议， Language Server Protocol.
+这可是个好东西，如果你需要开发编辑器或 IDE, 就不需要再为每种语言实现诸如自动完成，代码提示等功能了， 直接利用 语言服务器协议 就行了.
+gopls 就是官方的语言服务器，当前处于 alpha 状态."><meta property="og:title" content="gopls" />
+<meta property="og:description" content="gopls gopls (pronounced: &ldquo;go please&rdquo;) is the official language server for the Go language.
+Go 扩展默认是使用大量的 Go 工具来提供各种功能的， 每个工具提供某个方面的能力，比如代码提示是依靠 gocode 的.
+不过微软在开发 VS Code 过程中，定义一种协议，语言服务器协议， Language Server Protocol.
+这可是个好东西，如果你需要开发编辑器或 IDE, 就不需要再为每种语言实现诸如自动完成，代码提示等功能了， 直接利用 语言服务器协议 就行了.
+gopls 就是官方的语言服务器，当前处于 alpha 状态." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/appendix/interview/advanced/" />
-<meta property="article:modified_time" content="2020-04-17T00:53:48+08:00" />
-<title>进阶 | Go 学习笔记</title>
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/practice/gopls/" />
+
+<title>gopls | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -153,6 +161,207 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/practice/spec/" class="collapsed ">编程规范</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/command/" class="">Go 命令</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/gobuild/" class="">Go 热编译</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/gopls/" class="active">gopls</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/pm/" class="">包管理</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/compile/" class="">编译</a>
+  
+
+</li>
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/practice/pattern/" class="collapsed ">Go 设计模式</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/practice/algs/" class="collapsed ">Go 算法实现</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/practice/snippet/" class="collapsed ">代码片段</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/practice/version/" class="collapsed ">版本</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/log/" class="">日志</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/best/" class="">最佳实践</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/practice/test/" class="">测试</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
 
 
 
@@ -334,42 +543,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/appendix/interview/basic/" class="">基础</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/appendix/interview/advanced/" class="active">进阶</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/appendix/interview/expert/" class="">高阶</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
-
 
 
   </li>
@@ -428,7 +601,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>进阶</strong>
+  <strong>gopls</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -442,7 +615,7 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#进阶面试题">进阶面试题</a></li>
+    <li><a href="#goplshttpsgithubcomgolangtoolsblobmastergoplsreadmemd"><a href="https://github.com/golang/tools/blob/master/gopls/README.md">gopls</a></a></li>
   </ul>
 </nav>
 
@@ -454,7 +627,16 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="进阶面试题">进阶面试题</h1>
+  <article class="markdown"><h1 id="goplshttpsgithubcomgolangtoolsblobmastergoplsreadmemd"><a href="https://github.com/golang/tools/blob/master/gopls/README.md">gopls</a></h1>
+<p>gopls (pronounced: &ldquo;go please&rdquo;) is the official <a href="https://langserver.org/">language server</a> for the Go language.</p>
+<p>Go 扩展默认是使用大量的 Go 工具来提供各种功能的，
+每个工具提供某个方面的能力，比如代码提示是依靠 gocode 的.</p>
+<p>不过微软在开发 VS Code 过程中，定义一种协议，语言服务器协议，
+Language Server Protocol.</p>
+<p>这可是个好东西，如果你需要开发编辑器或 IDE,
+就不需要再为每种语言实现诸如自动完成，代码提示等功能了，
+直接利用 语言服务器协议 就行了.</p>
+<p>gopls 就是官方的语言服务器，当前处于 alpha 状态.</p>
 </article>
  
       
@@ -464,14 +646,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/87184311f28310bdfa6427bfa11de6e6a34cc341" title='Last modified by yewang | 2020-04-17' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-04-17</span>
-    </a>
-  </div>
 
 
 
@@ -504,7 +678,7 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#进阶面试题">进阶面试题</a></li>
+    <li><a href="#goplshttpsgithubcomgolangtoolsblobmastergoplsreadmemd"><a href="https://github.com/golang/tools/blob/master/gopls/README.md">gopls</a></a></li>
   </ul>
 </nav>
 
