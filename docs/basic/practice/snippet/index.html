@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="代码片段 slice // 最前面插入一个元素 x = append([]int{1}, x...) // An allocation is only necessary when there is no spare slice capacity. x = append(x, 0) copy(x[1:], x) x[0] = 1 参考： How to prepend int to slice"><meta property="og:title" content="代码片段" />
+<meta name="description" content="代码片段 slice // 最前面插入一个元素 x = append([]int{1}, x...) // An allocation is only necessary when there is no spare slice capacity. x = append(x, 0) copy(x[1:], x) x[0] = 1 参考：
+ How to prepend int to slice  "><meta property="og:title" content="代码片段" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/practice/snippet/" />
@@ -16,7 +17,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.d59a0f620762eab30d884a822fe45794065f9496dd8f9da1f93559b90b312c16.js" integrity="sha256-1ZoPYgdi6rMNiEqCL&#43;RXlAZflJbdj52h&#43;TVZuQsxLBY="></script>
+<script defer src="/study-go/en.search.min.3001c01d96d32a1d71adb130b9c34959a5662d24a931069cdabb947dd3a4cee0.js" integrity="sha256-MAHAHZbTKh1xrbEwucNJWaVmLSSpMQac2ruUfdOkzuA="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/practice/snippet/index.xml" title="Go 学习笔记" />
 <!--
@@ -639,8 +640,10 @@ https://github.com/alex-shpak/hugo-book
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">x</span> = append(<span style="color:#a6e22e">x</span>, <span style="color:#ae81ff">0</span>)
 copy(<span style="color:#a6e22e">x</span>[<span style="color:#ae81ff">1</span>:], <span style="color:#a6e22e">x</span>)
 <span style="color:#a6e22e">x</span>[<span style="color:#ae81ff">0</span>] = <span style="color:#ae81ff">1</span>
-</code></pre></div><p>参考：
-<a href="https://stackoverflow.com/questions/53737435/how-to-prepend-int-to-slice">How to prepend int to slice</a></p>
+</code></pre></div><p>参考：</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/53737435/how-to-prepend-int-to-slice">How to prepend int to slice</a></li>
+</ul>
 </article>
  
       
