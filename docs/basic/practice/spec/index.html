@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 编程规范 代码组织 建议文件按以下顺序进行布局：
+<meta name="description" content="Go 编程规范 代码组织 目录 /cmd # 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的. # 把你真正的应用代码放在 /internal/app 目录 (比如: /internal/app/myapp) 把你的应用间共享的代码放在 /internal/pkg 目录 (比如: internal/pkg/myprivlib) /internal /pkg 不应该存在的目录 /src 参考：
+ golang-standards/project-layout    文件内容 建议文件按以下顺序进行布局：
  General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。 package: 当前 package 定义 imports: 包含的头文件 Constants: 常量 Typedefs: 类型定义 Globals: 全局变量定义 functions: 函数实现   语言规范 申明 slice 申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式
 // GOOD: var t []string // BAD: t := []string{} embedding  embedding 只用于 &ldquo;is a&rdquo; 的语义下，而不用于 &ldquo;has a&rdquo; 的语义下  语义上 embedding 是一种继承关系，而不是成员关系   一个定义内，多于一个的 embedding 尽量少用  一个定义内有多个 embedding，则很难判断某个成员变量或函数是从哪里继承得到的 一个定义内有多个 embedding，危害和在 python 中使用 from xxx import * 是类似的    type Automobile struct { // ."><meta property="og:title" content="编程规范" />
 <meta property="og:description" content="" />
@@ -18,7 +19,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.3001c01d96d32a1d71adb130b9c34959a5662d24a931069cdabb947dd3a4cee0.js" integrity="sha256-MAHAHZbTKh1xrbEwucNJWaVmLSSpMQac2ruUfdOkzuA="></script>
+<script defer src="/study-go/en.search.min.c067f2cf518bd41a7bf84524321eaf051246033517fa311579830328aacd0e51.js" integrity="sha256-wGfyz1GL1Bp7&#43;EUkMh6vBRJGAzUX&#43;jEVeYMDKKrNDlE="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/practice/spec/index.xml" title="Go 学习笔记" />
 <!--
@@ -628,7 +629,16 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#go-编程规范">Go 编程规范</a>
       <ul>
-        <li><a href="#代码组织">代码组织</a></li>
+        <li><a href="#代码组织">代码组织</a>
+          <ul>
+            <li><a href="#目录">目录</a>
+              <ul>
+                <li><a href="#不应该存在的目录">不应该存在的目录</a></li>
+              </ul>
+            </li>
+            <li><a href="#文件内容">文件内容</a></li>
+          </ul>
+        </li>
         <li><a href="#语言规范">语言规范</a>
           <ul>
             <li><a href="#申明-slice">申明 slice</a></li>
@@ -669,6 +679,23 @@ https://github.com/alex-shpak/hugo-book
       
   <article class="markdown"><h1 id="go-编程规范">Go 编程规范</h1>
 <h2 id="代码组织">代码组织</h2>
+<h3 id="目录">目录</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/cmd
+
+<span style="color:#75715e"># 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的.</span>
+<span style="color:#75715e"># 把你真正的应用代码放在 /internal/app 目录 (比如: /internal/app/myapp) 把你的应用间共享的代码放在 /internal/pkg 目录 (比如: internal/pkg/myprivlib)</span>
+/internal
+
+/pkg
+
+</code></pre></div><h4 id="不应该存在的目录">不应该存在的目录</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/src
+</code></pre></div><p>参考：</p>
+<ul>
+<li><a href="https://github.com/golang-standards/project-layout">golang-standards/project-layout</a> <img src="https://img.shields.io/github/stars/golang-standards/project-layout.svg" alt="Github stars" /></li>
+</ul>
+<hr>
+<h3 id="文件内容">文件内容</h3>
 <p>建议文件按以下顺序进行布局：</p>
 <ul>
 <li>General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。</li>
@@ -897,7 +924,16 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#go-编程规范">Go 编程规范</a>
       <ul>
-        <li><a href="#代码组织">代码组织</a></li>
+        <li><a href="#代码组织">代码组织</a>
+          <ul>
+            <li><a href="#目录">目录</a>
+              <ul>
+                <li><a href="#不应该存在的目录">不应该存在的目录</a></li>
+              </ul>
+            </li>
+            <li><a href="#文件内容">文件内容</a></li>
+          </ul>
+        </li>
         <li><a href="#语言规范">语言规范</a>
           <ul>
             <li><a href="#申明-slice">申明 slice</a></li>
