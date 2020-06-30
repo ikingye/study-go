@@ -4,12 +4,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 算法实现 "><meta property="og:title" content="Go 算法实现" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/practice/algs/" />
+<meta name="description" content="Go 日志 开源实现 sirupsen/logrus  Structured, pluggable logging for Go.
+uber-go/zap  Blazing fast, structured, leveled logging in Go.
+rs/zerolog  Zero Allocation JSON Logger
+apex/log (最新更新时间 2016) Structured logging package for Go.
+golang/glog (最新更新时间 2016) Leveled execution logs for Go"><meta property="og:title" content="日志" />
+<meta property="og:description" content="Go 日志 开源实现 sirupsen/logrus  Structured, pluggable logging for Go.
+uber-go/zap  Blazing fast, structured, leveled logging in Go.
+rs/zerolog  Zero Allocation JSON Logger
+apex/log (最新更新时间 2016) Structured logging package for Go.
+golang/glog (最新更新时间 2016) Leveled execution logs for Go" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/lib/log/" />
 
-<title>Go 算法实现 | Go 学习笔记</title>
+<title>日志 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -18,7 +26,6 @@
 
 <script defer src="/study-go/en.search.min.6e82e636c1b6fa54bf32e65c3f9e4a6f71ec99a56c85767e438631718666c144.js" integrity="sha256-boLmNsG2&#43;lS/MuZcP55Kb3HsmaVshXZ&#43;Q4YxcYZmwUQ="></script>
 
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/practice/algs/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -132,6 +139,55 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/lib/std/" class="collapsed ">标准库</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/lib/common/" class="">常用 package</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/lib/log/" class="active">日志</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
 
 
   </li>
@@ -154,203 +210,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/practice/spec/" class="collapsed ">编程规范</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/practice/command/" class="">Go 命令</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/practice/gobuild/" class="">Go 热编译</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/practice/gopls/" class="">gopls</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/practice/pm/" class="">包管理</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/practice/compile/" class="">编译</a>
-  
-
-</li>
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/practice/pattern/" class="collapsed ">Go 设计模式</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/practice/algs/" class="collapsed active">Go 算法实现</a>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/practice/snippet/" class="collapsed ">代码片段</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/practice/version/" class="collapsed ">版本</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/practice/best/" class="">最佳实践</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/practice/test/" class="">测试</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
 
 
 
@@ -590,7 +449,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Go 算法实现</strong>
+  <strong>日志</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -604,7 +463,19 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-算法实现">Go 算法实现</a></li>
+    <li><a href="#go-日志">Go 日志</a>
+      <ul>
+        <li><a href="#开源实现">开源实现</a>
+          <ul>
+            <li><a href="#sirupsenlogrushttpsgithubcomsirupsenlogrus-github-starshttpsimgshieldsiogithubstarssirupsenlogrussvg"><a href="https://github.com/sirupsen/logrus">sirupsen/logrus</a> <img src="https://img.shields.io/github/stars/sirupsen/logrus.svg" alt="Github stars"></a></li>
+            <li><a href="#uber-gozaphttpsgithubcomuber-gozap-github-starshttpsimgshieldsiogithubstarsuber-gozapsvg"><a href="https://github.com/uber-go/zap">uber-go/zap</a> <img src="https://img.shields.io/github/stars/uber-go/zap.svg" alt="Github stars"></a></li>
+            <li><a href="#rszerologhttpsgithubcomrszerolog-github-starshttpsimgshieldsiogithubstarsrszerologsvg"><a href="https://github.com/rs/zerolog">rs/zerolog</a> <img src="https://img.shields.io/github/stars/rs/zerolog.svg" alt="Github stars"></a></li>
+            <li><a href="#apexloghttpsgithubcomapexlog-github-starshttpsimgshieldsiogithubstarsapexlogsvg-最新更新时间-2016"><a href="https://github.com/apex/log">apex/log</a> <img src="https://img.shields.io/github/stars/apex/log.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
+            <li><a href="#golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg-最新更新时间-2016"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -616,7 +487,18 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="go-算法实现">Go 算法实现</h1>
+  <article class="markdown"><h1 id="go-日志">Go 日志</h1>
+<h2 id="开源实现">开源实现</h2>
+<h3 id="sirupsenlogrushttpsgithubcomsirupsenlogrus-github-starshttpsimgshieldsiogithubstarssirupsenlogrussvg"><a href="https://github.com/sirupsen/logrus">sirupsen/logrus</a> <img src="https://img.shields.io/github/stars/sirupsen/logrus.svg" alt="Github stars" /></h3>
+<p>Structured, pluggable logging for Go.</p>
+<h3 id="uber-gozaphttpsgithubcomuber-gozap-github-starshttpsimgshieldsiogithubstarsuber-gozapsvg"><a href="https://github.com/uber-go/zap">uber-go/zap</a> <img src="https://img.shields.io/github/stars/uber-go/zap.svg" alt="Github stars" /></h3>
+<p>Blazing fast, structured, leveled logging in Go.</p>
+<h3 id="rszerologhttpsgithubcomrszerolog-github-starshttpsimgshieldsiogithubstarsrszerologsvg"><a href="https://github.com/rs/zerolog">rs/zerolog</a> <img src="https://img.shields.io/github/stars/rs/zerolog.svg" alt="Github stars" /></h3>
+<p>Zero Allocation JSON Logger</p>
+<h3 id="apexloghttpsgithubcomapexlog-github-starshttpsimgshieldsiogithubstarsapexlogsvg-最新更新时间-2016"><a href="https://github.com/apex/log">apex/log</a> <img src="https://img.shields.io/github/stars/apex/log.svg" alt="Github stars" /> (最新更新时间 2016)</h3>
+<p>Structured logging package for Go.</p>
+<h3 id="golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg-最新更新时间-2016"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars" /> (最新更新时间 2016)</h3>
+<p>Leveled execution logs for Go</p>
 </article>
  
       
@@ -626,14 +508,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/8c1902bb2fcdd0a18b5bf0d18b70b203a23011aa" title='Last modified by yewang | 2020-06-07' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-06-07</span>
-    </a>
-  </div>
 
 
 
@@ -666,7 +540,19 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-算法实现">Go 算法实现</a></li>
+    <li><a href="#go-日志">Go 日志</a>
+      <ul>
+        <li><a href="#开源实现">开源实现</a>
+          <ul>
+            <li><a href="#sirupsenlogrushttpsgithubcomsirupsenlogrus-github-starshttpsimgshieldsiogithubstarssirupsenlogrussvg"><a href="https://github.com/sirupsen/logrus">sirupsen/logrus</a> <img src="https://img.shields.io/github/stars/sirupsen/logrus.svg" alt="Github stars"></a></li>
+            <li><a href="#uber-gozaphttpsgithubcomuber-gozap-github-starshttpsimgshieldsiogithubstarsuber-gozapsvg"><a href="https://github.com/uber-go/zap">uber-go/zap</a> <img src="https://img.shields.io/github/stars/uber-go/zap.svg" alt="Github stars"></a></li>
+            <li><a href="#rszerologhttpsgithubcomrszerolog-github-starshttpsimgshieldsiogithubstarsrszerologsvg"><a href="https://github.com/rs/zerolog">rs/zerolog</a> <img src="https://img.shields.io/github/stars/rs/zerolog.svg" alt="Github stars"></a></li>
+            <li><a href="#apexloghttpsgithubcomapexlog-github-starshttpsimgshieldsiogithubstarsapexlogsvg-最新更新时间-2016"><a href="https://github.com/apex/log">apex/log</a> <img src="https://img.shields.io/github/stars/apex/log.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
+            <li><a href="#golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg-最新更新时间-2016"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

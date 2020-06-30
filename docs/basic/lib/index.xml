@@ -22,5 +22,18 @@ quick start typically a Cobra-based application will follow the following organi
 package main import ( &amp;#34;{pathToYourApp}/cmd&amp;#34; ) func main() { cmd.Execute() } Ideally you place this in app/cmd/root.</description>
     </item>
     
+    <item>
+      <title>日志</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/lib/log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/lib/log/</guid>
+      <description>Go 日志 开源实现 sirupsen/logrus  Structured, pluggable logging for Go.
+uber-go/zap  Blazing fast, structured, leveled logging in Go.
+rs/zerolog  Zero Allocation JSON Logger
+apex/log (最新更新时间 2016) Structured logging package for Go.
+golang/glog (最新更新时间 2016) Leveled execution logs for Go</description>
+    </item>
+    
   </channel>
 </rss>
