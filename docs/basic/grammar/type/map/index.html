@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
 
 
-<script defer src="/study-go/en.search.min.6e82e636c1b6fa54bf32e65c3f9e4a6f71ec99a56c85767e438631718666c144.js" integrity="sha256-boLmNsG2&#43;lS/MuZcP55Kb3HsmaVshXZ&#43;Q4YxcYZmwUQ="></script>
+<script defer src="/study-go/en.search.min.b79c210a1ecf3a418aae48f9d42a8d83eac695edbc60971a728a5b1057630cdd.js" integrity="sha256-t5whCh7POkGKrkj51CqNg&#43;rGle28YJcacopbEFdjDN0="></script>
 
 <!--
 Made with Book Theme
@@ -624,7 +624,16 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#map">Map</a></li>
+    <li><a href="#map">Map</a>
+      <ul>
+        <li><a href="#删除-map-元素">删除 map 元素</a>
+          <ul>
+            <li><a href="#清空-map">清空 map</a></li>
+          </ul>
+        </li>
+        <li><a href="#获取-keys">获取 keys</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -650,6 +659,23 @@ https://github.com/alex-shpak/hugo-book
     }
     <span style="color:#f92672">...</span>
 }
+</code></pre></div><h2 id="删除-map-元素">删除 map 元素</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">delete(<span style="color:#66d9ef">map</span>, <span style="color:#a6e22e">key</span>)
+</code></pre></div><h3 id="清空-map">清空 map</h3>
+<p>Go 语言中并没有为 map 提供任何清空所有元素的函数、方法，
+清空 map 的唯一办法就是<strong>重新 make 一个新的 map</strong>，
+不用担心垃圾回收的效率，Go 语言中的并行垃圾回收效率比写一个清空函数要高效的多。</p>
+<hr>
+<h2 id="获取-keys">获取 keys</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">package main
+
+func main<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    mymap :<span style="color:#f92672">=</span> make<span style="color:#f92672">(</span>map<span style="color:#f92672">[</span>int<span style="color:#f92672">]</span>string<span style="color:#f92672">)</span>
+    keys :<span style="color:#f92672">=</span> make<span style="color:#f92672">([]</span>int, 0, len<span style="color:#f92672">(</span>mymap<span style="color:#f92672">))</span>
+    <span style="color:#66d9ef">for</span> k :<span style="color:#f92672">=</span> range mymap <span style="color:#f92672">{</span>
+        keys <span style="color:#f92672">=</span> append<span style="color:#f92672">(</span>keys, k<span style="color:#f92672">)</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
 </code></pre></div></article>
  
       
@@ -699,7 +725,16 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#map">Map</a></li>
+    <li><a href="#map">Map</a>
+      <ul>
+        <li><a href="#删除-map-元素">删除 map 元素</a>
+          <ul>
+            <li><a href="#清空-map">清空 map</a></li>
+          </ul>
+        </li>
+        <li><a href="#获取-keys">获取 keys</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
