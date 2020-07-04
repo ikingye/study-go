@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>3.1 数据类型 on Go 学习笔记</title>
+    <link>https://ikingye.github.io/study-go/docs/code/structure/</link>
+    <description>Recent content in 3.1 数据类型 on Go 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://ikingye.github.io/study-go/docs/code/structure/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>3.1 类型系统</title>
+      <link>https://ikingye.github.io/study-go/docs/code/structure/type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/code/structure/type/</guid>
+      <description>Go 类型系统 Underlying Type  每一个类型都有自己的 Underlying Type  如果 T 是 Pre-declared type 或者 Type Literal，它们对应的 Underlying Type 就是自身 T  比如 type T int 的 Underlying Type 是 int  int 是 Pre-declared   type T map[int]string 的 Underlying Type 是 map[int]string  map[int]string 是 Type Literal     否则 T 的 Underlying Type 是 T 定义时引用的类型的 Underlying Type    Underlying Type 相同 如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：</description>
+    </item>
+    
+  </channel>
+</rss>

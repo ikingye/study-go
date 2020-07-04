@@ -25,20 +25,20 @@ GOOS vs GOARCH 随着 go tool 的引入，Go 1.</description>
     
     <item>
       <title>sort</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/lib/std/sort/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/sort/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/lib/std/sort/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/sort/</guid>
       <description>sort 自定义排序 实现 Len、Less 和 Swap 方法
 // 有时候，我们可能想根据自然顺序以外的方式来对集合进行排序。 // 例如，假设我们要按字符串的长度而不是按字母顺序对它们进行排序。 // 这儿有一个在 Go 中自定义排序的示例。  package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sort&amp;#34; ) // 为了在 Go 中使用自定义函数进行排序，我们需要一个对应的类型。 // 我们在这里创建了一个 `byLength` 类型，它只是内建类型 `[]string` 的别名。 type byLength []string // 我们为该类型实现了 `sort.Interface` 接口的 `Len`、`Less` 和 `Swap` 方法， // 这样我们就可以使用 `sort` 包的通用 `Sort` 方法了， // `Len` 和 `Swap` 在各个类型中的实现都差不多， // `Less` 将控制实际的自定义排序逻辑。 // 在这个的例子中，我们想按字符串长度递增的顺序来排序， // 所以这里使用了 `len(s[i])` 和 `len(s[j])` 来实现 `Less`。 func (s byLength) Len() int { return len(s) } func (s byLength) Swap(i, j int) { s[i], s[j] = s[j], s[i] } func (s byLength) Less(i, j int) bool { return len(s[i]) &amp;lt; len(s[j]) } // 一切准备就绪后，我们就可以通过将切片 `fruits` 强转为 `byLength` 类型的切片， // 然后对该切片使用 `sort.</description>
     </item>
     
     <item>
       <title>百度</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/practice/spec/baidu/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/spec/baidu/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/practice/spec/baidu/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/spec/baidu/</guid>
       <description>百度 Golang 编码规范 V1.2 </description>
     </item>
     
@@ -53,10 +53,10 @@ GOOS vs GOARCH 随着 go tool 的引入，Go 1.</description>
     
     <item>
       <title>常用 package</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/lib/common/</link>
+      <link>https://ikingye.github.io/study-go/docs/advanced/lib/common/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/lib/common/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/advanced/lib/common/</guid>
       <description>Go 常用 package net imroc/req  Go 语言人性化 HTTP 请求库
  cmd spf13/cobra  A Commander for modern Go CLI interactions
 quick start typically a Cobra-based application will follow the following organizational structure:
@@ -83,6 +83,25 @@ package main import ( &amp;#34;{pathToYourApp}/cmd&amp;#34; ) func main() { cmd.
     </item>
     
     <item>
+      <title>3.1 类型系统</title>
+      <link>https://ikingye.github.io/study-go/docs/code/structure/type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/code/structure/type/</guid>
+      <description>Go 类型系统 Underlying Type  每一个类型都有自己的 Underlying Type  如果 T 是 Pre-declared type 或者 Type Literal，它们对应的 Underlying Type 就是自身 T  比如 type T int 的 Underlying Type 是 int  int 是 Pre-declared   type T map[int]string 的 Underlying Type 是 map[int]string  map[int]string 是 Type Literal     否则 T 的 Underlying Type 是 T 定义时引用的类型的 Underlying Type    Underlying Type 相同 如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：</description>
+    </item>
+    
+    <item>
+      <title>4.1 教程</title>
+      <link>https://ikingye.github.io/study-go/docs/appendix/tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/appendix/tutorial/</guid>
+      <description>Go 教程 基础    教程 说明 类型 评分     astaxie/build-web-application-with-golang  A golang ebook intro how to build a web with golang docs ★★★★   mmcgrana/gobyexample  Go by Example 中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/ docs ★★★★★                geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列
+golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.</description>
+    </item>
+    
+    <item>
       <title>defer</title>
       <link>https://ikingye.github.io/study-go/docs/basic/grammar/defer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -106,10 +125,10 @@ type error interface { Error() string } errors.New(&amp;#34;xxxx&amp;#34;) fmt.E
     
     <item>
       <title>Go 初始化</title>
-      <link>https://ikingye.github.io/study-go/docs/design/runtime/init/</link>
+      <link>https://ikingye.github.io/study-go/docs/code/runtime/init/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/design/runtime/init/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/code/runtime/init/</guid>
       <description>Go 初始化 golang 程序初始化先于 main 函数执行，由 runtime 进行初始化，初始化顺序如下：
  初始化导入的包（包的初始化顺序并不是按导入顺序（“从上到下”）执行的，runtime 需要解析包依赖关系，没有依赖的包最先初始化，与变量初始化依赖关系类似，参见 golang 变量的初始化）； 初始化包作用域的变量（该作用域的变量的初始化也并非按照 “从上到下、从左到右” 的顺序，runtime 解析变量依赖关系，没有依赖的变量最先初始化，参见 golang 变量的初始化）； 执行包的 init 函数；   变量初始化 -&amp;gt;init ()-&amp;gt;main () 由于 pack 包的初始化依赖 test_util，因此运行时先初始化 test_util 再初始化 pack 包；   同一个包不同源文件的 init 函数执行顺序，golang spec 没做说明  一般是源文件名称的字典序，但不能依赖这个假定     在每一个初始化周期，运行时（runtime）会挑选一个没有任何依赖的变量初始化  该过程一直持续到所有的变量均被初始化或者出现依赖嵌套的情形   同一个 package 下多个文件的变量初始化依赖也遵循相同的规则   变量初始化 不同作用域类型的变量初始化顺序不同
 函数作用域内的局部变量 初始化顺序：从左到右、从上到下
@@ -118,22 +137,11 @@ package 级别的变量 初始化顺序与初始化依赖有关
     </item>
     
     <item>
-      <title>Go 命令</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/practice/command/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/basic/practice/command/</guid>
-      <description>Go 命令 go get 等于 go get -d 加 go install
-go get -d 只下载不安装 -u 强制使用网络去更新包和它的依赖包 -f 只有在你包含了 -u 参数的时候才有效，不让 -u 去验证 import 中的每一个都已经获取了，这对于本地 fork 的包特别有用 -v 显示执行的命令 -t 同时也下载需要为运行测试所需要的包 -fix 在获取源码之后先运行 fix，然后再去做其他的事情 -insecure 允许使用不安全的 HTTP 方式进行下载操作 go get 后面不带参数时  go get 等同于 go install go get -d 等同于 go list  参考：
- What is the difference between go get and go install?   go install  第一步是生成结果文件（可执行文件或者 .</description>
-    </item>
-    
-    <item>
       <title>Go 调度</title>
-      <link>https://ikingye.github.io/study-go/docs/design/scheduling/</link>
+      <link>https://ikingye.github.io/study-go/docs/code/runtime/scheduling/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/design/scheduling/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/code/runtime/scheduling/</guid>
       <description>Go 调度 Go 调度器的发展  单线程调度器・0.x  只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成；   多线程调度器・1.0  允许运行多线程的程序； 全局锁导致竞争严重；   任务窃取调度器・1.1  引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；   抢占式调度器・1.2 ~ 至今  基于协作的抢占式调度器 - 1.2 ~ 1.13  通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；   基于信号的抢占式调度器 - 1.14 ~ 至今  实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况；     非均匀存储访问调度器・提案  对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程；    除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。</description>
     </item>
     
@@ -149,10 +157,10 @@ go get -d 只下载不安装 -u 强制使用网络去更新包和它的依赖包
     
     <item>
       <title>interface</title>
-      <link>https://ikingye.github.io/study-go/docs/design/interface/</link>
+      <link>https://ikingye.github.io/study-go/docs/code/keyword/interface/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/design/interface/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/code/keyword/interface/</guid>
       <description>interface Go Data Structures: Interfaces
 读完这篇 go 作者的 blog，interface 就没什么秘密可言了。每个 interface 至少包含两个字段，type 和 data，不论什么形式，然后是 itable 什么时候生成，如何调用。
 结合 Comparison operators，记住 interface 的 compare 规则。</description>
@@ -170,10 +178,10 @@ go get -d 只下载不安装 -u 强制使用网络去更新包和它的依赖包
     
     <item>
       <title>优劣</title>
-      <link>https://ikingye.github.io/study-go/docs/design/pros-and-cons/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/others/pros-and-cons/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/design/pros-and-cons/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/others/pros-and-cons/</guid>
       <description>Go 语言优劣 Go 的优点 部署简单  直接编译成机器码 不依赖其他库 直接运行即可部署  静态类型语言 编译时可检测出隐藏的大多数问题
 语言层面实现并发（goroutine） 强大的标准库  runtime 系统调度机制 高效的 GC（垃圾回收） 丰富的标准库  简单易学  25 个关键字 内嵌 C 语法支持（CGO） 面向对象 跨平台  背靠大厂（Google） 性能好  Go 的缺点 无泛化类型 传言 Go 2.0 会加上
 无 Exception，都用 Error 有争议
@@ -191,21 +199,12 @@ go get -d 只下载不安装 -u 强制使用网络去更新包和它的依赖包
     </item>
     
     <item>
-      <title>教程</title>
-      <link>https://ikingye.github.io/study-go/docs/appendix/tutorial/</link>
+      <title>安装</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/command/install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/appendix/tutorial/</guid>
-      <description>Go 教程 基础 astaxie/build-web-application-with-golang  A golang ebook intro how to build a web with golang
-mmcgrana/gobyexample  Go by Example
-中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/
-geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列
-golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.go101.org
-polaris1119/The-Golang-Standard-Library-by-Example  Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。
-以示例驱动的方式讲解 Golang 的标准库。
-inancgumus/learngo  1000+ Hand-Crafted Go Examples, Exercises, and Quizzes
-ardanlabs/gotraining  Go Training Class Material : http://www.ArdanLabs.com
-进阶 Go 语言设计与实现 by Draveness 高阶 </description>
+      <guid>https://ikingye.github.io/study-go/docs/basic/command/install/</guid>
+      <description>安装 </description>
     </item>
     
     <item>
@@ -218,20 +217,11 @@ ardanlabs/gotraining  Go Training Class Material : http://www.ArdanLabs.com
     </item>
     
     <item>
-      <title>类型系统</title>
-      <link>https://ikingye.github.io/study-go/docs/design/type/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/design/type/</guid>
-      <description>Go 类型系统 Underlying Type  每一个类型都有自己的 Underlying Type  如果 T 是 Pre-declared type 或者 Type Literal，它们对应的 Underlying Type 就是自身 T  比如 type T int 的 Underlying Type 是 int  int 是 Pre-declared   type T map[int]string 的 Underlying Type 是 map[int]string  map[int]string 是 Type Literal     否则 T 的 Underlying Type 是 T 定义时引用的类型的 Underlying Type    Underlying Type 相同 如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：</description>
-    </item>
-    
-    <item>
       <title>Go 热编译</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/practice/gobuild/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/others/gobuild/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/practice/gobuild/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/others/gobuild/</guid>
       <description>Go 热编译 Go 语言热编译工具 caixw/gobuild  gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。
 gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示 gobuild 和 Go 程序的版本信息； -r 是否搜索子目录，默认为 true； -i 是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示； -o 执行编译后的可执行文件名； -x 传递给编译程序的参数； -ext 需要监视的扩展名，默认值为&amp;#34;go&amp;#34;，区分大小写，会去掉每个扩展名的首尾空格。 若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件； -main 指定需要编译的文件，默认为&amp;#34;&amp;#34;。 dependents: 指定其它依赖的目录，只能出现在命令的尾部。 penggy/gobuild  EasyDarwin 依赖
 # go tools go get -u -v github.com/kardianos/govendor go get -u -v github.com/penggy/gobuild # npm tools npm i -g apidoc npm i -g rimraf </description>
@@ -239,10 +229,10 @@ gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示
     
     <item>
       <title>gopls</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/practice/gopls/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/others/gopls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/practice/gopls/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/others/gopls/</guid>
       <description>gopls gopls (pronounced: &amp;ldquo;go please&amp;rdquo;) is the official language server for the Go language.
 Go 扩展默认是使用大量的 Go 工具来提供各种功能的， 每个工具提供某个方面的能力，比如代码提示是依靠 gocode 的.
 不过微软在开发 VS Code 过程中，定义一种协议，语言服务器协议， Language Server Protocol.
@@ -262,10 +252,10 @@ gopls 就是官方的语言服务器，当前处于 alpha 状态.</description>
     
     <item>
       <title>包管理</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/practice/pm/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/others/pm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/practice/pm/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/others/pm/</guid>
       <description>包管理 Go 包管理概述 Go 1.4 及之前  必须设置 GOPATH 环境变量，且源代码必须存放在 GOPATH 下 拉取外部依赖包时，总是拉取最新的版本，无法指定需要的版本  设置 GOPATH 环境变量有两个原因：
  它规定了 go get 命令下载的依赖包的存储位置（$GOPATH/src） 通过设置 GOPATH，可以方便 Golang 计算出 import 的路径  Go 1.5 至 Go 1.10 每个项目的根目录下可以有一个 vendor 目录，里面存放了该项目的依赖的包
 Go 1.11 至 Go 1.12  默认使用的还是 GOPATH 的管理方式 运行 export GO111MODULE=on，使用 Go Modules  GO111MODULE 为 off 时：
@@ -283,10 +273,19 @@ Go 1.11 至 Go 1.12  默认使用的还是 GOPATH 的管理方式 运行 export 
     
     <item>
       <title>编译</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/practice/compile/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/command/compile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/practice/compile/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/command/compile/</guid>
+      <description>编译 </description>
+    </item>
+    
+    <item>
+      <title>编译</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/others/compile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/others/compile/</guid>
       <description>编译 交叉编译 golang 交叉编译很简单的，只要设置几个环境变量就可以了
 # mac上编译linux和windows二进制 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # linux上编译mac和windows二进制 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # windows上编译mac和linux二进制 SET CGO_ENABLED=0 SET GOOS=darwin SET GOARCH=amd64 go build main.go SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build main.go </description>
     </item>
@@ -298,6 +297,15 @@ Go 1.11 至 Go 1.12  默认使用的还是 GOPATH 的管理方式 运行 export 
       
       <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/interface/</guid>
       <description>Go Interface </description>
+    </item>
+    
+    <item>
+      <title>2.4 最佳实践</title>
+      <link>https://ikingye.github.io/study-go/docs/advanced/best/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/advanced/best/</guid>
+      <description>Go 最佳实践 </description>
     </item>
     
     <item>
@@ -343,10 +351,10 @@ chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt
     
     <item>
       <title>Cond</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/lib/std/sync/cond/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/sync/cond/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/lib/std/sync/cond/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/sync/cond/</guid>
       <description>Cond type Cond struct { // L is held while observing or changing the condition 	L Locker // contains filtered or unexported fields } func (c *Cond) Broadcast() func (c *Cond) Signal() func (c *Cond) Wait()  条件  一个条件一定要有一个信号   信号  wait 等待的是信号 signal 发送的是信号 一个信号可以对应到多个条件    </description>
     </item>
     
@@ -361,19 +369,19 @@ chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt
     
     <item>
       <title>Mutex</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/lib/std/sync/mutex/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/sync/mutex/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/lib/std/sync/mutex/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/sync/mutex/</guid>
       <description>Mutex Mutex 互斥锁  在一个 goroutine 获得 Mutex 后，其他 goroutine 只能等到这个 goroutine 释放该 Mutex 使用 Lock() 加锁后，不能再继续对其加锁，直到利用 Unlock() 解锁后才能再加锁  在同一个 goroutine 中的 Mutex 解锁之前再次进行加锁，会导致死锁   在 Lock() 之前使用 Unlock() 会导致 panic 异常 已经锁定的 Mutex 并不与特定的 goroutine 相关联，这样可以利用一个 goroutine 对其加锁，再利用其他 goroutine 对其解锁 适用于读写不确定，并且只有一个读或者写的场景  type Mutex struct { // contains filtered or unexported fields } func (m *Mutex) Lock() func (m *Mutex) Unlock() RWMutex 读写锁（读多写少） RWMutex 基于 Mutex 实现</description>
     </item>
     
     <item>
       <title>signal</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/lib/std/signal/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/signal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/lib/std/signal/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/signal/</guid>
       <description>signal The signals SIGKILL and SIGSTOP may not be caught by a program, and therefore cannot be affected by this package.
 By default, a synchronous signal is converted into a run-time panic.
 A SIGHUP, SIGINT, or SIGTERM signal causes the program to exit.
@@ -383,19 +391,19 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
     
     <item>
       <title>time</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/lib/std/time/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/time/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/lib/std/time/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/time/</guid>
       <description>time 格式化 // 1 2 3 4 5 6 const ANSIC = &amp;#34;Mon Jan _2 15:04:05 2006&amp;#34; time.Now().Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) </description>
     </item>
     
     <item>
       <title>关注</title>
-      <link>https://ikingye.github.io/study-go/docs/appendix/attention/</link>
+      <link>https://ikingye.github.io/study-go/docs/advanced/lib/attention/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/appendix/attention/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/advanced/lib/attention/</guid>
       <description>关注 golang/go  kubernetes/kubernetes  moby/moby  etcd-io/etcd  Distributed reliable key-value store for the most critical data of a distributed system
 containous/traefik  The Cloud Native Edge Router https://traefik.io
  Web 框架 gin-gonic/gin  Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.com/</description>
@@ -403,10 +411,10 @@ containous/traefik  The Cloud Native Edge Router https://traefik.io
     
     <item>
       <title>日志</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/lib/log/</link>
+      <link>https://ikingye.github.io/study-go/docs/advanced/lib/log/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/lib/log/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/advanced/lib/log/</guid>
       <description>Go 日志 开源实现 sirupsen/logrus  Structured, pluggable logging for Go.
 uber-go/zap  Blazing fast, structured, leveled logging in Go.
 rs/zerolog  Zero Allocation JSON Logger
@@ -415,20 +423,11 @@ golang/glog (最新更新时间 2016) Leveled execution logs for Go</description
     </item>
     
     <item>
-      <title>最佳实践</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/practice/best/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/basic/practice/best/</guid>
-      <description>Go 最佳实践 </description>
-    </item>
-    
-    <item>
       <title>测试</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/practice/test/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/others/test/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/practice/test/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/others/test/</guid>
       <description>Go 测试 开源实现 onsi/ginkgo  BDD Testing Framework for Go</description>
     </item>
     
