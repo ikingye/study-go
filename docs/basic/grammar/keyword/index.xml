@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1.1.2 关键字 on Go 学习笔记</title>
+    <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</link>
+    <description>Recent content in 1.1.2 关键字 on Go 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://ikingye.github.io/study-go/docs/basic/grammar/keyword/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>defer</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/defer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/defer/</guid>
+      <description>defer 用于确保程序在执行完成后，会调用某个函数，一般是执行清理工作。
+Defer 的用途跟其他语言的 ensure 或 finally 类似。
+当 defer 释放锁遇到尾递归 var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 { return i } i++ return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。
+根因是 golang 处理 defer 和 return 的顺序为， 计算 return 语句的返回值、赋值给匿名 / 有名返回值 -&amp;gt;defer-&amp;gt;RET 退出函数</description>
+    </item>
+    
+    <item>
+      <title>make</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/make/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/make/</guid>
+      <description>make 运算符:= 是 make() 的语法糖</description>
+    </item>
+    
+    <item>
+      <title>select</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/select/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/select/</guid>
+      <description>select Go 的 选择器（select） 让你可以同时等待多个通道操作。
+将协程、通道和选择器结合，是 Go 的一个强大特性。
+// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string) // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() { time.Sleep(1 * time.Second) c1 &amp;lt;- &amp;#34;one&amp;#34; }() go func() { time.Sleep(2 * time.Second) c2 &amp;lt;- &amp;#34;two&amp;#34; }() // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &amp;lt; 2; i++ { select { case msg1 := &amp;lt;-c1: fmt.Println(&amp;#34;received&amp;#34;, msg1) case msg2 := &amp;lt;-c2: fmt.</description>
+    </item>
+    
+  </channel>
+</rss>

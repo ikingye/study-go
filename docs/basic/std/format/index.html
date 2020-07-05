@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="格式化输出 // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p) // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p) // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&#34;%f\n&#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt.Printf(&#34;%e\n&#34;, 123400000.0) fmt.Printf(&#34;%E\n&#34;, 123400000."><meta property="og:title" content="格式化输出" />
+<meta property="og:description" content="格式化输出 // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p) // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p) // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&#34;%f\n&#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt.Printf(&#34;%e\n&#34;, 123400000.0) fmt.Printf(&#34;%E\n&#34;, 123400000." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/format/" />
+
+<title>格式化输出 | Go 学习笔记</title>
+<link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
+
+
+<script defer src="/study-go/en.search.min.3f42faee8e56c7838506d3476a6ef407d958ba42fe9ad5538fbda4cfc7b8cb1e.js" integrity="sha256-P0L67o5Wx4OFBtNHam70B9lYukL&#43;mtVTj72kz8e4yx4="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/study-go"><span>Go 学习笔记</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+
+
+
+
+
+ 
+  
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <span>第一部分 基础入门</span>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/grammar/" class="collapsed ">1.1 语法</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/std/" class="collapsed ">1.2 标准库</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/std/sort/" class="">sort</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/std/format/" class="active">格式化输出</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/std/signal/" class="">signal</a>
+  
+
+</li>
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/std/sync/" class="collapsed ">sync</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/std/time/" class="">time</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/spec/" class="collapsed ">1.3 编程规范</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/others/" class="collapsed ">1.4 其他</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <span>第二部分 进阶实战</span>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/advanced/pattern/" class="collapsed ">2.1 设计模式</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/advanced/algs/" class="collapsed ">2.2 算法实现</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/advanced/pkg/" class="collapsed ">2.3 常用库</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/advanced/snippet/" class="collapsed ">2.4 代码片段</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/advanced/test/" class="collapsed ">2.5 测试</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/advanced/prof/" class="collapsed ">2.6 性能</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <span>第三部分 设计与实现</span>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/code/structure/" class="collapsed ">3.1 数据结构</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/code/keyword/" class="collapsed ">3.2 关键字</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/code/runtime/" class="collapsed ">3.3 运行时</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <span>第四部分 附录</span>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
+  
+
+</li>
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/appendix/interview/" class="collapsed ">4.2 面试题</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>格式化输出</strong>
+
+  <label for="toc-control">
+    <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#格式化输出">格式化输出</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="格式化输出">格式化输出</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Go 提供了一些用于格式化常规值的打印“动词”。
+</span><span style="color:#75715e">// 例如，这样打印 `point` 结构体的实例。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">point</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%v\n&#34;</span>, <span style="color:#a6e22e">p</span>)
+
+<span style="color:#75715e">// 如果值是一个结构体，`%+v` 的格式化输出内容将包括结构体的字段名。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%+v\n&#34;</span>, <span style="color:#a6e22e">p</span>)
+
+<span style="color:#75715e">// `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%#v\n&#34;</span>, <span style="color:#a6e22e">p</span>)
+
+<span style="color:#75715e">// 需要打印值的类型，使用 `%T`。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%T\n&#34;</span>, <span style="color:#a6e22e">p</span>)
+
+<span style="color:#75715e">// 格式化布尔值很简单。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%t\n&#34;</span>, <span style="color:#66d9ef">true</span>)
+
+<span style="color:#75715e">// 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\n&#34;</span>, <span style="color:#ae81ff">123</span>)
+
+<span style="color:#75715e">// 这个输出二进制表示形式。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%b\n&#34;</span>, <span style="color:#ae81ff">14</span>)
+
+<span style="color:#75715e">// 输出给定整数的对应字符。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%c\n&#34;</span>, <span style="color:#ae81ff">33</span>)
+
+<span style="color:#75715e">// `%x` 提供了十六进制编码。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%x\n&#34;</span>, <span style="color:#ae81ff">456</span>)
+
+<span style="color:#75715e">// 同样的，也为浮点型提供了多种格式化选项。
+</span><span style="color:#75715e">// 使用 `%f` 进行最基本的十进制格式化。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%f\n&#34;</span>, <span style="color:#ae81ff">78.9</span>)
+
+<span style="color:#75715e">// `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%e\n&#34;</span>, <span style="color:#ae81ff">123400000.0</span>)
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%E\n&#34;</span>, <span style="color:#ae81ff">123400000.0</span>)
+
+<span style="color:#75715e">// 使用 `%s` 进行基本的字符串输出。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%s\n&#34;</span>, <span style="color:#e6db74">&#34;\&#34;string\&#34;&#34;</span>)
+
+<span style="color:#75715e">// 像 Go 源代码中那样带有双引号的输出，使用 `%q`。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%q\n&#34;</span>, <span style="color:#e6db74">&#34;\&#34;string\&#34;&#34;</span>)
+
+<span style="color:#75715e">// 和上面的整型数一样，`%x` 输出使用 base-16 编码的字符串，
+</span><span style="color:#75715e">// 每个字节使用 2 个字符表示。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%x\n&#34;</span>, <span style="color:#e6db74">&#34;hex this&#34;</span>)
+
+<span style="color:#75715e">// 要输出一个指针的值，使用 `%p`。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%p\n&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">p</span>)
+
+<span style="color:#75715e">// 格式化数字时，您经常会希望控制输出结果的宽度和精度。
+</span><span style="color:#75715e">// 要指定整数的宽度，请在动词 &#34;%&#34; 之后使用数字。
+</span><span style="color:#75715e">// 默认情况下，结果会右对齐并用空格填充。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%6d|%6d|\n&#34;</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">345</span>)
+
+<span style="color:#75715e">// 你也可以指定浮点型的输出宽度，同时也可以通过 `宽度.精度` 的语法来指定输出的精度。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%6.2f|%6.2f|\n&#34;</span>, <span style="color:#ae81ff">1.2</span>, <span style="color:#ae81ff">3.45</span>)
+
+<span style="color:#75715e">// 要左对齐，使用 `-` 标志。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%-6.2f|%-6.2f|\n&#34;</span>, <span style="color:#ae81ff">1.2</span>, <span style="color:#ae81ff">3.45</span>)
+
+<span style="color:#75715e">// 你也许也想控制字符串输出时的宽度，特别是要确保他们在类表格输出时的对齐。
+</span><span style="color:#75715e">// 这是基本的宽度右对齐方法。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%6s|%6s|\n&#34;</span>, <span style="color:#e6db74">&#34;foo&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>)
+
+<span style="color:#75715e">// 要左对齐，和数字一样，使用 `-` 标志。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%-6s|%-6s|\n&#34;</span>, <span style="color:#e6db74">&#34;foo&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>)
+
+<span style="color:#75715e">// 到目前为止，我们已经看过 `Printf` 了，
+</span><span style="color:#75715e">// 它通过 `os.Stdout` 输出格式化的字符串。
+</span><span style="color:#75715e">// `Sprintf` 则格式化并返回一个字符串而没有任何输出。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;a %s&#34;</span>, <span style="color:#e6db74">&#34;string&#34;</span>)
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">s</span>)
+
+<span style="color:#75715e">// 你可以使用 `Fprintf` 来格式化并输出到 `io.Writers` 而不是 `os.Stdout`。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stderr</span>, <span style="color:#e6db74">&#34;an %s\n&#34;</span>, <span style="color:#e6db74">&#34;error&#34;</span>)
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<script src="https://utteranc.es/client.js"
+  repo="ikingye/study-go"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#格式化输出">格式化输出</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+<a href="https://github.com/ikingye/study-go" 
+class="github-corner" aria-label="View source on GitHub">
+<svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+  <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+  <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+  <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+</svg></a>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

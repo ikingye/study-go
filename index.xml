@@ -11,10 +11,10 @@
     
     <item>
       <title>Go 快速上手</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/quick/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/others/quick/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/quick/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/others/quick/</guid>
       <description>Go 快速上手 Go 环境 GOROOT GOROOT: 指定安装 GO 的根目录
 Go 1.0 之后，go tool 利用 GOROOT 查找 Go 编译器（保存在 $GOROOT/pkg/tool/$GOOS_$GOARCH） 和标准库（在 $GOROOT/pkg/$GOOS_$GOARCH）
 可以将 GOROOT 理解为 Java 的 JAVA_HOME。
@@ -102,10 +102,10 @@ package main import ( &amp;#34;{pathToYourApp}/cmd&amp;#34; ) func main() { cmd.
     
     <item>
       <title>defer</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/defer/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/defer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/defer/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/defer/</guid>
       <description>defer 用于确保程序在执行完成后，会调用某个函数，一般是执行清理工作。
 Defer 的用途跟其他语言的 ensure 或 finally 类似。
 当 defer 释放锁遇到尾递归 var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 { return i } i++ return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。
@@ -114,10 +114,10 @@ Defer 的用途跟其他语言的 ensure 或 finally 类似。
     
     <item>
       <title>error</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/error/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/type/error/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/error/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/error/</guid>
       <description>error 实现 Error() string 方法的类型，都是 error 类型
 type error interface { Error() string } errors.New(&amp;#34;xxxx&amp;#34;) fmt.Errorf(format string, a ...interface{}) </description>
     </item>
@@ -146,10 +146,10 @@ package 级别的变量 初始化顺序与初始化依赖有关
     
     <item>
       <title>init</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/func/init/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/func/init/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/func/init/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/func/init/</guid>
       <description>init 函数  作用  初始化不能采用初始化表达式初始化的变量 程序运行前的注册 实现 sync.Once 功能   特点  init 函数先于 main 函数自动执行 init 不能被其他函数调用 init 函数没有输入参数、返回值 每个包可以有多个 init 函数  包的每个源文件也可以有多个 init 函数   同一个包的 init 执行顺序，golang 没有明确定义，编程时要注意程序不要依赖这个执行顺序 不同包的 init 函数按照包导入的依赖关系决定执行顺序   问答 只想调用该包的 init 函数，不使用包导出的变量或者方法 import _ &amp;#34;net/http/pprof&amp;#34; 执行上述导入后，init 函数会启动一个异步协程采集该进程实例的资源占用情况，并以 http 服务接口方式提供给用户查询。
  参考 </description>
     </item>
@@ -167,10 +167,10 @@ package 级别的变量 初始化顺序与初始化依赖有关
     
     <item>
       <title>Receiver</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/func/receiver/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/func/receiver/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/func/receiver/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/func/receiver/</guid>
       <description>Receiver 结构体类型实现的接口，该结构体的指针类型也算实现了
 使用规则  必须使用指针  struct，且包含 sync.Mutex 类型字段   建议使用指针  比较大的 struct/array  struct 或者 array 中的元素个数超过 3 个，则认为比较大，反之，则认为比较小   struct、array 或 slice，其中指针元素所指的内容可能在方法内被修改   建议使用 value 类型  比较小的 struct/array   必须使用 value 类型（编程规范）  map、函数或者 chan 类型 slice，并且方法不会进行 reslice 或者重新分配 slice    method expression package main import ( &amp;#34;fmt&amp;#34; ) type Ball struct { Name string } func (b *Ball) Ping() { fmt.</description>
     </item>
@@ -189,15 +189,6 @@ package 级别的变量 初始化顺序与初始化依赖有关
     </item>
     
     <item>
-      <title>关键字</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</guid>
-      <description>Go 语言关键字 break default func interface select case defer go map struct chan else goto package switch const fallthrough if range type continue for import return var for 与 range select defer panic 与 recover make 与 new </description>
-    </item>
-    
-    <item>
       <title>安装</title>
       <link>https://ikingye.github.io/study-go/docs/basic/others/command/install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -208,10 +199,10 @@ package 级别的变量 初始化顺序与初始化依赖有关
     
     <item>
       <title>格式化输出</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/format/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/format/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/format/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/format/</guid>
       <description>格式化输出 // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&amp;#34;%v\n&amp;#34;, p) // 如果值是一个结构体，`%+v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&amp;#34;%+v\n&amp;#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&amp;#34;%#v\n&amp;#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&amp;#34;%T\n&amp;#34;, p) // 格式化布尔值很简单。 fmt.Printf(&amp;#34;%t\n&amp;#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&amp;#34;%d\n&amp;#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&amp;#34;%b\n&amp;#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&amp;#34;%c\n&amp;#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&amp;#34;%x\n&amp;#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&amp;#34;%f\n&amp;#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt.Printf(&amp;#34;%e\n&amp;#34;, 123400000.0) fmt.Printf(&amp;#34;%E\n&amp;#34;, 123400000.</description>
     </item>
     
@@ -310,10 +301,10 @@ chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt
     
     <item>
       <title>make</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/make/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/make/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/make/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/make/</guid>
       <description>make 运算符:= 是 make() 的语法糖</description>
     </item>
     
@@ -330,10 +321,10 @@ chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt
     
     <item>
       <title>select</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/select/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/select/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/select/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/select/</guid>
       <description>select Go 的 选择器（select） 让你可以同时等待多个通道操作。
 将协程、通道和选择器结合，是 Go 的一个强大特性。
 // 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string) // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() { time.Sleep(1 * time.Second) c1 &amp;lt;- &amp;#34;one&amp;#34; }() go func() { time.Sleep(2 * time.Second) c2 &amp;lt;- &amp;#34;two&amp;#34; }() // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &amp;lt; 2; i++ { select { case msg1 := &amp;lt;-c1: fmt.Println(&amp;#34;received&amp;#34;, msg1) case msg2 := &amp;lt;-c2: fmt.</description>
@@ -350,10 +341,10 @@ chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt
     
     <item>
       <title>goroutine</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/grammar/goroutine/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/others/goroutine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/grammar/goroutine/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/others/goroutine/</guid>
       <description>goroutine golang 并发模型 goroutine 记得 return 或者中断，不然容易造成 goroutine 占用大量 CPU </description>
     </item>
     
@@ -410,15 +401,6 @@ uber-go/zap  Blazing fast, structured, leveled logging in Go.
 rs/zerolog  Zero Allocation JSON Logger
 apex/log (最新更新时间 2016) Structured logging package for Go.
 golang/glog (最新更新时间 2016) Leveled execution logs for Go</description>
-    </item>
-    
-    <item>
-      <title>测试</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/test/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/test/</guid>
-      <description>Go 测试 开源实现 onsi/ginkgo  BDD Testing Framework for Go</description>
     </item>
     
   </channel>
