@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 切片 contains func contains(s []int, e int) bool { for _, a := range s { if a == e { return true } } return false } 使用 map[string] struct{} 参考：
- Contains method for a slice  "><meta property="og:title" content="切片" />
-<meta property="og:description" content="Go 切片 contains func contains(s []int, e int) bool { for _, a := range s { if a == e { return true } } return false } 使用 map[string] struct{} 参考：
- Contains method for a slice  " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/type/slice/" />
-<meta property="article:modified_time" content="2020-07-01T10:24:57+08:00" />
-<title>切片 | Go 学习笔记</title>
+<meta name="description" content="Go 命令 go get 等于 go get -d 加 go install
+go get -d 只下载不安装 -u 强制使用网络去更新包和它的依赖包 -f 只有在你包含了 -u 参数的时候才有效，不让 -u 去验证 import 中的每一个都已经获取了，这对于本地 fork 的包特别有用 -v 显示执行的命令 -t 同时也下载需要为运行测试所需要的包 -fix 在获取源码之后先运行 fix，然后再去做其他的事情 -insecure 允许使用不安全的 HTTP 方式进行下载操作 go get 后面不带参数时  go get 等同于 go install go get -d 等同于 go list  参考：
+ What is the difference between go get and go install?   go install  第一步是生成结果文件（可执行文件或者 ."><meta property="og:title" content="Go 命令" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/command/" />
+
+<title>Go 命令 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -20,6 +20,7 @@
 
 <script defer src="/study-go/en.search.min.cc17cdf0b6bb8aa3f978ea115b5aa27ce50442adb8f9ba94d976201624628e41.js" integrity="sha256-zBfN8La7iqP5eOoRW1qifOUEQq24&#43;bqU2XYgFiRijkE="></script>
 
+<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/others/command/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -109,220 +110,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/quick/" class="">Go 快速上手</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/defer/" class="">defer</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/error/" class="">error</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/keyword/" class="">关键字</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/format/" class="">格式化输出</a>
-  
-
-</li>
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/type/" class="">数据类型</a>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/type/slice/" class="active">切片</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/type/array/" class="">数组</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/type/interface/" class="">Interface</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/type/channel/" class="">Chiannel</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/type/map/" class="">Map</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/func/" class="">函数</a>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/func/init/" class="">init</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/func/receiver/" class="">Receiver</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/make/" class="">make</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/select/" class="">select</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/goroutine/" class="">goroutine</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
 
 
 
@@ -415,6 +202,144 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/others/pros-and-cons/" class="">优劣</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/others/gobuild/" class="">Go 热编译</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/others/gopls/" class="">gopls</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/others/pm/" class="">包管理</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/others/compile/" class="">编译</a>
+  
+
+</li>
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/others/command/" class="collapsed active">Go 命令</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/others/command/install/" class="">安装</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/others/command/compile/" class="">编译</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/others/version/" class="collapsed ">版本</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/others/test/" class="">测试</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
 
 
 
@@ -742,7 +667,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>切片</strong>
+  <strong>Go 命令</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -756,13 +681,15 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-切片">Go 切片</a>
+    <li><a href="#go-命令httpsgolangorgcmdgo"><a href="https://golang.org/cmd/go/">Go 命令</a></a>
       <ul>
-        <li><a href="#contains">contains</a>
+        <li><a href="#go-gethttpsgolangorgcmdgohdr-add_dependencies_to_current_module_and_install_them"><a href="https://golang.org/cmd/go/#hdr-Add_dependencies_to_current_module_and_install_them">go get</a></a>
           <ul>
-            <li><a href="#使用-mapstring-struct">使用 <code>map[string] struct{}</code></a></li>
+            <li><a href="#go-get-后面不带参数时"><code>go get</code> 后面不带参数时</a></li>
           </ul>
         </li>
+        <li><a href="#go-install">go install</a></li>
+        <li><a href="#go-list">go list</a></li>
       </ul>
     </li>
   </ul>
@@ -776,21 +703,33 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="go-切片">Go 切片</h1>
-<h2 id="contains">contains</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">contains</span>(<span style="color:#a6e22e">s</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">e</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
-    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
-        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">e</span> {
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
-        }
-    }
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
-}
-</code></pre></div><h3 id="使用-mapstring-struct">使用 <code>map[string] struct{}</code></h3>
+  <article class="markdown"><h1 id="go-命令httpsgolangorgcmdgo"><a href="https://golang.org/cmd/go/">Go 命令</a></h1>
+<p><code>go get</code> 等于 <code>go get -d</code> 加 <code>go install</code></p>
+<h2 id="go-gethttpsgolangorgcmdgohdr-add_dependencies_to_current_module_and_install_them"><a href="https://golang.org/cmd/go/#hdr-Add_dependencies_to_current_module_and_install_them">go get</a></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-d 只下载不安装
+-u 强制使用网络去更新包和它的依赖包
+-f 只有在你包含了 -u 参数的时候才有效，不让 -u 去验证 import 中的每一个都已经获取了，这对于本地 fork 的包特别有用
+-v 显示执行的命令
+-t 同时也下载需要为运行测试所需要的包
+-fix 在获取源码之后先运行 fix，然后再去做其他的事情
+-insecure 允许使用不安全的 HTTP 方式进行下载操作
+</code></pre></div><h3 id="go-get-后面不带参数时"><code>go get</code> 后面不带参数时</h3>
+<ul>
+<li><code>go get</code> 等同于 <code>go install</code></li>
+<li><code>go get -d</code> 等同于 <code>go list</code></li>
+</ul>
 <p>参考：</p>
 <ul>
-<li><a href="https://stackoverflow.com/questions/10485743/contains-method-for-a-slice">Contains method for a slice</a></li>
+<li><a href="https://stackoverflow.com/questions/24878737/what-is-the-difference-between-go-get-and-go-install">What is the difference between go get and go install?</a></li>
 </ul>
+<hr>
+<h2 id="go-install">go install</h2>
+<ol>
+<li>第一步是生成结果文件（可执行文件或者 .a 包），</li>
+<li>第二步会把编译好的结果移到 $GOPATH/pkg 或者 $GOPATH/bin。</li>
+</ol>
+<hr>
+<h2 id="go-list">go list</h2>
 </article>
  
       
@@ -800,14 +739,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/bdeabdd07ca22f82323a77878068cb88eb77fe7d" title='Last modified by yewang | 2020-07-01' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-07-01</span>
-    </a>
-  </div>
 
 
 
@@ -840,13 +771,15 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-切片">Go 切片</a>
+    <li><a href="#go-命令httpsgolangorgcmdgo"><a href="https://golang.org/cmd/go/">Go 命令</a></a>
       <ul>
-        <li><a href="#contains">contains</a>
+        <li><a href="#go-gethttpsgolangorgcmdgohdr-add_dependencies_to_current_module_and_install_them"><a href="https://golang.org/cmd/go/#hdr-Add_dependencies_to_current_module_and_install_them">go get</a></a>
           <ul>
-            <li><a href="#使用-mapstring-struct">使用 <code>map[string] struct{}</code></a></li>
+            <li><a href="#go-get-后面不带参数时"><code>go get</code> 后面不带参数时</a></li>
           </ul>
         </li>
+        <li><a href="#go-install">go install</a></li>
+        <li><a href="#go-list">go list</a></li>
       </ul>
     </li>
   </ul>
