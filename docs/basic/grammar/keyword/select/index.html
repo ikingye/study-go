@@ -12,7 +12,7 @@
 // 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string) // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() { time.Sleep(1 * time.Second) c1 &lt;- &#34;one&#34; }() go func() { time.Sleep(2 * time.Second) c2 &lt;- &#34;two&#34; }() // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &lt; 2; i&#43;&#43; { select { case msg1 := &lt;-c1: fmt.Println(&#34;received&#34;, msg1) case msg2 := &lt;-c2: fmt." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/keyword/select/" />
-
+<meta property="article:modified_time" content="2020-07-05T16:46:51+08:00" />
 <title>select | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
@@ -790,6 +790,14 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/90dc867c6556039d2fab277989d7eba560d73203" title='Last modified by yewang | 2020-07-05' target="_blank" rel="noopener">
+      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2020-07-05</span>
+    </a>
+  </div>
 
 
 

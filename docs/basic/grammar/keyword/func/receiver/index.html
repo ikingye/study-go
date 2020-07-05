@@ -10,7 +10,7 @@
 使用规则  必须使用指针  struct，且包含 sync.Mutex 类型字段   建议使用指针  比较大的 struct/array  struct 或者 array 中的元素个数超过 3 个，则认为比较大，反之，则认为比较小   struct、array 或 slice，其中指针元素所指的内容可能在方法内被修改   建议使用 value 类型  比较小的 struct/array   必须使用 value 类型（编程规范）  map、函数或者 chan 类型 slice，并且方法不会进行 reslice 或者重新分配 slice    method expression package main import ( &#34;fmt&#34; ) type Ball struct { Name string } func (b *Ball) Ping() { fmt." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/keyword/func/receiver/" />
-
+<meta property="article:modified_time" content="2020-07-05T16:46:51+08:00" />
 <title>Receiver | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
@@ -797,6 +797,14 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/90dc867c6556039d2fab277989d7eba560d73203" title='Last modified by yewang | 2020-07-05' target="_blank" rel="noopener">
+      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2020-07-05</span>
+    </a>
+  </div>
 
 
 
