@@ -276,8 +276,7 @@ Go 1.11 至 Go 1.12  默认使用的还是 GOPATH 的管理方式 运行 export 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/others/compile/</guid>
-      <description>编译 交叉编译 golang 交叉编译很简单的，只要设置几个环境变量就可以了
-# mac上编译linux和windows二进制 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # linux上编译mac和windows二进制 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build # windows上编译mac和linux二进制 SET CGO_ENABLED=0 SET GOOS=darwin SET GOARCH=amd64 go build main.go SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build main.go </description>
+      <description>编译 Makefile Go Makefile 样例 include .env PROJECTNAME=$(shell basename &amp;#34;$(PWD)&amp;#34;) # Go related variables. GOBASE=$(shell pwd) GOPATH=&amp;#34;$(GOBASE)/vendor:$(GOBASE)&amp;#34; GOBIN=$(GOBASE)/bin GOFILES=$(wildcard *.go) # Redirect error output to a file, so we can show it in development mode. STDERR=/tmp/.$(PROJECTNAME)-stderr.txt # PID file will keep the process id of the server PID=/tmp/.$(PROJECTNAME).pid # Make is verbose in Linux. Make it silent. MAKEFLAGS += --silent ## install: Install missing dependencies. Runs `go get` internally. e.g; make install get=github.</description>
     </item>
     
     <item>
@@ -341,10 +340,10 @@ chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt
     
     <item>
       <title>Go 插件系统</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/plugin/</link>
+      <link>https://ikingye.github.io/study-go/docs/basic/others/plugin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/plugin/</guid>
+      <guid>https://ikingye.github.io/study-go/docs/basic/others/plugin/</guid>
       <description>Go 插件系统 Go 1.8 版本开始提供了一个创建共享库的新工具，称为 Plugins.
 Go 插件是使用 -buildmode=plugin 标记编译的一个包，用于生成一个共享对象（.so）库文件。 Go 包中的导出的函数和变量被公开为 ELF 符号，可以使用 plugin 包在运行时查找并绑定 ELF 符号。
 Go 编译器能够使用 build flag -buildmode=c-shared 创建 C 风格的动态共享库。
