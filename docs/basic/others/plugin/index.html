@@ -14,7 +14,7 @@ Go 编译器能够使用 build flag -buildmode=c-shared 创建 C 风格的动态
  编写 plugin  包名称必须是 main 没有 main 函数 必须有可以导出 (访问) 的变量或者方法   使用 plugin  加载编译好的插件 plugin.Open(&quot;./plugin_doctor.so&quot;) (*.so 文件路径相对与可执行文件的路径，可以是绝对路径) 寻找插件可到变量 plug.Lookup(&quot;Doctor&quot;), TypeAssert: Symbol (interface {}) 转换成 API 的接口类型 执行 API interface 的方法   优点 缺陷 插件实现和主应用程序都必须使用完全相同的 Go 工具链版本构建。 由于插件提供的代码将与主代码在相同的进程空间中运行，因此编译的二进制文件应与主应用程序 100% 兼容。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/plugin/" />
-
+<meta property="article:modified_time" content="2020-07-06T17:32:24+08:00" />
 <title>Go 插件系统 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
@@ -780,6 +780,14 @@ Go 包中的导出的函数和变量被公开为 <code>ELF</code> 符号，可�
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/bfe4026eac9c1f7ef0cd6b3b0157d9f7b7879274" title='Last modified by yewang | 2020-07-06' target="_blank" rel="noopener">
+      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2020-07-06</span>
+    </a>
+  </div>
 
 
 
