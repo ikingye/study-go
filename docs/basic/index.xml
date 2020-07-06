@@ -9,5 +9,17 @@
 	<atom:link href="https://ikingye.github.io/study-go/docs/basic/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Go 插件系统</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/plugin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/plugin/</guid>
+      <description>Go 插件系统 Go 1.8 版本开始提供了一个创建共享库的新工具，称为 Plugins.
+Go 插件是使用 -buildmode=plugin 标记编译的一个包，用于生成一个共享对象（.so）库文件。 Go 包中的导出的函数和变量被公开为 ELF 符号，可以使用 plugin 包在运行时查找并绑定 ELF 符号。
+Go 编译器能够使用 build flag -buildmode=c-shared 创建 C 风格的动态共享库。
+ 编写 plugin  包名称必须是 main 没有 main 函数 必须有可以导出 (访问) 的变量或者方法   使用 plugin  加载编译好的插件 plugin.Open(&amp;quot;./plugin_doctor.so&amp;quot;) (*.so 文件路径相对与可执行文件的路径，可以是绝对路径) 寻找插件可到变量 plug.Lookup(&amp;quot;Doctor&amp;quot;), TypeAssert: Symbol (interface {}) 转换成 API 的接口类型 执行 API interface 的方法   优点 缺陷 插件实现和主应用程序都必须使用完全相同的 Go 工具链版本构建。 由于插件提供的代码将与主代码在相同的进程空间中运行，因此编译的二进制文件应与主应用程序 100% 兼容。</description>
+    </item>
+    
   </channel>
 </rss>
