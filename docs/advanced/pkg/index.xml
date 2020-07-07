@@ -16,10 +16,10 @@
       
       <guid>https://ikingye.github.io/study-go/docs/advanced/pkg/common/</guid>
       <description>Go 常用 package net imroc/req  Go 语言人性化 HTTP 请求库
+valyala/fasthttp  Fast HTTP package for Go. Tuned for high performance. Zero memory allocations in hot paths. Up to 10x faster than net/http
  cmd spf13/cobra  A Commander for modern Go CLI interactions
 quick start typically a Cobra-based application will follow the following organizational structure:
-▾ appName/ ▾ cmd/ add.go your.go commands.go here.go main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
-package main import ( &amp;#34;{pathToYourApp}/cmd&amp;#34; ) func main() { cmd.Execute() } Ideally you place this in app/cmd/root.</description>
+▾ appName/ ▾ cmd/ add.go your.go commands.go here.go main.go In a Cobra app, typically the main.</description>
     </item>
     
     <item>
