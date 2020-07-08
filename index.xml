@@ -262,15 +262,6 @@ Go 1.11 至 Go 1.12  默认使用的还是 GOPATH 的管理方式 运行 export 
     
     <item>
       <title>编译</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/command/compile/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/command/compile/</guid>
-      <description>编译 </description>
-    </item>
-    
-    <item>
-      <title>编译</title>
       <link>https://ikingye.github.io/study-go/docs/basic/others/compile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
