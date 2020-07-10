@@ -19,7 +19,7 @@ Go 1.11 至 Go 1.12  默认使用的还是 GOPATH 的管理方式 运行 export 
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
+<link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
 
 
 <script defer src="/study-go/en.search.min.03bb5e0c8ef279f3dfa893be6c03f6a1ca55856789774e787c2a0d88a9e0156a.js" integrity="sha256-A7teDI7yefPfqJO&#43;bAP2ocpVhWeJd054fCoNiKngFWo="></script>
@@ -714,50 +714,46 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#包管理">包管理</a>
+    <li><a href="#go-包管理概述">Go 包管理概述</a>
       <ul>
-        <li><a href="#go-包管理概述">Go 包管理概述</a>
-          <ul>
-            <li><a href="#go-14-及之前">Go 1.4 及之前</a></li>
-            <li><a href="#go-15-至-go-110">Go 1.5 至 Go 1.10</a></li>
-            <li><a href="#go-111-至-go-112">Go 1.11 至 Go 1.12</a></li>
-            <li><a href="#go-113-及之后">Go 1.13 及之后</a></li>
-          </ul>
-        </li>
-        <li><a href="#go-包管理工具发展">Go 包管理工具发展</a>
-          <ul>
-            <li><a href="#monorepo">monorepo</a></li>
-            <li><a href="#vendor">vendor</a>
-              <ul>
-                <li><a href="#dep">Dep</a></li>
-                <li><a href="#glide">Glide</a></li>
-                <li><a href="#govendor">govendor</a></li>
-              </ul>
-            </li>
-            <li><a href="#go-modules">Go Modules</a></li>
-          </ul>
-        </li>
-        <li><a href="#go-modules-原理">Go Modules 原理</a>
-          <ul>
-            <li><a href="#命令">命令</a></li>
-            <li><a href="#module-aware-mode-vs-gopath-mode"><code>Module-aware mode</code> vs <code>GOPATH mode</code></a></li>
-            <li><a href="#replace">replace</a>
-              <ul>
-                <li><a href="#replace-不会生成-gosum-信息">replace 不会生成 <code>go.sum</code> 信息</a></li>
-                <li><a href="#replace-命令只能管理顶层依赖">replace 命令只能管理<code>顶层依赖</code></a></li>
-              </ul>
-            </li>
-            <li><a href="#gosum">go.sum</a>
-              <ul>
-                <li><a href="#gosum-不是锁文件">go.sum 不是锁文件</a></li>
-              </ul>
-            </li>
-            <li><a href="#go-mod-vendor"><code>go mod vendor</code></a></li>
-          </ul>
-        </li>
-        <li><a href="#参考">参考</a></li>
+        <li><a href="#go-14-及之前">Go 1.4 及之前</a></li>
+        <li><a href="#go-15-至-go-110">Go 1.5 至 Go 1.10</a></li>
+        <li><a href="#go-111-至-go-112">Go 1.11 至 Go 1.12</a></li>
+        <li><a href="#go-113-及之后">Go 1.13 及之后</a></li>
       </ul>
     </li>
+    <li><a href="#go-包管理工具发展">Go 包管理工具发展</a>
+      <ul>
+        <li><a href="#monorepo">monorepo</a></li>
+        <li><a href="#vendor">vendor</a>
+          <ul>
+            <li><a href="#dep">Dep</a></li>
+            <li><a href="#glide">Glide</a></li>
+            <li><a href="#govendor">govendor</a></li>
+          </ul>
+        </li>
+        <li><a href="#go-modules">Go Modules</a></li>
+      </ul>
+    </li>
+    <li><a href="#go-modules-原理">Go Modules 原理</a>
+      <ul>
+        <li><a href="#命令">命令</a></li>
+        <li><a href="#module-aware-mode-vs-gopath-mode"><code>Module-aware mode</code> vs <code>GOPATH mode</code></a></li>
+        <li><a href="#replace">replace</a>
+          <ul>
+            <li><a href="#replace-不会生成-gosum-信息">replace 不会生成 <code>go.sum</code> 信息</a></li>
+            <li><a href="#replace-命令只能管理顶层依赖">replace 命令只能管理<code>顶层依赖</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#gosum">go.sum</a>
+          <ul>
+            <li><a href="#gosum-不是锁文件">go.sum 不是锁文件</a></li>
+          </ul>
+        </li>
+        <li><a href="#go-mod-vendor"><code>go mod vendor</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
   </ul>
 </nav>
 
@@ -949,50 +945,46 @@ and installed commands (in <code>GOPATH/bin</code>, unless <code>GOBIN</code> is
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#包管理">包管理</a>
+    <li><a href="#go-包管理概述">Go 包管理概述</a>
       <ul>
-        <li><a href="#go-包管理概述">Go 包管理概述</a>
-          <ul>
-            <li><a href="#go-14-及之前">Go 1.4 及之前</a></li>
-            <li><a href="#go-15-至-go-110">Go 1.5 至 Go 1.10</a></li>
-            <li><a href="#go-111-至-go-112">Go 1.11 至 Go 1.12</a></li>
-            <li><a href="#go-113-及之后">Go 1.13 及之后</a></li>
-          </ul>
-        </li>
-        <li><a href="#go-包管理工具发展">Go 包管理工具发展</a>
-          <ul>
-            <li><a href="#monorepo">monorepo</a></li>
-            <li><a href="#vendor">vendor</a>
-              <ul>
-                <li><a href="#dep">Dep</a></li>
-                <li><a href="#glide">Glide</a></li>
-                <li><a href="#govendor">govendor</a></li>
-              </ul>
-            </li>
-            <li><a href="#go-modules">Go Modules</a></li>
-          </ul>
-        </li>
-        <li><a href="#go-modules-原理">Go Modules 原理</a>
-          <ul>
-            <li><a href="#命令">命令</a></li>
-            <li><a href="#module-aware-mode-vs-gopath-mode"><code>Module-aware mode</code> vs <code>GOPATH mode</code></a></li>
-            <li><a href="#replace">replace</a>
-              <ul>
-                <li><a href="#replace-不会生成-gosum-信息">replace 不会生成 <code>go.sum</code> 信息</a></li>
-                <li><a href="#replace-命令只能管理顶层依赖">replace 命令只能管理<code>顶层依赖</code></a></li>
-              </ul>
-            </li>
-            <li><a href="#gosum">go.sum</a>
-              <ul>
-                <li><a href="#gosum-不是锁文件">go.sum 不是锁文件</a></li>
-              </ul>
-            </li>
-            <li><a href="#go-mod-vendor"><code>go mod vendor</code></a></li>
-          </ul>
-        </li>
-        <li><a href="#参考">参考</a></li>
+        <li><a href="#go-14-及之前">Go 1.4 及之前</a></li>
+        <li><a href="#go-15-至-go-110">Go 1.5 至 Go 1.10</a></li>
+        <li><a href="#go-111-至-go-112">Go 1.11 至 Go 1.12</a></li>
+        <li><a href="#go-113-及之后">Go 1.13 及之后</a></li>
       </ul>
     </li>
+    <li><a href="#go-包管理工具发展">Go 包管理工具发展</a>
+      <ul>
+        <li><a href="#monorepo">monorepo</a></li>
+        <li><a href="#vendor">vendor</a>
+          <ul>
+            <li><a href="#dep">Dep</a></li>
+            <li><a href="#glide">Glide</a></li>
+            <li><a href="#govendor">govendor</a></li>
+          </ul>
+        </li>
+        <li><a href="#go-modules">Go Modules</a></li>
+      </ul>
+    </li>
+    <li><a href="#go-modules-原理">Go Modules 原理</a>
+      <ul>
+        <li><a href="#命令">命令</a></li>
+        <li><a href="#module-aware-mode-vs-gopath-mode"><code>Module-aware mode</code> vs <code>GOPATH mode</code></a></li>
+        <li><a href="#replace">replace</a>
+          <ul>
+            <li><a href="#replace-不会生成-gosum-信息">replace 不会生成 <code>go.sum</code> 信息</a></li>
+            <li><a href="#replace-命令只能管理顶层依赖">replace 命令只能管理<code>顶层依赖</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#gosum">go.sum</a>
+          <ul>
+            <li><a href="#gosum-不是锁文件">go.sum 不是锁文件</a></li>
+          </ul>
+        </li>
+        <li><a href="#go-mod-vendor"><code>go mod vendor</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
   </ul>
 </nav>
 

@@ -13,7 +13,7 @@
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
+<link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
 
 
 <script defer src="/study-go/en.search.min.03bb5e0c8ef279f3dfa893be6c03f6a1ca55856789774e787c2a0d88a9e0156a.js" integrity="sha256-A7teDI7yefPfqJO&#43;bAP2ocpVhWeJd054fCoNiKngFWo="></script>
@@ -695,40 +695,36 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-数据类型">Go 数据类型</a>
+    <li><a href="#基础数据类型-pre-declarered-types">基础数据类型 Pre-declarered types</a>
       <ul>
-        <li><a href="#基础数据类型-pre-declarered-types">基础数据类型 Pre-declarered types</a>
+        <li><a href="#布尔型">布尔型</a></li>
+        <li><a href="#数字类型">数字类型</a>
           <ul>
-            <li><a href="#布尔型">布尔型</a></li>
-            <li><a href="#数字类型">数字类型</a>
-              <ul>
-                <li><a href="#uint-不能直接相减">uint 不能直接相减</a></li>
-              </ul>
-            </li>
-            <li><a href="#字符串类型">字符串类型</a></li>
+            <li><a href="#uint-不能直接相减">uint 不能直接相减</a></li>
           </ul>
         </li>
-        <li><a href="#派生类型-composite-types">派生类型 Composite Types</a>
+        <li><a href="#字符串类型">字符串类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#派生类型-composite-types">派生类型 Composite Types</a>
+      <ul>
+        <li><a href="#指针类型pointer">指针类型（Pointer）</a></li>
+        <li><a href="#数组类型">数组类型</a></li>
+        <li><a href="#结构化类型-struct">结构化类型 (struct)</a></li>
+        <li><a href="#channel-类型">Channel 类型</a></li>
+        <li><a href="#函数类型">函数类型</a></li>
+        <li><a href="#切片类型">切片类型</a>
           <ul>
-            <li><a href="#指针类型pointer">指针类型（Pointer）</a></li>
-            <li><a href="#数组类型">数组类型</a></li>
-            <li><a href="#结构化类型-struct">结构化类型 (struct)</a></li>
-            <li><a href="#channel-类型">Channel 类型</a></li>
-            <li><a href="#函数类型">函数类型</a></li>
-            <li><a href="#切片类型">切片类型</a>
-              <ul>
-                <li><a href="#多维-slice">多维 slice</a></li>
-              </ul>
-            </li>
-            <li><a href="#接口类型interface">接口类型（interface）</a></li>
-            <li><a href="#map-类型">Map 类型</a></li>
+            <li><a href="#多维-slice">多维 slice</a></li>
           </ul>
         </li>
-        <li><a href="#类型转化">类型转化</a>
-          <ul>
-            <li><a href="#atoi">Atoi</a></li>
-          </ul>
-        </li>
+        <li><a href="#接口类型interface">接口类型（interface）</a></li>
+        <li><a href="#map-类型">Map 类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#类型转化">类型转化</a>
+      <ul>
+        <li><a href="#atoi">Atoi</a></li>
       </ul>
     </li>
   </ul>
@@ -932,40 +928,36 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-数据类型">Go 数据类型</a>
+    <li><a href="#基础数据类型-pre-declarered-types">基础数据类型 Pre-declarered types</a>
       <ul>
-        <li><a href="#基础数据类型-pre-declarered-types">基础数据类型 Pre-declarered types</a>
+        <li><a href="#布尔型">布尔型</a></li>
+        <li><a href="#数字类型">数字类型</a>
           <ul>
-            <li><a href="#布尔型">布尔型</a></li>
-            <li><a href="#数字类型">数字类型</a>
-              <ul>
-                <li><a href="#uint-不能直接相减">uint 不能直接相减</a></li>
-              </ul>
-            </li>
-            <li><a href="#字符串类型">字符串类型</a></li>
+            <li><a href="#uint-不能直接相减">uint 不能直接相减</a></li>
           </ul>
         </li>
-        <li><a href="#派生类型-composite-types">派生类型 Composite Types</a>
+        <li><a href="#字符串类型">字符串类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#派生类型-composite-types">派生类型 Composite Types</a>
+      <ul>
+        <li><a href="#指针类型pointer">指针类型（Pointer）</a></li>
+        <li><a href="#数组类型">数组类型</a></li>
+        <li><a href="#结构化类型-struct">结构化类型 (struct)</a></li>
+        <li><a href="#channel-类型">Channel 类型</a></li>
+        <li><a href="#函数类型">函数类型</a></li>
+        <li><a href="#切片类型">切片类型</a>
           <ul>
-            <li><a href="#指针类型pointer">指针类型（Pointer）</a></li>
-            <li><a href="#数组类型">数组类型</a></li>
-            <li><a href="#结构化类型-struct">结构化类型 (struct)</a></li>
-            <li><a href="#channel-类型">Channel 类型</a></li>
-            <li><a href="#函数类型">函数类型</a></li>
-            <li><a href="#切片类型">切片类型</a>
-              <ul>
-                <li><a href="#多维-slice">多维 slice</a></li>
-              </ul>
-            </li>
-            <li><a href="#接口类型interface">接口类型（interface）</a></li>
-            <li><a href="#map-类型">Map 类型</a></li>
+            <li><a href="#多维-slice">多维 slice</a></li>
           </ul>
         </li>
-        <li><a href="#类型转化">类型转化</a>
-          <ul>
-            <li><a href="#atoi">Atoi</a></li>
-          </ul>
-        </li>
+        <li><a href="#接口类型interface">接口类型（interface）</a></li>
+        <li><a href="#map-类型">Map 类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#类型转化">类型转化</a>
+      <ul>
+        <li><a href="#atoi">Atoi</a></li>
       </ul>
     </li>
   </ul>

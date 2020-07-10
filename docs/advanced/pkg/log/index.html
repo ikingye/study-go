@@ -21,7 +21,7 @@ golang/glog (最新更新时间 2016) Leveled execution logs for Go" />
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/study-go/book.min.2b565af4d61986071164f1ead48c719f32bb138a148802dc3943b967fc4f20c6.css" integrity="sha256-K1Za9NYZhgcRZPHq1IxxnzK7E4oUiALcOUO5Z/xPIMY=">
+<link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
 
 
 <script defer src="/study-go/en.search.min.03bb5e0c8ef279f3dfa893be6c03f6a1ca55856789774e787c2a0d88a9e0156a.js" integrity="sha256-A7teDI7yefPfqJO&#43;bAP2ocpVhWeJd054fCoNiKngFWo="></script>
@@ -620,17 +620,13 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-日志">Go 日志</a>
+    <li><a href="#开源实现">开源实现</a>
       <ul>
-        <li><a href="#开源实现">开源实现</a>
-          <ul>
-            <li><a href="#sirupsenlogrushttpsgithubcomsirupsenlogrus-github-starshttpsimgshieldsiogithubstarssirupsenlogrussvg"><a href="https://github.com/sirupsen/logrus">sirupsen/logrus</a> <img src="https://img.shields.io/github/stars/sirupsen/logrus.svg" alt="Github stars"></a></li>
-            <li><a href="#uber-gozaphttpsgithubcomuber-gozap-github-starshttpsimgshieldsiogithubstarsuber-gozapsvg"><a href="https://github.com/uber-go/zap">uber-go/zap</a> <img src="https://img.shields.io/github/stars/uber-go/zap.svg" alt="Github stars"></a></li>
-            <li><a href="#rszerologhttpsgithubcomrszerolog-github-starshttpsimgshieldsiogithubstarsrszerologsvg"><a href="https://github.com/rs/zerolog">rs/zerolog</a> <img src="https://img.shields.io/github/stars/rs/zerolog.svg" alt="Github stars"></a></li>
-            <li><a href="#apexloghttpsgithubcomapexlog-github-starshttpsimgshieldsiogithubstarsapexlogsvg-最新更新时间-2016"><a href="https://github.com/apex/log">apex/log</a> <img src="https://img.shields.io/github/stars/apex/log.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
-            <li><a href="#golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg-最新更新时间-2016"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
-          </ul>
-        </li>
+        <li><a href="#sirupsenlogrushttpsgithubcomsirupsenlogrus-github-starshttpsimgshieldsiogithubstarssirupsenlogrussvg"><a href="https://github.com/sirupsen/logrus">sirupsen/logrus</a> <img src="https://img.shields.io/github/stars/sirupsen/logrus.svg" alt="Github stars"></a></li>
+        <li><a href="#uber-gozaphttpsgithubcomuber-gozap-github-starshttpsimgshieldsiogithubstarsuber-gozapsvg"><a href="https://github.com/uber-go/zap">uber-go/zap</a> <img src="https://img.shields.io/github/stars/uber-go/zap.svg" alt="Github stars"></a></li>
+        <li><a href="#rszerologhttpsgithubcomrszerolog-github-starshttpsimgshieldsiogithubstarsrszerologsvg"><a href="https://github.com/rs/zerolog">rs/zerolog</a> <img src="https://img.shields.io/github/stars/rs/zerolog.svg" alt="Github stars"></a></li>
+        <li><a href="#apexloghttpsgithubcomapexlog-github-starshttpsimgshieldsiogithubstarsapexlogsvg-最新更新时间-2016"><a href="https://github.com/apex/log">apex/log</a> <img src="https://img.shields.io/github/stars/apex/log.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
+        <li><a href="#golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg-最新更新时间-2016"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
       </ul>
     </li>
   </ul>
@@ -705,17 +701,13 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-日志">Go 日志</a>
+    <li><a href="#开源实现">开源实现</a>
       <ul>
-        <li><a href="#开源实现">开源实现</a>
-          <ul>
-            <li><a href="#sirupsenlogrushttpsgithubcomsirupsenlogrus-github-starshttpsimgshieldsiogithubstarssirupsenlogrussvg"><a href="https://github.com/sirupsen/logrus">sirupsen/logrus</a> <img src="https://img.shields.io/github/stars/sirupsen/logrus.svg" alt="Github stars"></a></li>
-            <li><a href="#uber-gozaphttpsgithubcomuber-gozap-github-starshttpsimgshieldsiogithubstarsuber-gozapsvg"><a href="https://github.com/uber-go/zap">uber-go/zap</a> <img src="https://img.shields.io/github/stars/uber-go/zap.svg" alt="Github stars"></a></li>
-            <li><a href="#rszerologhttpsgithubcomrszerolog-github-starshttpsimgshieldsiogithubstarsrszerologsvg"><a href="https://github.com/rs/zerolog">rs/zerolog</a> <img src="https://img.shields.io/github/stars/rs/zerolog.svg" alt="Github stars"></a></li>
-            <li><a href="#apexloghttpsgithubcomapexlog-github-starshttpsimgshieldsiogithubstarsapexlogsvg-最新更新时间-2016"><a href="https://github.com/apex/log">apex/log</a> <img src="https://img.shields.io/github/stars/apex/log.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
-            <li><a href="#golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg-最新更新时间-2016"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
-          </ul>
-        </li>
+        <li><a href="#sirupsenlogrushttpsgithubcomsirupsenlogrus-github-starshttpsimgshieldsiogithubstarssirupsenlogrussvg"><a href="https://github.com/sirupsen/logrus">sirupsen/logrus</a> <img src="https://img.shields.io/github/stars/sirupsen/logrus.svg" alt="Github stars"></a></li>
+        <li><a href="#uber-gozaphttpsgithubcomuber-gozap-github-starshttpsimgshieldsiogithubstarsuber-gozapsvg"><a href="https://github.com/uber-go/zap">uber-go/zap</a> <img src="https://img.shields.io/github/stars/uber-go/zap.svg" alt="Github stars"></a></li>
+        <li><a href="#rszerologhttpsgithubcomrszerolog-github-starshttpsimgshieldsiogithubstarsrszerologsvg"><a href="https://github.com/rs/zerolog">rs/zerolog</a> <img src="https://img.shields.io/github/stars/rs/zerolog.svg" alt="Github stars"></a></li>
+        <li><a href="#apexloghttpsgithubcomapexlog-github-starshttpsimgshieldsiogithubstarsapexlogsvg-最新更新时间-2016"><a href="https://github.com/apex/log">apex/log</a> <img src="https://img.shields.io/github/stars/apex/log.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
+        <li><a href="#golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg-最新更新时间-2016"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
       </ul>
     </li>
   </ul>
