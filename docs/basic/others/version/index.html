@@ -6,11 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Go 版本 golang/go  版本控制 moovweb/gvm  安装：
 zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 1.14 (2020/02/25) 参考：
- Go 1.14 中值得关注的几个变化  1.13 (2019/09/03) 1.12 (2019/02/25) 1.11 (2018/08/24) 1.10 (2018/02/16) 不用手动设置 GOROOT 了。
+ Go 1.14 中值得关注的几个变化  1.13 (2019/09/03) 1.12 (2019/02/25) 1.11 (2018/08/24)  pprof  1.10 (2018/02/16) 不用手动设置 GOROOT 了。
 参考：
- 你再也不用设置 GOROOT 了  1.9 (2017/08/24) 1.8 (2017/02/16) 1.7 (2016/08/15) 1.6 (2016/02/17) 1.5 (2015/08/19) Go 1.5 开始，使用 Go 自举实现。
-1.4 (2014/12/10) Go 1.4 之前是 C 实现。
-1.3 (2014/06/18) 1.2 (2013/12/01) 1.1 (2013/05/13) 从 Go 1."><meta property="og:title" content="版本" />
+ 你再也不用设置 GOROOT 了  1.9 (2017/08/24) 1.8 (2017/02/16) 1.7 (2016/08/15) 1.6 (2016/02/17)  Go HTTP2  http2 is enabled by default in Go 1.6&#43; with no changes to your code."><meta property="og:title" content="版本" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/version/" />
@@ -22,7 +20,7 @@ zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master
 <link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
 
 
-<script defer src="/study-go/en.search.min.03bb5e0c8ef279f3dfa893be6c03f6a1ca55856789774e787c2a0d88a9e0156a.js" integrity="sha256-A7teDI7yefPfqJO&#43;bAP2ocpVhWeJd054fCoNiKngFWo="></script>
+<script defer src="/study-go/en.search.min.ded6377e8733c5a4fc6d55031a80a0579ef4b60c90019b59b99579b5c98901fe.js" integrity="sha256-3tY3foczxaT8bVUDGoCgV570tgyQAZtZuZV5tcmJAf4="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/others/version/index.xml" title="Go 学习笔记" />
 <!--
@@ -791,6 +789,9 @@ https://github.com/alex-shpak/hugo-book
 <h3 id="113-20190903">1.13 (2019/09/03)</h3>
 <h3 id="112-20190225">1.12 (2019/02/25)</h3>
 <h3 id="111-20180824">1.11 (2018/08/24)</h3>
+<ul>
+<li>pprof</li>
+</ul>
 <h3 id="110-20180216">1.10 (2018/02/16)</h3>
 <p>不用手动设置 GOROOT 了。</p>
 <p>参考：</p>
@@ -801,6 +802,13 @@ https://github.com/alex-shpak/hugo-book
 <h3 id="18-20170216">1.8 (2017/02/16)</h3>
 <h3 id="17-20160815">1.7 (2016/08/15)</h3>
 <h3 id="16-20160217">1.6 (2016/02/17)</h3>
+<ul>
+<li>Go HTTP2
+<ul>
+<li>http2 is enabled by default in <code>Go 1.6+</code> with no changes to your code.</li>
+</ul>
+</li>
+</ul>
 <h3 id="15-20150819">1.5 (2015/08/19)</h3>
 <p>Go 1.5 开始，使用 Go 自举实现。</p>
 <h3 id="14-20141210">1.4 (2014/12/10)</h3>
