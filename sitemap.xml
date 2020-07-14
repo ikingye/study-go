@@ -163,6 +163,10 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/advanced/frame/beego/</loc>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/others/gobuild/</loc>
     <lastmod>2020-07-04T23:53:19+08:00</lastmod>
   </url>
@@ -305,6 +309,10 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/advanced/prof/</loc>
     <lastmod>2020-07-05T16:39:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/advanced/frame/</loc>
   </url>
   
   <url>
