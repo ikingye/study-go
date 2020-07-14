@@ -4,14 +4,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="函数 函数参数 值传递 golang 中函数的参数传递采用的是值传递。
-在处理 map，channel 和 slice 等这些内置结构的数据时，其实处理的是一个指针类型的数据。
-可变参数 package main import &#34;fmt&#34; // 这个函数接受任意数量的 `int` 作为参数。 func sum(nums ...int) { fmt.Print(nums, &#34; &#34;) total := 0 for _, num := range nums { total &#43;= num } fmt.Println(total) } func main() { // 变参函数使用常规的调用方式，传入独立的参数。 	sum(1, 2) sum(1, 2, 3) // 如果你有一个含有多个值的 slice，想把它们作为参数使用， 	// 你需要这样调用 `func(slice...)`。 	nums := []int{1, 2, 3, 4} sum(nums...) }  方法 调用方法时产生一个拷贝 r := rect{width: 10, height: 5} // 调用方法时，Go 会自动处理值和指针之间的转换。 // 想要避免在调用方法时产生一个拷贝，或者想让方法可以修改接受结构体的值， // 你都可以使用指针来调用方法。 rp := &amp;r fmt."><meta property="og:title" content="函数" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/keyword/func/" />
+<meta name="description" content="Go 类型系统 Underlying Type  每一个类型都有自己的 Underlying Type  如果 T 是 Pre-declared type 或者 Type Literal，它们对应的 Underlying Type 就是自身 T  比如 type T int 的 Underlying Type 是 int  int 是 Pre-declared   type T map[int]string 的 Underlying Type 是 map[int]string  map[int]string 是 Type Literal     否则 T 的 Underlying Type 是 T 定义时引用的类型的 Underlying Type    Underlying Type 相同 如果两个 type 的 Underlying Type 相同，则它们可以有以下特性："><meta property="og:title" content="类型系统" />
+<meta property="og:description" content="Go 类型系统 Underlying Type  每一个类型都有自己的 Underlying Type  如果 T 是 Pre-declared type 或者 Type Literal，它们对应的 Underlying Type 就是自身 T  比如 type T int 的 Underlying Type 是 int  int 是 Pre-declared   type T map[int]string 的 Underlying Type 是 map[int]string  map[int]string 是 Type Literal     否则 T 的 Underlying Type 是 T 定义时引用的类型的 Underlying Type    Underlying Type 相同 如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/code/type/type/" />
 
-<title>函数 | Go 学习笔记</title>
+<title>类型系统 | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -20,7 +18,6 @@
 
 <script defer src="/study-go/en.search.min.2824ee5e3314c7811e8f3cadeac5c56ffeb6f5cad4f8e0be1456b8d37ad8c848.js" integrity="sha256-KCTuXjMUx4Eejzyt6sXFb/629crU&#43;OC&#43;FFa403rYyEg="></script>
 
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/grammar/keyword/func/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -122,143 +119,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/type/" class="collapsed ">1.1.1 数据类型</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/keyword/" class="collapsed ">1.1.2 关键字</a>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/keyword/defer/" class="">defer</a>
-  
-
-</li>
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/keyword/func/" class="active">函数</a>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/keyword/func/init/" class="">init</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/keyword/func/receiver/" class="">Receiver</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/keyword/make/" class="">make</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/grammar/keyword/select/" class="">select</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
 
 
 
@@ -571,6 +431,22 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/code/type/type/" class="active">类型系统</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
 
 
   </li>
@@ -753,7 +629,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>函数</strong>
+  <strong>类型系统</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -767,15 +643,9 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#函数参数">函数参数</a>
+    <li><a href="#underlying-type"><code>Underlying Type</code></a>
       <ul>
-        <li><a href="#值传递">值传递</a></li>
-        <li><a href="#可变参数">可变参数</a></li>
-      </ul>
-    </li>
-    <li><a href="#方法">方法</a>
-      <ul>
-        <li><a href="#调用方法时产生一个拷贝">调用方法时产生一个拷贝</a></li>
+        <li><a href="#underlying-type-相同">Underlying Type 相同</a></li>
       </ul>
     </li>
   </ul>
@@ -789,48 +659,71 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="函数">函数</h1>
-<h2 id="函数参数">函数参数</h2>
-<h3 id="值传递">值传递</h3>
-<p>golang 中函数的参数传递采用的是值传递。</p>
-<p>在处理 map，channel 和 slice 等这些内置结构的数据时，其实处理的是一个指针类型的数据。</p>
-<h3 id="可变参数">可变参数</h3>
+  <article class="markdown"><h1 id="go-类型系统">Go 类型系统</h1>
+<h2 id="underlying-type"><code>Underlying Type</code></h2>
+<ul>
+<li>每一个类型都有自己的 <code>Underlying Type</code>
+<ul>
+<li>如果 <code>T</code> 是 <code>Pre-declared</code> type 或者 <code>Type Literal</code>，它们对应的 <code>Underlying Type</code> 就是自身 <code>T</code>
+<ul>
+<li>比如 <code>type T int</code> 的 <code>Underlying Type</code> 是 <code>int</code>
+<ul>
+<li><code>int</code> 是 <code>Pre-declared</code></li>
+</ul>
+</li>
+<li><code>type T map[int]string</code> 的 <code>Underlying Type</code> 是 <code>map[int]string</code>
+<ul>
+<li><code>map[int]string</code> 是 <code>Type Literal</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>否则 <code>T</code> 的 <code>Underlying Type</code> 是 <code>T</code> 定义时引用的类型的 <code>Underlying Type</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="underlying-type-相同">Underlying Type 相同</h3>
+<p>如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：</p>
+<ul>
+<li>
+<p>如果两个 type 都是 named type ，彼此之间不能相互赋值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">NewString</span> <span style="color:#66d9ef">string</span>
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">my</span> <span style="color:#66d9ef">string</span> =<span style="color:#e6db74">&#34;a&#34;</span>
+<span style="color:#75715e">// cannot use my (type string) as type NewString in assignment
+</span><span style="color:#75715e">// 虽然它们的 Underlying Type 都是 string，但 string 类型的 my 不能赋值给 NewString 类型的 you
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">NewString</span> = <span style="color:#a6e22e">my</span>
+</code></pre></div></li>
+<li>
+<p>如果两个 type 其中一个是 Unnamed Type，彼此之间可以相互赋值</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
-<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
-
-<span style="color:#75715e">// 这个函数接受任意数量的 `int` 作为参数。
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">nums</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">int</span>) {
-	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Print</span>(<span style="color:#a6e22e">nums</span>, <span style="color:#e6db74">&#34; &#34;</span>)
-	<span style="color:#a6e22e">total</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">num</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">nums</span> {
-		<span style="color:#a6e22e">total</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">num</span>
-	}
-	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">total</span>)
-}
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Ptr</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">int</span>
+<span style="color:#75715e">//named type
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Map</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span>
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">MapMap</span> <span style="color:#a6e22e">Map</span>
 
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-
-	<span style="color:#75715e">// 变参函数使用常规的调用方式，传入独立的参数。
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)
-	<span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
-
-	<span style="color:#75715e">// 如果你有一个含有多个值的 slice，想把它们作为参数使用，
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// 你需要这样调用 `func(slice...)`。
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">nums</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>}
-	<span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">nums</span><span style="color:#f92672">...</span>)
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">p</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">int</span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mm</span> <span style="color:#a6e22e">Map</span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mmm</span> <span style="color:#a6e22e">MapMap</span>
+    <span style="color:#75715e">// m1 m2 是 Unnamed Type
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m1</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span> = <span style="color:#a6e22e">mm</span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m2</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span> = <span style="color:#a6e22e">mmm</span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ptr</span> <span style="color:#a6e22e">Ptr</span> = <span style="color:#a6e22e">p</span>
+    print(<span style="color:#a6e22e">ptr</span>)
+    print(<span style="color:#a6e22e">m1</span>)
+    print(<span style="color:#a6e22e">m2</span>)
 }
-</code></pre></div><hr>
-<h2 id="方法">方法</h2>
-<h3 id="调用方法时产生一个拷贝">调用方法时产生一个拷贝</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rect</span>{<span style="color:#a6e22e">width</span>: <span style="color:#ae81ff">10</span>, <span style="color:#a6e22e">height</span>: <span style="color:#ae81ff">5</span>}
-<span style="color:#75715e">// 调用方法时，Go 会自动处理值和指针之间的转换。
-</span><span style="color:#75715e">// 想要避免在调用方法时产生一个拷贝，或者想让方法可以修改接受结构体的值，
-</span><span style="color:#75715e">// 你都可以使用指针来调用方法。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">rp</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">r</span>
-<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;area: &#34;</span>, <span style="color:#a6e22e">rp</span>.<span style="color:#a6e22e">area</span>())
-<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;perim:&#34;</span>, <span style="color:#a6e22e">rp</span>.<span style="color:#a6e22e">perim</span>())
-</code></pre></div></article>
+</code></pre></div></li>
+</ul>
+<p>原因：
+如果为一个类型起了名字，说明你想要做区分，所以两个 named types 即使 Underlying Type 相同也是不能相互赋值的。</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://sanyuesha.com/2017/07/27/go-type/">理解 Go 类型系统</a></li>
+<li><a href="https://groups.google.com/forum/#!topic/golang-nuts/4Db2z2dEhfc">Google Group Topic</a></li>
+</ul>
+</article>
  
       
 
@@ -839,14 +732,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/90dc867c6556039d2fab277989d7eba560d73203" title='Last modified by yewang | 2020-07-05' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-07-05</span>
-    </a>
-  </div>
 
 
 
@@ -879,15 +764,9 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#函数参数">函数参数</a>
+    <li><a href="#underlying-type"><code>Underlying Type</code></a>
       <ul>
-        <li><a href="#值传递">值传递</a></li>
-        <li><a href="#可变参数">可变参数</a></li>
-      </ul>
-    </li>
-    <li><a href="#方法">方法</a>
-      <ul>
-        <li><a href="#调用方法时产生一个拷贝">调用方法时产生一个拷贝</a></li>
+        <li><a href="#underlying-type-相同">Underlying Type 相同</a></li>
       </ul>
     </li>
   </ul>
