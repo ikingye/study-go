@@ -208,6 +208,11 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/appendix/attention/</loc>
+    <lastmod>2020-07-04T23:53:19+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/others/command/</loc>
     <lastmod>2020-07-05T16:33:04+08:00</lastmod>
   </url>
@@ -299,11 +304,6 @@
   
   <url>
     <loc>https://ikingye.github.io/study-go/docs/advanced/prof/</loc>
-    <lastmod>2020-07-05T16:39:46+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ikingye.github.io/study-go/docs/advanced/pkg/attention/</loc>
     <lastmod>2020-07-05T16:39:46+08:00</lastmod>
   </url>
   

@@ -18,5 +18,16 @@
       <description>Go 教程 基础    教程 说明 类型 评分     mmcgrana/gobyexample  Go by Example 中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/ docs ★★★★★   astaxie/build-web-application-with-golang  A golang ebook intro how to build a web with golang docs ★★★★   geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列 docs ★★★★   golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.go101.org docs ★★★★   polaris1119/The-Golang-Standard-Library-by-Example  Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。 以示例驱动的方式讲解 Golang 的标准库。 docs ★★★   inancgumus/learngo  1000+ Hand-Crafted Go Examples, Exercises, and Quizzes course ★★★   ardanlabs/gotraining  Go Training Class Material : http://www.</description>
     </item>
     
+    <item>
+      <title>4.3 关注项目</title>
+      <link>https://ikingye.github.io/study-go/docs/appendix/attention/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/appendix/attention/</guid>
+      <description>关注项目 golang/go  kubernetes/kubernetes  moby/moby  etcd-io/etcd  Distributed reliable key-value store for the most critical data of a distributed system
+containous/traefik  The Cloud Native Edge Router https://traefik.io
+ Web 框架 gin-gonic/gin  Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.com/</description>
+    </item>
+    
   </channel>
 </rss>

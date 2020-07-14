@@ -270,6 +270,17 @@ Go 1.11 至 Go 1.12  默认使用的还是 GOPATH 的管理方式 运行 export 
     </item>
     
     <item>
+      <title>4.3 关注项目</title>
+      <link>https://ikingye.github.io/study-go/docs/appendix/attention/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/appendix/attention/</guid>
+      <description>关注项目 golang/go  kubernetes/kubernetes  moby/moby  etcd-io/etcd  Distributed reliable key-value store for the most critical data of a distributed system
+containous/traefik  The Cloud Native Edge Router https://traefik.io
+ Web 框架 gin-gonic/gin  Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.com/</description>
+    </item>
+    
+    <item>
       <title>Interface</title>
       <link>https://ikingye.github.io/study-go/docs/basic/grammar/type/interface/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -382,17 +393,6 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
       
       <guid>https://ikingye.github.io/study-go/docs/basic/std/time/</guid>
       <description>time 格式化 // 1 2 3 4 5 6 const ANSIC = &amp;#34;Mon Jan _2 15:04:05 2006&amp;#34; time.Now().Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) </description>
-    </item>
-    
-    <item>
-      <title>关注</title>
-      <link>https://ikingye.github.io/study-go/docs/advanced/pkg/attention/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/advanced/pkg/attention/</guid>
-      <description>关注 golang/go  kubernetes/kubernetes  moby/moby  etcd-io/etcd  Distributed reliable key-value store for the most critical data of a distributed system
-containous/traefik  The Cloud Native Edge Router https://traefik.io
- Web 框架 gin-gonic/gin  Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.com/</description>
     </item>
     
     <item>
