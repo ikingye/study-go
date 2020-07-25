@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="time 格式化 // 1 2 3 4 5 6 const ANSIC = &#34;Mon Jan _2 15:04:05 2006&#34; time.Now().Format(&#34;2006-01-02 15:04:05&#34;) "><meta property="og:title" content="time" />
-<meta property="og:description" content="time 格式化 // 1 2 3 4 5 6 const ANSIC = &#34;Mon Jan _2 15:04:05 2006&#34; time.Now().Format(&#34;2006-01-02 15:04:05&#34;) " />
+<meta name="description" content="for 和 range map 遍历 Go 在运行时为哈希表的遍历引入不确定性，程序不要依赖于哈希表的稳定遍历"><meta property="og:title" content="for 和 range" />
+<meta property="og:description" content="for 和 range map 遍历 Go 在运行时为哈希表的遍历引入不确定性，程序不要依赖于哈希表的稳定遍历" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/time/" />
-<meta property="article:modified_time" content="2020-07-04T23:53:19+08:00" />
-<title>time | Go 学习笔记</title>
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/keyword/for/" />
+
+<title>for 和 range | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -120,6 +120,153 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/grammar/type/" class="collapsed ">1.1.1 数据类型</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/grammar/keyword/" class="collapsed ">1.1.2 关键字</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/keyword/defer/" class="">defer</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/keyword/for/" class="active">for 和 range</a>
+  
+
+</li>
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/grammar/keyword/func/" class="">函数</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/keyword/func/init/" class="">init</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/keyword/func/receiver/" class="">Receiver</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/keyword/make/" class="">make</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/grammar/keyword/select/" class="">select</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
 
 
   </li>
@@ -142,75 +289,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-  
-  <ul>
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/std/sort/" class="">sort</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/std/format/" class="">格式化输出</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/std/signal/" class="">signal</a>
-  
-
-</li>
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/std/sync/" class="collapsed ">sync</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/std/time/" class="active">time</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
 
 
 
@@ -682,7 +760,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>time</strong>
+  <strong>for 和 range</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -696,7 +774,7 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#格式化">格式化</a></li>
+    <li><a href="#map-遍历">map 遍历</a></li>
   </ul>
 </nav>
 
@@ -708,13 +786,10 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="timehttpspkggodevtime"><a href="https://pkg.go.dev/time">time</a></h1>
-<h2 id="格式化">格式化</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 1 2 3 4 5 6
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ANSIC</span> = <span style="color:#e6db74">&#34;Mon Jan _2 15:04:05 2006&#34;</span>
-
-<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">Format</span>(<span style="color:#e6db74">&#34;2006-01-02 15:04:05&#34;</span>)
-</code></pre></div></article>
+  <article class="markdown"><h1 id="for-和-range">for 和 range</h1>
+<h2 id="map-遍历">map 遍历</h2>
+<p>Go 在运行时为<strong>哈希表的遍历</strong>引入<strong>不确定性</strong>，程序不要依赖于哈希表的稳定遍历</p>
+</article>
  
       
 
@@ -723,14 +798,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/32f95416ddcb3cd32fc913117702f5ab28c99d1d" title='Last modified by yewang | 2020-07-04' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-07-04</span>
-    </a>
-  </div>
 
 
 
@@ -763,7 +830,7 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#格式化">格式化</a></li>
+    <li><a href="#map-遍历">map 遍历</a></li>
   </ul>
 </nav>
 
