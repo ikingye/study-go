@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="格式化输出 // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p) // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p) // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&#34;%f\n&#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt.Printf(&#34;%e\n&#34;, 123400000.0) fmt.Printf(&#34;%E\n&#34;, 123400000."><meta property="og:title" content="格式化输出" />
-<meta property="og:description" content="格式化输出 // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p) // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p) // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&#34;%f\n&#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt.Printf(&#34;%e\n&#34;, 123400000.0) fmt.Printf(&#34;%E\n&#34;, 123400000." />
+<meta name="description" content="格式化输出 // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p) // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p) // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // &#43;123 (输出符号) fmt.Printf(&#34;%&#43;d\n&#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&#34;%f\n&#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt."><meta property="og:title" content="格式化输出" />
+<meta property="og:description" content="格式化输出 // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p) // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p) // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // &#43;123 (输出符号) fmt.Printf(&#34;%&#43;d\n&#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&#34;%f\n&#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/format/" />
 <meta property="article:modified_time" content="2020-07-05T16:46:51+08:00" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
 
 
-<script defer src="/study-go/en.search.min.42855a6da2e4437e9deaa792d18da5523e68032c724ab9eb479cd560df7689f2.js" integrity="sha256-QoVabaLkQ36d6qeS0Y2lUj5oAyxySrnrR5zVYN92ifI="></script>
+<script defer src="/study-go/en.search.min.a4aa12c6b918027fdbf43841f514048cbfa5aa7fa694970a7e401c24b50b929a.js" integrity="sha256-pKoSxrkYAn/b9DhB9RQEjL&#43;lqn&#43;mlJcKfkAcJLULkpo="></script>
 
 <!--
 Made with Book Theme
@@ -151,6 +151,16 @@ https://github.com/alex-shpak/hugo-book
 
   
   <a href="/study-go/docs/basic/std/sort/" class="">sort</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/std/context/" class="">context</a>
   
 
 </li>
@@ -724,6 +734,8 @@ https://github.com/alex-shpak/hugo-book
 
 <span style="color:#75715e">// 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\n&#34;</span>, <span style="color:#ae81ff">123</span>)
+<span style="color:#75715e">// +123 (输出符号)
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%+d\n&#34;</span>, <span style="color:#ae81ff">123</span>)
 
 <span style="color:#75715e">// 这个输出二进制表示形式。
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%b\n&#34;</span>, <span style="color:#ae81ff">14</span>)

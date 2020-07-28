@@ -4,13 +4,18 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="代码片段 slice 最前面插入一个元素 // 最前面插入一个元素 x = append([]int{1}, x...) // An allocation is only necessary when there is no spare slice capacity. x = append(x, 0) copy(x[1:], x) x[0] = 1 参考：
- How to prepend int to slice  找出元素位置 func SliceIndex(limit int, predicate func(i int) bool) int { for i := 0; i &lt; limit; i&#43;&#43; { if predicate(i) { return i } } return -1 } 参考："><meta property="og:title" content="2.4 代码片段" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/advanced/snippet/" />
+<meta name="description" content="context Context 上下文 context.Context 是用来设置截止日期、同步信号，传递请求相关值的结构体。
+在 Goroutine 构成的树形结构中对信号进行同步以减少计算资源的浪费是 context.Context 的最大作用。
+context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：
+ Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期； Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel； Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值；  如果 context.Context 被取消，会返回 Canceled 错误； 如果 context.Context 超时，会返回 DeadlineExceeded 错误；   Value — 从 context.Context 中获取键对应的值，对于同一个上下文来说，多次调用 Value 并传入相同的 Key 会返回相同的结果，该方法可以用来传递请求特定的数据；  type Context interface { Deadline() (deadline time."><meta property="og:title" content="context" />
+<meta property="og:description" content="context Context 上下文 context.Context 是用来设置截止日期、同步信号，传递请求相关值的结构体。
+在 Goroutine 构成的树形结构中对信号进行同步以减少计算资源的浪费是 context.Context 的最大作用。
+context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：
+ Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期； Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel； Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值；  如果 context.Context 被取消，会返回 Canceled 错误； 如果 context.Context 超时，会返回 DeadlineExceeded 错误；   Value — 从 context.Context 中获取键对应的值，对于同一个上下文来说，多次调用 Value 并传入相同的 Key 会返回相同的结果，该方法可以用来传递请求特定的数据；  type Context interface { Deadline() (deadline time." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/context/" />
 
-<title>2.4 代码片段 | Go 学习笔记</title>
+<title>context | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
 
@@ -19,7 +24,6 @@
 
 <script defer src="/study-go/en.search.min.a4aa12c6b918027fdbf43841f514048cbfa5aa7fa694970a7e401c24b50b929a.js" integrity="sha256-pKoSxrkYAn/b9DhB9RQEjL&#43;lqn&#43;mlJcKfkAcJLULkpo="></script>
 
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/advanced/snippet/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -144,6 +148,85 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/std/sort/" class="">sort</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/std/context/" class="active">context</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/std/format/" class="">格式化输出</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/std/signal/" class="">signal</a>
+  
+
+</li>
+      
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/study-go/docs/basic/std/sync/" class="collapsed ">sync</a>
+  
+
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  
+  <a href="/study-go/docs/basic/std/time/" class="">time</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
 
 
 
@@ -303,7 +386,7 @@ https://github.com/alex-shpak/hugo-book
     
 
   
-  <a href="/study-go/docs/advanced/snippet/" class="collapsed active">2.4 代码片段</a>
+  <a href="/study-go/docs/advanced/snippet/" class="collapsed ">2.4 代码片段</a>
   
 
 
@@ -311,12 +394,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-  
-  <ul>
-    
-  </ul>
-  
 
 
 
@@ -621,7 +698,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>2.4 代码片段</strong>
+  <strong>context</strong>
 
   <label for="toc-control">
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -635,13 +712,7 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#slice">slice</a>
-      <ul>
-        <li><a href="#最前面插入一个元素">最前面插入一个元素</a></li>
-        <li><a href="#找出元素位置">找出元素位置</a></li>
-        <li><a href="#删除元素">删除元素</a></li>
-      </ul>
-    </li>
+    <li><a href="#context-1">Context</a></li>
   </ul>
 </nav>
 
@@ -653,64 +724,29 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="代码片段">代码片段</h1>
-<h2 id="slice">slice</h2>
-<h3 id="最前面插入一个元素">最前面插入一个元素</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 最前面插入一个元素
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">x</span> = append([]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>}, <span style="color:#a6e22e">x</span><span style="color:#f92672">...</span>)
-
-<span style="color:#75715e">// An allocation is only necessary when there is no spare slice capacity.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">x</span> = append(<span style="color:#a6e22e">x</span>, <span style="color:#ae81ff">0</span>)
-copy(<span style="color:#a6e22e">x</span>[<span style="color:#ae81ff">1</span>:], <span style="color:#a6e22e">x</span>)
-<span style="color:#a6e22e">x</span>[<span style="color:#ae81ff">0</span>] = <span style="color:#ae81ff">1</span>
-</code></pre></div><p>参考：</p>
+  <article class="markdown"><h1 id="context">context</h1>
+<h2 id="context-1">Context</h2>
+<p>上下文 context.Context 是用来设置截止日期、同步信号，传递请求相关值的结构体。</p>
+<p>在 Goroutine 构成的树形结构中<strong>对信号进行同步</strong>以减少计算资源的浪费是 context.Context 的最大作用。</p>
+<p><a href="https://github.com/golang/go/blob/df2999ef43ea49ce1578137017949c0ee660608a/src/context/context.go#L62-L154">context.Context</a> 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：</p>
 <ul>
-<li><a href="https://stackoverflow.com/questions/53737435/how-to-prepend-int-to-slice">How to prepend int to slice</a></li>
-</ul>
-<h3 id="找出元素位置">找出元素位置</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">SliceIndex</span>(<span style="color:#a6e22e">limit</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">predicate</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span>) <span style="color:#66d9ef">int</span> {
-    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">limit</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">predicate</span>(<span style="color:#a6e22e">i</span>) {
-            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">i</span>
-        }
-    }
-    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-}
-</code></pre></div><p>参考：</p>
+<li>Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期；</li>
+<li>Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel；</li>
+<li>Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值；
 <ul>
-<li><a href="https://stackoverflow.com/questions/8307478/how-to-find-out-element-position-in-slice">How to find out element position in slice?</a></li>
+<li>如果 context.Context 被取消，会返回 <code>Canceled</code> 错误；</li>
+<li>如果 context.Context 超时，会返回 <code>DeadlineExceeded</code> 错误；</li>
 </ul>
-<hr>
-<h3 id="删除元素">删除元素</h3>
-<p>使用 index 删除</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 保持有序
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">remove</span>(<span style="color:#a6e22e">slice</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">s</span> <span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
-    <span style="color:#66d9ef">return</span> append(<span style="color:#a6e22e">slice</span>[:<span style="color:#a6e22e">s</span>], <span style="color:#a6e22e">slice</span>[<span style="color:#a6e22e">s</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>:]<span style="color:#f92672">...</span>)
-}
-
-<span style="color:#75715e">// 无序
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">remove</span>(<span style="color:#a6e22e">s</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
-    <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>] = <span style="color:#a6e22e">s</span>[len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-    <span style="color:#75715e">// We do not need to put s[i] at the end, as it will be discarded anyway
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>[:len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-}
-</code></pre></div><p>使用元素值删除</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">remove</span>(<span style="color:#a6e22e">s</span> []<span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">e</span> <span style="color:#66d9ef">string</span>) []<span style="color:#66d9ef">string</span> {
-    <span style="color:#a6e22e">result</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">s</span>[:<span style="color:#ae81ff">0</span>]
-    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">item</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
-        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">e</span> {
-            <span style="color:#a6e22e">result</span> = append(<span style="color:#a6e22e">result</span>, <span style="color:#a6e22e">item</span>)
-        }
-    }
-
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>
-}
-</code></pre></div><p>参考：</p>
-<ul>
-<li><a href="https://stackoverflow.com/questions/37334119/how-to-delete-an-element-from-a-slice-in-golang">How to delete an element from a Slice in Golang</a></li>
-<li><a href="https://www.jianshu.com/p/d276aa7300d1">【Golang】slice 删除元素的性能对比</a></li>
+</li>
+<li>Value — 从 context.Context 中获取键对应的值，对于同一个上下文来说，多次调用 Value 并传入相同的 Key 会返回相同的结果，该方法可以用来传递请求特定的数据；</li>
 </ul>
-</article>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Context</span> <span style="color:#66d9ef">interface</span> {
+	<span style="color:#a6e22e">Deadline</span>() (<span style="color:#a6e22e">deadline</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Time</span>, <span style="color:#a6e22e">ok</span> <span style="color:#66d9ef">bool</span>)
+	<span style="color:#a6e22e">Done</span>() <span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">struct</span>{}
+	<span style="color:#a6e22e">Err</span>() <span style="color:#66d9ef">error</span>
+	<span style="color:#a6e22e">Value</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">interface</span>{}
+}
+</code></pre></div></article>
  
       
 
@@ -719,14 +755,6 @@ copy(<span style="color:#a6e22e">x</span>[<span style="color:#ae81ff">1</span>:]
   <div class="flex justify-between">
 
 
-
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/f7e45ef32c33ecb68a277db60130bc3963105231" title='Last modified by yewang | 2020-07-05' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-07-05</span>
-    </a>
-  </div>
 
 
 
@@ -759,13 +787,7 @@ copy(<span style="color:#a6e22e">x</span>[<span style="color:#ae81ff">1</span>:]
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#slice">slice</a>
-      <ul>
-        <li><a href="#最前面插入一个元素">最前面插入一个元素</a></li>
-        <li><a href="#找出元素位置">找出元素位置</a></li>
-        <li><a href="#删除元素">删除元素</a></li>
-      </ul>
-    </li>
+    <li><a href="#context-1">Context</a></li>
   </ul>
 </nav>
 

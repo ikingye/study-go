@@ -20,12 +20,24 @@
     </item>
     
     <item>
+      <title>context</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/context/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/context/</guid>
+      <description>context Context 上下文 context.Context 是用来设置截止日期、同步信号，传递请求相关值的结构体。
+在 Goroutine 构成的树形结构中对信号进行同步以减少计算资源的浪费是 context.Context 的最大作用。
+context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：
+ Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期； Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel； Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值；  如果 context.Context 被取消，会返回 Canceled 错误； 如果 context.Context 超时，会返回 DeadlineExceeded 错误；   Value — 从 context.Context 中获取键对应的值，对于同一个上下文来说，多次调用 Value 并传入相同的 Key 会返回相同的结果，该方法可以用来传递请求特定的数据；  type Context interface { Deadline() (deadline time.</description>
+    </item>
+    
+    <item>
       <title>格式化输出</title>
       <link>https://ikingye.github.io/study-go/docs/basic/std/format/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/std/format/</guid>
-      <description>格式化输出 // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&amp;#34;%v\n&amp;#34;, p) // 如果值是一个结构体，`%+v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&amp;#34;%+v\n&amp;#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&amp;#34;%#v\n&amp;#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&amp;#34;%T\n&amp;#34;, p) // 格式化布尔值很简单。 fmt.Printf(&amp;#34;%t\n&amp;#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&amp;#34;%d\n&amp;#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&amp;#34;%b\n&amp;#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&amp;#34;%c\n&amp;#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&amp;#34;%x\n&amp;#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&amp;#34;%f\n&amp;#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt.Printf(&amp;#34;%e\n&amp;#34;, 123400000.0) fmt.Printf(&amp;#34;%E\n&amp;#34;, 123400000.</description>
+      <description>格式化输出 // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&amp;#34;%v\n&amp;#34;, p) // 如果值是一个结构体，`%+v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&amp;#34;%+v\n&amp;#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&amp;#34;%#v\n&amp;#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&amp;#34;%T\n&amp;#34;, p) // 格式化布尔值很简单。 fmt.Printf(&amp;#34;%t\n&amp;#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&amp;#34;%d\n&amp;#34;, 123) // +123 (输出符号) fmt.Printf(&amp;#34;%+d\n&amp;#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&amp;#34;%b\n&amp;#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&amp;#34;%c\n&amp;#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&amp;#34;%x\n&amp;#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&amp;#34;%f\n&amp;#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt.</description>
     </item>
     
     <item>
