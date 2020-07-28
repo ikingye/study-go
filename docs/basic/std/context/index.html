@@ -4,17 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="context Context 上下文 context.Context 是用来设置截止日期、同步信号，传递请求相关值的结构体。
-在 Goroutine 构成的树形结构中对信号进行同步以减少计算资源的浪费是 context.Context 的最大作用。
-context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：
- Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期； Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel； Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值；  如果 context.Context 被取消，会返回 Canceled 错误； 如果 context.Context 超时，会返回 DeadlineExceeded 错误；   Value — 从 context.Context 中获取键对应的值，对于同一个上下文来说，多次调用 Value 并传入相同的 Key 会返回相同的结果，该方法可以用来传递请求特定的数据；  type Context interface { Deadline() (deadline time."><meta property="og:title" content="context" />
-<meta property="og:description" content="context Context 上下文 context.Context 是用来设置截止日期、同步信号，传递请求相关值的结构体。
-在 Goroutine 构成的树形结构中对信号进行同步以减少计算资源的浪费是 context.Context 的最大作用。
-context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：
- Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期； Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel； Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值；  如果 context.Context 被取消，会返回 Canceled 错误； 如果 context.Context 超时，会返回 DeadlineExceeded 错误；   Value — 从 context.Context 中获取键对应的值，对于同一个上下文来说，多次调用 Value 并传入相同的 Key 会返回相同的结果，该方法可以用来传递请求特定的数据；  type Context interface { Deadline() (deadline time." />
+<meta name="description" content="context context.Context  在 Goroutine 构成的树形结构中对信号进行同步以减少计算资源的浪费是 context.Context 的最大作用。 我们可能会创建多个 Goroutine 来处理一次请求，而 context.Context 的作用就是在不同 Goroutine 之间同步  请求特定数据 取消信号 处理请求的截止时间   多个 Goroutine 同时订阅 ctx.Done() 管道中的消息，一旦接收到取消信号就立刻停止当前正在执行的工作  context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：
+ Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期； Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel； Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值；  如果 context.Context 被取消，会返回 Canceled 错误； 如果 context.Context 超时，会返回 DeadlineExceeded 错误；   Value — 从 context."><meta property="og:title" content="context" />
+<meta property="og:description" content="context context.Context  在 Goroutine 构成的树形结构中对信号进行同步以减少计算资源的浪费是 context.Context 的最大作用。 我们可能会创建多个 Goroutine 来处理一次请求，而 context.Context 的作用就是在不同 Goroutine 之间同步  请求特定数据 取消信号 处理请求的截止时间   多个 Goroutine 同时订阅 ctx.Done() 管道中的消息，一旦接收到取消信号就立刻停止当前正在执行的工作  context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：
+ Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期； Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel； Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值；  如果 context.Context 被取消，会返回 Canceled 错误； 如果 context.Context 超时，会返回 DeadlineExceeded 错误；   Value — 从 context." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/context/" />
-
+<meta property="article:modified_time" content="2020-07-28T10:47:39+08:00" />
 <title>context | Go 学习笔记</title>
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 
@@ -22,7 +18,7 @@ context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该�
 <link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
 
 
-<script defer src="/study-go/en.search.min.a4aa12c6b918027fdbf43841f514048cbfa5aa7fa694970a7e401c24b50b929a.js" integrity="sha256-pKoSxrkYAn/b9DhB9RQEjL&#43;lqn&#43;mlJcKfkAcJLULkpo="></script>
+<script defer src="/study-go/en.search.min.520bd9b92917a596c9de91aa79b7d980ba6a5b25b82fd60a4325bb77e274d95c.js" integrity="sha256-UgvZuSkXpZbJ3pGqebfZgLpqWyW4L9YKQyW7d&#43;J02Vw="></script>
 
 <!--
 Made with Book Theme
@@ -712,7 +708,9 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#context-1">Context</a></li>
+    <li><a href="#contextcontext">context.Context</a></li>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#contextemptyctx">context.emptyCtx</a></li>
   </ul>
 </nav>
 
@@ -725,9 +723,18 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="context">context</h1>
-<h2 id="context-1">Context</h2>
-<p>上下文 context.Context 是用来设置截止日期、同步信号，传递请求相关值的结构体。</p>
-<p>在 Goroutine 构成的树形结构中<strong>对信号进行同步</strong>以减少计算资源的浪费是 context.Context 的最大作用。</p>
+<h2 id="contextcontext">context.Context</h2>
+<ul>
+<li>在 Goroutine 构成的树形结构中<strong>对信号进行同步</strong>以减少计算资源的浪费是 context.Context 的最大作用。</li>
+<li>我们可能会创建多个 Goroutine 来处理<strong>一次请求</strong>，而 context.Context 的作用就是在不同 Goroutine 之间同步
+<ul>
+<li>请求特定数据</li>
+<li>取消信号</li>
+<li>处理请求的截止时间</li>
+</ul>
+</li>
+<li>多个 Goroutine 同时订阅 <code>ctx.Done()</code> 管道中的消息，一旦接收到取消信号就立刻停止当前正在执行的工作</li>
+</ul>
 <p><a href="https://github.com/golang/go/blob/df2999ef43ea49ce1578137017949c0ee660608a/src/context/context.go#L62-L154">context.Context</a> 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：</p>
 <ul>
 <li>Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期；</li>
@@ -746,6 +753,57 @@ https://github.com/alex-shpak/hugo-book
 	<span style="color:#a6e22e">Err</span>() <span style="color:#66d9ef">error</span>
 	<span style="color:#a6e22e">Value</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">interface</span>{}
 }
+</code></pre></div><hr>
+<h2 id="background">Background</h2>
+<ul>
+<li>context.Background()</li>
+<li>context.TODO()</li>
+<li>context.WithValue()</li>
+<li>context.WithCancel()</li>
+<li>context.WithDeadline()</li>
+<li>context.WithTimeout()</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200728110757.png" alt="" /></p>
+<p>从源代码来看，context.Background 和 context.TODO 函数其实也只是<strong>互为别名</strong>，没有太大的差别。
+它们只是在使用和语义上稍有不同：</p>
+<ul>
+<li>context.Background 是上下文的默认值，所有其他的上下文都应该从它衍生（Derived）出来；</li>
+<li>context.TODO 应该只在不确定应该使用哪种上下文时使用；</li>
+</ul>
+<p>在多数情况下，如果当前函数没有上下文作为入参，我们都会使用 context.Background 作为起始的上下文向下传递。</p>
+<hr>
+<h2 id="contextemptyctx">context.emptyCtx</h2>
+<p>context 包中最常用的方法还是 context.Background、context.TODO，
+这两个方法都会返回预先初始化好的私有变量 background 和 todo，
+它们会在同一个 Go 程序中被复用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Background</span>() <span style="color:#a6e22e">Context</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">background</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TODO</span>() <span style="color:#a6e22e">Context</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">todo</span>
+}
+</code></pre></div><p>这两个私有变量都是通过 new(emptyCtx) 语句初始化的，
+它们是指向私有结构体 context.emptyCtx 的指针，
+这是最简单、最常用的上下文类型。</p>
+<p>context.emptyCtx 通过返回 nil 实现了 context.Context 接口，它没有任何特殊的功能。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">emptyCtx</span> <span style="color:#66d9ef">int</span>
+
+<span style="color:#66d9ef">func</span> (<span style="color:#f92672">*</span><span style="color:#a6e22e">emptyCtx</span>) <span style="color:#a6e22e">Deadline</span>() (<span style="color:#a6e22e">deadline</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Time</span>, <span style="color:#a6e22e">ok</span> <span style="color:#66d9ef">bool</span>) {
+	<span style="color:#66d9ef">return</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#f92672">*</span><span style="color:#a6e22e">emptyCtx</span>) <span style="color:#a6e22e">Done</span>() <span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">struct</span>{} {
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#f92672">*</span><span style="color:#a6e22e">emptyCtx</span>) <span style="color:#a6e22e">Err</span>() <span style="color:#66d9ef">error</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#f92672">*</span><span style="color:#a6e22e">emptyCtx</span>) <span style="color:#a6e22e">Value</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">interface</span>{} {
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+}
 </code></pre></div></article>
  
       
@@ -755,6 +813,14 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/e7afaec776e9a276f83694ede995b2582d5dc765" title='Last modified by yewang | 2020-07-28' target="_blank" rel="noopener">
+      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2020-07-28</span>
+    </a>
+  </div>
 
 
 
@@ -787,7 +853,9 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#context-1">Context</a></li>
+    <li><a href="#contextcontext">context.Context</a></li>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#contextemptyctx">context.emptyCtx</a></li>
   </ul>
 </nav>
 

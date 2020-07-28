@@ -32,6 +32,7 @@ quick start typically a Cobra-based application will follow the following organi
 uber-go/zap  Blazing fast, structured, leveled logging in Go.
 rs/zerolog  Zero Allocation JSON Logger
 apex/log (最新更新时间 2016) Structured logging package for Go.
+grafana/loki (最新更新时间 2016) Like Prometheus, but for logs.
 golang/glog (最新更新时间 2016) Leveled execution logs for Go</description>
     </item>
     

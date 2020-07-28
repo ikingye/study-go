@@ -8,11 +8,13 @@
 uber-go/zap  Blazing fast, structured, leveled logging in Go.
 rs/zerolog  Zero Allocation JSON Logger
 apex/log (最新更新时间 2016) Structured logging package for Go.
+grafana/loki (最新更新时间 2016) Like Prometheus, but for logs.
 golang/glog (最新更新时间 2016) Leveled execution logs for Go"><meta property="og:title" content="日志" />
 <meta property="og:description" content="Go 日志 开源实现 sirupsen/logrus  Structured, pluggable logging for Go.
 uber-go/zap  Blazing fast, structured, leveled logging in Go.
 rs/zerolog  Zero Allocation JSON Logger
 apex/log (最新更新时间 2016) Structured logging package for Go.
+grafana/loki (最新更新时间 2016) Like Prometheus, but for logs.
 golang/glog (最新更新时间 2016) Leveled execution logs for Go" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/advanced/pkg/log/" />
@@ -24,7 +26,7 @@ golang/glog (最新更新时间 2016) Leveled execution logs for Go" />
 <link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
 
 
-<script defer src="/study-go/en.search.min.a4aa12c6b918027fdbf43841f514048cbfa5aa7fa694970a7e401c24b50b929a.js" integrity="sha256-pKoSxrkYAn/b9DhB9RQEjL&#43;lqn&#43;mlJcKfkAcJLULkpo="></script>
+<script defer src="/study-go/en.search.min.520bd9b92917a596c9de91aa79b7d980ba6a5b25b82fd60a4325bb77e274d95c.js" integrity="sha256-UgvZuSkXpZbJ3pGqebfZgLpqWyW4L9YKQyW7d&#43;J02Vw="></script>
 
 <!--
 Made with Book Theme
@@ -667,6 +669,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#uber-gozaphttpsgithubcomuber-gozap-github-starshttpsimgshieldsiogithubstarsuber-gozapsvg"><a href="https://github.com/uber-go/zap">uber-go/zap</a> <img src="https://img.shields.io/github/stars/uber-go/zap.svg" alt="Github stars"></a></li>
         <li><a href="#rszerologhttpsgithubcomrszerolog-github-starshttpsimgshieldsiogithubstarsrszerologsvg"><a href="https://github.com/rs/zerolog">rs/zerolog</a> <img src="https://img.shields.io/github/stars/rs/zerolog.svg" alt="Github stars"></a></li>
         <li><a href="#apexloghttpsgithubcomapexlog-github-starshttpsimgshieldsiogithubstarsapexlogsvg-最新更新时间-2016"><a href="https://github.com/apex/log">apex/log</a> <img src="https://img.shields.io/github/stars/apex/log.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
+        <li><a href="#grafanalokihttpsgithubcomgrafanaloki-github-starshttpsimgshieldsiogithubstarsgrafanalokisvg-最新更新时间-2016"><a href="https://github.com/grafana/loki">grafana/loki</a> <img src="https://img.shields.io/github/stars/grafana/loki.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
         <li><a href="#golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg-最新更新时间-2016"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
       </ul>
     </li>
@@ -691,6 +694,8 @@ https://github.com/alex-shpak/hugo-book
 <p>Zero Allocation JSON Logger</p>
 <h3 id="apexloghttpsgithubcomapexlog-github-starshttpsimgshieldsiogithubstarsapexlogsvg-最新更新时间-2016"><a href="https://github.com/apex/log">apex/log</a> <img src="https://img.shields.io/github/stars/apex/log.svg" alt="Github stars" /> (最新更新时间 2016)</h3>
 <p>Structured logging package for Go.</p>
+<h3 id="grafanalokihttpsgithubcomgrafanaloki-github-starshttpsimgshieldsiogithubstarsgrafanalokisvg-最新更新时间-2016"><a href="https://github.com/grafana/loki">grafana/loki</a> <img src="https://img.shields.io/github/stars/grafana/loki.svg" alt="Github stars" /> (最新更新时间 2016)</h3>
+<p>Like Prometheus, but for logs.</p>
 <h3 id="golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg-最新更新时间-2016"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars" /> (最新更新时间 2016)</h3>
 <p>Leveled execution logs for Go</p>
 </article>
@@ -748,6 +753,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#uber-gozaphttpsgithubcomuber-gozap-github-starshttpsimgshieldsiogithubstarsuber-gozapsvg"><a href="https://github.com/uber-go/zap">uber-go/zap</a> <img src="https://img.shields.io/github/stars/uber-go/zap.svg" alt="Github stars"></a></li>
         <li><a href="#rszerologhttpsgithubcomrszerolog-github-starshttpsimgshieldsiogithubstarsrszerologsvg"><a href="https://github.com/rs/zerolog">rs/zerolog</a> <img src="https://img.shields.io/github/stars/rs/zerolog.svg" alt="Github stars"></a></li>
         <li><a href="#apexloghttpsgithubcomapexlog-github-starshttpsimgshieldsiogithubstarsapexlogsvg-最新更新时间-2016"><a href="https://github.com/apex/log">apex/log</a> <img src="https://img.shields.io/github/stars/apex/log.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
+        <li><a href="#grafanalokihttpsgithubcomgrafanaloki-github-starshttpsimgshieldsiogithubstarsgrafanalokisvg-最新更新时间-2016"><a href="https://github.com/grafana/loki">grafana/loki</a> <img src="https://img.shields.io/github/stars/grafana/loki.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
         <li><a href="#golanggloghttpsgithubcomgolangglog-github-starshttpsimgshieldsiogithubstarsgolangglogsvg-最新更新时间-2016"><a href="https://github.com/golang/glog">golang/glog</a> <img src="https://img.shields.io/github/stars/golang/glog.svg" alt="Github stars"> (最新更新时间 2016)</a></li>
       </ul>
     </li>
