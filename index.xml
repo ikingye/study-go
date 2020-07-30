@@ -267,7 +267,7 @@ Go 1.11 至 Go 1.12  默认使用的还是 GOPATH 的管理方式 运行 export 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/grammar/type/array/</guid>
-      <description>Go 数组 </description>
+      <description>Go 数组 什么时候使用数组，而不是切片？  arrays are hashable. That means they can be used as a key to a map can be serialized by encoding/binary pass by value. planning the detailed layout of memory   Why use arrays instead of slices?  </description>
     </item>
     
     <item>
