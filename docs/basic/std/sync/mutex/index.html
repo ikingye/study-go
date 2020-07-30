@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
 
 
-<script defer src="/study-go/en.search.min.14cd0685ef5b312f139279d2a3a9713d8b2193f80f53339df7301726279629fa.js" integrity="sha256-FM0Ghe9bMS8TknnSo6lxPYshk/gPUzOd9zAXJieWKfo="></script>
+<script defer src="/study-go/en.search.min.2661934eadb6aef7df479b7da17d6542cd39c3e592cb964dc1b6afdb66a0f032.js" integrity="sha256-JmGTTq22rvffR5t9oX1lQs05w&#43;WSy5ZNwbav22ag8DI="></script>
 
 <!--
 Made with Book Theme
@@ -751,7 +751,7 @@ https://github.com/alex-shpak/hugo-book
 <li>在一个 goroutine 获得 Mutex 后，其他 goroutine 只能等到这个 goroutine 释放该 Mutex</li>
 <li>使用 Lock() 加锁后，不能再继续对其加锁，直到利用 Unlock() 解锁后才能再加锁
 <ul>
-<li>在同一个 goroutine 中的 Mutex 解锁之前再次进行加锁，会导致死锁</li>
+<li>在<strong>同一个 goroutine</strong> 中的 Mutex 解锁之前再次进行加锁，会导致死锁</li>
 </ul>
 </li>
 <li>在 Lock() 之前使用 Unlock() 会导致 panic 异常</li>
@@ -773,7 +773,7 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>Lock() 加写锁，Unlock() 解写锁</li>
 <li>在 Lock() 之前使用 Unlock() 会导致 panic 异常</li>
-<li>如果在加写锁之前已经有其他的读锁和写锁，则 Lock() 会阻塞直到该锁可用，为确保该锁可用，已经阻塞的 Lock() 调用会从获得的锁中排除新的读取器，即写锁权限高于读锁，有写锁时优先进行写锁定</li>
+<li>如果在加写锁之前已经有其他的读锁和写锁，则 Lock() 会阻塞直到该锁可用，为确保该锁可用，已经阻塞的 Lock() 调用会从获得的锁中排除新的读取器，即<strong>写锁权限高于读锁</strong>，有写锁时优先进行写锁定</li>
 </ul>
 </li>
 <li>读锁占用的情况下会阻止写，不会阻止读，多个 goroutine 可以同时获取读锁

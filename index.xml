@@ -424,7 +424,7 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
 zsh &amp;lt; &amp;lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 1.14 (2020/02/25) 参考：
  Go 1.14 中值得关注的几个变化  1.13 (2019/09/03) 1.12 (2019/02/25) 1.11 (2018/08/24)  pprof  1.10 (2018/02/16) 不用手动设置 GOROOT 了。
 参考：
- 你再也不用设置 GOROOT 了  1.9 (2017/08/24) 1.8 (2017/02/16)  http/2 PUSH 功能  1.7 (2016/08/15)  标准库  context.Context    1.6 (2016/02/17)  Go HTTP2  http2 is enabled by default in Go 1.</description>
+ 你再也不用设置 GOROOT 了  1.9 (2017/08/24)  Mutex 互斥锁的饥饿模式  1.8 (2017/02/16)  http/2 PUSH 功能  1.7 (2016/08/15)  标准库  context.Context    1.6 (2016/02/17)  Go HTTP2  http2 is enabled by default in Go 1.</description>
     </item>
     
     <item>

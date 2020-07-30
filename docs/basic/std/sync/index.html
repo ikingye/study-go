@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="sync 锁的类型 Mutex RWMutex WaitGroup "><meta property="og:title" content="sync" />
+<meta name="description" content="sync  sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond  锁的类型 Mutex 互斥锁 type Mutex struct { state int32 sema uint32 // semaphore 信号量 }  sync.Mutex.Lock 和 sync.Mutex.Unlock  state # 8 位 **** **** ***** * * * waitersCount mutexStarving mutexWoken mutexLocked  mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态  Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时   waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个)   RWMutex type RWMutex struct { w Mutex writerSem uint32 readerSem uint32 readerCount int32 readerWait int32 }  写操作使用 sync."><meta property="og:title" content="sync" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/sync/" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
 
 
-<script defer src="/study-go/en.search.min.14cd0685ef5b312f139279d2a3a9713d8b2193f80f53339df7301726279629fa.js" integrity="sha256-FM0Ghe9bMS8TknnSo6lxPYshk/gPUzOd9zAXJieWKfo="></script>
+<script defer src="/study-go/en.search.min.2661934eadb6aef7df479b7da17d6542cd39c3e592cb964dc1b6afdb66a0f032.js" integrity="sha256-JmGTTq22rvffR5t9oX1lQs05w&#43;WSy5ZNwbav22ag8DI="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/std/sync/index.xml" title="Go 学习笔记" />
 <!--
@@ -735,9 +735,19 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#锁的类型">锁的类型</a>
       <ul>
-        <li><a href="#mutex">Mutex</a></li>
+        <li><a href="#mutex-互斥锁">Mutex 互斥锁</a>
+          <ul>
+            <li><a href="#state">state</a></li>
+          </ul>
+        </li>
         <li><a href="#rwmutex">RWMutex</a></li>
-        <li><a href="#waitgroup">WaitGroup</a></li>
+        <li><a href="#waitgroup">WaitGroup</a>
+          <ul>
+            <li><a href="#done">Done</a></li>
+          </ul>
+        </li>
+        <li><a href="#once">Once</a></li>
+        <li><a href="#cond">Cond</a></li>
       </ul>
     </li>
   </ul>
@@ -752,10 +762,120 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="sync">sync</h1>
+<ul>
+<li>sync.Mutex</li>
+<li>sync.RWMutex</li>
+<li>sync.WaitGroup</li>
+<li>sync.Once</li>
+<li>sync.Cond</li>
+</ul>
 <h2 id="锁的类型">锁的类型</h2>
-<h3 id="mutex">Mutex</h3>
+<h3 id="mutex-互斥锁">Mutex 互斥锁</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Mutex</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">state</span> <span style="color:#66d9ef">int32</span>
+	<span style="color:#a6e22e">sema</span>  <span style="color:#66d9ef">uint32</span> <span style="color:#75715e">// semaphore 信号量
+</span><span style="color:#75715e"></span>}
+</code></pre></div><ul>
+<li>sync.Mutex.Lock 和 sync.Mutex.Unlock</li>
+</ul>
+<h4 id="state">state</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 8 位</span>
+**** ****
+
+*****               *              *           *
+waitersCount  mutexStarving   mutexWoken   mutexLocked
+</code></pre></div><ul>
+<li>mutexLocked — 表示互斥锁的<strong>锁定状态</strong></li>
+<li>mutexWoken — 表示从正常模式被从唤醒</li>
+<li>mutexStarving — 当前的互斥锁进入<strong>饥饿状态</strong>
+<ul>
+<li>Goroutine 超过 <code>1ms</code> 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成<strong>高尾延时</strong></li>
+</ul>
+</li>
+<li>waitersCount — 当前互斥锁上<strong>等待</strong>的 Goroutine 个数 (最多 128 个)</li>
+</ul>
+<hr>
 <h3 id="rwmutex">RWMutex</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">RWMutex</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">w</span>           <span style="color:#a6e22e">Mutex</span>
+	<span style="color:#a6e22e">writerSem</span>   <span style="color:#66d9ef">uint32</span>
+	<span style="color:#a6e22e">readerSem</span>   <span style="color:#66d9ef">uint32</span>
+	<span style="color:#a6e22e">readerCount</span> <span style="color:#66d9ef">int32</span>
+	<span style="color:#a6e22e">readerWait</span>  <span style="color:#66d9ef">int32</span>
+}
+</code></pre></div><ul>
+<li>写操作使用 sync.RWMutex.Lock 和 sync.RWMutex.Unlock 方法；</li>
+<li>读操作使用 sync.RWMutex.RLock 和 sync.RWMutex.RUnlock 方法；</li>
+</ul>
+<hr>
+<ul>
+<li>调用 <code>sync.RWMutex.Lock</code> 尝试获取写锁时；
+<ul>
+<li>每次 <code>sync.RWMutex.RUnlock</code> 都会将 readerWait 其减一，当它归零时该 Goroutine 就会获得写锁；</li>
+<li>将 readerCount 减少 rwmutexMaxReaders 个数以阻塞后续的读操作；</li>
+</ul>
+</li>
+<li>调用 <code>sync.RWMutex.Unlock</code> 释放写锁时，会先通知所有的读操作，然后才会释放持有的互斥锁；</li>
+</ul>
+<p>读写互斥锁在互斥锁之上提供了额外的更细粒度的控制，能够在读操作远远多于写操作时提升性能。</p>
+<hr>
 <h3 id="waitgroup">WaitGroup</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">WaitGroup</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">noCopy</span> <span style="color:#a6e22e">noCopy</span> <span style="color:#75715e">// wg 无法复制
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">state1</span> [<span style="color:#ae81ff">3</span>]<span style="color:#66d9ef">uint32</span>
+}
+</code></pre></div><hr>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">requests</span> <span style="color:#f92672">:=</span> []<span style="color:#f92672">*</span><span style="color:#a6e22e">Request</span>{<span style="color:#f92672">...</span>}
+<span style="color:#a6e22e">wg</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>{}
+<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(len(<span style="color:#a6e22e">requests</span>))
+
+<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">request</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">requests</span> {
+    <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Request</span>) {
+        <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+        <span style="color:#75715e">// res, err := service.call(r)
+</span><span style="color:#75715e"></span>    }(<span style="color:#a6e22e">request</span>)
+}
+<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+</code></pre></div><h4 id="done">Done</h4>
+<p>sync.WaitGroup.Done 只是对 sync.WaitGroup.Add 方法的简单封装，
+我们可以向 sync.WaitGroup.Add 方法传入任意负数（需要保证计数器非负）快速将计数器归零以唤醒其他等待的 Goroutine；</p>
+<hr>
+<h3 id="once">Once</h3>
+<ul>
+<li>sync.Once.Do 方法中传入的函数只会被执行一次，哪怕函数中发生了 <code>panic</code>；</li>
+<li>两次调用 sync.Once.Do 方法传入不同的函数也只会<strong>执行第一次调用</strong>的函数；</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Once</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">done</span> <span style="color:#66d9ef">uint32</span>
+	<span style="color:#a6e22e">m</span>    <span style="color:#a6e22e">Mutex</span>
+}
+</code></pre></div><hr>
+<h3 id="cond">Cond</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Cond</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">L</span>       <span style="color:#a6e22e">Locker</span> <span style="color:#75715e">// 用于保护内部的 notify 字段
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">notify</span>  <span style="color:#a6e22e">notifyList</span>
+	<span style="color:#a6e22e">noCopy</span>  <span style="color:#a6e22e">noCopy</span> <span style="color:#75715e">// 保证结构体不会在编译期间拷贝
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">checker</span> <span style="color:#a6e22e">copyChecker</span> <span style="color:#75715e">// 禁止运行期间发生的拷贝
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">notifyList</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">wait</span> <span style="color:#66d9ef">uint32</span>
+	<span style="color:#a6e22e">notify</span> <span style="color:#66d9ef">uint32</span>
+
+	<span style="color:#a6e22e">lock</span> <span style="color:#a6e22e">mutex</span>
+	<span style="color:#a6e22e">head</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sudog</span>
+	<span style="color:#a6e22e">tail</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sudog</span>
+}
+</code></pre></div><hr>
+<ul>
+<li>sync.Cond.Wait 将当前 Goroutine 陷入休眠状态
+<ul>
+<li>在调用之前一定要使用获取互斥锁，否则会触发程序崩溃</li>
+</ul>
+</li>
+<li>sync.Cond.Signal 唤醒队列最前面的 Goroutine</li>
+<li>sync.Cond.Broadcast 唤醒队列中全部的 Goroutine</li>
+</ul>
 </article>
  
       
@@ -807,9 +927,19 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#锁的类型">锁的类型</a>
       <ul>
-        <li><a href="#mutex">Mutex</a></li>
+        <li><a href="#mutex-互斥锁">Mutex 互斥锁</a>
+          <ul>
+            <li><a href="#state">state</a></li>
+          </ul>
+        </li>
         <li><a href="#rwmutex">RWMutex</a></li>
-        <li><a href="#waitgroup">WaitGroup</a></li>
+        <li><a href="#waitgroup">WaitGroup</a>
+          <ul>
+            <li><a href="#done">Done</a></li>
+          </ul>
+        </li>
+        <li><a href="#once">Once</a></li>
+        <li><a href="#cond">Cond</a></li>
       </ul>
     </li>
   </ul>
