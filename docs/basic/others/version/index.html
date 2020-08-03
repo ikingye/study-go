@@ -5,15 +5,15 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Go 版本 golang/go  版本控制 moovweb/gvm  安装：
-zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 1.14 (2020/02/25) 参考：
- Go 1.14 中值得关注的几个变化  1.13 (2019/09/03) 1.12 (2019/02/25) 1.11 (2018/08/24)  pprof  1.10 (2018/02/16) 不用手动设置 GOROOT 了。
+zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 1.14 (2020/02/25)  嵌入接口的方法集可重叠  1.14.4 (2020/06/01) 1.14.6 (2020/07/16) 参考：
+ Go 1.14 中值得关注的几个变化   1.13 (2019/09/03) 1.12 (2019/02/25) 1.11 (2018/08/24)  pprof  1.10 (2018/02/16) 不用手动设置 GOROOT 了。
 参考：
- 你再也不用设置 GOROOT 了  1.9 (2017/08/24)  Mutex 互斥锁的饥饿模式  1.8 (2017/02/16)  http/2 PUSH 功能  1.7 (2016/08/15)  标准库  context.Context    1.6 (2016/02/17)  Go HTTP2  http2 is enabled by default in Go 1."><meta property="og:title" content="版本" />
+ 你再也不用设置 GOROOT 了  1.9 (2017/08/24)  Mutex 互斥锁的饥饿模式  1.8 (2017/02/16)  http/2 PUSH 功能  1.7 (2016/08/15)  标准库  context."><meta property="og:title" content="版本" />
 <meta property="og:description" content="Go 版本 golang/go  版本控制 moovweb/gvm  安装：
-zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 1.14 (2020/02/25) 参考：
- Go 1.14 中值得关注的几个变化  1.13 (2019/09/03) 1.12 (2019/02/25) 1.11 (2018/08/24)  pprof  1.10 (2018/02/16) 不用手动设置 GOROOT 了。
+zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 1.14 (2020/02/25)  嵌入接口的方法集可重叠  1.14.4 (2020/06/01) 1.14.6 (2020/07/16) 参考：
+ Go 1.14 中值得关注的几个变化   1.13 (2019/09/03) 1.12 (2019/02/25) 1.11 (2018/08/24)  pprof  1.10 (2018/02/16) 不用手动设置 GOROOT 了。
 参考：
- 你再也不用设置 GOROOT 了  1.9 (2017/08/24)  Mutex 互斥锁的饥饿模式  1.8 (2017/02/16)  http/2 PUSH 功能  1.7 (2016/08/15)  标准库  context.Context    1.6 (2016/02/17)  Go HTTP2  http2 is enabled by default in Go 1." />
+ 你再也不用设置 GOROOT 了  1.9 (2017/08/24)  Mutex 互斥锁的饥饿模式  1.8 (2017/02/16)  http/2 PUSH 功能  1.7 (2016/08/15)  标准库  context." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/version/" />
 <meta property="article:modified_time" content="2020-07-30T10:41:03+08:00" />
@@ -24,7 +24,7 @@ zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master
 <link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
 
 
-<script defer src="/study-go/en.search.min.fdad697c927256c323f41928ebed06e660a97737e5d7b531e196c4ee57777182.js" integrity="sha256-/a1pfJJyVsMj9Bko6&#43;0G5mCpdzfl17Ux4ZbE7ld3cYI="></script>
+<script defer src="/study-go/en.search.min.60fc18cc83b48e2601e4c83a8982abfe05c60c7ea1cdb8ce4079c849e6a02939.js" integrity="sha256-YPwYzIO0jiYB5Mg6iYKr/gXGDH6hzbjOQHnISeagKTk="></script>
 
 <!--
 Made with Book Theme
@@ -762,7 +762,12 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#版本历史httpsgolangorgdocdevelreleasehtml"><a href="https://golang.org/doc/devel/release.html">版本历史</a></a>
       <ul>
-        <li><a href="#114-20200225">1.14 (2020/02/25)</a></li>
+        <li><a href="#114-20200225">1.14 (2020/02/25)</a>
+          <ul>
+            <li><a href="#1144-20200601">1.14.4 (2020/06/01)</a></li>
+            <li><a href="#1146-20200716">1.14.6 (2020/07/16)</a></li>
+          </ul>
+        </li>
         <li><a href="#113-20190903">1.13 (2019/09/03)</a></li>
         <li><a href="#112-20190225">1.12 (2019/02/25)</a></li>
         <li><a href="#111-20180824">1.11 (2018/08/24)</a></li>
@@ -799,10 +804,16 @@ https://github.com/alex-shpak/hugo-book
 </code></pre></div><hr>
 <h2 id="版本历史httpsgolangorgdocdevelreleasehtml"><a href="https://golang.org/doc/devel/release.html">版本历史</a></h2>
 <h3 id="114-20200225">1.14 (2020/02/25)</h3>
+<ul>
+<li>嵌入接口的方法集可重叠</li>
+</ul>
+<h4 id="1144-20200601">1.14.4 (2020/06/01)</h4>
+<h4 id="1146-20200716">1.14.6 (2020/07/16)</h4>
 <p>参考：</p>
 <ul>
 <li><a href="https://tonybai.com/2020/03/08/some-changes-in-go-1-14/">Go 1.14 中值得关注的几个变化</a></li>
 </ul>
+<hr>
 <h3 id="113-20190903">1.13 (2019/09/03)</h3>
 <h3 id="112-20190225">1.12 (2019/02/25)</h3>
 <h3 id="111-20180824">1.11 (2018/08/24)</h3>
@@ -905,7 +916,12 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#版本历史httpsgolangorgdocdevelreleasehtml"><a href="https://golang.org/doc/devel/release.html">版本历史</a></a>
       <ul>
-        <li><a href="#114-20200225">1.14 (2020/02/25)</a></li>
+        <li><a href="#114-20200225">1.14 (2020/02/25)</a>
+          <ul>
+            <li><a href="#1144-20200601">1.14.4 (2020/06/01)</a></li>
+            <li><a href="#1146-20200716">1.14.6 (2020/07/16)</a></li>
+          </ul>
+        </li>
         <li><a href="#113-20190903">1.13 (2019/09/03)</a></li>
         <li><a href="#112-20190225">1.12 (2019/02/25)</a></li>
         <li><a href="#111-20180824">1.11 (2018/08/24)</a></li>
