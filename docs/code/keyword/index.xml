@@ -15,7 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/code/keyword/interface/</guid>
-      <description>interface Go Data Structures: Interfaces
+      <description>interface #  Go Data Structures: Interfaces
 读完这篇 go 作者的 blog，interface 就没什么秘密可言了。每个 interface 至少包含两个字段，type 和 data，不论什么形式，然后是 itable 什么时候生成，如何调用。
 结合 Comparison operators，记住 interface 的 compare 规则。</description>
     </item>

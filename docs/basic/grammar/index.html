@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir=>
 
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 语法 变量 var a string = &#34;short&#34; // Go 会自动推断已经有初始值的变量的类型。 var b = true // 声明后却没有给出对应的初始值时，变量将会初始化为零值 。 // 例如，`int` 的零值是 `0`。 var c int // `:=` 语法是声明并初始化变量的简写， d := &#34;short&#34;  常量 const 语句可以出现在任何 var 语句可以出现的地方
+<meta name="description" content="Go 语法 #  变量 #  var a string = &#34;short&#34; // Go 会自动推断已经有初始值的变量的类型。 var b = true // 声明后却没有给出对应的初始值时，变量将会初始化为零值 。 // 例如，`int` 的零值是 `0`。 var c int // `:=` 语法是声明并初始化变量的简写， d := &#34;short&#34;  常量 #  const 语句可以出现在任何 var 语句可以出现的地方
 一个数字可以根据上下文的需要（比如变量赋值、函数调用）自动确定类型。
-// 这里的 `math.Sin` 函数需要一个 `float64` 的参数，`n` 会自动确定类型。 const n = 500000000 fmt.Println(math.Sin(n))  for 循环 for 是 Go 中唯一的循环结构。
-// 最基础的方式，单个循环条件。 i := 1 for i &lt;= 3 { fmt.Println(i) i = i &#43; 1 } // 经典的初始/条件/后续 `for` 循环。 for j := 7; j &lt;= 9; j&#43;&#43; { fmt."><meta property="og:title" content="1.1 语法" />
+// 这里的 `math.Sin` 函数需要一个 `float64` 的参数，`n` 会自动确定类型。 const n = 500000000 fmt.Println(math.Sin(n))  for 循环 #  for 是 Go 中唯一的循环结构。
+// 最基础的方式，单个循环条件。 i := 1 for i &lt;= 3 { fmt.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="1.1 语法" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/" />
 
 <title>1.1 语法 | Go 学习笔记</title>
+<link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
-
-
-<link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
-
-
-<script defer src="/study-go/en.search.min.60fc18cc83b48e2601e4c83a8982abfe05c60c7ea1cdb8ce4079c849e6a02939.js" integrity="sha256-YPwYzIO0jiYB5Mg6iYKr/gXGDH6hzbjOQHnISeagKTk="></script>
-
+<link rel="stylesheet" href="/study-go/book.min.d51ae1346c6c6be6d266ee675dbefadff112d8cb316f6b14f34def47903e2c63.css" integrity="sha256-1RrhNGxsa&#43;bSZu5nXb763/ES2Msxb2sU803vR5A&#43;LGM=">
+<script defer src="/study-go/en.search.min.d58aff708add3cb545a275cc0ac5db3370cfc6c927ebd81ddc839762b25968a2.js" integrity="sha256-1Yr/cIrdPLVFonXMCsXbM3DPxskn69gd3IOXYrJZaKI="></script>
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/grammar/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -30,8 +27,9 @@ https://github.com/alex-shpak/hugo-book
   
 </head>
 
-<body>
-  <input type="checkbox" class="hidden" id="menu-control" />
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
     <aside class="book-menu">
       
@@ -44,7 +42,7 @@ https://github.com/alex-shpak/hugo-book
 
 <div class="book-search">
   <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
-  <div class="book-search-spinner spinner hidden"></div>
+  <div class="book-search-spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
 
@@ -72,563 +70,415 @@ https://github.com/alex-shpak/hugo-book
 
   
 
-  
-  
-
-
-
-
-
- 
-  
-    
-
-
 
 
   
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
   
-  <span>第一部分 基础入门</span>
   
-
-
-    
-
-
-
-
   
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/" class="collapsed active">1.1 语法</a>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/type/" class="collapsed ">1.1.1 数据类型</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/keyword/" class="collapsed ">1.1.2 关键字</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/std/" class="collapsed ">1.2 标准库</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/spec/" class="collapsed ">1.3 编程规范</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/others/" class="collapsed ">1.4 其他</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <span>第二部分 进阶实战</span>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/pattern/" class="collapsed ">2.1 设计模式</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/algs/" class="collapsed ">2.2 算法实现</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/pkg/" class="collapsed ">2.3 常用库</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/snippet/" class="collapsed ">2.4 代码片段</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/test/" class="collapsed ">2.5 测试</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/prof/" class="collapsed ">2.6 性能</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/frame/" class="collapsed ">2.7 框架</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <span>第三部分 设计与实现</span>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/code/type/" class="collapsed ">3.1 数据类型</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/code/keyword/" class="collapsed ">3.2 关键字</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/code/runtime/" class="collapsed ">3.3 运行时</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <span>第四部分 附录</span>
-  
-
-
-    
-
-
-
 
   
   <ul>
     
       
         <li>
+          
+  
+    <span>第一部分 基础入门</span>
+  
+
+          
+  
+  
+  
 
   
-  <a href="/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
-  
-
-</li>
-      
+  <ul>
     
       
-        
-
-  <li>
-    
-
+        <li>
+          
   
-  <a href="/study-go/docs/appendix/interview/" class="collapsed ">4.2 面试题</a>
+    <a href="/study-go/docs/basic/grammar/" class="collapsed active">1.1 语法</a>
   
 
+          
+  
+  
+  
 
+  
+  <ul>
     
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/grammar/type/" class="collapsed ">1.1.1 数据类型</a>
+  
 
+          
+  
+  
+  
 
+  
 
-
-
-
-  </li>
-
-
+        </li>
       
     
       
         <li>
+          
+  
+    <a href="/study-go/docs/basic/grammar/keyword/" class="collapsed ">1.1.2 关键字</a>
+  
+
+          
+  
+  
+  
 
   
-  <a href="/study-go/docs/appendix/attention/" class="">4.3 关注项目</a>
-  
 
-</li>
+        </li>
       
     
   </ul>
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/" class="collapsed ">1.2 标准库</a>
+  
 
+          
+  
+  
+  
 
-  </li>
+  
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/spec/" class="collapsed ">1.3 编程规范</a>
+  
 
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/" class="collapsed ">1.4 其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
       
     
   </ul>
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>第二部分 进阶实战</span>
+  
 
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/pattern/" class="collapsed ">2.1 设计模式</a>
+  
+
+          
+  
+  
+  
 
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/algs/" class="collapsed ">2.2 算法实现</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/pkg/" class="collapsed ">2.3 常用库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/snippet/" class="collapsed ">2.4 代码片段</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/test/" class="collapsed ">2.5 测试</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/prof/" class="collapsed ">2.6 性能</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/frame/" class="collapsed ">2.7 框架</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>第三部分 设计与实现</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/code/type/" class="collapsed ">3.1 数据类型</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/code/keyword/" class="collapsed ">3.2 关键字</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/code/runtime/" class="collapsed ">3.3 运行时</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>第四部分 附录</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/appendix/interview/" class="collapsed ">4.2 面试题</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/appendix/attention/" class="">4.3 关注项目</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
 
 
 
@@ -672,15 +522,16 @@ https://github.com/alex-shpak/hugo-book
   <strong>1.1 语法</strong>
 
   <label for="toc-control">
+    
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
   </label>
 </div>
 
 
   
-    <input type="checkbox" class="hidden" id="toc-control" />
-    <aside class="hidden clearfix">
-      
+  <aside class="hidden clearfix">
+    
   <nav id="TableOfContents">
   <ul>
     <li><a href="#变量">变量</a></li>
@@ -693,15 +544,21 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-    </aside>
+  </aside>
   
  
       </header>
 
       
       
-  <article class="markdown"><h1 id="go-语法">Go 语法</h1>
-<h2 id="变量">变量</h2>
+  <article class="markdown"><h1 id="go-语法">
+  Go 语法
+  <a class="anchor" href="#go-%e8%af%ad%e6%b3%95">#</a>
+</h1>
+<h2 id="变量">
+  变量
+  <a class="anchor" href="#%e5%8f%98%e9%87%8f">#</a>
+</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#66d9ef">string</span> = <span style="color:#e6db74">&#34;short&#34;</span>
 
 <span style="color:#75715e">// Go 会自动推断已经有初始值的变量的类型。
@@ -714,14 +571,20 @@ https://github.com/alex-shpak/hugo-book
 <span style="color:#75715e">// `:=` 语法是声明并初始化变量的简写，
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">d</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;short&#34;</span>
 </code></pre></div><hr>
-<h2 id="常量">常量</h2>
+<h2 id="常量">
+  常量
+  <a class="anchor" href="#%e5%b8%b8%e9%87%8f">#</a>
+</h2>
 <p><code>const</code> 语句可以出现在任何 <code>var</code> 语句可以出现的地方</p>
 <p>一个数字可以根据上下文的需要（比如变量赋值、函数调用）自动确定类型。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 这里的 `math.Sin` 函数需要一个 `float64` 的参数，`n` 会自动确定类型。
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">n</span> = <span style="color:#ae81ff">500000000</span>
 <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Sin</span>(<span style="color:#a6e22e">n</span>))
 </code></pre></div><hr>
-<h2 id="for-循环">for 循环</h2>
+<h2 id="for-循环">
+  for 循环
+  <a class="anchor" href="#for-%e5%be%aa%e7%8e%af">#</a>
+</h2>
 <p><code>for</code> 是 Go 中唯一的循环结构。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 最基础的方式，单个循环条件。
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>
@@ -750,7 +613,10 @@ https://github.com/alex-shpak/hugo-book
     <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">n</span>)
 }
 </code></pre></div><hr>
-<h2 id="switch">switch</h2>
+<h2 id="switch">
+  switch
+  <a class="anchor" href="#switch">#</a>
+</h2>
 <p><code>case</code> 表达式可以不使用常量</p>
 <p>不带表达式的 <code>switch</code> 是实现 if/else 逻辑的另一种方式。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
@@ -776,7 +642,10 @@ https://github.com/alex-shpak/hugo-book
 <span style="color:#a6e22e">whatAmI</span>(<span style="color:#ae81ff">1</span>)
 <span style="color:#a6e22e">whatAmI</span>(<span style="color:#e6db74">&#34;hey&#34;</span>)
 </code></pre></div><hr>
-<h2 id="map">map</h2>
+<h2 id="map">
+  map
+  <a class="anchor" href="#map">#</a>
+</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">//创建一个空 map
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>)
 <span style="color:#a6e22e">m</span>[<span style="color:#e6db74">&#34;k1&#34;</span>] = <span style="color:#ae81ff">7</span>
@@ -790,7 +659,10 @@ https://github.com/alex-shpak/hugo-book
 
 <span style="color:#75715e">// 声明并初始化
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">n</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>{<span style="color:#e6db74">&#34;foo&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;bar&#34;</span>: <span style="color:#ae81ff">2</span>}
-</code></pre></div><h2 id="range">range</h2>
+</code></pre></div><h2 id="range">
+  range
+  <a class="anchor" href="#range">#</a>
+</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">kvs</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;a&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;b&#34;</span>: <span style="color:#ae81ff">2</span>}
 <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">k</span>, <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">kvs</span> {
 
@@ -826,13 +698,11 @@ https://github.com/alex-shpak/hugo-book
 
       <footer class="book-footer">
         
-  <div class="flex justify-between">
+  <div class="flex flex-wrap justify-between">
 
 
 
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/32f95416ddcb3cd32fc913117702f5ab28c99d1d" title='Last modified by yewang | 2020-07-04' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/32f95416ddcb3cd32fc913117702f5ab28c99d1d" title='Last modified by yewang | 2020-07-04' target="_blank" rel="noopener">
       <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>2020-07-04</span>
     </a>

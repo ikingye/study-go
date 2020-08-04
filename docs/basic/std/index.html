@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir=>
 
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 标准库 教程 polaris1119/The-Golang-Standard-Library-by-Example  Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。
-以示例驱动的方式讲解 Golang 的标准库。"><meta property="og:title" content="1.2 标准库" />
+<meta name="description" content="Go 标准库 #  教程 #  polaris1119/The-Golang-Standard-Library-by-Example #  Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。
+以示例驱动的方式讲解 Golang 的标准库。">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="1.2 标准库" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/" />
 
 <title>1.2 标准库 | Go 学习笔记</title>
+<link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
-
-
-<link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
-
-
-<script defer src="/study-go/en.search.min.60fc18cc83b48e2601e4c83a8982abfe05c60c7ea1cdb8ce4079c849e6a02939.js" integrity="sha256-YPwYzIO0jiYB5Mg6iYKr/gXGDH6hzbjOQHnISeagKTk="></script>
-
+<link rel="stylesheet" href="/study-go/book.min.d51ae1346c6c6be6d266ee675dbefadff112d8cb316f6b14f34def47903e2c63.css" integrity="sha256-1RrhNGxsa&#43;bSZu5nXb763/ES2Msxb2sU803vR5A&#43;LGM=">
+<script defer src="/study-go/en.search.min.d58aff708add3cb545a275cc0ac5db3370cfc6c927ebd81ddc839762b25968a2.js" integrity="sha256-1Yr/cIrdPLVFonXMCsXbM3DPxskn69gd3IOXYrJZaKI="></script>
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/std/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -28,8 +25,9 @@ https://github.com/alex-shpak/hugo-book
   
 </head>
 
-<body>
-  <input type="checkbox" class="hidden" id="menu-control" />
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
     <aside class="book-menu">
       
@@ -42,7 +40,7 @@ https://github.com/alex-shpak/hugo-book
 
 <div class="book-search">
   <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
-  <div class="book-search-spinner spinner hidden"></div>
+  <div class="book-search-spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
 
@@ -70,590 +68,448 @@ https://github.com/alex-shpak/hugo-book
 
   
 
-  
-  
-
-
-
-
-
- 
-  
-    
-
-
 
 
   
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
   
-  <span>第一部分 基础入门</span>
   
-
-
-    
-
-
-
-
   
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/" class="collapsed ">1.1 语法</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/std/" class="collapsed active">1.2 标准库</a>
-  
-
-
-    
-
-
-
 
   
   <ul>
     
       
         <li>
-
+          
   
-  <a href="/study-go/docs/basic/std/sort/" class="">sort</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/std/context/" class="">context</a>
+    <span>第一部分 基础入门</span>
   
 
-</li>
-      
-    
-      
-        <li>
-
+          
   
-  <a href="/study-go/docs/basic/std/format/" class="">格式化输出</a>
   
-
-</li>
-      
-    
-      
-        <li>
-
   
-  <a href="/study-go/docs/basic/std/signal/" class="">signal</a>
-  
-
-</li>
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/std/sync/" class="collapsed ">sync</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/std/time/" class="">time</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/spec/" class="collapsed ">1.3 编程规范</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/others/" class="collapsed ">1.4 其他</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <span>第二部分 进阶实战</span>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/pattern/" class="collapsed ">2.1 设计模式</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/algs/" class="collapsed ">2.2 算法实现</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/pkg/" class="collapsed ">2.3 常用库</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/snippet/" class="collapsed ">2.4 代码片段</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/test/" class="collapsed ">2.5 测试</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/prof/" class="collapsed ">2.6 性能</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/frame/" class="collapsed ">2.7 框架</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <span>第三部分 设计与实现</span>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/code/type/" class="collapsed ">3.1 数据类型</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/code/keyword/" class="collapsed ">3.2 关键字</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/code/runtime/" class="collapsed ">3.3 运行时</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <span>第四部分 附录</span>
-  
-
-
-    
-
-
-
 
   
   <ul>
     
       
         <li>
-
+          
   
-  <a href="/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
-  
-
-</li>
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/appendix/interview/" class="collapsed ">4.2 面试题</a>
+    <a href="/study-go/docs/basic/grammar/" class="collapsed ">1.1 语法</a>
   
 
+          
+  
+  
+  
 
-    
+  
 
-
-
-
-
-
-  </li>
-
-
+        </li>
       
     
       
         <li>
+          
+  
+    <a href="/study-go/docs/basic/std/" class="collapsed active">1.2 标准库</a>
+  
+
+          
+  
+  
+  
 
   
-  <a href="/study-go/docs/appendix/attention/" class="">4.3 关注项目</a>
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/sort/" class="">sort</a>
   
 
-</li>
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/context/" class="">context</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/format/" class="">格式化输出</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/signal/" class="">signal</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/sync/" class="collapsed ">sync</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/time/" class="">time</a>
+  
+
+        </li>
       
     
   </ul>
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/spec/" class="collapsed ">1.3 编程规范</a>
+  
 
+          
+  
+  
+  
 
-  </li>
+  
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/" class="collapsed ">1.4 其他</a>
+  
 
+          
+  
+  
+  
+
+  
+
+        </li>
       
     
   </ul>
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>第二部分 进阶实战</span>
+  
 
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/pattern/" class="collapsed ">2.1 设计模式</a>
+  
+
+          
+  
+  
+  
 
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/algs/" class="collapsed ">2.2 算法实现</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/pkg/" class="collapsed ">2.3 常用库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/snippet/" class="collapsed ">2.4 代码片段</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/test/" class="collapsed ">2.5 测试</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/prof/" class="collapsed ">2.6 性能</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/frame/" class="collapsed ">2.7 框架</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>第三部分 设计与实现</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/code/type/" class="collapsed ">3.1 数据类型</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/code/keyword/" class="collapsed ">3.2 关键字</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/code/runtime/" class="collapsed ">3.3 运行时</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>第四部分 附录</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/appendix/interview/" class="collapsed ">4.2 面试题</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/appendix/attention/" class="">4.3 关注项目</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
 
 
 
@@ -697,15 +553,16 @@ https://github.com/alex-shpak/hugo-book
   <strong>1.2 标准库</strong>
 
   <label for="toc-control">
+    
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
   </label>
 </div>
 
 
   
-    <input type="checkbox" class="hidden" id="toc-control" />
-    <aside class="hidden clearfix">
-      
+  <aside class="hidden clearfix">
+    
   <nav id="TableOfContents">
   <ul>
     <li><a href="#教程">教程</a>
@@ -717,16 +574,25 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-    </aside>
+  </aside>
   
  
       </header>
 
       
       
-  <article class="markdown"><h1 id="go-标准库">Go 标准库</h1>
-<h2 id="教程">教程</h2>
-<h3 id="polaris1119the-golang-standard-library-by-examplehttpsgithubcompolaris1119the-golang-standard-library-by-example-github-starshttpsimgshieldsiogithubstarspolaris1119the-golang-standard-library-by-examplesvg"><a href="https://github.com/polaris1119/The-Golang-Standard-Library-by-Example">polaris1119/The-Golang-Standard-Library-by-Example</a> <img src="https://img.shields.io/github/stars/polaris1119/The-Golang-Standard-Library-by-Example.svg" alt="Github stars" /></h3>
+  <article class="markdown"><h1 id="go-标准库">
+  Go 标准库
+  <a class="anchor" href="#go-%e6%a0%87%e5%87%86%e5%ba%93">#</a>
+</h1>
+<h2 id="教程">
+  教程
+  <a class="anchor" href="#%e6%95%99%e7%a8%8b">#</a>
+</h2>
+<a href="https://github.com/polaris1119/The-Golang-Standard-Library-by-Example">polaris1119/The-Golang-Standard-Library-by-Example</a> <h3 id="polaris1119the-golang-standard-library-by-examplehttpsgithubcompolaris1119the-golang-standard-library-by-example-github-starshttpsimgshieldsiogithubstarspolaris1119the-golang-standard-library-by-examplesvg">
+  <img src="https://img.shields.io/github/stars/polaris1119/The-Golang-Standard-Library-by-Example.svg" alt="Github stars" />
+  <a class="anchor" href="#polaris1119the-golang-standard-library-by-examplehttpsgithubcompolaris1119the-golang-standard-library-by-example-github-starshttpsimgshieldsiogithubstarspolaris1119the-golang-standard-library-by-examplesvg">#</a>
+</h3>
 <p>Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。</p>
 <p>以示例驱动的方式讲解 Golang 的标准库。</p>
 </article>
@@ -735,13 +601,11 @@ https://github.com/alex-shpak/hugo-book
 
       <footer class="book-footer">
         
-  <div class="flex justify-between">
+  <div class="flex flex-wrap justify-between">
 
 
 
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/32f95416ddcb3cd32fc913117702f5ab28c99d1d" title='Last modified by yewang | 2020-07-04' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/32f95416ddcb3cd32fc913117702f5ab28c99d1d" title='Last modified by yewang | 2020-07-04' target="_blank" rel="noopener">
       <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>2020-07-04</span>
     </a>

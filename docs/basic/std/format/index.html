@@ -1,23 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir=>
 
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="格式化输出 // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p) // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p) // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // &#43;123 (输出符号) fmt.Printf(&#34;%&#43;d\n&#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&#34;%f\n&#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt."><meta property="og:title" content="格式化输出" />
-<meta property="og:description" content="格式化输出 // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p) // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p) // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // &#43;123 (输出符号) fmt.Printf(&#34;%&#43;d\n&#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&#34;%f\n&#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt." />
+<meta name="description" content="格式化输出 #  // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p) // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p) // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // &#43;123 (输出符号) fmt.Printf(&#34;%&#43;d\n&#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&#34;%f\n&#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="格式化输出" />
+<meta property="og:description" content="格式化输出 #  // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p) // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p) // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // &#43;123 (输出符号) fmt.Printf(&#34;%&#43;d\n&#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&#34;%f\n&#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/format/" />
 <meta property="article:modified_time" content="2020-07-28T10:47:39+08:00" />
 <title>格式化输出 | Go 学习笔记</title>
+<link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
-
-
-<link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
-
-
-<script defer src="/study-go/en.search.min.60fc18cc83b48e2601e4c83a8982abfe05c60c7ea1cdb8ce4079c849e6a02939.js" integrity="sha256-YPwYzIO0jiYB5Mg6iYKr/gXGDH6hzbjOQHnISeagKTk="></script>
-
+<link rel="stylesheet" href="/study-go/book.min.d51ae1346c6c6be6d266ee675dbefadff112d8cb316f6b14f34def47903e2c63.css" integrity="sha256-1RrhNGxsa&#43;bSZu5nXb763/ES2Msxb2sU803vR5A&#43;LGM=">
+<script defer src="/study-go/en.search.min.d58aff708add3cb545a275cc0ac5db3370cfc6c927ebd81ddc839762b25968a2.js" integrity="sha256-1Yr/cIrdPLVFonXMCsXbM3DPxskn69gd3IOXYrJZaKI="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -26,8 +23,9 @@ https://github.com/alex-shpak/hugo-book
   
 </head>
 
-<body>
-  <input type="checkbox" class="hidden" id="menu-control" />
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
     <aside class="book-menu">
       
@@ -40,7 +38,7 @@ https://github.com/alex-shpak/hugo-book
 
 <div class="book-search">
   <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
-  <div class="book-search-spinner spinner hidden"></div>
+  <div class="book-search-spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
 
@@ -68,590 +66,448 @@ https://github.com/alex-shpak/hugo-book
 
   
 
-  
-  
-
-
-
-
-
- 
-  
-    
-
-
 
 
   
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
   
-  <span>第一部分 基础入门</span>
   
-
-
-    
-
-
-
-
   
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/" class="collapsed ">1.1 语法</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/std/" class="collapsed ">1.2 标准库</a>
-  
-
-
-    
-
-
-
 
   
   <ul>
     
       
         <li>
-
+          
   
-  <a href="/study-go/docs/basic/std/sort/" class="">sort</a>
-  
-
-</li>
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/std/context/" class="">context</a>
+    <span>第一部分 基础入门</span>
   
 
-</li>
-      
-    
-      
-        <li>
-
+          
   
-  <a href="/study-go/docs/basic/std/format/" class="active">格式化输出</a>
   
-
-</li>
-      
-    
-      
-        <li>
-
   
-  <a href="/study-go/docs/basic/std/signal/" class="">signal</a>
-  
-
-</li>
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/std/sync/" class="collapsed ">sync</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        <li>
-
-  
-  <a href="/study-go/docs/basic/std/time/" class="">time</a>
-  
-
-</li>
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/spec/" class="collapsed ">1.3 编程规范</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/others/" class="collapsed ">1.4 其他</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <span>第二部分 进阶实战</span>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/pattern/" class="collapsed ">2.1 设计模式</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/algs/" class="collapsed ">2.2 算法实现</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/pkg/" class="collapsed ">2.3 常用库</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/snippet/" class="collapsed ">2.4 代码片段</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/test/" class="collapsed ">2.5 测试</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/prof/" class="collapsed ">2.6 性能</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/frame/" class="collapsed ">2.7 框架</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <span>第三部分 设计与实现</span>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/code/type/" class="collapsed ">3.1 数据类型</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/code/keyword/" class="collapsed ">3.2 关键字</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/code/runtime/" class="collapsed ">3.3 运行时</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <span>第四部分 附录</span>
-  
-
-
-    
-
-
-
 
   
   <ul>
     
       
         <li>
-
+          
   
-  <a href="/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
-  
-
-</li>
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/appendix/interview/" class="collapsed ">4.2 面试题</a>
+    <a href="/study-go/docs/basic/grammar/" class="collapsed ">1.1 语法</a>
   
 
+          
+  
+  
+  
 
-    
+  
 
-
-
-
-
-
-  </li>
-
-
+        </li>
       
     
       
         <li>
+          
+  
+    <a href="/study-go/docs/basic/std/" class="collapsed ">1.2 标准库</a>
+  
+
+          
+  
+  
+  
 
   
-  <a href="/study-go/docs/appendix/attention/" class="">4.3 关注项目</a>
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/sort/" class="">sort</a>
   
 
-</li>
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/context/" class="">context</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/format/" class="active">格式化输出</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/signal/" class="">signal</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/sync/" class="collapsed ">sync</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/time/" class="">time</a>
+  
+
+        </li>
       
     
   </ul>
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/spec/" class="collapsed ">1.3 编程规范</a>
+  
 
+          
+  
+  
+  
 
-  </li>
+  
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/" class="collapsed ">1.4 其他</a>
+  
 
+          
+  
+  
+  
+
+  
+
+        </li>
       
     
   </ul>
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>第二部分 进阶实战</span>
+  
 
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/pattern/" class="collapsed ">2.1 设计模式</a>
+  
+
+          
+  
+  
+  
 
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/algs/" class="collapsed ">2.2 算法实现</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/pkg/" class="collapsed ">2.3 常用库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/snippet/" class="collapsed ">2.4 代码片段</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/test/" class="collapsed ">2.5 测试</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/prof/" class="collapsed ">2.6 性能</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/frame/" class="collapsed ">2.7 框架</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>第三部分 设计与实现</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/code/type/" class="collapsed ">3.1 数据类型</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/code/keyword/" class="collapsed ">3.2 关键字</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/code/runtime/" class="collapsed ">3.3 运行时</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>第四部分 附录</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/appendix/interview/" class="collapsed ">4.2 面试题</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/appendix/attention/" class="">4.3 关注项目</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
 
 
 
@@ -695,26 +551,30 @@ https://github.com/alex-shpak/hugo-book
   <strong>格式化输出</strong>
 
   <label for="toc-control">
+    
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
   </label>
 </div>
 
 
   
-    <input type="checkbox" class="hidden" id="toc-control" />
-    <aside class="hidden clearfix">
-      
+  <aside class="hidden clearfix">
+    
   <nav id="TableOfContents"></nav>
 
 
-    </aside>
+  </aside>
   
  
       </header>
 
       
       
-  <article class="markdown"><h1 id="格式化输出">格式化输出</h1>
+  <article class="markdown"><h1 id="格式化输出">
+  格式化输出
+  <a class="anchor" href="#%e6%a0%bc%e5%bc%8f%e5%8c%96%e8%be%93%e5%87%ba">#</a>
+</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Go 提供了一些用于格式化常规值的打印“动词”。
 </span><span style="color:#75715e">// 例如，这样打印 `point` 结构体的实例。
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">point</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}
@@ -799,13 +659,11 @@ https://github.com/alex-shpak/hugo-book
 
       <footer class="book-footer">
         
-  <div class="flex justify-between">
+  <div class="flex flex-wrap justify-between">
 
 
 
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/e7afaec776e9a276f83694ede995b2582d5dc765" title='Last modified by yewang | 2020-07-28' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/e7afaec776e9a276f83694ede995b2582d5dc765" title='Last modified by yewang | 2020-07-28' target="_blank" rel="noopener">
       <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>2020-07-28</span>
     </a>

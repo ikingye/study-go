@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir=>
 
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 编程规范 代码组织 目录 /cmd # 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的. # 把你真正的应用代码放在 /internal/app 目录 (比如: /internal/app/myapp) 把你的应用间共享的代码放在 /internal/pkg 目录 (比如: internal/pkg/myprivlib) /internal /pkg 不应该存在的目录 /src 参考：
- golang-standards/project-layout    文件内容 建议文件按以下顺序进行布局：
- General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。 package: 当前 package 定义 imports: 包含的头文件 Constants: 常量 Typedefs: 类型定义 Globals: 全局变量定义 functions: 函数实现   语言规范 申明 slice 申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式
-// GOOD: var t []string // BAD: t := []string{} embedding  embedding 只用于 &ldquo;is a&rdquo; 的语义下，而不用于 &ldquo;has a&rdquo; 的语义下  语义上 embedding 是一种继承关系，而不是成员关系   一个定义内，多于一个的 embedding 尽量少用  一个定义内有多个 embedding，则很难判断某个成员变量或函数是从哪里继承得到的 一个定义内有多个 embedding，危害和在 python 中使用 from xxx import * 是类似的    type Automobile struct { // ."><meta property="og:title" content="1.3 编程规范" />
+<meta name="description" content="Go 编程规范 #  代码组织 #  目录 #  /cmd # 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的. # 把你真正的应用代码放在 /internal/app 目录 (比如: /internal/app/myapp) 把你的应用间共享的代码放在 /internal/pkg 目录 (比如: internal/pkg/myprivlib) /internal /pkg 不应该存在的目录 #  /src 参考：
+ golang-standards/project-layout    文件内容 #  建议文件按以下顺序进行布局：
+ General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。 package: 当前 package 定义 imports: 包含的头文件 Constants: 常量 Typedefs: 类型定义 Globals: 全局变量定义 functions: 函数实现   语言规范 #  申明 slice #  申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="1.3 编程规范" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/spec/" />
 
 <title>1.3 编程规范 | Go 学习笔记</title>
+<link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
-
-
-<link rel="stylesheet" href="/study-go/book.min.169e83d32687959b39a421cc33db54d2a9d6fc29b4c5f314c1e2ec7610f913a5.css" integrity="sha256-Fp6D0yaHlZs5pCHMM9tU0qnW/Cm0xfMUweLsdhD5E6U=">
-
-
-<script defer src="/study-go/en.search.min.60fc18cc83b48e2601e4c83a8982abfe05c60c7ea1cdb8ce4079c849e6a02939.js" integrity="sha256-YPwYzIO0jiYB5Mg6iYKr/gXGDH6hzbjOQHnISeagKTk="></script>
-
+<link rel="stylesheet" href="/study-go/book.min.d51ae1346c6c6be6d266ee675dbefadff112d8cb316f6b14f34def47903e2c63.css" integrity="sha256-1RrhNGxsa&#43;bSZu5nXb763/ES2Msxb2sU803vR5A&#43;LGM=">
+<script defer src="/study-go/en.search.min.d58aff708add3cb545a275cc0ac5db3370cfc6c927ebd81ddc839762b25968a2.js" integrity="sha256-1Yr/cIrdPLVFonXMCsXbM3DPxskn69gd3IOXYrJZaKI="></script>
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/spec/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -30,8 +26,9 @@ https://github.com/alex-shpak/hugo-book
   
 </head>
 
-<body>
-  <input type="checkbox" class="hidden" id="menu-control" />
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
     <aside class="book-menu">
       
@@ -44,7 +41,7 @@ https://github.com/alex-shpak/hugo-book
 
 <div class="book-search">
   <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
-  <div class="book-search-spinner spinner hidden"></div>
+  <div class="book-search-spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
 
@@ -72,527 +69,391 @@ https://github.com/alex-shpak/hugo-book
 
   
 
-  
-  
-
-
-
-
-
- 
-  
-    
-
-
 
 
   
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
   
-  <span>第一部分 基础入门</span>
   
-
-
-    
-
-
-
-
   
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/grammar/" class="collapsed ">1.1 语法</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/std/" class="collapsed ">1.2 标准库</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/basic/spec/" class="collapsed active">1.3 编程规范</a>
-  
-
-
-    
-
-
-
 
   
   <ul>
     
       
         <li>
-
+          
   
-  <a href="/study-go/docs/basic/spec/baidu/" class="">百度</a>
-  
-
-</li>
-      
-    
-  </ul>
+    <span>第一部分 基础入门</span>
   
 
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
+          
   
-  <a href="/study-go/docs/basic/others/" class="collapsed ">1.4 其他</a>
   
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
   
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <span>第二部分 进阶实战</span>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/pattern/" class="collapsed ">2.1 设计模式</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/algs/" class="collapsed ">2.2 算法实现</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/pkg/" class="collapsed ">2.3 常用库</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/snippet/" class="collapsed ">2.4 代码片段</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/test/" class="collapsed ">2.5 测试</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/prof/" class="collapsed ">2.6 性能</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/advanced/frame/" class="collapsed ">2.7 框架</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <span>第三部分 设计与实现</span>
-  
-
-
-    
-
-
-
-
-  
-  <ul>
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/code/type/" class="collapsed ">3.1 数据类型</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/code/keyword/" class="collapsed ">3.2 关键字</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/code/runtime/" class="collapsed ">3.3 运行时</a>
-  
-
-
-    
-
-
-
-
-
-
-  </li>
-
-
-      
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <span>第四部分 附录</span>
-  
-
-
-    
-
-
-
 
   
   <ul>
     
       
         <li>
-
+          
   
-  <a href="/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
-  
-
-</li>
-      
-    
-      
-        
-
-  <li>
-    
-
-  
-  <a href="/study-go/docs/appendix/interview/" class="collapsed ">4.2 面试题</a>
+    <a href="/study-go/docs/basic/grammar/" class="collapsed ">1.1 语法</a>
   
 
+          
+  
+  
+  
 
-    
+  
 
-
-
-
-
-
-  </li>
-
-
+        </li>
       
     
       
         <li>
+          
+  
+    <a href="/study-go/docs/basic/std/" class="collapsed ">1.2 标准库</a>
+  
+
+          
+  
+  
+  
 
   
-  <a href="/study-go/docs/appendix/attention/" class="">4.3 关注项目</a>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/spec/" class="collapsed active">1.3 编程规范</a>
   
 
-</li>
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/spec/baidu/" class="">百度</a>
+  
+
+        </li>
       
     
   </ul>
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/" class="collapsed ">1.4 其他</a>
+  
 
+          
+  
+  
+  
 
-  </li>
+  
 
-
+        </li>
       
     
   </ul>
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>第二部分 进阶实战</span>
+  
 
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/pattern/" class="collapsed ">2.1 设计模式</a>
+  
+
+          
+  
+  
+  
 
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/algs/" class="collapsed ">2.2 算法实现</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/pkg/" class="collapsed ">2.3 常用库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/snippet/" class="collapsed ">2.4 代码片段</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/test/" class="collapsed ">2.5 测试</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/prof/" class="collapsed ">2.6 性能</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/advanced/frame/" class="collapsed ">2.7 框架</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>第三部分 设计与实现</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/code/type/" class="collapsed ">3.1 数据类型</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/code/keyword/" class="collapsed ">3.2 关键字</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/code/runtime/" class="collapsed ">3.3 运行时</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <span>第四部分 附录</span>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/appendix/interview/" class="collapsed ">4.2 面试题</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/appendix/attention/" class="">4.3 关注项目</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
 
 
 
@@ -636,15 +497,16 @@ https://github.com/alex-shpak/hugo-book
   <strong>1.3 编程规范</strong>
 
   <label for="toc-control">
+    
     <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
   </label>
 </div>
 
 
   
-    <input type="checkbox" class="hidden" id="toc-control" />
-    <aside class="hidden clearfix">
-      
+  <aside class="hidden clearfix">
+    
   <nav id="TableOfContents">
   <ul>
     <li><a href="#代码组织">代码组织</a>
@@ -686,16 +548,25 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-    </aside>
+  </aside>
   
  
       </header>
 
       
       
-  <article class="markdown"><h1 id="go-编程规范">Go 编程规范</h1>
-<h2 id="代码组织">代码组织</h2>
-<h3 id="目录">目录</h3>
+  <article class="markdown"><h1 id="go-编程规范">
+  Go 编程规范
+  <a class="anchor" href="#go-%e7%bc%96%e7%a8%8b%e8%a7%84%e8%8c%83">#</a>
+</h1>
+<h2 id="代码组织">
+  代码组织
+  <a class="anchor" href="#%e4%bb%a3%e7%a0%81%e7%bb%84%e7%bb%87">#</a>
+</h2>
+<h3 id="目录">
+  目录
+  <a class="anchor" href="#%e7%9b%ae%e5%bd%95">#</a>
+</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/cmd
 
 <span style="color:#75715e"># 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的.</span>
@@ -704,14 +575,20 @@ https://github.com/alex-shpak/hugo-book
 
 /pkg
 
-</code></pre></div><h4 id="不应该存在的目录">不应该存在的目录</h4>
+</code></pre></div><h4 id="不应该存在的目录">
+  不应该存在的目录
+  <a class="anchor" href="#%e4%b8%8d%e5%ba%94%e8%af%a5%e5%ad%98%e5%9c%a8%e7%9a%84%e7%9b%ae%e5%bd%95">#</a>
+</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/src
 </code></pre></div><p>参考：</p>
 <ul>
 <li><a href="https://github.com/golang-standards/project-layout">golang-standards/project-layout</a> <img src="https://img.shields.io/github/stars/golang-standards/project-layout.svg" alt="Github stars" /></li>
 </ul>
 <hr>
-<h3 id="文件内容">文件内容</h3>
+<h3 id="文件内容">
+  文件内容
+  <a class="anchor" href="#%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9">#</a>
+</h3>
 <p>建议文件按以下顺序进行布局：</p>
 <ul>
 <li>General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。</li>
@@ -723,15 +600,24 @@ https://github.com/alex-shpak/hugo-book
 <li>functions: 函数实现</li>
 </ul>
 <hr>
-<h2 id="语言规范">语言规范</h2>
-<h3 id="申明-slice">申明 slice</h3>
+<h2 id="语言规范">
+  语言规范
+  <a class="anchor" href="#%e8%af%ad%e8%a8%80%e8%a7%84%e8%8c%83">#</a>
+</h2>
+<h3 id="申明-slice">
+  申明 slice
+  <a class="anchor" href="#%e7%94%b3%e6%98%8e-slice">#</a>
+</h3>
 <p>申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// GOOD:
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">t</span> []<span style="color:#66d9ef">string</span>
 
 <span style="color:#75715e">// BAD:
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">string</span>{}
-</code></pre></div><h3 id="embeddinghttpgolangorgdoceffective_gohtmlembedding"><a href="http://golang.org/doc/effective_go.html#embedding">embedding</a></h3>
+</code></pre></div><h3 id="embeddinghttpgolangorgdoceffective_gohtmlembedding">
+  <a href="http://golang.org/doc/effective_go.html#embedding">embedding</a>
+  <a class="anchor" href="#embeddinghttpgolangorgdoceffective_gohtmlembedding">#</a>
+</h3>
 <ul>
 <li>embedding 只用于 &ldquo;is a&rdquo; 的语义下，而不用于 &ldquo;has a&rdquo; 的语义下
 <ul>
@@ -764,7 +650,10 @@ https://github.com/alex-shpak/hugo-book
     <span style="color:#a6e22e">Automobile</span>      <span style="color:#75715e">//  Car is a Automobile
 </span><span style="color:#75715e"></span>    <span style="color:#a6e22e">Engine</span>          <span style="color:#75715e">//  Car has a Engine, but Car is NOT a Engine
 </span><span style="color:#75715e"></span>}
-</code></pre></div><h3 id="函数参数和返回值">函数参数和返回值</h3>
+</code></pre></div><h3 id="函数参数和返回值">
+  函数参数和返回值
+  <a class="anchor" href="#%e5%87%bd%e6%95%b0%e5%8f%82%e6%95%b0%e5%92%8c%e8%bf%94%e5%9b%9e%e5%80%bc">#</a>
+</h3>
 <ul>
 <li>
 <p>必须</p>
@@ -786,13 +675,19 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ul>
-<h3 id="缩进">缩进</h3>
+<h3 id="缩进">
+  缩进
+  <a class="anchor" href="#%e7%bc%a9%e8%bf%9b">#</a>
+</h3>
 <ul>
 <li>使用 tab 进行缩进。</li>
 <li>跨行的缩进使用 gofmt 的缩进方式。</li>
 <li>设置 <code>tabstop=4</code></li>
 </ul>
-<h3 id="空格">空格</h3>
+<h3 id="空格">
+  空格
+  <a class="anchor" href="#%e7%a9%ba%e6%a0%bc">#</a>
+</h3>
 <ul>
 <li>圆括号、方括号、花括号内侧都不加空格</li>
 <li>逗号、冒号（slice 中冒号除外）前不加空格，后边加一个空格</li>
@@ -818,26 +713,53 @@ https://github.com/alex-shpak/hugo-book
     <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">m</span>[ <span style="color:#e6db74">&#34;language&#34;</span> ])
 }
 </code></pre></div><hr>
-<h2 id="命名">命名</h2>
-<h3 id="文件名">文件名</h3>
+<h2 id="命名">
+  命名
+  <a class="anchor" href="#%e5%91%bd%e5%90%8d">#</a>
+</h2>
+<h3 id="文件名">
+  文件名
+  <a class="anchor" href="#%e6%96%87%e4%bb%b6%e5%90%8d">#</a>
+</h3>
 <p>文件名都使用小写字母，如果需要，可以使用下划线分割</p>
 <p>文件名的后缀使用小写字母</p>
-<h3 id="函数名--变量名">函数名 / 变量名</h3>
+<h3 id="函数名--变量名">
+  函数名 / 变量名
+  <a class="anchor" href="#%e5%87%bd%e6%95%b0%e5%90%8d--%e5%8f%98%e9%87%8f%e5%90%8d">#</a>
+</h3>
 <p>采用驼峰方式命名，禁止使用下划线命名</p>
 <p>首字母是否大写，根据是否需要外部访问来决定</p>
-<h3 id="常量">常量</h3>
+<h3 id="常量">
+  常量
+  <a class="anchor" href="#%e5%b8%b8%e9%87%8f">#</a>
+</h3>
 <p>尽量不要在程序中直接写数字，特殊字符串，全部用常量替代</p>
-<h3 id="包名">包名</h3>
+<h3 id="包名">
+  包名
+  <a class="anchor" href="#%e5%8c%85%e5%90%8d">#</a>
+</h3>
 <p>关于包的命名，Go 团队建议以简单，扁平为原则。
 例如，<code>strutils</code> 是 <code>string utility</code> 函数的名字，http 是 HTTP 请求的名字。</p>
 <p>包的名字应避免使用下划线，中划线或掺杂大写字母。</p>
 <hr>
-<h2 id="编程实践">编程实践</h2>
-<h3 id="error-string">error string</h3>
+<h2 id="编程实践">
+  编程实践
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e5%ae%9e%e8%b7%b5">#</a>
+</h2>
+<h3 id="error-string">
+  error string
+  <a class="anchor" href="#error-string">#</a>
+</h3>
 <p>error string 尽量使用小写字母，并且结尾不带标点符号</p>
-<h3 id="dont-panic">Don&rsquo;t panic</h3>
+<h3 id="dont-panic">
+  Don&rsquo;t panic
+  <a class="anchor" href="#dont-panic">#</a>
+</h3>
 <p>除非出现不可恢复的程序错误，不要使用 panic，用多返回值和 error。</p>
-<h3 id="关于-lock-的保护">关于 lock 的保护</h3>
+<h3 id="关于-lock-的保护">
+  关于 lock 的保护
+  <a class="anchor" href="#%e5%85%b3%e4%ba%8e-lock-%e7%9a%84%e4%bf%9d%e6%8a%a4">#</a>
+</h3>
 <ul>
 <li>如果临界区内的逻辑较复杂、无法完全避免 panic 的发生，则要求适用 <strong>defer</strong> 来调用 Unlock，即使在临界区过程中发生了 panic，也会在函数退出时调用 Unlock 释放锁
 <ul>
@@ -881,7 +803,10 @@ https://github.com/alex-shpak/hugo-book
 
     <span style="color:#75715e">// step2: 临界区外的操作
 </span><span style="color:#75715e"></span>}
-</code></pre></div><h3 id="unsafe-package">unsafe package</h3>
+</code></pre></div><h3 id="unsafe-package">
+  unsafe package
+  <a class="anchor" href="#unsafe-package">#</a>
+</h3>
 <ul>
 <li>除非特殊原因，不建议使用 unsafe package
 <ul>
@@ -895,13 +820,11 @@ https://github.com/alex-shpak/hugo-book
 
       <footer class="book-footer">
         
-  <div class="flex justify-between">
+  <div class="flex flex-wrap justify-between">
 
 
 
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/ikingye/study-go/commit/a4d7f6b2409def68433699ab89dcc8851bfad62a" title='Last modified by yewang | 2020-07-05' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/a4d7f6b2409def68433699ab89dcc8851bfad62a" title='Last modified by yewang | 2020-07-05' target="_blank" rel="noopener">
       <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>2020-07-05</span>
     </a>
