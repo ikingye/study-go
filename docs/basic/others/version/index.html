@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Go 版本 #  golang/go #  版本控制 #  moovweb/gvm #  安装：
-zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 #  1.14 (2020/02/25) #   嵌入接口的方法集可重叠  1.14.4 (2020/06/01) #  1.14.6 (2020/07/16) #  参考：
- Go 1.14 中值得关注的几个变化   1.13 (2019/09/03) #  1.12 (2019/02/25) #  1.11 (2018/08/24) #   pprof  1.10 (2018/02/16) #  不用手动设置 GOROOT 了。
+zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 #  1.14 (2020-02-25) #   嵌入接口的方法集可重叠  1.14.4 (2020-06-01) #  1.14.6 (2020-07-16) #  参考：
+ Go 1.14 中值得关注的几个变化   1.13 (2019-09-03) #  1.12 (2019-02-25) #  1.11 (2018-08-24) #   pprof  1.10 (2018-02-16) #  不用手动设置 GOROOT 了。
 参考：">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="版本" />
 <meta property="og:description" content="Go 版本 #  golang/go #  版本控制 #  moovweb/gvm #  安装：
-zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 #  1.14 (2020/02/25) #   嵌入接口的方法集可重叠  1.14.4 (2020/06/01) #  1.14.6 (2020/07/16) #  参考：
- Go 1.14 中值得关注的几个变化   1.13 (2019/09/03) #  1.12 (2019/02/25) #  1.11 (2018/08/24) #   pprof  1.10 (2018/02/16) #  不用手动设置 GOROOT 了。
+zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 #  1.14 (2020-02-25) #   嵌入接口的方法集可重叠  1.14.4 (2020-06-01) #  1.14.6 (2020-07-16) #  参考：
+ Go 1.14 中值得关注的几个变化   1.13 (2019-09-03) #  1.12 (2019-02-25) #  1.11 (2018-08-24) #   pprof  1.10 (2018-02-16) #  不用手动设置 GOROOT 了。
 参考：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/version/" />
@@ -20,7 +20,7 @@ zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.d51ae1346c6c6be6d266ee675dbefadff112d8cb316f6b14f34def47903e2c63.css" integrity="sha256-1RrhNGxsa&#43;bSZu5nXb763/ES2Msxb2sU803vR5A&#43;LGM=">
-<script defer src="/study-go/en.search.min.d58aff708add3cb545a275cc0ac5db3370cfc6c927ebd81ddc839762b25968a2.js" integrity="sha256-1Yr/cIrdPLVFonXMCsXbM3DPxskn69gd3IOXYrJZaKI="></script>
+<script defer src="/study-go/en.search.min.f428e8aa544184c652777274c4f550cd560bdee635b19b3cbed700d04c862a0c.js" integrity="sha256-9CjoqlRBhMZSd3J0xPVQzVYL3uY1sZs8vtcA0EyGKgw="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -617,26 +617,26 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#版本历史httpsgolangorgdocdevelreleasehtml"><a href="https://golang.org/doc/devel/release.html">版本历史</a></a>
       <ul>
-        <li><a href="#114-20200225">1.14 (2020/02/25)</a>
+        <li><a href="#114-2020-02-25">1.14 (2020-02-25)</a>
           <ul>
-            <li><a href="#1144-20200601">1.14.4 (2020/06/01)</a></li>
-            <li><a href="#1146-20200716">1.14.6 (2020/07/16)</a></li>
+            <li><a href="#1144-2020-06-01">1.14.4 (2020-06-01)</a></li>
+            <li><a href="#1146-2020-07-16">1.14.6 (2020-07-16)</a></li>
           </ul>
         </li>
-        <li><a href="#113-20190903">1.13 (2019/09/03)</a></li>
-        <li><a href="#112-20190225">1.12 (2019/02/25)</a></li>
-        <li><a href="#111-20180824">1.11 (2018/08/24)</a></li>
-        <li><a href="#110-20180216">1.10 (2018/02/16)</a></li>
-        <li><a href="#19-20170824">1.9 (2017/08/24)</a></li>
-        <li><a href="#18-20170216">1.8 (2017/02/16)</a></li>
-        <li><a href="#17-20160815">1.7 (2016/08/15)</a></li>
-        <li><a href="#16-20160217">1.6 (2016/02/17)</a></li>
-        <li><a href="#15-20150819">1.5 (2015/08/19)</a></li>
-        <li><a href="#14-20141210">1.4 (2014/12/10)</a></li>
-        <li><a href="#13-20140618">1.3 (2014/06/18)</a></li>
-        <li><a href="#12-20131201">1.2 (2013/12/01)</a></li>
-        <li><a href="#11-20130513">1.1 (2013/05/13)</a></li>
-        <li><a href="#1-20120328">1 (2012/03/28)</a></li>
+        <li><a href="#113-2019-09-03">1.13 (2019-09-03)</a></li>
+        <li><a href="#112-2019-02-25">1.12 (2019-02-25)</a></li>
+        <li><a href="#111-2018-08-24">1.11 (2018-08-24)</a></li>
+        <li><a href="#110-2018-02-16">1.10 (2018-02-16)</a></li>
+        <li><a href="#19-2017-08-24">1.9 (2017-08-24)</a></li>
+        <li><a href="#18-2017-02-16">1.8 (2017-02-16)</a></li>
+        <li><a href="#17-2016-08-15">1.7 (2016-08-15)</a></li>
+        <li><a href="#16-2016-02-17">1.6 (2016-02-17)</a></li>
+        <li><a href="#15-2015-08-19">1.5 (2015-08-19)</a></li>
+        <li><a href="#14-2014-12-10">1.4 (2014-12-10)</a></li>
+        <li><a href="#13-2014-06-18">1.3 (2014-06-18)</a></li>
+        <li><a href="#12-2013-12-01">1.2 (2013-12-01)</a></li>
+        <li><a href="#11-2013-05-13">1.1 (2013-05-13)</a></li>
+        <li><a href="#1-2012-03-28">1 (2012-03-28)</a></li>
       </ul>
     </li>
   </ul>
@@ -673,67 +673,67 @@ https://github.com/alex-shpak/hugo-book
   <a href="https://golang.org/doc/devel/release.html">版本历史</a>
   <a class="anchor" href="#%e7%89%88%e6%9c%ac%e5%8e%86%e5%8f%b2httpsgolangorgdocdevelreleasehtml">#</a>
 </h2>
-<h3 id="114-20200225">
-  1.14 (2020/02/25)
-  <a class="anchor" href="#114-20200225">#</a>
+<h3 id="114-2020-02-25">
+  1.14 (2020-02-25)
+  <a class="anchor" href="#114-2020-02-25">#</a>
 </h3>
 <ul>
 <li>嵌入接口的方法集可重叠</li>
 </ul>
-<h4 id="1144-20200601">
-  1.14.4 (2020/06/01)
-  <a class="anchor" href="#1144-20200601">#</a>
+<h4 id="1144-2020-06-01">
+  1.14.4 (2020-06-01)
+  <a class="anchor" href="#1144-2020-06-01">#</a>
 </h4>
-<h4 id="1146-20200716">
-  1.14.6 (2020/07/16)
-  <a class="anchor" href="#1146-20200716">#</a>
+<h4 id="1146-2020-07-16">
+  1.14.6 (2020-07-16)
+  <a class="anchor" href="#1146-2020-07-16">#</a>
 </h4>
 <p>参考：</p>
 <ul>
 <li><a href="https://tonybai.com/2020/03/08/some-changes-in-go-1-14/">Go 1.14 中值得关注的几个变化</a></li>
 </ul>
 <hr>
-<h3 id="113-20190903">
-  1.13 (2019/09/03)
-  <a class="anchor" href="#113-20190903">#</a>
+<h3 id="113-2019-09-03">
+  1.13 (2019-09-03)
+  <a class="anchor" href="#113-2019-09-03">#</a>
 </h3>
-<h3 id="112-20190225">
-  1.12 (2019/02/25)
-  <a class="anchor" href="#112-20190225">#</a>
+<h3 id="112-2019-02-25">
+  1.12 (2019-02-25)
+  <a class="anchor" href="#112-2019-02-25">#</a>
 </h3>
-<h3 id="111-20180824">
-  1.11 (2018/08/24)
-  <a class="anchor" href="#111-20180824">#</a>
+<h3 id="111-2018-08-24">
+  1.11 (2018-08-24)
+  <a class="anchor" href="#111-2018-08-24">#</a>
 </h3>
 <ul>
 <li>pprof</li>
 </ul>
-<h3 id="110-20180216">
-  1.10 (2018/02/16)
-  <a class="anchor" href="#110-20180216">#</a>
+<h3 id="110-2018-02-16">
+  1.10 (2018-02-16)
+  <a class="anchor" href="#110-2018-02-16">#</a>
 </h3>
 <p>不用手动设置 GOROOT 了。</p>
 <p>参考：</p>
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/93776289">你再也不用设置 GOROOT 了</a></li>
 </ul>
-<h3 id="19-20170824">
-  1.9 (2017/08/24)
-  <a class="anchor" href="#19-20170824">#</a>
+<h3 id="19-2017-08-24">
+  1.9 (2017-08-24)
+  <a class="anchor" href="#19-2017-08-24">#</a>
 </h3>
 <ul>
 <li>Mutex 互斥锁的<strong>饥饿模式</strong></li>
 </ul>
-<h3 id="18-20170216">
-  1.8 (2017/02/16)
-  <a class="anchor" href="#18-20170216">#</a>
+<h3 id="18-2017-02-16">
+  1.8 (2017-02-16)
+  <a class="anchor" href="#18-2017-02-16">#</a>
 </h3>
 <ul>
 <li>http/2 <code>PUSH</code> 功能</li>
 </ul>
-<h3 id="17-20160815">
-  1.7 (2016/08/15)
-  <a class="anchor" href="#17-20160815">#</a>
+<h3 id="17-2016-08-15">
+  1.7 (2016-08-15)
+  <a class="anchor" href="#17-2016-08-15">#</a>
 </h3>
 <ul>
 <li>标准库
@@ -742,9 +742,9 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ul>
-<h3 id="16-20160217">
-  1.6 (2016/02/17)
-  <a class="anchor" href="#16-20160217">#</a>
+<h3 id="16-2016-02-17">
+  1.6 (2016-02-17)
+  <a class="anchor" href="#16-2016-02-17">#</a>
 </h3>
 <ul>
 <li>Go HTTP2
@@ -753,32 +753,32 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ul>
-<h3 id="15-20150819">
-  1.5 (2015/08/19)
-  <a class="anchor" href="#15-20150819">#</a>
+<h3 id="15-2015-08-19">
+  1.5 (2015-08-19)
+  <a class="anchor" href="#15-2015-08-19">#</a>
 </h3>
 <p>Go 1.5 开始，使用 Go 自举实现。</p>
-<h3 id="14-20141210">
-  1.4 (2014/12/10)
-  <a class="anchor" href="#14-20141210">#</a>
+<h3 id="14-2014-12-10">
+  1.4 (2014-12-10)
+  <a class="anchor" href="#14-2014-12-10">#</a>
 </h3>
 <p>Go 1.4 之前是 C 实现。</p>
-<h3 id="13-20140618">
-  1.3 (2014/06/18)
-  <a class="anchor" href="#13-20140618">#</a>
+<h3 id="13-2014-06-18">
+  1.3 (2014-06-18)
+  <a class="anchor" href="#13-2014-06-18">#</a>
 </h3>
-<h3 id="12-20131201">
-  1.2 (2013/12/01)
-  <a class="anchor" href="#12-20131201">#</a>
+<h3 id="12-2013-12-01">
+  1.2 (2013-12-01)
+  <a class="anchor" href="#12-2013-12-01">#</a>
 </h3>
-<h3 id="11-20130513">
-  1.1 (2013/05/13)
-  <a class="anchor" href="#11-20130513">#</a>
+<h3 id="11-2013-05-13">
+  1.1 (2013-05-13)
+  <a class="anchor" href="#11-2013-05-13">#</a>
 </h3>
 <p>从 Go 1.0 开始，GOPATH 就被强烈推荐。随着 Go 1.1 的发布，GOPATH 已经是强制性的了。</p>
-<h3 id="1-20120328">
-  1 (2012/03/28)
-  <a class="anchor" href="#1-20120328">#</a>
+<h3 id="1-2012-03-28">
+  1 (2012-03-28)
+  <a class="anchor" href="#1-2012-03-28">#</a>
 </h3>
 </article>
  
@@ -835,26 +835,26 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#版本历史httpsgolangorgdocdevelreleasehtml"><a href="https://golang.org/doc/devel/release.html">版本历史</a></a>
       <ul>
-        <li><a href="#114-20200225">1.14 (2020/02/25)</a>
+        <li><a href="#114-2020-02-25">1.14 (2020-02-25)</a>
           <ul>
-            <li><a href="#1144-20200601">1.14.4 (2020/06/01)</a></li>
-            <li><a href="#1146-20200716">1.14.6 (2020/07/16)</a></li>
+            <li><a href="#1144-2020-06-01">1.14.4 (2020-06-01)</a></li>
+            <li><a href="#1146-2020-07-16">1.14.6 (2020-07-16)</a></li>
           </ul>
         </li>
-        <li><a href="#113-20190903">1.13 (2019/09/03)</a></li>
-        <li><a href="#112-20190225">1.12 (2019/02/25)</a></li>
-        <li><a href="#111-20180824">1.11 (2018/08/24)</a></li>
-        <li><a href="#110-20180216">1.10 (2018/02/16)</a></li>
-        <li><a href="#19-20170824">1.9 (2017/08/24)</a></li>
-        <li><a href="#18-20170216">1.8 (2017/02/16)</a></li>
-        <li><a href="#17-20160815">1.7 (2016/08/15)</a></li>
-        <li><a href="#16-20160217">1.6 (2016/02/17)</a></li>
-        <li><a href="#15-20150819">1.5 (2015/08/19)</a></li>
-        <li><a href="#14-20141210">1.4 (2014/12/10)</a></li>
-        <li><a href="#13-20140618">1.3 (2014/06/18)</a></li>
-        <li><a href="#12-20131201">1.2 (2013/12/01)</a></li>
-        <li><a href="#11-20130513">1.1 (2013/05/13)</a></li>
-        <li><a href="#1-20120328">1 (2012/03/28)</a></li>
+        <li><a href="#113-2019-09-03">1.13 (2019-09-03)</a></li>
+        <li><a href="#112-2019-02-25">1.12 (2019-02-25)</a></li>
+        <li><a href="#111-2018-08-24">1.11 (2018-08-24)</a></li>
+        <li><a href="#110-2018-02-16">1.10 (2018-02-16)</a></li>
+        <li><a href="#19-2017-08-24">1.9 (2017-08-24)</a></li>
+        <li><a href="#18-2017-02-16">1.8 (2017-02-16)</a></li>
+        <li><a href="#17-2016-08-15">1.7 (2016-08-15)</a></li>
+        <li><a href="#16-2016-02-17">1.6 (2016-02-17)</a></li>
+        <li><a href="#15-2015-08-19">1.5 (2015-08-19)</a></li>
+        <li><a href="#14-2014-12-10">1.4 (2014-12-10)</a></li>
+        <li><a href="#13-2014-06-18">1.3 (2014-06-18)</a></li>
+        <li><a href="#12-2013-12-01">1.2 (2013-12-01)</a></li>
+        <li><a href="#11-2013-05-13">1.1 (2013-05-13)</a></li>
+        <li><a href="#1-2012-03-28">1 (2012-03-28)</a></li>
       </ul>
     </li>
   </ul>
