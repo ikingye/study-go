@@ -355,6 +355,15 @@ chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt
     </item>
     
     <item>
+      <title>GC</title>
+      <link>https://ikingye.github.io/study-go/docs/code/runtime/gc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/code/runtime/gc/</guid>
+      <description>Go GC #  Garbage Collection</description>
+    </item>
+    
+    <item>
       <title>Go 插件系统</title>
       <link>https://ikingye.github.io/study-go/docs/basic/others/plugin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

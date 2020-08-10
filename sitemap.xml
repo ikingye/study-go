@@ -79,7 +79,7 @@
   
   <url>
     <loc>https://ikingye.github.io/study-go/docs/appendix/tutorial/</loc>
-    <lastmod>2020-07-05T16:22:42+08:00</lastmod>
+    <lastmod>2020-08-10T14:37:49+08:00</lastmod>
   </url>
   
   <url>
@@ -283,6 +283,10 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/code/runtime/gc/</loc>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/others/plugin/</loc>
     <lastmod>2020-07-06T17:32:24+08:00</lastmod>
   </url>
@@ -338,7 +342,7 @@
   
   <url>
     <loc>https://ikingye.github.io/study-go/docs/</loc>
-    <lastmod>2020-08-05T20:05:50+08:00</lastmod>
+    <lastmod>2020-08-10T14:37:49+08:00</lastmod>
   </url>
   
   <url>
