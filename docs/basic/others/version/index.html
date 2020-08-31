@@ -5,14 +5,12 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Go 版本 #  golang/go #  版本控制 #  moovweb/gvm #  安装：
-zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 #  1.14 (2020-02-25) #   嵌入接口的方法集可重叠  1.14.4 (2020-06-01) #  1.14.6 (2020-07-16) #  参考：
- Go 1.14 中值得关注的几个变化   1.13 (2019-09-03) #  1.12 (2019-02-25) #  1.11 (2018-08-24) #   pprof  1.10 (2018-02-16) #  不用手动设置 GOROOT 了。
-参考：">
+zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 #  1.15 (2020-08-11) #  1.15.1 (2020-09-01) #   1.14 (2020-02-25) #   嵌入接口的方法集可重叠  1.14.4 (2020-06-01) #  1.14.6 (2020-07-16) #  参考：
+ Go 1.14 中值得关注的几个变化   1.13 (2019-09-03) #   1.12 (2019-02-25) #   1.11 (2018-08-24) #   pprof   1.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="版本" />
 <meta property="og:description" content="Go 版本 #  golang/go #  版本控制 #  moovweb/gvm #  安装：
-zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 #  1.14 (2020-02-25) #   嵌入接口的方法集可重叠  1.14.4 (2020-06-01) #  1.14.6 (2020-07-16) #  参考：
- Go 1.14 中值得关注的几个变化   1.13 (2019-09-03) #  1.12 (2019-02-25) #  1.11 (2018-08-24) #   pprof  1.10 (2018-02-16) #  不用手动设置 GOROOT 了。
-参考：" />
+zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 #  1.15 (2020-08-11) #  1.15.1 (2020-09-01) #   1.14 (2020-02-25) #   嵌入接口的方法集可重叠  1.14.4 (2020-06-01) #  1.14.6 (2020-07-16) #  参考：
+ Go 1.14 中值得关注的几个变化   1.13 (2019-09-03) #   1.12 (2019-02-25) #   1.11 (2018-08-24) #   pprof   1." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/version/" />
 <meta property="article:modified_time" content="2020-08-05T20:05:50+08:00" />
@@ -20,7 +18,7 @@ zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.d51ae1346c6c6be6d266ee675dbefadff112d8cb316f6b14f34def47903e2c63.css" integrity="sha256-1RrhNGxsa&#43;bSZu5nXb763/ES2Msxb2sU803vR5A&#43;LGM=">
-<script defer src="/study-go/en.search.min.3495b4783246e9a07c5b683ebb3b64b4a13e88f32856d08bbab94042faacd3a9.js" integrity="sha256-NJW0eDJG6aB8W2g&#43;uztktKE&#43;iPMoVtCLurlAQvqs06k="></script>
+<script defer src="/study-go/en.search.min.b2225a6f92a081ea9e6ae787e4d4f384eea761ba69eec36184cd5f09d16e9c45.js" integrity="sha256-siJab5KggeqeaueH5NTzhO6nYbpp7sNhhM1fCdFunEU="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -617,14 +615,19 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#版本历史httpsgolangorgdocdevelreleasehtml"><a href="https://golang.org/doc/devel/release.html">版本历史</a></a>
       <ul>
-        <li><a href="#114-2020-02-25">1.14 (2020-02-25)</a>
+        <li><a href="#115httpsgolangorgdocgo115-2020-08-11"><a href="https://golang.org/doc/go1.15">1.15</a> (2020-08-11)</a>
+          <ul>
+            <li><a href="#1151-2020-09-01">1.15.1 (2020-09-01)</a></li>
+          </ul>
+        </li>
+        <li><a href="#114httpsgolangorgdocgo114-2020-02-25"><a href="https://golang.org/doc/go1.14">1.14</a> (2020-02-25)</a>
           <ul>
             <li><a href="#1144-2020-06-01">1.14.4 (2020-06-01)</a></li>
             <li><a href="#1146-2020-07-16">1.14.6 (2020-07-16)</a></li>
           </ul>
         </li>
-        <li><a href="#113-2019-09-03">1.13 (2019-09-03)</a></li>
-        <li><a href="#112-2019-02-25">1.12 (2019-02-25)</a></li>
+        <li><a href="#113httpsgolangorgdocgo113-2019-09-03"><a href="https://golang.org/doc/go1.13">1.13</a> (2019-09-03)</a></li>
+        <li><a href="#112httpsgolangorgdocgo112-2019-02-25"><a href="https://golang.org/doc/go1.12">1.12</a> (2019-02-25)</a></li>
         <li><a href="#111-2018-08-24">1.11 (2018-08-24)</a></li>
         <li><a href="#110-2018-02-16">1.10 (2018-02-16)</a></li>
         <li><a href="#19-2017-08-24">1.9 (2017-08-24)</a></li>
@@ -673,9 +676,18 @@ https://github.com/alex-shpak/hugo-book
   <a href="https://golang.org/doc/devel/release.html">版本历史</a>
   <a class="anchor" href="#%e7%89%88%e6%9c%ac%e5%8e%86%e5%8f%b2httpsgolangorgdocdevelreleasehtml">#</a>
 </h2>
-<h3 id="114-2020-02-25">
-  1.14 (2020-02-25)
-  <a class="anchor" href="#114-2020-02-25">#</a>
+<h3 id="115httpsgolangorgdocgo115-2020-08-11">
+  <a href="https://golang.org/doc/go1.15">1.15</a> (2020-08-11)
+  <a class="anchor" href="#115httpsgolangorgdocgo115-2020-08-11">#</a>
+</h3>
+<h4 id="1151-2020-09-01">
+  1.15.1 (2020-09-01)
+  <a class="anchor" href="#1151-2020-09-01">#</a>
+</h4>
+<hr>
+<h3 id="114httpsgolangorgdocgo114-2020-02-25">
+  <a href="https://golang.org/doc/go1.14">1.14</a> (2020-02-25)
+  <a class="anchor" href="#114httpsgolangorgdocgo114-2020-02-25">#</a>
 </h3>
 <ul>
 <li>嵌入接口的方法集可重叠</li>
@@ -693,14 +705,16 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="https://tonybai.com/2020/03/08/some-changes-in-go-1-14/">Go 1.14 中值得关注的几个变化</a></li>
 </ul>
 <hr>
-<h3 id="113-2019-09-03">
-  1.13 (2019-09-03)
-  <a class="anchor" href="#113-2019-09-03">#</a>
+<h3 id="113httpsgolangorgdocgo113-2019-09-03">
+  <a href="https://golang.org/doc/go1.13">1.13</a> (2019-09-03)
+  <a class="anchor" href="#113httpsgolangorgdocgo113-2019-09-03">#</a>
 </h3>
-<h3 id="112-2019-02-25">
-  1.12 (2019-02-25)
-  <a class="anchor" href="#112-2019-02-25">#</a>
+<hr>
+<h3 id="112httpsgolangorgdocgo112-2019-02-25">
+  <a href="https://golang.org/doc/go1.12">1.12</a> (2019-02-25)
+  <a class="anchor" href="#112httpsgolangorgdocgo112-2019-02-25">#</a>
 </h3>
+<hr>
 <h3 id="111-2018-08-24">
   1.11 (2018-08-24)
   <a class="anchor" href="#111-2018-08-24">#</a>
@@ -708,6 +722,7 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>pprof</li>
 </ul>
+<hr>
 <h3 id="110-2018-02-16">
   1.10 (2018-02-16)
   <a class="anchor" href="#110-2018-02-16">#</a>
@@ -717,6 +732,7 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/93776289">你再也不用设置 GOROOT 了</a></li>
 </ul>
+<hr>
 <h3 id="19-2017-08-24">
   1.9 (2017-08-24)
   <a class="anchor" href="#19-2017-08-24">#</a>
@@ -835,14 +851,19 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#版本历史httpsgolangorgdocdevelreleasehtml"><a href="https://golang.org/doc/devel/release.html">版本历史</a></a>
       <ul>
-        <li><a href="#114-2020-02-25">1.14 (2020-02-25)</a>
+        <li><a href="#115httpsgolangorgdocgo115-2020-08-11"><a href="https://golang.org/doc/go1.15">1.15</a> (2020-08-11)</a>
+          <ul>
+            <li><a href="#1151-2020-09-01">1.15.1 (2020-09-01)</a></li>
+          </ul>
+        </li>
+        <li><a href="#114httpsgolangorgdocgo114-2020-02-25"><a href="https://golang.org/doc/go1.14">1.14</a> (2020-02-25)</a>
           <ul>
             <li><a href="#1144-2020-06-01">1.14.4 (2020-06-01)</a></li>
             <li><a href="#1146-2020-07-16">1.14.6 (2020-07-16)</a></li>
           </ul>
         </li>
-        <li><a href="#113-2019-09-03">1.13 (2019-09-03)</a></li>
-        <li><a href="#112-2019-02-25">1.12 (2019-02-25)</a></li>
+        <li><a href="#113httpsgolangorgdocgo113-2019-09-03"><a href="https://golang.org/doc/go1.13">1.13</a> (2019-09-03)</a></li>
+        <li><a href="#112httpsgolangorgdocgo112-2019-02-25"><a href="https://golang.org/doc/go1.12">1.12</a> (2019-02-25)</a></li>
         <li><a href="#111-2018-08-24">1.11 (2018-08-24)</a></li>
         <li><a href="#110-2018-02-16">1.10 (2018-02-16)</a></li>
         <li><a href="#19-2017-08-24">1.9 (2017-08-24)</a></li>

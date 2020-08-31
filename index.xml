@@ -426,9 +426,8 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
       
       <guid>https://ikingye.github.io/study-go/docs/basic/others/version/</guid>
       <description>Go 版本 #  golang/go #  版本控制 #  moovweb/gvm #  安装：
-zsh &amp;lt; &amp;lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 #  1.14 (2020-02-25) #   嵌入接口的方法集可重叠  1.14.4 (2020-06-01) #  1.14.6 (2020-07-16) #  参考：
- Go 1.14 中值得关注的几个变化   1.13 (2019-09-03) #  1.12 (2019-02-25) #  1.11 (2018-08-24) #   pprof  1.10 (2018-02-16) #  不用手动设置 GOROOT 了。
-参考：</description>
+zsh &amp;lt; &amp;lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 #  1.15 (2020-08-11) #  1.15.1 (2020-09-01) #   1.14 (2020-02-25) #   嵌入接口的方法集可重叠  1.14.4 (2020-06-01) #  1.14.6 (2020-07-16) #  参考：
+ Go 1.14 中值得关注的几个变化   1.13 (2019-09-03) #   1.12 (2019-02-25) #   1.11 (2018-08-24) #   pprof   1.</description>
     </item>
     
     <item>
