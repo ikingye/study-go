@@ -16,7 +16,7 @@ go get #  -d 只下载不安装 -u 强制使用网络去更新包和它的依赖
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.d51ae1346c6c6be6d266ee675dbefadff112d8cb316f6b14f34def47903e2c63.css" integrity="sha256-1RrhNGxsa&#43;bSZu5nXb763/ES2Msxb2sU803vR5A&#43;LGM=">
-<script defer src="/study-go/en.search.min.b2225a6f92a081ea9e6ae787e4d4f384eea761ba69eec36184cd5f09d16e9c45.js" integrity="sha256-siJab5KggeqeaueH5NTzhO6nYbpp7sNhhM1fCdFunEU="></script>
+<script defer src="/study-go/en.search.min.25ca772ce7e25dbb288acb3a52c1a8f6c15b87190fd8fef1a6a4e98acb12aa78.js" integrity="sha256-Jcp3LOfiXbsoiss6UsGo9sFbhxkP2P7xpqTpissSqng="></script>
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/others/command/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -184,7 +184,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/basic/others/gobuild/" class="">Go 热编译</a>
+    <a href="/study-go/docs/basic/others/gobuild/" class="">Go build</a>
   
 
         </li>
@@ -627,6 +627,12 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#go-install">go install</a></li>
     <li><a href="#go-list">go list</a></li>
+    <li><a href="#go-build">go build</a>
+      <ul>
+        <li><a href="#ldflags">ldflags</a></li>
+        <li><a href="#gcflags">gcflags</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -680,7 +686,32 @@ https://github.com/alex-shpak/hugo-book
   go list
   <a class="anchor" href="#go-list">#</a>
 </h2>
-</article>
+<hr>
+<h2 id="go-build">
+  go build
+  <a class="anchor" href="#go-build">#</a>
+</h2>
+<h3 id="ldflags">
+  ldflags
+  <a class="anchor" href="#ldflags">#</a>
+</h3>
+<p><code>go tool link --help</code> 查看 ldflags 各参数含义</p>
+<ul>
+<li><code>-w</code> 禁止生成 debug 信息，注意使用该选项后，无法使用 gdb 进行调试</li>
+<li><code>-s</code> 禁用符号表</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -ldflags <span style="color:#e6db74">&#39;-w -s&#39;</span>
+</code></pre></div><h3 id="gcflags">
+  gcflags
+  <a class="anchor" href="#gcflags">#</a>
+</h3>
+<p><code>go tool compile --help</code> 查看 gcflags 各参数含义</p>
+<ul>
+<li><code>-N</code> 禁止编译优化</li>
+<li><code>-l</code> 禁止内联，禁止内联也可以一定程度上减小可执行程序大小</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -gcflags <span style="color:#e6db74">&#39;-N -l&#39;</span>
+</code></pre></div></article>
  
       
 
@@ -734,6 +765,12 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#go-install">go install</a></li>
     <li><a href="#go-list">go list</a></li>
+    <li><a href="#go-build">go build</a>
+      <ul>
+        <li><a href="#ldflags">ldflags</a></li>
+        <li><a href="#gcflags">gcflags</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

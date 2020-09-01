@@ -5,20 +5,20 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Go 版本 #  golang/go #  版本控制 #  moovweb/gvm #  安装：
-zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 #  1.15 (2020-08-11) #  1.15.1 (2020-09-01) #   1.14 (2020-02-25) #   嵌入接口的方法集可重叠  1.14.4 (2020-06-01) #  1.14.6 (2020-07-16) #  参考：
- Go 1.14 中值得关注的几个变化   1.13 (2019-09-03) #   1.12 (2019-02-25) #   1.11 (2018-08-24) #   pprof   1.">
+zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 使用：
+$ gvm listall $ gvm list $ gvm install go1.15 $ gvm user go1.15 $ gvm uninstall go1.15 $ gvm help Usage: gvm [command] Description: GVM is the Go Version Manager Commands: version - print the gvm version number get - gets the latest code (for debugging) use - select a go version to use (--default to set permanently) diff - view changes to Go root help - display this usage text implode - completely remove gvm install - install go versions uninstall - uninstall go versions cross - install go cross compilers linkthis - link this directory into GOPATH list - list installed go versions listall - list available versions alias - manage go version aliases pkgset - manage go packages sets pkgenv - edit the environment for a package set  版本历史 #  1.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="版本" />
 <meta property="og:description" content="Go 版本 #  golang/go #  版本控制 #  moovweb/gvm #  安装：
-zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)  版本历史 #  1.15 (2020-08-11) #  1.15.1 (2020-09-01) #   1.14 (2020-02-25) #   嵌入接口的方法集可重叠  1.14.4 (2020-06-01) #  1.14.6 (2020-07-16) #  参考：
- Go 1.14 中值得关注的几个变化   1.13 (2019-09-03) #   1.12 (2019-02-25) #   1.11 (2018-08-24) #   pprof   1." />
+zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 使用：
+$ gvm listall $ gvm list $ gvm install go1.15 $ gvm user go1.15 $ gvm uninstall go1.15 $ gvm help Usage: gvm [command] Description: GVM is the Go Version Manager Commands: version - print the gvm version number get - gets the latest code (for debugging) use - select a go version to use (--default to set permanently) diff - view changes to Go root help - display this usage text implode - completely remove gvm install - install go versions uninstall - uninstall go versions cross - install go cross compilers linkthis - link this directory into GOPATH list - list installed go versions listall - list available versions alias - manage go version aliases pkgset - manage go packages sets pkgenv - edit the environment for a package set  版本历史 #  1." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/version/" />
-<meta property="article:modified_time" content="2020-08-05T20:05:50+08:00" />
+<meta property="article:modified_time" content="2020-08-31T17:12:44+08:00" />
 <title>版本 | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.d51ae1346c6c6be6d266ee675dbefadff112d8cb316f6b14f34def47903e2c63.css" integrity="sha256-1RrhNGxsa&#43;bSZu5nXb763/ES2Msxb2sU803vR5A&#43;LGM=">
-<script defer src="/study-go/en.search.min.b2225a6f92a081ea9e6ae787e4d4f384eea761ba69eec36184cd5f09d16e9c45.js" integrity="sha256-siJab5KggeqeaueH5NTzhO6nYbpp7sNhhM1fCdFunEU="></script>
+<script defer src="/study-go/en.search.min.25ca772ce7e25dbb288acb3a52c1a8f6c15b87190fd8fef1a6a4e98acb12aa78.js" integrity="sha256-Jcp3LOfiXbsoiss6UsGo9sFbhxkP2P7xpqTpissSqng="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -185,7 +185,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/basic/others/gobuild/" class="">Go 热编译</a>
+    <a href="/study-go/docs/basic/others/gobuild/" class="">Go build</a>
   
 
         </li>
@@ -671,6 +671,35 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <p>安装：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zsh &lt; &lt;<span style="color:#f92672">(</span>curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer<span style="color:#f92672">)</span>
+</code></pre></div><p>使用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ gvm listall
+$ gvm list
+$ gvm install go1.15
+$ gvm user go1.15
+$ gvm uninstall go1.15
+
+$ gvm help
+Usage: gvm <span style="color:#f92672">[</span>command<span style="color:#f92672">]</span>
+
+Description:
+  GVM is the Go Version Manager
+
+Commands:
+  version    - print the gvm version number
+  get        - gets the latest code <span style="color:#f92672">(</span><span style="color:#66d9ef">for</span> debugging<span style="color:#f92672">)</span>
+  use        - <span style="color:#66d9ef">select</span> a go version to use <span style="color:#f92672">(</span>--default to set permanently<span style="color:#f92672">)</span>
+  diff       - view changes to Go root
+  help       - display this usage text
+  implode    - completely remove gvm
+  install    - install go versions
+  uninstall  - uninstall go versions
+  cross      - install go cross compilers
+  linkthis   - link this directory into GOPATH
+  list       - list installed go versions
+  listall    - list available versions
+  alias      - manage go version aliases
+  pkgset     - manage go packages sets
+  pkgenv     - edit the environment <span style="color:#66d9ef">for</span> a package set
 </code></pre></div><hr>
 <h2 id="版本历史httpsgolangorgdocdevelreleasehtml">
   <a href="https://golang.org/doc/devel/release.html">版本历史</a>
@@ -806,9 +835,9 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/77ceed19d784124b66787dca0759f8f12e1ea9b3" title='Last modified by yewang | 2020-08-05' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/bab2411026486272ba4170cbc14ceb27dd0b429c" title='Last modified by yewang | 2020-08-31' target="_blank" rel="noopener">
       <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-08-05</span>
+      <span>2020-08-31</span>
     </a>
   </div>
 
