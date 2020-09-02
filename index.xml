@@ -427,7 +427,7 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
       <guid>https://ikingye.github.io/study-go/docs/basic/others/version/</guid>
       <description>Go 版本 #  golang/go #  版本控制 #  moovweb/gvm #  安装：
 zsh &amp;lt; &amp;lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 使用：
-$ gvm listall $ gvm list $ gvm install go1.15 $ gvm user go1.15 $ gvm uninstall go1.15 $ gvm help Usage: gvm [command] Description: GVM is the Go Version Manager Commands: version - print the gvm version number get - gets the latest code (for debugging) use - select a go version to use (--default to set permanently) diff - view changes to Go root help - display this usage text implode - completely remove gvm install - install go versions uninstall - uninstall go versions cross - install go cross compilers linkthis - link this directory into GOPATH list - list installed go versions listall - list available versions alias - manage go version aliases pkgset - manage go packages sets pkgenv - edit the environment for a package set  版本历史 #  1.</description>
+$ gvm listall $ gvm list $ gvm install go1.15 $ gvm user go1.15 $ gvm uninstall go1.15 # 使用二进制安装 $ gvm install go1.15 -B $ gvm install -h Invalid version: -h Usage: gvm install [version] [options] -s, --source=SOURCE Install Go from specified source. -n, --name=NAME Override the default name for this version.</description>
     </item>
     
     <item>
