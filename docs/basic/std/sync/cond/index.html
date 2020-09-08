@@ -9,7 +9,7 @@
 <meta property="og:description" content="Cond #  type Cond struct { // L is held while observing or changing the condition 	L Locker // contains filtered or unexported fields } // Broadcast 会唤醒所有等待 c 的 goroutine func (c *Cond) Broadcast() // Signal 只唤醒 1 个等待 c 的 goroutine func (c *Cond) Signal() // Wait() 会自动释放 c.L，并挂起调用者的 goroutine。之后恢复执行，Wait() 会在返回时对 c.L 加锁。 // 除非被 Signal 或者 Broadcast 唤醒，否则 Wait() 不会返回 func (c *Cond) Wait()  条件  一个条件一定要有一个信号   信号  wait 等待的是信号 signal 发送的是信号 一个信号可以对应到多个条件    sync." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/sync/cond/" />
-<meta property="article:modified_time" content="2020-07-04T23:53:19+08:00" />
+<meta property="article:modified_time" content="2020-09-07T11:13:21+08:00" />
 <title>Cond | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
@@ -668,9 +668,9 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/32f95416ddcb3cd32fc913117702f5ab28c99d1d" title='Last modified by yewang | 2020-07-04' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/02b09e7937a7c64ab6cd5b3858aa3fd918f0fcfb" title='Last modified by yewang | 2020-09-07' target="_blank" rel="noopener">
       <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-07-04</span>
+      <span>2020-09-07</span>
     </a>
   </div>
 
