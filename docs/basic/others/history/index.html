@@ -4,18 +4,17 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 设计模式 #  单例模式 #  常规 #  package singleton import &#34;sync&#34; var ( instance *Instance lock sync.Mutex ) type Instance struct { Name string } // 双重检查 func GetInstance(name string) *Instance { if instance == nil { lock.Lock() defer lock.Unlock() if instance == nil { instance = &amp;Instance{Name: name} } } return instance } sync.Once #  package singleton import &#34;sync&#34; var ( goInstance *Instance once sync.Once ) func GoInstance(name string) *Instance { if goInstance == nil { once.">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="2.1 设计模式" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/advanced/pattern/" />
+<meta name="description" content="Go 历史 #  ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="历史" />
+<meta property="og:description" content="Go 历史 #  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/history/" />
 
-<title>2.1 设计模式 | Go 学习笔记</title>
+<title>历史 | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.d51ae1346c6c6be6d266ee675dbefadff112d8cb316f6b14f34def47903e2c63.css" integrity="sha256-1RrhNGxsa&#43;bSZu5nXb763/ES2Msxb2sU803vR5A&#43;LGM=">
 <script defer src="/study-go/en.search.min.b2a179ffd3ab4d971edc9bc7553efaad9e5c826ed153684ffe0366f7043e8edd.js" integrity="sha256-sqF5/9OrTZce3JvHVT76rZ5cgm7RU2hP/gNm9wQ&#43;jt0="></script>
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/advanced/pattern/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -154,6 +153,127 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/quick/" class="">Go 快速上手</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/pros-and-cons/" class="">优劣</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/gobuild/" class="">Go build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/gopls/" class="">gopls</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/pm/" class="">包管理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/compile/" class="">编译</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/command/" class="collapsed ">Go 命令</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/history/" class="active">历史</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/plugin/" class="">Go 插件系统</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/goroutine/" class="">goroutine</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/version/" class="">版本</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
 
         </li>
       
@@ -183,7 +303,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/advanced/pattern/" class="collapsed active">2.1 设计模式</a>
+    <a href="/study-go/docs/advanced/pattern/" class="collapsed ">2.1 设计模式</a>
   
 
           
@@ -191,10 +311,6 @@ https://github.com/alex-shpak/hugo-book
   
   
 
-  
-  <ul>
-    
-  </ul>
   
 
         </li>
@@ -480,7 +596,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>2.1 设计模式</strong>
+  <strong>历史</strong>
 
   <label for="toc-control">
     
@@ -493,22 +609,7 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#单例模式">单例模式</a>
-      <ul>
-        <li><a href="#常规">常规</a></li>
-        <li><a href="#synconce">sync.Once</a></li>
-      </ul>
-    </li>
-    <li><a href="#参考">参考</a>
-      <ul>
-        <li><a href="#tmrtsgo-patternshttpsgithubcomtmrtsgo-patterns-github-starshttpsimgshieldsiogithubstarstmrtsgo-patternssvg"><a href="https://github.com/tmrts/go-patterns">tmrts/go-patterns</a> <img src="https://img.shields.io/github/stars/tmrts/go-patterns.svg" alt="Github stars"></a></li>
-        <li><a href="#senghoogolang-design-patternhttpsgithubcomsenghoogolang-design-pattern-github-starshttpsimgshieldsiogithubstarssenghoogolang-design-patternsvg"><a href="https://github.com/senghoo/golang-design-pattern">senghoo/golang-design-pattern</a> <img src="https://img.shields.io/github/stars/senghoo/golang-design-pattern.svg" alt="Github stars"></a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
 
   </aside>
@@ -518,77 +619,10 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="go-设计模式">
-  Go 设计模式
-  <a class="anchor" href="#go-%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f">#</a>
+  <article class="markdown"><h1 id="go-历史">
+  Go 历史
+  <a class="anchor" href="#go-%e5%8e%86%e5%8f%b2">#</a>
 </h1>
-<h2 id="单例模式">
-  单例模式
-  <a class="anchor" href="#%e5%8d%95%e4%be%8b%e6%a8%a1%e5%bc%8f">#</a>
-</h2>
-<h3 id="常规">
-  常规
-  <a class="anchor" href="#%e5%b8%b8%e8%a7%84">#</a>
-</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">singleton</span>
-<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;sync&#34;</span>
-
-<span style="color:#66d9ef">var</span> (
-    <span style="color:#a6e22e">instance</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Instance</span>
-    <span style="color:#a6e22e">lock</span>     <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>
-)
-
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Instance</span> <span style="color:#66d9ef">struct</span> {
-    <span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span>
-}
-
-<span style="color:#75715e">// 双重检查
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GetInstance</span>(<span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">Instance</span> {
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">instance</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
-        <span style="color:#a6e22e">lock</span>.<span style="color:#a6e22e">Lock</span>()
-        <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">lock</span>.<span style="color:#a6e22e">Unlock</span>()
-        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">instance</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
-            <span style="color:#a6e22e">instance</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Instance</span>{<span style="color:#a6e22e">Name</span>: <span style="color:#a6e22e">name</span>}
-        }
-    }
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">instance</span>
-}
-</code></pre></div><h3 id="synconce">
-  sync.Once
-  <a class="anchor" href="#synconce">#</a>
-</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">singleton</span>
-
-<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;sync&#34;</span>
-
-<span style="color:#66d9ef">var</span> (
-    <span style="color:#a6e22e">goInstance</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Instance</span>
-    <span style="color:#a6e22e">once</span>       <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Once</span>
-)
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GoInstance</span>(<span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">Instance</span> {
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">goInstance</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
-        <span style="color:#a6e22e">once</span>.<span style="color:#a6e22e">Do</span>(<span style="color:#66d9ef">func</span>() {
-            <span style="color:#a6e22e">goInstance</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Instance</span>{
-                <span style="color:#a6e22e">Name</span>: <span style="color:#a6e22e">name</span>,
-            }
-        })
-    }
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">goInstance</span>
-}
-</code></pre></div><hr>
-<h2 id="参考">
-  参考
-  <a class="anchor" href="#%e5%8f%82%e8%80%83">#</a>
-</h2>
-<a href="https://github.com/tmrts/go-patterns">tmrts/go-patterns</a> <h3 id="tmrtsgo-patternshttpsgithubcomtmrtsgo-patterns-github-starshttpsimgshieldsiogithubstarstmrtsgo-patternssvg">
-  <img src="https://img.shields.io/github/stars/tmrts/go-patterns.svg" alt="Github stars" />
-  <a class="anchor" href="#tmrtsgo-patternshttpsgithubcomtmrtsgo-patterns-github-starshttpsimgshieldsiogithubstarstmrtsgo-patternssvg">#</a>
-</h3>
-<a href="https://github.com/senghoo/golang-design-pattern">senghoo/golang-design-pattern</a> <h3 id="senghoogolang-design-patternhttpsgithubcomsenghoogolang-design-pattern-github-starshttpsimgshieldsiogithubstarssenghoogolang-design-patternsvg">
-  <img src="https://img.shields.io/github/stars/senghoo/golang-design-pattern.svg" alt="Github stars" />
-  <a class="anchor" href="#senghoogolang-design-patternhttpsgithubcomsenghoogolang-design-pattern-github-starshttpsimgshieldsiogithubstarssenghoogolang-design-patternsvg">#</a>
-</h3>
 </article>
  
       
@@ -598,12 +632,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/bdc59f81314e3c054ac55bb934a0830868119858" title='Last modified by yewang | 2020-07-29' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-07-29</span>
-    </a>
-  </div>
 
 
 
@@ -634,22 +662,7 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#单例模式">单例模式</a>
-      <ul>
-        <li><a href="#常规">常规</a></li>
-        <li><a href="#synconce">sync.Once</a></li>
-      </ul>
-    </li>
-    <li><a href="#参考">参考</a>
-      <ul>
-        <li><a href="#tmrtsgo-patternshttpsgithubcomtmrtsgo-patterns-github-starshttpsimgshieldsiogithubstarstmrtsgo-patternssvg"><a href="https://github.com/tmrts/go-patterns">tmrts/go-patterns</a> <img src="https://img.shields.io/github/stars/tmrts/go-patterns.svg" alt="Github stars"></a></li>
-        <li><a href="#senghoogolang-design-patternhttpsgithubcomsenghoogolang-design-pattern-github-starshttpsimgshieldsiogithubstarssenghoogolang-design-patternsvg"><a href="https://github.com/senghoo/golang-design-pattern">senghoo/golang-design-pattern</a> <img src="https://img.shields.io/github/stars/senghoo/golang-design-pattern.svg" alt="Github stars"></a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
  
     </aside>

@@ -80,6 +80,15 @@ Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 expo
     </item>
     
     <item>
+      <title>历史</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/others/history/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/others/history/</guid>
+      <description>Go 历史 #  </description>
+    </item>
+    
+    <item>
       <title>Go 插件系统</title>
       <link>https://ikingye.github.io/study-go/docs/basic/others/plugin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
