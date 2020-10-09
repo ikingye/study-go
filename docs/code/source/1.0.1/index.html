@@ -4,17 +4,19 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go GC #  Garbage Collection">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="GC" />
-<meta property="og:description" content="Go GC #  Garbage Collection" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/code/runtime/gc/" />
-<meta property="article:modified_time" content="2020-08-10T17:52:21+08:00" />
-<title>GC | Go 学习笔记</title>
+<meta name="description" content="Go 1.0.0 源码分析 #  https://github.com/golang/go/tree/go1.0.1
+ 代码行数 #  AlDanial/cloc $ cloc . 15969 text files. 15884 unique files. 13164 files ignored. github.com/AlDanial/cloc v 1.86 T=19.15 s (146.5 files/s, 35024.2 lines/s) -------------------------------------------------------------------------------- Language files blank comment code -------------------------------------------------------------------------------- Go 2023 38800 49499 302225 C 369 20497 20388 149600 HTML 58 4234 252 25508 C/C&#43;&#43; Header 98 1752 2759 15100 Assembly 134 1510 2073 8203 yacc 6 449 396 5212 Perl 12 718 937 4774 Python 6 577 749 2898 JavaScript 6 591 422 2594 XML 16 91 20 1298 Bourne Shell 13 172 348 1064 CSS 6 121 32 888 Bourne Again Shell 17 173 147 758 Lisp 2 108 147 618 vim script 9 94 157 456 Pascal 1 48 222 256 DOS Batch 4 44 1 193 make 19 64 64 161 WiX source 1 12 13 139 awk 2 12 35 104 YAML 3 14 12 60 JSON 2 0 0 20 -------------------------------------------------------------------------------- SUM: 2807 70081 78673 522129 -------------------------------------------------------------------------------- ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="1.0.0" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/code/source/1.0.1/" />
+
+<title>1.0.0 | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.d51ae1346c6c6be6d266ee675dbefadff112d8cb316f6b14f34def47903e2c63.css" integrity="sha256-1RrhNGxsa&#43;bSZu5nXb763/ES2Msxb2sU803vR5A&#43;LGM=">
 <script defer src="/study-go/en.search.min.366a9651b2fc057de149065239c91d777f8134f4ea6dbb9969d91dcc31ea44a9.js" integrity="sha256-NmqWUbL8BX3hSQZSOckdd3&#43;BNPTqbbuZadkdzDHqRKk="></script>
+<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/code/source/1.0.1/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -365,40 +367,6 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/code/runtime/init/" class="">Go 初始化</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/code/runtime/scheduling/" class="">Go 调度</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/code/runtime/gc/" class="active">GC</a>
-  
-
-        </li>
-      
-    
-  </ul>
-  
 
         </li>
       
@@ -422,7 +390,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/code/source/1.0.1/" class="collapsed ">1.0.0</a>
+    <a href="/study-go/docs/code/source/1.0.1/" class="collapsed active">1.0.0</a>
   
 
           
@@ -430,6 +398,10 @@ https://github.com/alex-shpak/hugo-book
   
   
 
+  
+  <ul>
+    
+  </ul>
   
 
         </li>
@@ -547,7 +519,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>GC</strong>
+  <strong>1.0.0</strong>
 
   <label for="toc-control">
     
@@ -560,7 +532,11 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#代码行数">代码行数</a></li>
+  </ul>
+</nav>
 
 
   </aside>
@@ -570,12 +546,52 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="go-gc">
-  Go GC
-  <a class="anchor" href="#go-gc">#</a>
+  <article class="markdown"><h1 id="go-100-源码分析">
+  Go 1.0.0 源码分析
+  <a class="anchor" href="#go-100-%e6%ba%90%e7%a0%81%e5%88%86%e6%9e%90">#</a>
 </h1>
-<p><code>Garbage Collection</code></p>
-</article>
+<p><a href="https://github.com/golang/go/tree/go1.0.1">https://github.com/golang/go/tree/go1.0.1</a></p>
+<hr>
+<h2 id="代码行数">
+  代码行数
+  <a class="anchor" href="#%e4%bb%a3%e7%a0%81%e8%a1%8c%e6%95%b0">#</a>
+</h2>
+<p><a href="https://github.com/AlDanial/cloc">AlDanial/cloc</a> <img src="https://img.shields.io/github/stars/AlDanial/cloc.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/AlDanial/cloc.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/AlDanial/cloc.svg?sort=semver" alt="Last Tag" /> <img src="https://img.shields.io/github/last-commit/AlDanial/cloc.svg" alt="Last commit" /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cloc .
+   <span style="color:#ae81ff">15969</span> text files.
+   <span style="color:#ae81ff">15884</span> unique files.
+   <span style="color:#ae81ff">13164</span> files ignored.
+
+github.com/AlDanial/cloc v 1.86  T<span style="color:#f92672">=</span>19.15 s <span style="color:#f92672">(</span>146.5 files/s, 35024.2 lines/s<span style="color:#f92672">)</span>
+--------------------------------------------------------------------------------
+Language                      files          blank        comment           code
+--------------------------------------------------------------------------------
+Go                             <span style="color:#ae81ff">2023</span>          <span style="color:#ae81ff">38800</span>          <span style="color:#ae81ff">49499</span>         <span style="color:#ae81ff">302225</span>
+C                               <span style="color:#ae81ff">369</span>          <span style="color:#ae81ff">20497</span>          <span style="color:#ae81ff">20388</span>         <span style="color:#ae81ff">149600</span>
+HTML                             <span style="color:#ae81ff">58</span>           <span style="color:#ae81ff">4234</span>            <span style="color:#ae81ff">252</span>          <span style="color:#ae81ff">25508</span>
+C/C++ Header                     <span style="color:#ae81ff">98</span>           <span style="color:#ae81ff">1752</span>           <span style="color:#ae81ff">2759</span>          <span style="color:#ae81ff">15100</span>
+Assembly                        <span style="color:#ae81ff">134</span>           <span style="color:#ae81ff">1510</span>           <span style="color:#ae81ff">2073</span>           <span style="color:#ae81ff">8203</span>
+yacc                              <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">449</span>            <span style="color:#ae81ff">396</span>           <span style="color:#ae81ff">5212</span>
+Perl                             <span style="color:#ae81ff">12</span>            <span style="color:#ae81ff">718</span>            <span style="color:#ae81ff">937</span>           <span style="color:#ae81ff">4774</span>
+Python                            <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">577</span>            <span style="color:#ae81ff">749</span>           <span style="color:#ae81ff">2898</span>
+JavaScript                        <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">591</span>            <span style="color:#ae81ff">422</span>           <span style="color:#ae81ff">2594</span>
+XML                              <span style="color:#ae81ff">16</span>             <span style="color:#ae81ff">91</span>             <span style="color:#ae81ff">20</span>           <span style="color:#ae81ff">1298</span>
+Bourne Shell                     <span style="color:#ae81ff">13</span>            <span style="color:#ae81ff">172</span>            <span style="color:#ae81ff">348</span>           <span style="color:#ae81ff">1064</span>
+CSS                               <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">121</span>             <span style="color:#ae81ff">32</span>            <span style="color:#ae81ff">888</span>
+Bourne Again Shell               <span style="color:#ae81ff">17</span>            <span style="color:#ae81ff">173</span>            <span style="color:#ae81ff">147</span>            <span style="color:#ae81ff">758</span>
+Lisp                              <span style="color:#ae81ff">2</span>            <span style="color:#ae81ff">108</span>            <span style="color:#ae81ff">147</span>            <span style="color:#ae81ff">618</span>
+vim script                        <span style="color:#ae81ff">9</span>             <span style="color:#ae81ff">94</span>            <span style="color:#ae81ff">157</span>            <span style="color:#ae81ff">456</span>
+Pascal                            <span style="color:#ae81ff">1</span>             <span style="color:#ae81ff">48</span>            <span style="color:#ae81ff">222</span>            <span style="color:#ae81ff">256</span>
+DOS Batch                         <span style="color:#ae81ff">4</span>             <span style="color:#ae81ff">44</span>              <span style="color:#ae81ff">1</span>            <span style="color:#ae81ff">193</span>
+make                             <span style="color:#ae81ff">19</span>             <span style="color:#ae81ff">64</span>             <span style="color:#ae81ff">64</span>            <span style="color:#ae81ff">161</span>
+WiX source                        <span style="color:#ae81ff">1</span>             <span style="color:#ae81ff">12</span>             <span style="color:#ae81ff">13</span>            <span style="color:#ae81ff">139</span>
+awk                               <span style="color:#ae81ff">2</span>             <span style="color:#ae81ff">12</span>             <span style="color:#ae81ff">35</span>            <span style="color:#ae81ff">104</span>
+YAML                              <span style="color:#ae81ff">3</span>             <span style="color:#ae81ff">14</span>             <span style="color:#ae81ff">12</span>             <span style="color:#ae81ff">60</span>
+JSON                              <span style="color:#ae81ff">2</span>              <span style="color:#ae81ff">0</span>              <span style="color:#ae81ff">0</span>             <span style="color:#ae81ff">20</span>
+--------------------------------------------------------------------------------
+SUM:                           <span style="color:#ae81ff">2807</span>          <span style="color:#ae81ff">70081</span>          <span style="color:#ae81ff">78673</span>         <span style="color:#ae81ff">522129</span>
+--------------------------------------------------------------------------------
+</code></pre></div></article>
  
       
 
@@ -584,12 +600,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/367dd15dbd8bc411ae08f765ef58fd5cd6e8b465" title='Last modified by yewang | 2020-08-10' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-08-10</span>
-    </a>
-  </div>
 
 
 
@@ -620,7 +630,11 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#代码行数">代码行数</a></li>
+  </ul>
+</nav>
 
  
     </aside>

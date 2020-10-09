@@ -58,6 +58,10 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/code/source/1.0.1/</loc>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/grammar/</loc>
     <lastmod>2020-07-04T23:53:19+08:00</lastmod>
   </url>
@@ -340,6 +344,10 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/advanced/pkg/log/</loc>
     <lastmod>2020-07-28T14:43:56+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/code/source/</loc>
   </url>
   
   <url>
