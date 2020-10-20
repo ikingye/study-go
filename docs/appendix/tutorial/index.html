@@ -4,9 +4,23 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 教程 #  基础 #     教程 说明 类型 评分     mmcgrana/gobyexample  Go by Example 中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/ docs ★★★★★   astaxie/build-web-application-with-golang  A golang ebook intro how to build a web with golang docs ★★★★   geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列 docs ★★★★   golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.go101.org docs ★★★★   polaris1119/The-Golang-Standard-Library-by-Example  Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。 以示例驱动的方式讲解 Golang 的标准库。 docs ★★★   inancgumus/learngo  1000&#43; Hand-Crafted Go Examples, Exercises, and Quizzes course ★★★   ardanlabs/gotraining  Go Training Class Material : http://www.">
+<meta name="description" content="Go 教程 #  基础 #  mmcgrana/gobyexample #  Go by Example 中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/
+astaxie/build-web-application-with-golang #  A golang ebook intro how to build a web with golang
+geektutu/7days-golang #  7 天用 Go 动手写 / 从零实现系列
+golang101/golang101 #  Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.go101.org
+polaris1119/The-Golang-Standard-Library-by-Example #  Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。
+以示例驱动的方式讲解 Golang 的标准库。
+quii/learn-go-with-tests #  Learn Go with test-driven development
+inancgumus/learngo #  1000&#43; Hand-Crafted Go Examples, Exercises, and Quizzes">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="4.1 教程" />
-<meta property="og:description" content="Go 教程 #  基础 #     教程 说明 类型 评分     mmcgrana/gobyexample  Go by Example 中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/ docs ★★★★★   astaxie/build-web-application-with-golang  A golang ebook intro how to build a web with golang docs ★★★★   geektutu/7days-golang  7 天用 Go 动手写 / 从零实现系列 docs ★★★★   golang101/golang101  Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.go101.org docs ★★★★   polaris1119/The-Golang-Standard-Library-by-Example  Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。 以示例驱动的方式讲解 Golang 的标准库。 docs ★★★   inancgumus/learngo  1000&#43; Hand-Crafted Go Examples, Exercises, and Quizzes course ★★★   ardanlabs/gotraining  Go Training Class Material : http://www." />
+<meta property="og:description" content="Go 教程 #  基础 #  mmcgrana/gobyexample #  Go by Example 中文翻译：通过例子学 Golang：https://gobyexample-cn.github.io/
+astaxie/build-web-application-with-golang #  A golang ebook intro how to build a web with golang
+geektutu/7days-golang #  7 天用 Go 动手写 / 从零实现系列
+golang101/golang101 #  Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.go101.org
+polaris1119/The-Golang-Standard-Library-by-Example #  Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。
+以示例驱动的方式讲解 Golang 的标准库。
+quii/learn-go-with-tests #  Learn Go with test-driven development
+inancgumus/learngo #  1000&#43; Hand-Crafted Go Examples, Exercises, and Quizzes" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/appendix/tutorial/" />
 <meta property="article:modified_time" content="2020-09-14T21:26:09+08:00" />
@@ -14,7 +28,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.d51ae1346c6c6be6d266ee675dbefadff112d8cb316f6b14f34def47903e2c63.css" integrity="sha256-1RrhNGxsa&#43;bSZu5nXb763/ES2Msxb2sU803vR5A&#43;LGM=">
-<script defer src="/study-go/en.search.min.34853d0bdf7f29052d676656581d7c47752ec62943b919e489a8c0b0ce4bf9fc.js" integrity="sha256-NIU9C99/KQUtZ2ZWWB18R3UuxilDuRnkiajAsM5L&#43;fw="></script>
+<script defer src="/study-go/en.search.min.fc15d7a6a7bce5bd4cc5db5242fdd583411ba2dd5765a3087795959e227d070e.js" integrity="sha256-/BXXpqe85b1MxdtSQv3Vg0Ebot1XZaMId5WVniJ9Bw4="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -533,95 +547,66 @@ https://github.com/alex-shpak/hugo-book
   基础
   <a class="anchor" href="#%e5%9f%ba%e7%a1%80">#</a>
 </h2>
-<table>
-<thead>
-<tr>
-<th>教程</th>
-<th>说明</th>
-<th>类型</th>
-<th>评分</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/mmcgrana/gobyexample">mmcgrana/gobyexample</a> <img src="https://img.shields.io/github/stars/mmcgrana/gobyexample.svg" alt="Github stars" /></td>
-<td><a href="https://gobyexample.com/">Go by Example</a> <br> 中文翻译：<a href="https://github.com/gobyexample-cn/gobyexample">通过例子学 Golang</a>：https://gobyexample-cn.github.io/</td>
-<td>docs</td>
-<td>★★★★★</td>
-</tr>
-<tr>
-<td><a href="https://github.com/astaxie/build-web-application-with-golang">astaxie/build-web-application-with-golang</a> <img src="https://img.shields.io/github/stars/astaxie/build-web-application-with-golang.svg" alt="Github stars" /></td>
-<td>A golang ebook intro how to build a web with golang</td>
-<td>docs</td>
-<td>★★★★</td>
-</tr>
-<tr>
-<td><a href="https://github.com/geektutu/7days-golang">geektutu/7days-golang</a> <img src="https://img.shields.io/github/stars/geektutu/7days-golang.svg" alt="Github stars" /></td>
-<td>7 天用 Go 动手写 / 从零实现系列</td>
-<td>docs</td>
-<td>★★★★</td>
-</tr>
-<tr>
-<td><a href="https://github.com/golang101/golang101">golang101/golang101</a> <img src="https://img.shields.io/github/stars/golang101/golang101.svg" alt="Github stars" /></td>
-<td>Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 <a href="https://gfw.go101.org">https://gfw.go101.org</a></td>
-<td>docs</td>
-<td>★★★★</td>
-</tr>
-<tr>
-<td><a href="https://github.com/polaris1119/The-Golang-Standard-Library-by-Example">polaris1119/The-Golang-Standard-Library-by-Example</a> <img src="https://img.shields.io/github/stars/polaris1119/The-Golang-Standard-Library-by-Example.svg" alt="Github stars" /></td>
-<td>Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。 <br> 以示例驱动的方式讲解 Golang 的标准库。</td>
-<td>docs</td>
-<td>★★★</td>
-</tr>
-<tr>
-<td><a href="https://github.com/inancgumus/learngo">inancgumus/learngo</a> <img src="https://img.shields.io/github/stars/inancgumus/learngo.svg" alt="Github stars" /></td>
-<td>1000+ Hand-Crafted Go Examples, Exercises, and Quizzes</td>
-<td>course</td>
-<td>★★★</td>
-</tr>
-<tr>
-<td><a href="https://github.com/ardanlabs/gotraining">ardanlabs/gotraining</a> <img src="https://img.shields.io/github/stars/ardanlabs/gotraining.svg" alt="Github stars" /></td>
-<td>Go Training Class Material : <a href="http://www.ArdanLabs.com">http://www.ArdanLabs.com</a></td>
-<td>material</td>
-<td>★★★</td>
-</tr>
-<tr>
-<td><a href="https://github.com/quii/learn-go-with-tests">quii/learn-go-with-tests</a> <img src="https://img.shields.io/github/stars/quii/learn-go-with-tests.svg" alt="Github stars" /></td>
-<td>Learn Go with test-driven development</td>
-<td>material</td>
-<td>★★★★</td>
-</tr>
-</tbody>
-</table>
+<a href="https://github.com/mmcgrana/gobyexample">mmcgrana/gobyexample</a> <img src="https://img.shields.io/github/stars/mmcgrana/gobyexample.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/mmcgrana/gobyexample.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/mmcgrana/gobyexample.svg?sort=semver" alt="Last Tag" /> <h3 id="mmcgranagobyexamplehttpsgithubcommmcgranagobyexample-github-starshttpsimgshieldsiogithubstarsmmcgranagobyexamplesvg-languagehttpsimgshieldsiogithublanguagestopmmcgranagobyexamplesvg-last-taghttpsimgshieldsiogithubvtagmmcgranagobyexamplesvgsortsemver-last-commithttpsimgshieldsiogithublast-commitmmcgranagobyexamplesvg">
+  <img src="https://img.shields.io/github/last-commit/mmcgrana/gobyexample.svg" alt="Last commit" />
+  <a class="anchor" href="#mmcgranagobyexamplehttpsgithubcommmcgranagobyexample-github-starshttpsimgshieldsiogithubstarsmmcgranagobyexamplesvg-languagehttpsimgshieldsiogithublanguagestopmmcgranagobyexamplesvg-last-taghttpsimgshieldsiogithubvtagmmcgranagobyexamplesvgsortsemver-last-commithttpsimgshieldsiogithublast-commitmmcgranagobyexamplesvg">#</a>
+</h3>
+<p><a href="https://gobyexample.com/">Go by Example</a> <br> 中文翻译：<a href="https://github.com/gobyexample-cn/gobyexample">通过例子学 Golang</a>：https://gobyexample-cn.github.io/</p>
+<a href="https://github.com/astaxie/build-web-application-with-golang">astaxie/build-web-application-with-golang</a> <img src="https://img.shields.io/github/stars/astaxie/build-web-application-with-golang.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/astaxie/build-web-application-with-golang.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/astaxie/build-web-application-with-golang.svg?sort=semver" alt="Last Tag" /> <h3 id="astaxiebuild-web-application-with-golanghttpsgithubcomastaxiebuild-web-application-with-golang-github-starshttpsimgshieldsiogithubstarsastaxiebuild-web-application-with-golangsvg-languagehttpsimgshieldsiogithublanguagestopastaxiebuild-web-application-with-golangsvg-last-taghttpsimgshieldsiogithubvtagastaxiebuild-web-application-with-golangsvgsortsemver-last-commithttpsimgshieldsiogithublast-commitastaxiebuild-web-application-with-golangsvg">
+  <img src="https://img.shields.io/github/last-commit/astaxie/build-web-application-with-golang.svg" alt="Last commit" />
+  <a class="anchor" href="#astaxiebuild-web-application-with-golanghttpsgithubcomastaxiebuild-web-application-with-golang-github-starshttpsimgshieldsiogithubstarsastaxiebuild-web-application-with-golangsvg-languagehttpsimgshieldsiogithublanguagestopastaxiebuild-web-application-with-golangsvg-last-taghttpsimgshieldsiogithubvtagastaxiebuild-web-application-with-golangsvgsortsemver-last-commithttpsimgshieldsiogithublast-commitastaxiebuild-web-application-with-golangsvg">#</a>
+</h3>
+<p>A golang ebook intro how to build a web with golang</p>
+<a href="https://github.com/geektutu/7days-golang">geektutu/7days-golang</a> <img src="https://img.shields.io/github/stars/geektutu/7days-golang.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/geektutu/7days-golang.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/geektutu/7days-golang.svg?sort=semver" alt="Last Tag" /> <h3 id="geektutu7days-golanghttpsgithubcomgeektutu7days-golang-github-starshttpsimgshieldsiogithubstarsgeektutu7days-golangsvg-languagehttpsimgshieldsiogithublanguagestopgeektutu7days-golangsvg-last-taghttpsimgshieldsiogithubvtaggeektutu7days-golangsvgsortsemver-last-commithttpsimgshieldsiogithublast-commitgeektutu7days-golangsvg">
+  <img src="https://img.shields.io/github/last-commit/geektutu/7days-golang.svg" alt="Last commit" />
+  <a class="anchor" href="#geektutu7days-golanghttpsgithubcomgeektutu7days-golang-github-starshttpsimgshieldsiogithubstarsgeektutu7days-golangsvg-languagehttpsimgshieldsiogithublanguagestopgeektutu7days-golangsvg-last-taghttpsimgshieldsiogithubvtaggeektutu7days-golangsvgsortsemver-last-commithttpsimgshieldsiogithublast-commitgeektutu7days-golangsvg">#</a>
+</h3>
+<p>7 天用 Go 动手写 / 从零实现系列</p>
+<a href="https://github.com/golang101/golang101">golang101/golang101</a> <img src="https://img.shields.io/github/stars/golang101/golang101.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/golang101/golang101.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/golang101/golang101.svg?sort=semver" alt="Last Tag" /> <h3 id="golang101golang101httpsgithubcomgolang101golang101-github-starshttpsimgshieldsiogithubstarsgolang101golang101svg-languagehttpsimgshieldsiogithublanguagestopgolang101golang101svg-last-taghttpsimgshieldsiogithubvtaggolang101golang101svgsortsemver-last-commithttpsimgshieldsiogithublast-commitgolang101golang101svg">
+  <img src="https://img.shields.io/github/last-commit/golang101/golang101.svg" alt="Last commit" />
+  <a class="anchor" href="#golang101golang101httpsgithubcomgolang101golang101-github-starshttpsimgshieldsiogithubstarsgolang101golang101svg-languagehttpsimgshieldsiogithublanguagestopgolang101golang101svg-last-taghttpsimgshieldsiogithubvtaggolang101golang101svgsortsemver-last-commithttpsimgshieldsiogithublast-commitgolang101golang101svg">#</a>
+</h3>
+<p>Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 <a href="https://gfw.go101.org">https://gfw.go101.org</a></p>
+<a href="https://github.com/polaris1119/The-Golang-Standard-Library-by-Example">polaris1119/The-Golang-Standard-Library-by-Example</a> <img src="https://img.shields.io/github/stars/polaris1119/The-Golang-Standard-Library-by-Example.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/polaris1119/The-Golang-Standard-Library-by-Example.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/polaris1119/The-Golang-Standard-Library-by-Example.svg?sort=semver" alt="Last Tag" /> <h3 id="polaris1119the-golang-standard-library-by-examplehttpsgithubcompolaris1119the-golang-standard-library-by-example-github-starshttpsimgshieldsiogithubstarspolaris1119the-golang-standard-library-by-examplesvg-languagehttpsimgshieldsiogithublanguagestoppolaris1119the-golang-standard-library-by-examplesvg-last-taghttpsimgshieldsiogithubvtagpolaris1119the-golang-standard-library-by-examplesvgsortsemver-last-commithttpsimgshieldsiogithublast-commitpolaris1119the-golang-standard-library-by-examplesvg">
+  <img src="https://img.shields.io/github/last-commit/polaris1119/The-Golang-Standard-Library-by-Example.svg" alt="Last commit" />
+  <a class="anchor" href="#polaris1119the-golang-standard-library-by-examplehttpsgithubcompolaris1119the-golang-standard-library-by-example-github-starshttpsimgshieldsiogithubstarspolaris1119the-golang-standard-library-by-examplesvg-languagehttpsimgshieldsiogithublanguagestoppolaris1119the-golang-standard-library-by-examplesvg-last-taghttpsimgshieldsiogithubvtagpolaris1119the-golang-standard-library-by-examplesvgsortsemver-last-commithttpsimgshieldsiogithublast-commitpolaris1119the-golang-standard-library-by-examplesvg">#</a>
+</h3>
+<p>Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。</p>
+<p>以示例驱动的方式讲解 Golang 的标准库。</p>
+<a href="https://github.com/quii/learn-go-with-tests">quii/learn-go-with-tests</a> <img src="https://img.shields.io/github/stars/quii/learn-go-with-tests.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/quii/learn-go-with-tests.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/quii/learn-go-with-tests.svg?sort=semver" alt="Last Tag" /> <h3 id="quiilearn-go-with-testshttpsgithubcomquiilearn-go-with-tests-github-starshttpsimgshieldsiogithubstarsquiilearn-go-with-testssvg-languagehttpsimgshieldsiogithublanguagestopquiilearn-go-with-testssvg-last-taghttpsimgshieldsiogithubvtagquiilearn-go-with-testssvgsortsemver-last-commithttpsimgshieldsiogithublast-commitquiilearn-go-with-testssvg">
+  <img src="https://img.shields.io/github/last-commit/quii/learn-go-with-tests.svg" alt="Last commit" />
+  <a class="anchor" href="#quiilearn-go-with-testshttpsgithubcomquiilearn-go-with-tests-github-starshttpsimgshieldsiogithubstarsquiilearn-go-with-testssvg-languagehttpsimgshieldsiogithublanguagestopquiilearn-go-with-testssvg-last-taghttpsimgshieldsiogithubvtagquiilearn-go-with-testssvgsortsemver-last-commithttpsimgshieldsiogithublast-commitquiilearn-go-with-testssvg">#</a>
+</h3>
+<p>Learn Go with test-driven development</p>
+<a href="https://github.com/inancgumus/learngo">inancgumus/learngo</a> <img src="https://img.shields.io/github/stars/inancgumus/learngo.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/inancgumus/learngo.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/inancgumus/learngo.svg?sort=semver" alt="Last Tag" /> <h3 id="inancgumuslearngohttpsgithubcominancgumuslearngo-github-starshttpsimgshieldsiogithubstarsinancgumuslearngosvg-languagehttpsimgshieldsiogithublanguagestopinancgumuslearngosvg-last-taghttpsimgshieldsiogithubvtaginancgumuslearngosvgsortsemver-last-commithttpsimgshieldsiogithublast-commitinancgumuslearngosvg">
+  <img src="https://img.shields.io/github/last-commit/inancgumus/learngo.svg" alt="Last commit" />
+  <a class="anchor" href="#inancgumuslearngohttpsgithubcominancgumuslearngo-github-starshttpsimgshieldsiogithubstarsinancgumuslearngosvg-languagehttpsimgshieldsiogithublanguagestopinancgumuslearngosvg-last-taghttpsimgshieldsiogithubvtaginancgumuslearngosvgsortsemver-last-commithttpsimgshieldsiogithublast-commitinancgumuslearngosvg">#</a>
+</h3>
+<p>1000+ Hand-Crafted Go Examples, Exercises, and Quizzes</p>
+<a href="https://github.com/karlseguin/the-little-go-book">karlseguin/the-little-go-book</a> <img src="https://img.shields.io/github/stars/karlseguin/the-little-go-book.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/karlseguin/the-little-go-book.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/karlseguin/the-little-go-book.svg?sort=semver" alt="Last Tag" /> <h3 id="karlseguinthe-little-go-bookhttpsgithubcomkarlseguinthe-little-go-book-github-starshttpsimgshieldsiogithubstarskarlseguinthe-little-go-booksvg-languagehttpsimgshieldsiogithublanguagestopkarlseguinthe-little-go-booksvg-last-taghttpsimgshieldsiogithubvtagkarlseguinthe-little-go-booksvgsortsemver-last-commithttpsimgshieldsiogithublast-commitkarlseguinthe-little-go-booksvg">
+  <img src="https://img.shields.io/github/last-commit/karlseguin/the-little-go-book.svg" alt="Last commit" />
+  <a class="anchor" href="#karlseguinthe-little-go-bookhttpsgithubcomkarlseguinthe-little-go-book-github-starshttpsimgshieldsiogithubstarskarlseguinthe-little-go-booksvg-languagehttpsimgshieldsiogithublanguagestopkarlseguinthe-little-go-booksvg-last-taghttpsimgshieldsiogithubvtagkarlseguinthe-little-go-booksvgsortsemver-last-commithttpsimgshieldsiogithublast-commitkarlseguinthe-little-go-booksvg">#</a>
+</h3>
+<p>《The Little Go Book》中文译本，中文正式名《Go 简易教程》。</p>
+<p><a href="https://github.com/songleo/the-little-go-book_ZH_CN">songleo/the-little-go-book_ZH_CN</a> <img src="https://img.shields.io/github/stars/songleo/the-little-go-book_ZH_CN.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/songleo/the-little-go-book_ZH_CN.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/songleo/the-little-go-book_ZH_CN.svg?sort=semver" alt="Last Tag" /> <img src="https://img.shields.io/github/last-commit/songleo/the-little-go-book_ZH_CN.svg" alt="Last commit" /></p>
+<a href="https://github.com/ardanlabs/gotraining">ardanlabs/gotraining</a> <img src="https://img.shields.io/github/stars/ardanlabs/gotraining.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/ardanlabs/gotraining.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/ardanlabs/gotraining.svg?sort=semver" alt="Last Tag" /> <h3 id="ardanlabsgotraininghttpsgithubcomardanlabsgotraining-github-starshttpsimgshieldsiogithubstarsardanlabsgotrainingsvg-languagehttpsimgshieldsiogithublanguagestopardanlabsgotrainingsvg-last-taghttpsimgshieldsiogithubvtagardanlabsgotrainingsvgsortsemver-last-commithttpsimgshieldsiogithublast-commitardanlabsgotrainingsvg">
+  <img src="https://img.shields.io/github/last-commit/ardanlabs/gotraining.svg" alt="Last commit" />
+  <a class="anchor" href="#ardanlabsgotraininghttpsgithubcomardanlabsgotraining-github-starshttpsimgshieldsiogithubstarsardanlabsgotrainingsvg-languagehttpsimgshieldsiogithublanguagestopardanlabsgotrainingsvg-last-taghttpsimgshieldsiogithubvtagardanlabsgotrainingsvgsortsemver-last-commithttpsimgshieldsiogithublast-commitardanlabsgotrainingsvg">#</a>
+</h3>
+<p>Go Training Class Material : <a href="http://www.ArdanLabs.com">http://www.ArdanLabs.com</a></p>
 <hr>
 <h2 id="进阶">
   进阶
   <a class="anchor" href="#%e8%bf%9b%e9%98%b6">#</a>
 </h2>
-<table>
-<thead>
-<tr>
-<th>教程</th>
-<th>说明</th>
-<th>类型</th>
-<th>评分</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://draveness.me/golang/">Go 语言设计与实现</a></td>
-<td>by Draveness</td>
-<td>docs</td>
-<td>★★★★★</td>
-</tr>
-<tr>
-<td><a href="https://golang.design/under-the-hood/">Go 语言原本</a></td>
-<td></td>
-<td>docs</td>
-<td>★★★★</td>
-</tr>
-</tbody>
-</table>
+<h3 id="go-语言设计与实现httpsdravenessmegolang---draveness">
+  <a href="https://draveness.me/golang/">Go 语言设计与实现</a> - Draveness
+  <a class="anchor" href="#go-%e8%af%ad%e8%a8%80%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0httpsdravenessmegolang---draveness">#</a>
+</h3>
+<h3 id="go-语言原本httpsgolangdesignunder-the-hood">
+  <a href="https://golang.design/under-the-hood/">Go 语言原本</a>
+  <a class="anchor" href="#go-%e8%af%ad%e8%a8%80%e5%8e%9f%e6%9c%achttpsgolangdesignunder-the-hood">#</a>
+</h3>
 </article>
  
       
