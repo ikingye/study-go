@@ -4,15 +4,17 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="error #  实现 Error() string 方法的类型，都是 error 类型
-type error interface { Error() string } errors.New(&#34;xxxx&#34;) fmt.Errorf(format string, a ...interface{}) ">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="error" />
-<meta property="og:description" content="error #  实现 Error() string 方法的类型，都是 error 类型
-type error interface { Error() string } errors.New(&#34;xxxx&#34;) fmt.Errorf(format string, a ...interface{}) " />
+<meta name="description" content="gvm #  moovweb/gvm 安装：
+zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 使用：
+$ gvm listall $ gvm list $ gvm install go1.15 $ gvm user go1.15 $ gvm uninstall go1.15 # 使用二进制安装 $ gvm install go1.15 -B $ gvm install -h Invalid version: -h Usage: gvm install [version] [options] -s, --source=SOURCE Install Go from specified source. -n, --name=NAME Override the default name for this version. -pb, --with-protobuf Install Go protocol buffers.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="gvm" />
+<meta property="og:description" content="gvm #  moovweb/gvm 安装：
+zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 使用：
+$ gvm listall $ gvm list $ gvm install go1.15 $ gvm user go1.15 $ gvm uninstall go1.15 # 使用二进制安装 $ gvm install go1.15 -B $ gvm install -h Invalid version: -h Usage: gvm install [version] [options] -s, --source=SOURCE Install Go from specified source. -n, --name=NAME Override the default name for this version. -pb, --with-protobuf Install Go protocol buffers." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/type/error/" />
-<meta property="article:modified_time" content="2020-07-05T16:46:51+08:00" />
-<title>error | Go 学习笔记</title>
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/version/gvm/" />
+
+<title>gvm | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.ce0f902f11a0f7675f61f65c2edd624054c6ccc1465f48c5761565b68b9daa75.css" integrity="sha256-zg&#43;QLxGg92dfYfZcLt1iQFTGzMFGX0jFdhVltoudqnU=">
@@ -102,108 +104,6 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/" class="collapsed ">1.1.1 数据类型</a>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/error/" class="active">error</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/slice/" class="">切片</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/array/" class="">数组</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/interface/" class="">Interface</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/channel/" class="">Chiannel</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/map/" class="">Map</a>
-  
-
-        </li>
-      
-    
-  </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/keyword/" class="collapsed ">1.1.2 关键字</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-  </ul>
-  
 
         </li>
       
@@ -254,6 +154,148 @@ https://github.com/alex-shpak/hugo-book
   
   
 
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/quick/" class="">Go 快速上手</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/pros-and-cons/" class="">优劣</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/gobuild/" class="">Go build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/gopls/" class="">gopls</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/pm/" class="">包管理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/compile/" class="">编译</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/command/" class="collapsed ">Go 命令</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/history/" class="">历史</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/plugin/" class="">Go 插件系统</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/goroutine/" class="">goroutine</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/version/" class="collapsed ">版本</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/others/version/gvm/" class="active">gvm</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
   
 
         </li>
@@ -615,7 +657,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>error</strong>
+  <strong>gvm</strong>
 
   <label for="toc-control">
     
@@ -628,7 +670,11 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gopath-被篡改">GOPATH 被篡改</a></li>
+  </ul>
+</nav>
 
 
   </aside>
@@ -638,18 +684,73 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="error">
-  error
-  <a class="anchor" href="#error">#</a>
+  <article class="markdown"><h1 id="gvm">
+  gvm
+  <a class="anchor" href="#gvm">#</a>
 </h1>
-<p>实现 <code>Error() string</code> 方法的类型，都是 error 类型</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#66d9ef">error</span> <span style="color:#66d9ef">interface</span> {
-	<span style="color:#a6e22e">Error</span>() <span style="color:#66d9ef">string</span>
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;xxxx&#34;</span>)
+<p><a href="https://github.com/moovweb/gvm">moovweb/gvm</a> <img src="https://img.shields.io/github/stars/moovweb/gvm.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/moovweb/gvm.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/moovweb/gvm.svg?sort=semver" alt="Last Tag" /> <img src="https://img.shields.io/github/last-commit/moovweb/gvm.svg" alt="Last commit" /></p>
+<p>安装：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zsh &lt; &lt;<span style="color:#f92672">(</span>curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer<span style="color:#f92672">)</span>
+</code></pre></div><p>使用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ gvm listall
+$ gvm list
+$ gvm install go1.15
+$ gvm user go1.15
+$ gvm uninstall go1.15
 
-<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#a6e22e">format</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">a</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
-</code></pre></div></article>
+<span style="color:#75715e"># 使用二进制安装</span>
+$ gvm install go1.15 -B
+
+$ gvm install -h
+Invalid version: -h
+Usage: gvm install <span style="color:#f92672">[</span>version<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
+    -s,  --source<span style="color:#f92672">=</span>SOURCE      Install Go from specified source.
+    -n,  --name<span style="color:#f92672">=</span>NAME          Override the default name <span style="color:#66d9ef">for</span> this version.
+    -pb, --with-protobuf      Install Go protocol buffers.
+    -b,  --with-build-tools   Install package build tools.
+    -B,  --binary             Only install from binary.
+         --prefer-binary      Attempt a binary install, falling back to source.
+    -h,  --help               Display this message.
+
+$ gvm help
+Usage: gvm <span style="color:#f92672">[</span>command<span style="color:#f92672">]</span>
+
+Description:
+  GVM is the Go Version Manager
+
+Commands:
+  version    - print the gvm version number
+  get        - gets the latest code <span style="color:#f92672">(</span><span style="color:#66d9ef">for</span> debugging<span style="color:#f92672">)</span>
+  use        - <span style="color:#66d9ef">select</span> a go version to use <span style="color:#f92672">(</span>--default to set permanently<span style="color:#f92672">)</span>
+  diff       - view changes to Go root
+  help       - display this usage text
+  implode    - completely remove gvm
+  install    - install go versions
+  uninstall  - uninstall go versions
+  cross      - install go cross compilers
+  linkthis   - link this directory into GOPATH
+  list       - list installed go versions
+  listall    - list available versions
+  alias      - manage go version aliases
+  pkgset     - manage go packages sets
+  pkgenv     - edit the environment <span style="color:#66d9ef">for</span> a package set
+</code></pre></div><hr>
+<h2 id="gopath-被篡改">
+  GOPATH 被篡改
+  <a class="anchor" href="#gopath-%e8%a2%ab%e7%af%a1%e6%94%b9">#</a>
+</h2>
+<blockquote>
+<p>everytime i login my zsh. my GOPATH is /&hellip;/.gvm/pkgsets/go1.9/global.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gvm use system
+gvm pkgenv
+&lt;edit as required&gt;
+gvm use system --default
+</code></pre></div><p>参考：</p>
+<ul>
+<li><a href="https://github.com/moovweb/gvm/issues/277">How can i use my own GOPATH default?</a></li>
+</ul>
+</article>
  
       
 
@@ -658,12 +759,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/90dc867c6556039d2fab277989d7eba560d73203" title='Last modified by yewang | 2020-07-05' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-07-05</span>
-    </a>
-  </div>
 
 
 
@@ -715,7 +810,11 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gopath-被篡改">GOPATH 被篡改</a></li>
+  </ul>
+</nav>
 
  
     </aside>

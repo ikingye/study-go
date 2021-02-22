@@ -308,6 +308,10 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/others/version/gvm/</loc>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/std/sync/mutex/</loc>
     <lastmod>2020-07-30T10:41:03+08:00</lastmod>
   </url>
@@ -329,7 +333,7 @@
   
   <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/others/version/</loc>
-    <lastmod>2020-09-02T10:31:33+08:00</lastmod>
+    <lastmod>2020-07-28T10:47:39+08:00</lastmod>
   </url>
   
   <url>
