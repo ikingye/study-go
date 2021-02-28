@@ -298,8 +298,7 @@ Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 expo
       
       <guid>https://ikingye.github.io/study-go/docs/appendix/attention/</guid>
       <description>关注项目 #  golang/go #  kubernetes/kubernetes #  moby/moby #  etcd-io/etcd #  Distributed reliable key-value store for the most critical data of a distributed system
-containous/traefik #  The Cloud Native Edge Router https://traefik.io
- Web 框架 #  gin-gonic/gin #  Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin.</description>
+ Web 框架 #  gin-gonic/gin #  Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.</description>
     </item>
     
     <item>
