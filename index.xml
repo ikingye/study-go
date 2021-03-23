@@ -51,19 +51,6 @@ Go 1.0 之后，go tool 利用 GOROOT 查找 Go 编译器（保存在 $GOROOT/pk
     </item>
     
     <item>
-      <title>常用 package</title>
-      <link>https://ikingye.github.io/study-go/docs/advanced/pkg/common/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/advanced/pkg/common/</guid>
-      <description>Go 常用 package #  net #  imroc/req #  Go 语言人性化 HTTP 请求库
-valyala/fasthttp #  Fast HTTP package for Go. Tuned for high performance. Zero memory allocations in hot paths. Up to 10x faster than net/http
- cmd #  spf13/cobra #  A Commander for modern Go CLI interactions
-quick start #  typically a Cobra-based application will follow the following organizational structure:
-▾ appName/ ▾ cmd/ add.</description>
-    </item>
-    
-    <item>
       <title>进阶</title>
       <link>https://ikingye.github.io/study-go/docs/appendix/interview/advanced/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -94,6 +81,19 @@ Go 语言 101 #  golang101/golang101 Go 语言 101 : 一本侧重于 Go 语言�
 Golang 标准库 #  polaris1119/The-Golang-Standard-Library-by-Example Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。
 以示例驱动的方式讲解 Golang 的标准库。
 Learn Go with test #  quii/learn-go-with-tests Learn Go with test-driven development</description>
+    </item>
+    
+    <item>
+      <title>cobra</title>
+      <link>https://ikingye.github.io/study-go/docs/advanced/pkg/cobra/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/advanced/pkg/cobra/</guid>
+      <description>cobra #  spf13/cobra A Commander for modern Go CLI interactions
+quick start #  typically a Cobra-based application will follow the following organizational structure:
+▾ appName/ ▾ cmd/ add.go your.go commands.go here.go main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
+package main import ( &amp;#34;{pathToYourApp}/cmd&amp;#34; ) func main() { cmd.Execute() } Ideally you place this in app/cmd/root.go:
+var rootCmd = &amp;amp;cobra.</description>
     </item>
     
     <item>
@@ -443,20 +443,6 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
       
       <guid>https://ikingye.github.io/study-go/docs/basic/std/time/</guid>
       <description>time #  格式化 #  // 1 2 3 4 5 6 const ANSIC = &amp;#34;Mon Jan _2 15:04:05 2006&amp;#34; time.Now().Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) </description>
-    </item>
-    
-    <item>
-      <title>日志</title>
-      <link>https://ikingye.github.io/study-go/docs/advanced/pkg/log/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/advanced/pkg/log/</guid>
-      <description>Go 日志 #  开源实现 #  sirupsen/logrus #  Structured, pluggable logging for Go.
-uber-go/zap #  Blazing fast, structured, leveled logging in Go.
-rs/zerolog #  Zero Allocation JSON Logger
-apex/log (最新更新时间 2016) #  Structured logging package for Go.
-grafana/loki (最新更新时间 2016) #  Like Prometheus, but for logs.
-golang/glog (最新更新时间 2016) #  Leveled execution logs for Go</description>
     </item>
     
   </channel>

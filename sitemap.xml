@@ -28,11 +28,6 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/advanced/pkg/common/</loc>
-    <lastmod>2020-07-28T14:43:56+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://ikingye.github.io/study-go/docs/advanced/</loc>
     <lastmod>2020-07-16T20:42:52+08:00</lastmod>
   </url>
@@ -85,6 +80,10 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/appendix/tutorial/</loc>
     <lastmod>2021-02-17T08:49:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/advanced/pkg/cobra/</loc>
   </url>
   
   <url>
@@ -345,11 +344,6 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/advanced/frame/</loc>
     <lastmod>2020-07-14T23:15:07+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ikingye.github.io/study-go/docs/advanced/pkg/log/</loc>
-    <lastmod>2020-07-28T14:43:56+08:00</lastmod>
   </url>
   
   <url>
