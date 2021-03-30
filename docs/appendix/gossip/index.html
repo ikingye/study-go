@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go Interface #  ">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Interface" />
-<meta property="og:description" content="Go Interface #  " />
+<meta name="description" content="一些八卦 #  golang.org/pkg/ vs pkg.go.dev #   golang.org/pkg/ 等于 pkg.go.dev/std pkg.go.dev/std 有各种版本  godoc.org #  godoc.org 会跳转到 pkg.go.dev/?utm_source=godoc 再跳转到 pkg.go.dev">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="4.4 一些八卦" />
+<meta property="og:description" content="一些八卦 #  golang.org/pkg/ vs pkg.go.dev #   golang.org/pkg/ 等于 pkg.go.dev/std pkg.go.dev/std 有各种版本  godoc.org #  godoc.org 会跳转到 pkg.go.dev/?utm_source=godoc 再跳转到 pkg.go.dev" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/type/interface/" />
-<meta property="article:modified_time" content="2020-05-04T19:14:53+08:00" />
-<title>Interface | Go 学习笔记</title>
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/appendix/gossip/" />
+
+<title>4.4 一些八卦 | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.ce0f902f11a0f7675f61f65c2edd624054c6ccc1465f48c5761565b68b9daa75.css" integrity="sha256-zg&#43;QLxGg92dfYfZcLt1iQFTGzMFGX0jFdhVltoudqnU=">
@@ -99,108 +99,6 @@ https://github.com/alex-shpak/hugo-book
   
   
 
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/" class="collapsed ">1.1.1 数据类型</a>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/error/" class="">error</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/slice/" class="">切片</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/array/" class="">数组</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/interface/" class="active">Interface</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/channel/" class="">Chiannel</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/map/" class="">Map</a>
-  
-
-        </li>
-      
-    
-  </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/keyword/" class="collapsed ">1.1.2 关键字</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-  </ul>
   
 
         </li>
@@ -569,7 +467,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/appendix/gossip/" class="">4.4 一些八卦</a>
+    <a href="/study-go/docs/appendix/gossip/" class="active">4.4 一些八卦</a>
   
 
         </li>
@@ -623,7 +521,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Interface</strong>
+  <strong>4.4 一些八卦</strong>
 
   <label for="toc-control">
     
@@ -636,7 +534,15 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#golangorgpkg-vs-pkggodev"><code>golang.org/pkg/</code> vs <code>pkg.go.dev</code></a>
+      <ul>
+        <li><a href="#godocorg"><code>godoc.org</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
   </aside>
@@ -646,10 +552,23 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="go-interface">
-  Go Interface
-  <a class="anchor" href="#go-interface">#</a>
+  <article class="markdown"><h1 id="一些八卦">
+  一些八卦
+  <a class="anchor" href="#%e4%b8%80%e4%ba%9b%e5%85%ab%e5%8d%a6">#</a>
 </h1>
+<h2 id="golangorgpkg-vs-pkggodev">
+  <code>golang.org/pkg/</code> vs <code>pkg.go.dev</code>
+  <a class="anchor" href="#golangorgpkg-vs-pkggodev">#</a>
+</h2>
+<ul>
+<li><code>golang.org/pkg/</code> 等于 <code>pkg.go.dev/std</code></li>
+<li><code>pkg.go.dev/std</code> 有各种版本</li>
+</ul>
+<h3 id="godocorg">
+  <code>godoc.org</code>
+  <a class="anchor" href="#godocorg">#</a>
+</h3>
+<p><code>godoc.org</code> 会跳转到 <code>pkg.go.dev/?utm_source=godoc</code> 再跳转到 <code>pkg.go.dev</code></p>
 </article>
  
       
@@ -659,12 +578,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/58b914ab8e65e5da4b0f1bc21daf344bc0388059" title='Last modified by yewang | 2020-05-04' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-05-04</span>
-    </a>
-  </div>
 
 
 
@@ -716,7 +629,15 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#golangorgpkg-vs-pkggodev"><code>golang.org/pkg/</code> vs <code>pkg.go.dev</code></a>
+      <ul>
+        <li><a href="#godocorg"><code>godoc.org</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
  
     </aside>

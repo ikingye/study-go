@@ -263,6 +263,10 @@
   </url>
   
   <url>
+    <loc>https://ikingye.github.io/study-go/docs/appendix/gossip/</loc>
+  </url>
+  
+  <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/</loc>
     <lastmod>2020-06-08T23:19:05+08:00</lastmod>
   </url>
@@ -325,6 +329,10 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/basic/std/sync/</loc>
     <lastmod>2020-07-30T10:41:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/std/strings/</loc>
   </url>
   
   <url>

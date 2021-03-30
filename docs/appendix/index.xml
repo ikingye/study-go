@@ -34,5 +34,14 @@ Learn Go with test #  quii/learn-go-with-tests Learn Go with test-driven develop
  Web 框架 #  gin-gonic/gin #  Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.</description>
     </item>
     
+    <item>
+      <title>4.4 一些八卦</title>
+      <link>https://ikingye.github.io/study-go/docs/appendix/gossip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/appendix/gossip/</guid>
+      <description>一些八卦 #  golang.org/pkg/ vs pkg.go.dev #   golang.org/pkg/ 等于 pkg.go.dev/std pkg.go.dev/std 有各种版本  godoc.org #  godoc.org 会跳转到 pkg.go.dev/?utm_source=godoc 再跳转到 pkg.go.dev</description>
+    </item>
+    
   </channel>
 </rss>

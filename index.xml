@@ -320,6 +320,15 @@ Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 expo
     </item>
     
     <item>
+      <title>4.4 一些八卦</title>
+      <link>https://ikingye.github.io/study-go/docs/appendix/gossip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/appendix/gossip/</guid>
+      <description>一些八卦 #  golang.org/pkg/ vs pkg.go.dev #   golang.org/pkg/ 等于 pkg.go.dev/std pkg.go.dev/std 有各种版本  godoc.org #  godoc.org 会跳转到 pkg.go.dev/?utm_source=godoc 再跳转到 pkg.go.dev</description>
+    </item>
+    
+    <item>
       <title>Chiannel</title>
       <link>https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -434,6 +443,15 @@ By default, a synchronous signal is converted into a run-time panic.
 A SIGHUP, SIGINT, or SIGTERM signal causes the program to exit.
 A SIGQUIT, SIGILL, SIGTRAP, SIGABRT, SIGSTKFLT, SIGEMT, or SIGSYS signal causes the program to exit with a stack dump.
 A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these signals are used by the shell for job control).</description>
+    </item>
+    
+    <item>
+      <title>time</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/strings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/strings/</guid>
+      <description>time #  格式化 #  // 1 2 3 4 5 6 const ANSIC = &amp;#34;Mon Jan _2 15:04:05 2006&amp;#34; time.Now().Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) </description>
     </item>
     
     <item>

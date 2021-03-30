@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go Interface #  ">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Interface" />
-<meta property="og:description" content="Go Interface #  " />
+<meta name="description" content="time #  格式化 #  // 1 2 3 4 5 6 const ANSIC = &#34;Mon Jan _2 15:04:05 2006&#34; time.Now().Format(&#34;2006-01-02 15:04:05&#34;) ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="time" />
+<meta property="og:description" content="time #  格式化 #  // 1 2 3 4 5 6 const ANSIC = &#34;Mon Jan _2 15:04:05 2006&#34; time.Now().Format(&#34;2006-01-02 15:04:05&#34;) " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/grammar/type/interface/" />
-<meta property="article:modified_time" content="2020-05-04T19:14:53+08:00" />
-<title>Interface | Go 学习笔记</title>
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/strings/" />
+
+<title>time | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.ce0f902f11a0f7675f61f65c2edd624054c6ccc1465f48c5761565b68b9daa75.css" integrity="sha256-zg&#43;QLxGg92dfYfZcLt1iQFTGzMFGX0jFdhVltoudqnU=">
@@ -100,108 +100,6 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/" class="collapsed ">1.1.1 数据类型</a>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/error/" class="">error</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/slice/" class="">切片</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/array/" class="">数组</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/interface/" class="active">Interface</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/channel/" class="">Chiannel</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/type/map/" class="">Map</a>
-  
-
-        </li>
-      
-    
-  </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/basic/grammar/keyword/" class="collapsed ">1.1.2 关键字</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-  </ul>
-  
 
         </li>
       
@@ -218,6 +116,87 @@ https://github.com/alex-shpak/hugo-book
   
   
 
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/sort/" class="">sort</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/context/" class="">context</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/format/" class="">格式化输出</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/signal/" class="">signal</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/sync/" class="collapsed ">sync</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/strings/" class="active">time</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/study-go/docs/basic/std/time/" class="">time</a>
+  
+
+        </li>
+      
+    
+  </ul>
   
 
         </li>
@@ -623,7 +602,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Interface</strong>
+  <strong>time</strong>
 
   <label for="toc-control">
     
@@ -636,7 +615,11 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#格式化">格式化</a></li>
+  </ul>
+</nav>
 
 
   </aside>
@@ -646,11 +629,19 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="go-interface">
-  Go Interface
-  <a class="anchor" href="#go-interface">#</a>
+  <article class="markdown"><h1 id="timehttpspkggodevtime">
+  <a href="https://pkg.go.dev/time">time</a>
+  <a class="anchor" href="#timehttpspkggodevtime">#</a>
 </h1>
-</article>
+<h2 id="格式化">
+  格式化
+  <a class="anchor" href="#%e6%a0%bc%e5%bc%8f%e5%8c%96">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 1 2 3 4 5 6
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ANSIC</span> = <span style="color:#e6db74">&#34;Mon Jan _2 15:04:05 2006&#34;</span>
+
+<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">Format</span>(<span style="color:#e6db74">&#34;2006-01-02 15:04:05&#34;</span>)
+</code></pre></div></article>
  
       
 
@@ -659,12 +650,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/58b914ab8e65e5da4b0f1bc21daf344bc0388059" title='Last modified by yewang | 2020-05-04' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-05-04</span>
-    </a>
-  </div>
 
 
 
@@ -716,7 +701,11 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#格式化">格式化</a></li>
+  </ul>
+</nav>
 
  
     </aside>
