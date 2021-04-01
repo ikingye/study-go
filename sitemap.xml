@@ -58,13 +58,11 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/</loc>
-    <lastmod>2020-07-04T23:53:19+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/type/</loc>
-    <lastmod>2020-07-30T16:00:55+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/</loc>
   </url>
   
   <url>
@@ -93,18 +91,15 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/defer/</loc>
-    <lastmod>2020-07-05T16:46:51+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/defer/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/type/error/</loc>
-    <lastmod>2020-07-05T16:46:51+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/error/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/for/</loc>
-    <lastmod>2020-07-26T00:15:28+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/for/</loc>
   </url>
   
   <url>
@@ -118,8 +113,7 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/func/init/</loc>
-    <lastmod>2020-07-05T16:46:51+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/func/init/</loc>
   </url>
   
   <url>
@@ -128,8 +122,7 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/func/receiver/</loc>
-    <lastmod>2020-07-07T16:35:04+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/func/receiver/</loc>
   </url>
   
   <url>
@@ -148,8 +141,7 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/</loc>
-    <lastmod>2020-07-05T16:46:51+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/</loc>
   </url>
   
   <url>
@@ -188,8 +180,7 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/type/slice/</loc>
-    <lastmod>2020-07-30T17:08:12+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/slice/</loc>
   </url>
   
   <url>
@@ -198,8 +189,7 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/type/array/</loc>
-    <lastmod>2020-10-20T11:40:10+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/array/</loc>
   </url>
   
   <url>
@@ -238,13 +228,11 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/type/interface/</loc>
-    <lastmod>2020-05-04T19:14:53+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/interface/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/func/</loc>
-    <lastmod>2020-07-05T16:46:51+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/func/</loc>
   </url>
   
   <url>
@@ -268,23 +256,19 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/type/channel/</loc>
-    <lastmod>2020-06-08T23:19:05+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/channel/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/make/</loc>
-    <lastmod>2020-07-05T16:46:51+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/make/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/type/map/</loc>
-    <lastmod>2020-07-01T10:24:57+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/map/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/grammar/keyword/select/</loc>
-    <lastmod>2020-07-05T16:46:51+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/select/</loc>
   </url>
   
   <url>
