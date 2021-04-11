@@ -16,7 +16,7 @@ go get #  -d 只下载不安装 -u 强制使用网络去更新包和它的依赖
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.ce0f902f11a0f7675f61f65c2edd624054c6ccc1465f48c5761565b68b9daa75.css" integrity="sha256-zg&#43;QLxGg92dfYfZcLt1iQFTGzMFGX0jFdhVltoudqnU=">
-<script defer src="/study-go/en.search.min.ca3d442ca2cd061d704f24d8a6859894f99e8962545826f8251ea16799b97442.js" integrity="sha256-yj1ELKLNBh1wTyTYpoWYlPmeiWJUWCb4JR6hZ5m5dEI="></script>
+<script defer src="/study-go/en.search.min.cc87aacec6a3c7e2bba3e329f8642180473649425fc700c7cde09df978e25855.js" integrity="sha256-zIeqzsajx&#43;K7o&#43;Mp&#43;GQhgEc2SUJfxwDHzeCd&#43;XjiWFU="></script>
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/others/command/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -762,6 +762,10 @@ https://github.com/alex-shpak/hugo-book
 <li><code>-s</code> 禁用符号表</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -ldflags <span style="color:#e6db74">&#39;-w -s&#39;</span>
+
+<span style="color:#75715e"># makefile</span>
+buildInfo :<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; -X &#39;</span><span style="color:#66d9ef">$(</span>utilImport<span style="color:#66d9ef">)</span><span style="color:#e6db74">.goVersion=</span><span style="color:#66d9ef">$(</span>shell <span style="color:#66d9ef">$(</span>GO<span style="color:#66d9ef">)</span> version<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;</span><span style="color:#66d9ef">$(</span>utilImport<span style="color:#66d9ef">)</span><span style="color:#e6db74">.buildTime=</span><span style="color:#66d9ef">$(</span>shell date +<span style="color:#e6db74">&#34;%Y-%m-%d %H:%M:%S&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;</span><span style="color:#66d9ef">$(</span>utilImport<span style="color:#66d9ef">)</span><span style="color:#e6db74">.gitHash=</span><span style="color:#66d9ef">$(</span>shell git log -n1 --format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;%h&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; &#34;</span>
+go build -ldflags <span style="color:#66d9ef">$(</span>buildInfo<span style="color:#66d9ef">)</span>
 </code></pre></div><h3 id="gcflags">
   gcflags
   <a class="anchor" href="#gcflags">#</a>
