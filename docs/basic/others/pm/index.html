@@ -20,7 +20,7 @@ Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 expo
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.ce0f902f11a0f7675f61f65c2edd624054c6ccc1465f48c5761565b68b9daa75.css" integrity="sha256-zg&#43;QLxGg92dfYfZcLt1iQFTGzMFGX0jFdhVltoudqnU=">
-<script defer src="/study-go/en.search.min.f298355d0e9f5b25da4fcd39afb74913f138019d41e6fb58a64ca8446e50b8bb.js" integrity="sha256-8pg1XQ6fWyXaT805r7dJE/E4AZ1B5vtYpkyoRG5QuLs="></script>
+<script defer src="/study-go/en.search.min.a81d9415af59a8ecfcc565a0470767e87de6f08d7e80f871a009ec526498d8eb.js" integrity="sha256-qB2UFa9ZqOz8xWWgRwdn6H3m8I1&#43;gPhxoAnsUmSY2Os="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -693,7 +693,11 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#go-modules-原理">Go Modules 原理</a>
       <ul>
-        <li><a href="#命令">命令</a></li>
+        <li><a href="#命令">命令</a>
+          <ul>
+            <li><a href="#go-mod-vendor">go mod vendor</a></li>
+          </ul>
+        </li>
         <li><a href="#module-aware-mode-vs-gopath-mode"><code>Module-aware mode</code> vs <code>GOPATH mode</code></a></li>
         <li><a href="#replace">replace</a>
           <ul>
@@ -706,7 +710,7 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#gosum-不是锁文件">go.sum 不是锁文件</a></li>
           </ul>
         </li>
-        <li><a href="#go-mod-vendor"><code>go mod vendor</code></a></li>
+        <li><a href="#go-mod-vendor-1"><code>go mod vendor</code></a></li>
       </ul>
     </li>
     <li><a href="#参考">参考</a></li>
@@ -842,7 +846,11 @@ go list -m -json all
 
 <span style="color:#75715e"># 格式化 go.mod</span>
 go mod edit -fmt
-</code></pre></div><hr>
+</code></pre></div><h4 id="go-mod-vendor">
+  go mod vendor
+  <a class="anchor" href="#go-mod-vendor">#</a>
+</h4>
+<hr>
 <h3 id="module-aware-mode-vs-gopath-mode">
   <code>Module-aware mode</code> vs <code>GOPATH mode</code>
   <a class="anchor" href="#module-aware-mode-vs-gopath-mode">#</a>
@@ -906,9 +914,9 @@ and installed commands (in <code>GOPATH/bin</code>, unless <code>GOBIN</code> is
 <p>npm 的 package-lock.json 是锁文件，go.sum 不是。</p>
 <p>go.sum 同时还会保留过去使用的包的版本信息，以便日后可能的版本回退，这一点也与普通的锁文件不同。所以 go.sum 并不是包管理器的锁文件。</p>
 <hr>
-<h3 id="go-mod-vendor">
+<h3 id="go-mod-vendor-1">
   <code>go mod vendor</code>
-  <a class="anchor" href="#go-mod-vendor">#</a>
+  <a class="anchor" href="#go-mod-vendor-1">#</a>
 </h3>
 <p>这个命令并不能让你从 godep 之类的工具迁移到 go modules，它只是单纯地把 go.sum 中的所有依赖下载到 vendor 目录里</p>
 <p>使用 <code>go build -mod=vendor</code> 来构建项目</p>
@@ -1012,7 +1020,11 @@ and installed commands (in <code>GOPATH/bin</code>, unless <code>GOBIN</code> is
     </li>
     <li><a href="#go-modules-原理">Go Modules 原理</a>
       <ul>
-        <li><a href="#命令">命令</a></li>
+        <li><a href="#命令">命令</a>
+          <ul>
+            <li><a href="#go-mod-vendor">go mod vendor</a></li>
+          </ul>
+        </li>
         <li><a href="#module-aware-mode-vs-gopath-mode"><code>Module-aware mode</code> vs <code>GOPATH mode</code></a></li>
         <li><a href="#replace">replace</a>
           <ul>
@@ -1025,7 +1037,7 @@ and installed commands (in <code>GOPATH/bin</code>, unless <code>GOBIN</code> is
             <li><a href="#gosum-不是锁文件">go.sum 不是锁文件</a></li>
           </ul>
         </li>
-        <li><a href="#go-mod-vendor"><code>go mod vendor</code></a></li>
+        <li><a href="#go-mod-vendor-1"><code>go mod vendor</code></a></li>
       </ul>
     </li>
     <li><a href="#参考">参考</a></li>
