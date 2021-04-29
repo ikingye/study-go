@@ -58,13 +58,11 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/type/</loc>
   </url>
   
   <url>
@@ -93,18 +91,15 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/defer/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/keyword/defer/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/error/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/type/error/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/for/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/keyword/for/</loc>
   </url>
   
   <url>
@@ -118,8 +113,7 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/func/init/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/keyword/func/init/</loc>
   </url>
   
   <url>
@@ -128,8 +122,7 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/func/receiver/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/keyword/func/receiver/</loc>
   </url>
   
   <url>
@@ -148,8 +141,7 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/keyword/</loc>
   </url>
   
   <url>
@@ -188,8 +180,7 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/slice/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/type/slice/</loc>
   </url>
   
   <url>
@@ -198,8 +189,7 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/array/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/type/array/</loc>
   </url>
   
   <url>
@@ -238,13 +228,11 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/interface/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/type/interface/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/func/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/keyword/func/</loc>
   </url>
   
   <url>
@@ -268,23 +256,19 @@
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/channel/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/type/channel/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/make/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/keyword/make/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/type/map/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/type/map/</loc>
   </url>
   
   <url>
-    <loc>https://ikingye.github.io/study-go/docs/basic/syntax/keyword/select/</loc>
-    <lastmod>2021-04-01T20:18:41+08:00</lastmod>
+    <loc>https://ikingye.github.io/study-go/docs/basic/ref/keyword/select/</loc>
   </url>
   
   <url>
@@ -360,6 +344,10 @@
   <url>
     <loc>https://ikingye.github.io/study-go/docs/code/source/</loc>
     <lastmod>2020-10-09T18:32:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ikingye.github.io/study-go/docs/basic/others/gomod/</loc>
   </url>
   
   <url>
