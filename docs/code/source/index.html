@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" dir=>
+<html lang="en" dir="ltr">
 
 <head>
+  <meta name="generator" content="Hugo 0.71.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="源码分析 #  ">
@@ -13,8 +14,8 @@
 <title>3.7 源码分析 | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/study-go/book.min.ce0f902f11a0f7675f61f65c2edd624054c6ccc1465f48c5761565b68b9daa75.css" integrity="sha256-zg&#43;QLxGg92dfYfZcLt1iQFTGzMFGX0jFdhVltoudqnU=">
-<script defer src="/study-go/en.search.min.086b58e8694aaacd69e5015a7196c9b339f5d94553a53c30586fb17389c41e24.js" integrity="sha256-CGtY6GlKqs1p5QFacZbJszn12UVTpTwwWG&#43;xc4nEHiQ="></script>
+<link rel="stylesheet" href="/study-go/book.min.26a6a1da4e42a220331949b9698d1ff3bce6dde3dcb70ead9b3f675f3054b860.css" integrity="sha256-Jqah2k5CoiAzGUm5aY0f87zm3ePctw6tmz9nXzBUuGA=">
+<script defer src="/study-go/en.search.min.0a22c7d13b832a995b2ebb1afe05f870500695d67dad035a194f1da9631d550a.js" integrity="sha256-CiLH0TuDKplbLrsa/gX4cFAGldZ9rQNaGU8dqWMdVQo="></script>
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/code/source/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -24,12 +25,13 @@ https://github.com/alex-shpak/hugo-book
   
 </head>
 
-<body dir=>
+<body dir="ltr">
   <input type="checkbox" class="hidden toggle" id="menu-control" />
   <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
     <aside class="book-menu">
-      
+      <div class="book-menu-content">
+        
   <nav>
 <h2 class="book-brand">
   <a href="/study-go"><span>Go 学习笔记</span>
@@ -66,40 +68,64 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-  
-  
-  
-
-  
   <ul>
     
       
         <li>
           
+  
+  
+
   
     <span>第一部分 基础入门</span>
   
 
           
-  
-  
-  
-
-  
   <ul>
     
       
         <li>
           
   
-    <a href="/study-go/docs/basic/ref/" class="collapsed ">1.1 语法</a>
+  
+
+  
+    <input type="checkbox" id="section-1345454d7b2c77448bcdfba005efd882" class="toggle"  />
+    <label for="section-1345454d7b2c77448bcdfba005efd882" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/ref/" class="">1.1 语法</a>
+    </label>
   
 
           
-  
+  <ul>
+    
+      
+        <li>
+          
   
   
 
+  
+    <input type="checkbox" id="section-5cfb8ad3f25979c0f273faaa1f5918f3" class="toggle"  />
+    <label for="section-5cfb8ad3f25979c0f273faaa1f5918f3" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/ref/type/" class="">1.1.1 数据类型</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c827952bb72dbdb2b1836c814cb17160" class="toggle"  />
+    <label for="section-c827952bb72dbdb2b1836c814cb17160" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/ref/type/error/" class="">error</a>
+    </label>
   
 
         </li>
@@ -109,14 +135,10 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/basic/std/" class="collapsed ">1.2 标准库</a>
   
 
-          
   
-  
-  
-
+    <a href="https://ikingye.github.io/study-go/docs/basic/ref/type/slice/" class="">切片</a>
   
 
         </li>
@@ -126,14 +148,10 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/basic/spec/" class="collapsed ">1.3 编程规范</a>
   
 
-          
   
-  
-  
-
+    <a href="https://ikingye.github.io/study-go/docs/basic/ref/type/array/" class="">数组</a>
   
 
         </li>
@@ -143,20 +161,82 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/basic/others/" class="collapsed ">1.4 其他</a>
   
 
+  
+    <input type="checkbox" id="section-d81a9f0c91d6694cc5219a24ba516774" class="toggle"  />
+    <label for="section-d81a9f0c91d6694cc5219a24ba516774" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/ref/type/interface/" class="">Interface</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
           
   
   
+
+  
+    <input type="checkbox" id="section-4434aa3fd3b034e3d585aee1ba7458a5" class="toggle"  />
+    <label for="section-4434aa3fd3b034e3d585aee1ba7458a5" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/ref/type/channel/" class="">Chiannel</a>
+    </label>
   
 
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52130db237ffc4fad275e7bb1834c028" class="toggle"  />
+    <label for="section-52130db237ffc4fad275e7bb1834c028" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/ref/type/map/" class="">Map</a>
+    </label>
   
 
         </li>
       
     
   </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d307893b4aa4c19c4e6ff5d8d3d1fd94" class="toggle"  />
+    <label for="section-d307893b4aa4c19c4e6ff5d8d3d1fd94" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/ref/keyword/" class="">1.1.2 关键字</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bc81e08862d962518d11a7d4d96146d2" class="toggle"  />
+    <label for="section-bc81e08862d962518d11a7d4d96146d2" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/ref/keyword/defer/" class="">defer</a>
+    </label>
   
 
         </li>
@@ -165,31 +245,587 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
           
+  
+  
+
+  
+    <input type="checkbox" id="section-369615bc8fa30e509bd7005060577229" class="toggle"  />
+    <label for="section-369615bc8fa30e509bd7005060577229" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/ref/keyword/for/" class="">for 和 range</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://ikingye.github.io/study-go/docs/basic/ref/keyword/func/" class="">函数</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a67d6e91287fe595cda5521122effa3b" class="toggle"  />
+    <label for="section-a67d6e91287fe595cda5521122effa3b" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/ref/keyword/func/init/" class="">init</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://ikingye.github.io/study-go/docs/basic/ref/keyword/func/receiver/" class="">Receiver</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-420ded6b0b95ff9a5795a1dea133a7f5" class="toggle"  />
+    <label for="section-420ded6b0b95ff9a5795a1dea133a7f5" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/ref/keyword/make/" class="">make</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a407b47a29e89badfb7fe0728ed752b1" class="toggle"  />
+    <label for="section-a407b47a29e89badfb7fe0728ed752b1" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/ref/keyword/select/" class="">select</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6b15250934f01eea443005575ff8ee35" class="toggle"  />
+    <label for="section-6b15250934f01eea443005575ff8ee35" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/" class="">1.2 标准库</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ad4370a93fadc3f24c9902e89a4ec1cc" class="toggle"  />
+    <label for="section-ad4370a93fadc3f24c9902e89a4ec1cc" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/sort/" class="">sort</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d29a514e59de4729c6ca34e26c240687" class="toggle"  />
+    <label for="section-d29a514e59de4729c6ca34e26c240687" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/context/" class="">context</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ce46dd0eff2aa715954788d8275c02cd" class="toggle"  />
+    <label for="section-ce46dd0eff2aa715954788d8275c02cd" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/format/" class="">格式化输出</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6f9f8ce20b7789b98f1ae57ad9901d6" class="toggle"  />
+    <label for="section-d6f9f8ce20b7789b98f1ae57ad9901d6" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/signal/" class="">signal</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2f0743996569d517b9c66fedb32da2ee" class="toggle"  />
+    <label for="section-2f0743996569d517b9c66fedb32da2ee" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/sync/" class="">sync</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-938fb12ed606b3f5a80288d10051fc85" class="toggle"  />
+    <label for="section-938fb12ed606b3f5a80288d10051fc85" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/sync/cond/" class="">Cond</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ee602ed5e44c1ba01a3e76385567d5a1" class="toggle"  />
+    <label for="section-ee602ed5e44c1ba01a3e76385567d5a1" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/sync/mutex/" class="">Mutex</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-965415ec685e120aad29ef08d7987edf" class="toggle"  />
+    <label for="section-965415ec685e120aad29ef08d7987edf" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/strings/" class="">time</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4dc6bf744616bc8b8569fd96fc0608f" class="toggle"  />
+    <label for="section-f4dc6bf744616bc8b8569fd96fc0608f" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/time/" class="">time</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ea095051f8c6af1e76ea021673f5a018" class="toggle"  />
+    <label for="section-ea095051f8c6af1e76ea021673f5a018" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/spec/" class="">1.3 编程规范</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://ikingye.github.io/study-go/docs/basic/spec/baidu/" class="">百度</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-88f1811bb6a396226176f604fec52cf2" class="toggle"  />
+    <label for="section-88f1811bb6a396226176f604fec52cf2" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/others/" class="">1.4 其他</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-95f2a5f4bc57151577e16148d5329018" class="toggle"  />
+    <label for="section-95f2a5f4bc57151577e16148d5329018" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/others/quick/" class="">Go 快速上手</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-576243b6bdc0636b2725325b9c5dd44a" class="toggle"  />
+    <label for="section-576243b6bdc0636b2725325b9c5dd44a" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/others/pros-and-cons/" class="">优劣</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://ikingye.github.io/study-go/docs/basic/others/gobuild/" class="">Go build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://ikingye.github.io/study-go/docs/basic/others/gomod/" class="">Go Modules</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://ikingye.github.io/study-go/docs/basic/others/gopls/" class="">gopls</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://ikingye.github.io/study-go/docs/basic/others/pm/" class="">包管理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://ikingye.github.io/study-go/docs/basic/others/compile/" class="">编译</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5cbc1b525b4974b3de37752a2d557571" class="toggle"  />
+    <label for="section-5cbc1b525b4974b3de37752a2d557571" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/others/command/" class="">Go 命令</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c2c0afc44119d7291bb3edbe0d8d9d8e" class="toggle"  />
+    <label for="section-c2c0afc44119d7291bb3edbe0d8d9d8e" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/others/command/install/" class="">安装</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-857772ac4252625cd8ba1cd723727472" class="toggle"  />
+    <label for="section-857772ac4252625cd8ba1cd723727472" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/others/history/" class="">历史</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c2b1e27f5a37f34f4043514d277c23a2" class="toggle"  />
+    <label for="section-c2b1e27f5a37f34f4043514d277c23a2" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/others/plugin/" class="">Go 插件系统</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fde257483291d00ec8ab109a8e6a08b2" class="toggle"  />
+    <label for="section-fde257483291d00ec8ab109a8e6a08b2" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/others/goroutine/" class="">goroutine</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f3d1ca8a2a117833ec179440581da987" class="toggle"  />
+    <label for="section-f3d1ca8a2a117833ec179440581da987" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/others/version/" class="">版本</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-189e185ff023153da5890f463cebd142" class="toggle"  />
+    <label for="section-189e185ff023153da5890f463cebd142" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/others/version/gvm/" class="">gvm</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
   
     <span>第二部分 进阶实战</span>
   
 
           
-  
-  
-  
-
-  
   <ul>
     
       
         <li>
           
   
-    <a href="/study-go/docs/advanced/pattern/" class="collapsed ">2.1 设计模式</a>
+  
+
+  
+    <input type="checkbox" id="section-3695224c3b2b3ff4822b00b536e6168b" class="toggle"  />
+    <label for="section-3695224c3b2b3ff4822b00b536e6168b" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/advanced/pattern/" class="">2.1 设计模式</a>
+    </label>
   
 
           
-  
-  
-  
-
-  
+  <ul>
+    
+  </ul>
 
         </li>
       
@@ -198,15 +834,19 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/advanced/algs/" class="collapsed ">2.2 算法实现</a>
+  
+
+  
+    <input type="checkbox" id="section-afac21ff0b0b9877d980857f29b9767a" class="toggle"  />
+    <label for="section-afac21ff0b0b9877d980857f29b9767a" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/advanced/algs/" class="">2.2 算法实现</a>
+    </label>
   
 
           
-  
-  
-  
-
-  
+  <ul>
+    
+  </ul>
 
         </li>
       
@@ -215,89 +855,35 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/advanced/pkg/" class="collapsed ">2.3 常用库</a>
+  
+
+  
+    <input type="checkbox" id="section-b656c687691a7584675f479cafc084bf" class="toggle"  />
+    <label for="section-b656c687691a7584675f479cafc084bf" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/advanced/pkg/" class="">2.3 常用库</a>
+    </label>
   
 
           
-  
-  
-  
-
-  
-
-        </li>
-      
+  <ul>
     
       
         <li>
           
   
-    <a href="/study-go/docs/advanced/snippet/" class="collapsed ">2.4 代码片段</a>
-  
-
-          
-  
-  
   
 
   
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/advanced/test/" class="collapsed ">2.5 测试</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/advanced/prof/" class="collapsed ">2.6 性能</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/advanced/frame/" class="collapsed ">2.7 框架</a>
-  
-
-          
-  
-  
-  
-
+    <input type="checkbox" id="section-3b14519c1e97ba1b937b3eeecb962e88" class="toggle"  />
+    <label for="section-3b14519c1e97ba1b937b3eeecb962e88" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/advanced/pkg/cobra/" class="">cobra</a>
+    </label>
   
 
         </li>
       
     
   </ul>
-  
 
         </li>
       
@@ -305,108 +891,227 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
           
+  
+  
+
+  
+    <input type="checkbox" id="section-1a56e51bd16a3008ab3330849a82ab65" class="toggle"  />
+    <label for="section-1a56e51bd16a3008ab3330849a82ab65" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/advanced/snippet/" class="">2.4 代码片段</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ddfc8bac02c5156348ef18159a2d157" class="toggle"  />
+    <label for="section-7ddfc8bac02c5156348ef18159a2d157" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/advanced/test/" class="">2.5 测试</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-44663a755dbc8f64101cf03e4f3aad6a" class="toggle"  />
+    <label for="section-44663a755dbc8f64101cf03e4f3aad6a" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/advanced/prof/" class="">2.6 性能</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e317404e8797aec2dfe5780bb677c7e6" class="toggle"  />
+    <label for="section-e317404e8797aec2dfe5780bb677c7e6" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/advanced/frame/" class="">2.7 框架</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e722ab78a36a3d546012857620d4590" class="toggle"  />
+    <label for="section-0e722ab78a36a3d546012857620d4590" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/advanced/frame/beego/" class="">Beego</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
   
     <span>第三部分 设计与实现</span>
   
 
           
-  
-  
-  
-
-  
   <ul>
     
       
         <li>
           
   
-    <a href="/study-go/docs/code/type/" class="collapsed ">3.1 数据类型</a>
+  
+
+  
+    <input type="checkbox" id="section-49b663b02f020594ed0261630ee92402" class="toggle"  />
+    <label for="section-49b663b02f020594ed0261630ee92402" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/code/type/" class="">3.1 数据类型</a>
+    </label>
   
 
           
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/code/keyword/" class="collapsed ">3.2 关键字</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/code/runtime/" class="collapsed ">3.3 运行时</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/study-go/docs/code/source/" class="active">3.7 源码分析</a>
-  
-
-          
-  
-  
-  
-
-  
   <ul>
     
       
         <li>
           
   
-    <a href="/study-go/docs/code/source/1.0.1/" class="collapsed ">1.0.0</a>
   
 
+  
+    <input type="checkbox" id="section-903b0f9b7f66cc6b62bcb2b45db8a3ff" class="toggle"  />
+    <label for="section-903b0f9b7f66cc6b62bcb2b45db8a3ff" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/code/type/type/" class="">类型系统</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
           
   
   
+
+  
+    <input type="checkbox" id="section-31b13e72ffe3de8e40f0fe1309389c56" class="toggle"  />
+    <label for="section-31b13e72ffe3de8e40f0fe1309389c56" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/code/keyword/" class="">3.2 关键字</a>
+    </label>
   
 
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3a77838bbe1305ef124851ed8c593684" class="toggle"  />
+    <label for="section-3a77838bbe1305ef124851ed8c593684" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/code/keyword/interface/" class="">interface</a>
+    </label>
   
 
         </li>
       
     
   </ul>
-  
 
         </li>
       
     
-  </ul>
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-82a93258ddcc1fe5f28971ec4ce5f9bf" class="toggle"  />
+    <label for="section-82a93258ddcc1fe5f28971ec4ce5f9bf" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/code/runtime/" class="">3.3 运行时</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0d7e73f552173eb8fb8b5f7f67e2b08b" class="toggle"  />
+    <label for="section-0d7e73f552173eb8fb8b5f7f67e2b08b" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/code/runtime/init/" class="">Go 初始化</a>
+    </label>
   
 
         </li>
@@ -415,23 +1120,108 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
           
+  
+  
+
+  
+    <input type="checkbox" id="section-a9dd115cc04172f05c3b1c284915b1f3" class="toggle"  />
+    <label for="section-a9dd115cc04172f05c3b1c284915b1f3" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/code/runtime/scheduling/" class="">Go 调度</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6e4d680d20e8b74080a4fb7cf9540bf3" class="toggle"  />
+    <label for="section-6e4d680d20e8b74080a4fb7cf9540bf3" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/code/runtime/gc/" class="">GC</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://ikingye.github.io/study-go/docs/code/source/" class=" active">3.7 源码分析</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-419b7ed413ff47930a7b91ca7ad17009" class="toggle"  />
+    <label for="section-419b7ed413ff47930a7b91ca7ad17009" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/code/source/1.0.1/" class="">1.0.0</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
   
     <span>第四部分 附录</span>
   
 
           
-  
-  
-  
-
-  
   <ul>
     
       
         <li>
           
   
-    <a href="/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
+  
+
+  
+    <input type="checkbox" id="section-2d181cd3861ca7652e852d22b5c3ff21" class="toggle"  />
+    <label for="section-2d181cd3861ca7652e852d22b5c3ff21" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
+    </label>
   
 
         </li>
@@ -441,14 +1231,29 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/appendix/interview/" class="collapsed ">4.2 面试题</a>
+  
+
+  
+    <input type="checkbox" id="section-1291561338a2c243cca077171f0fe528" class="toggle"  />
+    <label for="section-1291561338a2c243cca077171f0fe528" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/appendix/interview/" class="">4.2 面试题</a>
+    </label>
   
 
           
-  
+  <ul>
+    
+      
+        <li>
+          
   
   
 
+  
+    <input type="checkbox" id="section-7acebfc4b461748521469ab23214109e" class="toggle"  />
+    <label for="section-7acebfc4b461748521469ab23214109e" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/appendix/interview/basic/" class="">基础</a>
+    </label>
   
 
         </li>
@@ -458,7 +1263,10 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/appendix/attention/" class="">4.3 关注项目</a>
+  
+
+  
+    <a href="https://ikingye.github.io/study-go/docs/appendix/interview/advanced/" class="">进阶</a>
   
 
         </li>
@@ -468,20 +1276,58 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/study-go/docs/appendix/gossip/" class="">4.4 一些八卦</a>
+  
+
+  
+    <a href="https://ikingye.github.io/study-go/docs/appendix/interview/expert/" class="">高阶</a>
   
 
         </li>
       
     
   </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c743998336860c656367010fc7573b86" class="toggle"  />
+    <label for="section-c743998336860c656367010fc7573b86" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/appendix/attention/" class="">4.3 关注项目</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-88a08300a7ed6d7ed5e491d9bdec39e1" class="toggle"  />
+    <label for="section-88a08300a7ed6d7ed5e491d9bdec39e1" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/appendix/gossip/" class="">4.4 一些八卦</a>
+    </label>
   
 
         </li>
       
     
   </ul>
-  
+
+        </li>
+      
+    
+  </ul>
 
 
 
@@ -512,6 +1358,7 @@ https://github.com/alex-shpak/hugo-book
 
 
  
+      </div>
     </aside>
 
     <div class="book-page">
@@ -535,7 +1382,9 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <nav id="TableOfContents"></nav>
+  
+<nav id="TableOfContents"></nav>
+
 
 
   </aside>
@@ -614,10 +1463,14 @@ https://github.com/alex-shpak/hugo-book
 
     
     <aside class="book-toc">
-      
-  <nav id="TableOfContents"></nav>
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents"></nav>
+
 
  
+      </div>
     </aside>
     
   </main>
