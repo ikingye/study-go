@@ -46,6 +46,24 @@ gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示
     </item>
     
     <item>
+      <title>Go Modules</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/others/gomod/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/others/gomod/</guid>
+      <description>Go Modules #   Using Go Modules  import #  import &amp;#34;目录&amp;#34; // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
+它的 go.mod 第一行是 module k8s.io/klog/v2
+根目录有个文件 klog.go，第一行 package klog
+所以我们在使用 klog 库时，
+import k8s.io/klog/v2 就是 import 了这个库的根目录，根目录的 *.go 文件，package 都是 klog
+所以我们使用的时候，直接 klog.Info() 就行。
+klog 库自身升级，只需要在它的 go.mod 里第一行改成 module k8s.io/klog/v3 就行。
+而我们使用新版本，也只需要改成 import k8s.io/klog/v3，里面 klog.Info() 都不用改（如果接口兼容的话）。
+参考：
+ Relationship between a package statement and the directory of a .</description>
+    </item>
+    
+    <item>
       <title>gopls</title>
       <link>https://ikingye.github.io/study-go/docs/basic/others/gopls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -111,15 +129,6 @@ Go 语言的调度器通过使用与 CPU 数量相等的线程减少线程频繁
  一个 Goroutine 既要包含要执行的代码， 又要包含用于执行该代码的栈和 PC、SP 指针。
 参考：
  Go 语言调度器与 Goroutine 实现原理 [译] Go 调度器: M, P 和 G 也谈 goroutine 调度器 Golang 调度器源码分析  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/gomod/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/gomod/</guid>
-      <description></description>
     </item>
     
   </channel>

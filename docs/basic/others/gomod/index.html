@@ -4,17 +4,35 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
+<meta name="description" content="Go Modules #   Using Go Modules  import #  import &#34;目录&#34; // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
+它的 go.mod 第一行是 module k8s.io/klog/v2
+根目录有个文件 klog.go，第一行 package klog
+所以我们在使用 klog 库时，
+import k8s.io/klog/v2 就是 import 了这个库的根目录，根目录的 *.go 文件，package 都是 klog
+所以我们使用的时候，直接 klog.Info() 就行。
+klog 库自身升级，只需要在它的 go.mod 里第一行改成 module k8s.io/klog/v3 就行。
+而我们使用新版本，也只需要改成 import k8s.io/klog/v3，里面 klog.Info() 都不用改（如果接口兼容的话）。
+参考：
+ Relationship between a package statement and the directory of a .">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Go Modules" />
+<meta property="og:description" content="Go Modules #   Using Go Modules  import #  import &#34;目录&#34; // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
+它的 go.mod 第一行是 module k8s.io/klog/v2
+根目录有个文件 klog.go，第一行 package klog
+所以我们在使用 klog 库时，
+import k8s.io/klog/v2 就是 import 了这个库的根目录，根目录的 *.go 文件，package 都是 klog
+所以我们使用的时候，直接 klog.Info() 就行。
+klog 库自身升级，只需要在它的 go.mod 里第一行改成 module k8s.io/klog/v3 就行。
+而我们使用新版本，也只需要改成 import k8s.io/klog/v3，里面 klog.Info() 都不用改（如果接口兼容的话）。
+参考：
+ Relationship between a package statement and the directory of a ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/gomod/" />
-
-<title>Gomod | Go 学习笔记</title>
+<meta property="article:modified_time" content="2021-04-29T10:53:24+08:00" />
+<title>Go Modules | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.ce0f902f11a0f7675f61f65c2edd624054c6ccc1465f48c5761565b68b9daa75.css" integrity="sha256-zg&#43;QLxGg92dfYfZcLt1iQFTGzMFGX0jFdhVltoudqnU=">
-<script defer src="/study-go/en.search.min.01d2b112eb835518efc727c1f60b45faed371aff3cbbd6f54b6f5a9eda756327.js" integrity="sha256-AdKxEuuDVRjvxyfB9gtF&#43;u03Gv88u9b1S29antp1Yyc="></script>
+<script defer src="/study-go/en.search.min.086b58e8694aaacd69e5015a7196c9b339f5d94553a53c30586fb17389c41e24.js" integrity="sha256-CGtY6GlKqs1p5QFacZbJszn12UVTpTwwWG&#43;xc4nEHiQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -187,6 +205,16 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
+    <a href="/study-go/docs/basic/others/gomod/" class="active">Go Modules</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
     <a href="/study-go/docs/basic/others/gopls/" class="">gopls</a>
   
 
@@ -275,8 +303,6 @@ https://github.com/alex-shpak/hugo-book
   
 
         </li>
-      
-    
       
     
   </ul>
@@ -651,7 +677,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Gomod</strong>
+  <strong>Go Modules</strong>
 
   <label for="toc-control">
     
@@ -664,7 +690,15 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#import">import</a>
+      <ul>
+        <li><a href="#klog-import">klog import</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
   </aside>
@@ -674,7 +708,38 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"></article>
+  <article class="markdown"><h1 id="go-moduleshttpsgolangorgrefmod">
+  <a href="https://golang.org/ref/mod">Go Modules</a>
+  <a class="anchor" href="#go-moduleshttpsgolangorgrefmod">#</a>
+</h1>
+<ul>
+<li><a href="https://blog.golang.org/using-go-modules">Using Go Modules</a></li>
+</ul>
+<h2 id="import">
+  import
+  <a class="anchor" href="#import">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;目录&#34;</span>
+
+<span style="color:#75715e">// 调用是使用 go 文件里的 package xxx
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">xxx</span>.<span style="color:#a6e22e">Function</span>()
+</code></pre></div><h3 id="klog-import">
+  klog import
+  <a class="anchor" href="#klog-import">#</a>
+</h3>
+<p>klog 库 <code>https://github.com/kubernetes/klog</code></p>
+<p>它的 <code>go.mod</code> 第一行是 <code>module k8s.io/klog/v2</code></p>
+<p>根目录有个文件 <code>klog.go</code>，第一行 <code>package klog</code></p>
+<p>所以我们在使用 klog 库时，</p>
+<p><code>import k8s.io/klog/v2</code> 就是 import 了这个库的根目录，根目录的 <code>*.go</code> 文件，<code>package</code> 都是 <code>klog</code></p>
+<p>所以我们使用的时候，直接 <code>klog.Info()</code> 就行。</p>
+<p>klog 库自身升级，只需要在它的 <code>go.mod</code> 里第一行改成 <code>module k8s.io/klog/v3</code> 就行。</p>
+<p>而我们使用新版本，也只需要改成 <code>import k8s.io/klog/v3</code>，里面 <code>klog.Info()</code> 都不用改（如果接口兼容的话）。</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/43579838/relationship-between-a-package-statement-and-the-directory-of-a-go-file">Relationship between a package statement and the directory of a .go file</a></li>
+</ul>
+</article>
  
       
 
@@ -683,6 +748,12 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
+
+  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/c115ebc6bf261dff1420687e8432fa66b13b1f2f" title='Last modified by yewang | 2021-04-29' target="_blank" rel="noopener">
+      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2021-04-29</span>
+    </a>
+  </div>
 
 
 
@@ -703,6 +774,29 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+<script src="https://utteranc.es/client.js"
+  repo="ikingye/study-go"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async
+></script>
+
+<div id="footer">
+  <p>
+    <a href="https://kingye.me">叶王</a> &copy; 2013-2021
+    版权所有。如果本文档对你有所帮助，可以<a
+      href="https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200428110046.png"
+      target="_blank"
+      rel="noopener noreferrer"
+      >请作者喝饮料</a
+    >。
+  </p>
+</div>
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -711,7 +805,15 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#import">import</a>
+      <ul>
+        <li><a href="#klog-import">klog import</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
  
     </aside>
