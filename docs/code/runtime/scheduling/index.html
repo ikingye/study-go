@@ -2,20 +2,22 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.71.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Go 调度 #  Go 调度器的发展 #   单线程调度器・0.x  只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成；   多线程调度器・1.0  允许运行多线程的程序； 全局锁导致竞争严重；   任务窃取调度器・1.1  引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；   抢占式调度器・1.2 ~ 至今  基于协作的抢占式调度器 - 1.2 ~ 1.13  通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；   基于信号的抢占式调度器 - 1.14 ~ 至今  实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况；     非均匀存储访问调度器・提案  对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程；    除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Go 调度" />
 <meta property="og:description" content="Go 调度 #  Go 调度器的发展 #   单线程调度器・0.x  只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成；   多线程调度器・1.0  允许运行多线程的程序； 全局锁导致竞争严重；   任务窃取调度器・1.1  引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；   抢占式调度器・1.2 ~ 至今  基于协作的抢占式调度器 - 1.2 ~ 1.13  通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；   基于信号的抢占式调度器 - 1.14 ~ 至今  实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况；     非均匀存储访问调度器・提案  对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程；    除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/code/runtime/scheduling/" />
-<meta property="article:modified_time" content="2020-07-04T23:53:19+08:00" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/code/runtime/scheduling/" /><meta property="article:section" content="docs" />
+
+<meta property="article:modified_time" content="2020-07-04T23:53:19&#43;08:00" />
+
 <title>Go 调度 | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/study-go/book.min.26a6a1da4e42a220331949b9698d1ff3bce6dde3dcb70ead9b3f675f3054b860.css" integrity="sha256-Jqah2k5CoiAzGUm5aY0f87zm3ePctw6tmz9nXzBUuGA=">
-<script defer src="/study-go/en.search.min.0a22c7d13b832a995b2ebb1afe05f870500695d67dad035a194f1da9631d550a.js" integrity="sha256-CiLH0TuDKplbLrsa/gX4cFAGldZ9rQNaGU8dqWMdVQo="></script>
+<link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
+<script defer src="/study-go/en.search.min.9817ad6ac6c766bfed08957fb6028a599003bb0ff4e7c507b15691c4ba9980d4.js" integrity="sha256-mBetasbHZr/tCJV/tgKKWZADuw/058UHsVaRxLqZgNQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1353,7 +1355,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

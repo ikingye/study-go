@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.71.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="包管理 #  Go 包管理概述 #  Go 1.4 及之前 #   必须设置 GOPATH 环境变量，且源代码必须存放在 GOPATH 下 拉取外部依赖包时，总是拉取最新的版本，无法指定需要的版本  设置 GOPATH 环境变量有两个原因：
@@ -15,13 +15,15 @@ Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 expo
 Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 export GO111MODULE=on，使用 Go Modules  GO111MODULE 为 off 时：
  优先使用 vendor 目录下面的包， 如果 vendor 下面没有搜索到，再搜索 $GOPATH/src 下面的包， 如果 $GOPATH 下面没有搜索到，那么搜索 $GOROOT/src 下面的包  Go 1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/pm/" />
-<meta property="article:modified_time" content="2021-04-20T13:11:05+08:00" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/pm/" /><meta property="article:section" content="docs" />
+
+<meta property="article:modified_time" content="2021-04-20T13:11:05&#43;08:00" />
+
 <title>包管理 | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/study-go/book.min.26a6a1da4e42a220331949b9698d1ff3bce6dde3dcb70ead9b3f675f3054b860.css" integrity="sha256-Jqah2k5CoiAzGUm5aY0f87zm3ePctw6tmz9nXzBUuGA=">
-<script defer src="/study-go/en.search.min.0a22c7d13b832a995b2ebb1afe05f870500695d67dad035a194f1da9631d550a.js" integrity="sha256-CiLH0TuDKplbLrsa/gX4cFAGldZ9rQNaGU8dqWMdVQo="></script>
+<link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
+<script defer src="/study-go/en.search.min.9817ad6ac6c766bfed08957fb6028a599003bb0ff4e7c507b15691c4ba9980d4.js" integrity="sha256-mBetasbHZr/tCJV/tgKKWZADuw/058UHsVaRxLqZgNQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1359,7 +1361,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.71.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="sync #   sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond  锁的类型 #  Mutex 互斥锁 #  type Mutex struct { state int32 sema uint32 // semaphore 信号量 }  sync.Mutex.Lock 和 sync.Mutex.Unlock  state #  # 8 位 **** **** ***** * * * waitersCount mutexStarving mutexWoken mutexLocked  mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态  Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时   waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个)   RWMutex #  type RWMutex struct { w Mutex writerSem uint32 readerSem uint32 readerCount int32 readerWait int32 }  写操作使用 sync.">
@@ -14,8 +14,8 @@
 <title>sync | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/study-go/book.min.26a6a1da4e42a220331949b9698d1ff3bce6dde3dcb70ead9b3f675f3054b860.css" integrity="sha256-Jqah2k5CoiAzGUm5aY0f87zm3ePctw6tmz9nXzBUuGA=">
-<script defer src="/study-go/en.search.min.0a22c7d13b832a995b2ebb1afe05f870500695d67dad035a194f1da9631d550a.js" integrity="sha256-CiLH0TuDKplbLrsa/gX4cFAGldZ9rQNaGU8dqWMdVQo="></script>
+<link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
+<script defer src="/study-go/en.search.min.9817ad6ac6c766bfed08957fb6028a599003bb0ff4e7c507b15691c4ba9980d4.js" integrity="sha256-mBetasbHZr/tCJV/tgKKWZADuw/058UHsVaRxLqZgNQ="></script>
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/std/sync/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -1354,7 +1354,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

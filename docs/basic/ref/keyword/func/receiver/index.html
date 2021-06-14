@@ -2,20 +2,22 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.71.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Receiver #   value method 可以被 value 和 pointer 对象调用  结构体类型实现的接口，该结构体的指针类型也算实现了该接口   而 pointer method 只能被 pointer 对象调用  pointer method 会修改对象的值，而 value method 不会，所以如果在一个 value 对象上调用 pointer method，编译器会对原来的值做一份拷贝，并在拷贝后的值上执行函数，那么如果函数有修改原 receiver 的值，则修改的行为都发生在拷贝的值上，而不会影响原值，这个错误很隐蔽不容易被调试发现，因此 go 决定放弃这个错误发生的可能性，直接不支持 pointer method 被 value 对象调用。    使用规则 #   必须使用指针  struct，且包含 sync.Mutex 类型字段   建议使用指针  比较大的 struct/array  struct 或者 array 中的元素个数超过 3 个，则认为比较大，反之，则认为比较小   struct、array 或 slice，其中指针元素所指的内容可能在方法内被修改   建议使用 value 类型  比较小的 struct/array   必须使用 value 类型（编程规范）  map、函数或者 chan 类型 slice，并且方法不会进行 reslice 或者重新分配 slice    value vs pointer #  参考：">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Receiver" />
 <meta property="og:description" content="Receiver #   value method 可以被 value 和 pointer 对象调用  结构体类型实现的接口，该结构体的指针类型也算实现了该接口   而 pointer method 只能被 pointer 对象调用  pointer method 会修改对象的值，而 value method 不会，所以如果在一个 value 对象上调用 pointer method，编译器会对原来的值做一份拷贝，并在拷贝后的值上执行函数，那么如果函数有修改原 receiver 的值，则修改的行为都发生在拷贝的值上，而不会影响原值，这个错误很隐蔽不容易被调试发现，因此 go 决定放弃这个错误发生的可能性，直接不支持 pointer method 被 value 对象调用。    使用规则 #   必须使用指针  struct，且包含 sync.Mutex 类型字段   建议使用指针  比较大的 struct/array  struct 或者 array 中的元素个数超过 3 个，则认为比较大，反之，则认为比较小   struct、array 或 slice，其中指针元素所指的内容可能在方法内被修改   建议使用 value 类型  比较小的 struct/array   必须使用 value 类型（编程规范）  map、函数或者 chan 类型 slice，并且方法不会进行 reslice 或者重新分配 slice    value vs pointer #  参考：" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/ref/keyword/func/receiver/" />
-<meta property="article:modified_time" content="2021-04-29T10:53:24+08:00" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/ref/keyword/func/receiver/" /><meta property="article:section" content="docs" />
+
+<meta property="article:modified_time" content="2021-04-29T10:53:24&#43;08:00" />
+
 <title>Receiver | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/study-go/book.min.26a6a1da4e42a220331949b9698d1ff3bce6dde3dcb70ead9b3f675f3054b860.css" integrity="sha256-Jqah2k5CoiAzGUm5aY0f87zm3ePctw6tmz9nXzBUuGA=">
-<script defer src="/study-go/en.search.min.0a22c7d13b832a995b2ebb1afe05f870500695d67dad035a194f1da9631d550a.js" integrity="sha256-CiLH0TuDKplbLrsa/gX4cFAGldZ9rQNaGU8dqWMdVQo="></script>
+<link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
+<script defer src="/study-go/en.search.min.9817ad6ac6c766bfed08957fb6028a599003bb0ff4e7c507b15691c4ba9980d4.js" integrity="sha256-mBetasbHZr/tCJV/tgKKWZADuw/058UHsVaRxLqZgNQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1353,7 +1355,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

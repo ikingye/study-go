@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.71.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Chiannel #  channel 类型 #  chan T // can be used to send and receive values of type T chan&lt;- float64 // can only be used to send float64s &lt;-chan int // can only be used to receive ints The &lt;- operator associates with the leftmost chan possible:
@@ -11,13 +11,15 @@ chan&lt;- chan int // same as chan&lt;- (chan int) chan&lt;- &lt;-chan int // sa
 <meta property="og:description" content="Chiannel #  channel 类型 #  chan T // can be used to send and receive values of type T chan&lt;- float64 // can only be used to send float64s &lt;-chan int // can only be used to receive ints The &lt;- operator associates with the leftmost chan possible:
 chan&lt;- chan int // same as chan&lt;- (chan int) chan&lt;- &lt;-chan int // same as chan&lt;- (&lt;-chan int) &lt;-chan &lt;-chan int // same as &lt;-chan (&lt;-chan int) chan (&lt;-chan int)  常见用法 #  // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&#34;ping&#34;` 到上面创建的 `messages` 通道中。 go func() { messages &lt;- &#34;ping&#34; }() // 使用 `&lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&#34;ping&#34;` 消息并将其打印出来。 msg := &lt;-messages fmt." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/ref/type/channel/" />
-<meta property="article:modified_time" content="2021-04-29T10:53:24+08:00" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/ref/type/channel/" /><meta property="article:section" content="docs" />
+
+<meta property="article:modified_time" content="2021-04-29T10:53:24&#43;08:00" />
+
 <title>Chiannel | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/study-go/book.min.26a6a1da4e42a220331949b9698d1ff3bce6dde3dcb70ead9b3f675f3054b860.css" integrity="sha256-Jqah2k5CoiAzGUm5aY0f87zm3ePctw6tmz9nXzBUuGA=">
-<script defer src="/study-go/en.search.min.0a22c7d13b832a995b2ebb1afe05f870500695d67dad035a194f1da9631d550a.js" integrity="sha256-CiLH0TuDKplbLrsa/gX4cFAGldZ9rQNaGU8dqWMdVQo="></script>
+<link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
+<script defer src="/study-go/en.search.min.9817ad6ac6c766bfed08957fb6028a599003bb0ff4e7c507b15691c4ba9980d4.js" integrity="sha256-mBetasbHZr/tCJV/tgKKWZADuw/058UHsVaRxLqZgNQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1355,7 +1357,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

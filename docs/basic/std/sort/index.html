@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.71.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="sort #  自定义排序 #  实现 Len、Less 和 Swap 方法
@@ -11,13 +11,15 @@
 <meta property="og:description" content="sort #  自定义排序 #  实现 Len、Less 和 Swap 方法
 // 有时候，我们可能想根据自然顺序以外的方式来对集合进行排序。 // 例如，假设我们要按字符串的长度而不是按字母顺序对它们进行排序。 // 这儿有一个在 Go 中自定义排序的示例。  package main import ( &#34;fmt&#34; &#34;sort&#34; ) // 为了在 Go 中使用自定义函数进行排序，我们需要一个对应的类型。 // 我们在这里创建了一个 `byLength` 类型，它只是内建类型 `[]string` 的别名。 type byLength []string // 我们为该类型实现了 `sort.Interface` 接口的 `Len`、`Less` 和 `Swap` 方法， // 这样我们就可以使用 `sort` 包的通用 `Sort` 方法了， // `Len` 和 `Swap` 在各个类型中的实现都差不多， // `Less` 将控制实际的自定义排序逻辑。 // 在这个的例子中，我们想按字符串长度递增的顺序来排序， // 所以这里使用了 `len(s[i])` 和 `len(s[j])` 来实现 `Less`。 func (s byLength) Len() int { return len(s) } func (s byLength) Swap(i, j int) { s[i], s[j] = s[j], s[i] } func (s byLength) Less(i, j int) bool { return len(s[i]) &lt; len(s[j]) } // 一切准备就绪后，我们就可以通过将切片 `fruits` 强转为 `byLength` 类型的切片， // 然后对该切片使用 `sort." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/sort/" />
-<meta property="article:modified_time" content="2020-07-04T23:53:19+08:00" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/sort/" /><meta property="article:section" content="docs" />
+
+<meta property="article:modified_time" content="2020-07-04T23:53:19&#43;08:00" />
+
 <title>sort | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/study-go/book.min.26a6a1da4e42a220331949b9698d1ff3bce6dde3dcb70ead9b3f675f3054b860.css" integrity="sha256-Jqah2k5CoiAzGUm5aY0f87zm3ePctw6tmz9nXzBUuGA=">
-<script defer src="/study-go/en.search.min.0a22c7d13b832a995b2ebb1afe05f870500695d67dad035a194f1da9631d550a.js" integrity="sha256-CiLH0TuDKplbLrsa/gX4cFAGldZ9rQNaGU8dqWMdVQo="></script>
+<link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
+<script defer src="/study-go/en.search.min.9817ad6ac6c766bfed08957fb6028a599003bb0ff4e7c507b15691c4ba9980d4.js" integrity="sha256-mBetasbHZr/tCJV/tgKKWZADuw/058UHsVaRxLqZgNQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1355,7 +1357,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
