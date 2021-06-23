@@ -11,13 +11,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/advanced/pkg/klog/" /><meta property="article:section" content="docs" />
 
-
+<meta property="article:modified_time" content="2021-06-23T17:01:55&#43;08:00" />
 
 <title>klog | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.50ac5b299208b6224d1a4bcc5599aab1ad9ad9a63b33e5d16f456cd61c7778f8.js" integrity="sha256-UKxbKZIItiJNGkvMVZmqsa2a2aY7M&#43;XRb0Vs1hx3ePg="></script>
+<script defer src="/study-go/en.search.min.b443e0e15a658627f82c83c1b0481b258183b91fcad82f071ac7a4da22c19032.js" integrity="sha256-tEPg4Vplhif4LIPBsEgbJYGDuR/K2C8HGsek2iLBkDI="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1402,10 +1402,16 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#v-级别">V() 级别</a></li>
-    <li><a href="#verbose-函数列表">Verbose 函数列表</a>
+    <li><a href="#v-级别">V() 级别</a>
       <ul>
-        <li><a href="#infos">Infos</a></li>
+        <li><a href="#详细说明">详细说明</a></li>
+      </ul>
+    </li>
+    <li><a href="#verbose-函数列表">Verbose 函数列表</a></li>
+    <li><a href="#注意事项">注意事项</a>
+      <ul>
+        <li><a href="#使用-infos-infosdepth-errors-errorsdepth">使用 Infos, InfoSDepth, ErrorS, ErrorSDepth</a></li>
+        <li><a href="#不要用-fatal">不要用 Fatal()</a></li>
       </ul>
     </li>
   </ul>
@@ -1478,6 +1484,49 @@ https://github.com/alex-shpak/hugo-book
 </tr>
 </tbody>
 </table>
+<h3 id="详细说明">
+  详细说明
+  <a class="anchor" href="#%e8%af%a6%e7%bb%86%e8%af%b4%e6%98%8e">#</a>
+</h3>
+<ul>
+<li>klog.V(0) - Generally useful for this to ALWAYS be visible to an operator
+<ul>
+<li>Programmer errors</li>
+<li>Logging extra info about a panic</li>
+<li>CLI argument handling</li>
+</ul>
+</li>
+<li>klog.V(1) - A reasonable default log level if you don&rsquo;t want verbosity.
+<ul>
+<li>Information about config (listening on X, watching Y)</li>
+<li>Errors that repeat frequently that relate to conditions that can be corrected (pod detected as unhealthy)</li>
+</ul>
+</li>
+<li>klog.V(2) - Useful steady state information about the service and important log messages that may correlate to significant changes in the system. This is the recommended default log level for most systems.
+<ul>
+<li>Logging HTTP requests and their exit code</li>
+<li>System state changing (killing pod)</li>
+<li>Controller state change events (starting pods)</li>
+<li>Scheduler log messages</li>
+</ul>
+</li>
+<li>klog.V(3) - Extended information about changes
+<ul>
+<li>More info about system state changes</li>
+</ul>
+</li>
+<li>klog.V(4) - Debug level verbosity
+<ul>
+<li>Logging in particularly thorny parts of code where you may want to come back later and check it</li>
+</ul>
+</li>
+<li>klog.V(5) - Trace level verbosity
+<ul>
+<li>Context to understand the steps leading up to errors and warnings</li>
+<li>More information for troubleshooting reported issues</li>
+</ul>
+</li>
+</ul>
 <p>参考：</p>
 <ul>
 <li><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/logging.md">Logging Conventions</a></li>
@@ -1537,11 +1586,51 @@ https://github.com/alex-shpak/hugo-book
 <span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">InfoS</span>(<span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
 <span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>, <span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
 <span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">ErrorS</span>(<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>, <span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
-</code></pre></div><h3 id="infos">
-  Infos
-  <a class="anchor" href="#infos">#</a>
+</code></pre></div><hr>
+<h2 id="注意事项">
+  注意事项
+  <a class="anchor" href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9">#</a>
+</h2>
+<h3 id="使用-infos-infosdepth-errors-errorsdepth">
+  使用 Infos, InfoSDepth, ErrorS, ErrorSDepth
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8-infos-infosdepth-errors-errorsdepth">#</a>
 </h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// InfoS structured logs to the INFO log.
+<ul>
+<li><code>klog.Infof</code>, <code>klog.Info</code>, <code>klog.Infoln</code> -&gt; <code>klog.InfoS</code></li>
+<li><code>klog.InfoDepth</code> -&gt; <code>klog.InfoSDepth</code></li>
+<li><code>klog.V(N).Infof</code>, <code>klog.V(N).Info</code>, <code>klog.V(N).Infoln</code> -&gt; <code>klog.V(N).InfoS</code></li>
+<li><code>klog.Warning</code>, <code>klog.Warningf</code>, <code>klog.Warningln</code> -&gt; <code>klog.InfoS</code></li>
+<li><code>klog.WarningDepth</code> -&gt; <code>klog.InfoSDepth</code></li>
+<li><code>klog.Error</code>, <code>klog.Errorf</code>, <code>klog.Errorln</code> -&gt; <code>klog.ErrorS</code></li>
+<li><code>klog.ErrorDepth</code> -&gt; <code>klog.ErrorSDepth</code></li>
+<li><code>klog.Fatal</code>, <code>klog.Fatalf</code>, <code>klog.Fatalln</code> -&gt; <code>klog.ErrorS</code> followed by <code>os.Exit(1)</code></li>
+<li><code>klog.FatalDepth</code> -&gt; <code>klog.ErrorDepth</code> followed by <code>os.Exit(1)</code></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Info logs to the INFO log.
+</span><span style="color:#75715e">// Arguments are handled in the manner of fmt.Print; a newline is appended if missing.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+	<span style="color:#a6e22e">logging</span>.print(<span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
+}
+
+<span style="color:#75715e">// InfoDepth acts as Info but uses depth to determine which call frame to log.
+</span><span style="color:#75715e">// InfoDepth(0, &#34;msg&#34;) is the same as Info(&#34;msg&#34;).
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">InfoDepth</span>(<span style="color:#a6e22e">depth</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+	<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">printDepth</span>(<span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">depth</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
+}
+
+<span style="color:#75715e">// Infoln logs to the INFO log.
+</span><span style="color:#75715e">// Arguments are handled in the manner of fmt.Println; a newline is always appended.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Infoln</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+	<span style="color:#a6e22e">logging</span>.println(<span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
+}
+
+<span style="color:#75715e">// Infof logs to the INFO log.
+</span><span style="color:#75715e">// Arguments are handled in the manner of fmt.Printf; a newline is appended if missing.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Infof</span>(<span style="color:#a6e22e">format</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+	<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">printf</span>(<span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">format</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
+}
+
+<span style="color:#75715e">// InfoS structured logs to the INFO log.
 </span><span style="color:#75715e">// The msg argument used to add constant description to the log line.
 </span><span style="color:#75715e">// The key/value pairs would be join by &#34;=&#34; ; a newline is always appended.
 </span><span style="color:#75715e">//
@@ -1552,7 +1641,47 @@ https://github.com/alex-shpak/hugo-book
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">InfoS</span>(<span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
 	<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">infoS</span>(<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span><span style="color:#f92672">...</span>)
 }
-</code></pre></div></article>
+
+<span style="color:#75715e">// if loggr is specified, will call loggr.Info, otherwise output with logging module.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">l</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">loggingT</span>) <span style="color:#a6e22e">infoS</span>(<span style="color:#a6e22e">loggr</span> <span style="color:#a6e22e">logr</span>.<span style="color:#a6e22e">Logger</span>, <span style="color:#a6e22e">filter</span> <span style="color:#a6e22e">LogFilter</span>, <span style="color:#a6e22e">depth</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">filter</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span> = <span style="color:#a6e22e">filter</span>.<span style="color:#a6e22e">FilterS</span>(<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span>)
+	}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">loggr</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">loggr</span>.<span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span><span style="color:#f92672">...</span>)
+		<span style="color:#66d9ef">return</span>
+	}
+	<span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">printS</span>(<span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">depth</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span><span style="color:#f92672">...</span>)
+}
+
+<span style="color:#75715e">// logr.Logger.Info
+</span><span style="color:#75715e">// https://github.com/go-logr/logr
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// Info logs a non-error message with the given key/value pairs as context.
+</span><span style="color:#75715e">//
+</span><span style="color:#75715e">// The msg argument should be used to add some constant description to
+</span><span style="color:#75715e">// the log line.  The key/value pairs can then be used to add additional
+</span><span style="color:#75715e">// variable information.  The key/value pairs should alternate string
+</span><span style="color:#75715e">// keys and arbitrary values.
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+</code></pre></div><p>参考：</p>
+<ul>
+<li><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/migration-to-structured-logging.md#structured-logging-in-kubernetes">Structured Logging migration instructions</a></li>
+</ul>
+<h3 id="不要用-fatal">
+  不要用 Fatal()
+  <a class="anchor" href="#%e4%b8%8d%e8%a6%81%e7%94%a8-fatal">#</a>
+</h3>
+<p><code>klog.Fatal()</code> 打印日志后，会调用 <code>os.Exit(255)</code></p>
+<p>应该改用 <code>klog.ErrorS()</code>，再<strong>自己调用</strong> <code>os.Exit(255)</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Fatal logs to the FATAL, ERROR, WARNING, and INFO logs,
+</span><span style="color:#75715e">// including a stack trace of all running goroutines, then calls os.Exit(255).
+</span><span style="color:#75715e">// Arguments are handled in the manner of fmt.Print; a newline is appended if missing.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+	<span style="color:#a6e22e">logging</span>.print(<span style="color:#a6e22e">fatalLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
+}
+</code></pre></div><p>参考：<a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/migration-to-structured-logging.md#replacing-fatal-calls">Replacing Fatal calls</a></p>
+</article>
  
       
 
@@ -1561,6 +1690,12 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
+
+  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/fa896c4ecca63c3749d8cf7847785fbfa3e5886f" title='Last modified by yewang | 2021-06-23' target="_blank" rel="noopener">
+      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2021-06-23</span>
+    </a>
+  </div>
 
 
 
@@ -1616,10 +1751,16 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#v-级别">V() 级别</a></li>
-    <li><a href="#verbose-函数列表">Verbose 函数列表</a>
+    <li><a href="#v-级别">V() 级别</a>
       <ul>
-        <li><a href="#infos">Infos</a></li>
+        <li><a href="#详细说明">详细说明</a></li>
+      </ul>
+    </li>
+    <li><a href="#verbose-函数列表">Verbose 函数列表</a></li>
+    <li><a href="#注意事项">注意事项</a>
+      <ul>
+        <li><a href="#使用-infos-infosdepth-errors-errorsdepth">使用 Infos, InfoSDepth, ErrorS, ErrorSDepth</a></li>
+        <li><a href="#不要用-fatal">不要用 Fatal()</a></li>
       </ul>
     </li>
   </ul>
