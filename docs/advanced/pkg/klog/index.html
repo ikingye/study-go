@@ -5,19 +5,15 @@
   <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="interface #  Go Data Structures: Interfaces
-读完这篇 go 作者的 blog，interface 就没什么秘密可言了。每个 interface 至少包含两个字段，type 和 data，不论什么形式，然后是 itable 什么时候生成，如何调用。
-结合 Comparison operators，记住 interface 的 compare 规则。">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="interface" />
-<meta property="og:description" content="interface #  Go Data Structures: Interfaces
-读完这篇 go 作者的 blog，interface 就没什么秘密可言了。每个 interface 至少包含两个字段，type 和 data，不论什么形式，然后是 itable 什么时候生成，如何调用。
-结合 Comparison operators，记住 interface 的 compare 规则。" />
+<meta name="description" content="klog #  V() 级别 #     级别 含义     v=0 Generally useful for this to always be visible to a cluster operator.   v=1 A reasonable default log level if you don&rsquo;t want verbosity.   v=2 Useful steady state information about the service and important log messages that may correlate to significant changes in the system. This is the recommended default log level for most systems.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="klog" />
+<meta property="og:description" content="klog #  V() 级别 #     级别 含义     v=0 Generally useful for this to always be visible to a cluster operator.   v=1 A reasonable default log level if you don&rsquo;t want verbosity.   v=2 Useful steady state information about the service and important log messages that may correlate to significant changes in the system. This is the recommended default log level for most systems." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/code/keyword/interface/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/advanced/pkg/klog/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2020-07-04T23:53:19&#43;08:00" />
 
-<title>interface | Go 学习笔记</title>
+
+<title>klog | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
@@ -863,7 +859,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b656c687691a7584675f479cafc084bf" class="toggle"  />
+    <input type="checkbox" id="section-b656c687691a7584675f479cafc084bf" class="toggle" checked />
     <label for="section-b656c687691a7584675f479cafc084bf" class="flex justify-between">
       <a href="https://ikingye.github.io/study-go/docs/advanced/pkg/" class="">2.3 常用库</a>
     </label>
@@ -895,9 +891,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-de1f0ff0ed1402844a572bc986921c78" class="toggle"  />
+    <input type="checkbox" id="section-de1f0ff0ed1402844a572bc986921c78" class="toggle" checked />
     <label for="section-de1f0ff0ed1402844a572bc986921c78" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/advanced/pkg/klog/" class="">klog</a>
+      <a href="https://ikingye.github.io/study-go/docs/advanced/pkg/klog/" class="active">klog</a>
     </label>
   
 
@@ -1076,7 +1072,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-31b13e72ffe3de8e40f0fe1309389c56" class="toggle" checked />
+    <input type="checkbox" id="section-31b13e72ffe3de8e40f0fe1309389c56" class="toggle"  />
     <label for="section-31b13e72ffe3de8e40f0fe1309389c56" class="flex justify-between">
       <a href="https://ikingye.github.io/study-go/docs/code/keyword/" class="">3.2 关键字</a>
     </label>
@@ -1092,9 +1088,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-3a77838bbe1305ef124851ed8c593684" class="toggle" checked />
+    <input type="checkbox" id="section-3a77838bbe1305ef124851ed8c593684" class="toggle"  />
     <label for="section-3a77838bbe1305ef124851ed8c593684" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/code/keyword/interface/" class="active">interface</a>
+      <a href="https://ikingye.github.io/study-go/docs/code/keyword/interface/" class="">interface</a>
     </label>
   
 
@@ -1390,7 +1386,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>interface</strong>
+  <strong>klog</strong>
 
   <label for="toc-control">
     
@@ -1404,7 +1400,16 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#v-级别">V() 级别</a></li>
+    <li><a href="#verbose-函数列表">Verbose 函数列表</a>
+      <ul>
+        <li><a href="#infos">Infos</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1415,14 +1420,139 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="interface">
-  interface
-  <a class="anchor" href="#interface">#</a>
+  <article class="markdown"><h1 id="klog">
+  klog
+  <a class="anchor" href="#klog">#</a>
 </h1>
-<p><a href="https://research.swtch.com/interfaces">Go Data Structures: Interfaces</a></p>
-<p>读完这篇 go 作者的 blog，interface 就没什么秘密可言了。每个 interface 至少包含两个字段，type 和 data，不论什么形式，然后是 itable 什么时候生成，如何调用。</p>
-<p>结合  <a href="http://docs.studygolang.com/ref/spec#Comparison_operators">Comparison operators</a>，记住 interface 的 compare 规则。</p>
-</article>
+<h2 id="v-级别">
+  V() 级别
+  <a class="anchor" href="#v-%e7%ba%a7%e5%88%ab">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>v=0</code></td>
+<td>Generally useful for this to <em>always</em> be visible to a cluster operator.</td>
+</tr>
+<tr>
+<td><code>v=1</code></td>
+<td>A reasonable default log level if you don&rsquo;t want verbosity.</td>
+</tr>
+<tr>
+<td><code>v=2</code></td>
+<td>Useful steady state information about the service and important log messages that may correlate to significant changes in the system. <br> This is the recommended default log level for most systems.</td>
+</tr>
+<tr>
+<td><code>v=3</code></td>
+<td>Extended information about changes.</td>
+</tr>
+<tr>
+<td><code>v=4</code></td>
+<td>Debug level verbosity.</td>
+</tr>
+<tr>
+<td><code>v=5</code></td>
+<td>Trace level verbosity.</td>
+</tr>
+<tr>
+<td><code>v=6</code></td>
+<td>Display requested resources.</td>
+</tr>
+<tr>
+<td><code>v=7</code></td>
+<td>Display HTTP request headers.</td>
+</tr>
+<tr>
+<td><code>v=8</code></td>
+<td>Display HTTP request contents.</td>
+</tr>
+<tr>
+<td><code>v=9</code></td>
+<td>Display HTTP request contents without truncation of contents.</td>
+</tr>
+</tbody>
+</table>
+<p>参考：</p>
+<ul>
+<li><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/logging.md">Logging Conventions</a></li>
+<li><a href="https://github.com/kubernetes/klog/blob/4c895e832e858e50ba4d0bda3a0b764481292737/klog.go#L1283">V function, Verbose</a></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// V reports whether verbosity at the call site is at least the requested level.
+</span><span style="color:#75715e">// The returned value is a struct of type Verbose, which implements Info, Infoln
+</span><span style="color:#75715e">// and Infof. These methods will write to the Info log if called.
+</span><span style="color:#75715e">// Thus, one may write either
+</span><span style="color:#75715e">//	if glog.V(2).Enabled() { klog.Info(&#34;log this&#34;) }
+</span><span style="color:#75715e">// or
+</span><span style="color:#75715e">//	klog.V(2).Info(&#34;log this&#34;)
+</span><span style="color:#75715e">// The second form is shorter but the first is cheaper if logging is off because it does
+</span><span style="color:#75715e">// not evaluate its arguments.
+</span><span style="color:#75715e">//
+</span><span style="color:#75715e">// Whether an individual call to V generates a log record depends on the setting of
+</span><span style="color:#75715e">// the -v and -vmodule flags; both are off by default. The V call will log if its level
+</span><span style="color:#75715e">// is less than or equal to the value of the -v flag, or alternatively if its level is
+</span><span style="color:#75715e">// less than or equal to the value of the -vmodule pattern matching the source file
+</span><span style="color:#75715e">// containing the call.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">V</span>(<span style="color:#a6e22e">level</span> <span style="color:#a6e22e">Level</span>) <span style="color:#a6e22e">Verbose</span> {
+	<span style="color:#75715e">// This function tries hard to be cheap unless there&#39;s work to do.
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// The fast path is two atomic loads and compares.
+</span><span style="color:#75715e"></span>
+	<span style="color:#75715e">// Here is a cheap but safe test to see if V logging is enabled globally.
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">verbosity</span>.<span style="color:#a6e22e">get</span>() <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">level</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newVerbose</span>(<span style="color:#a6e22e">level</span>, <span style="color:#66d9ef">true</span>)
+	}
+
+	<span style="color:#75715e">// It&#39;s off globally but vmodule may still be set.
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// Here is another cheap but safe test to see if vmodule is enabled.
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">atomic</span>.<span style="color:#a6e22e">LoadInt32</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filterLength</span>) &gt; <span style="color:#ae81ff">0</span> {
+		<span style="color:#75715e">// Now we need a proper lock to use the logging structure. The pcs field
+</span><span style="color:#75715e"></span>		<span style="color:#75715e">// is shared so we must lock before accessing it. This is fairly expensive,
+</span><span style="color:#75715e"></span>		<span style="color:#75715e">// but if V logging is enabled we&#39;re slow anyway.
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">Callers</span>(<span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">pcs</span>[:]) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newVerbose</span>(<span style="color:#a6e22e">level</span>, <span style="color:#66d9ef">false</span>)
+		}
+		<span style="color:#a6e22e">v</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">vmap</span>[<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">pcs</span>[<span style="color:#ae81ff">0</span>]]
+		<span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">ok</span> {
+			<span style="color:#a6e22e">v</span> = <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">setV</span>(<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">pcs</span>[<span style="color:#ae81ff">0</span>])
+		}
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newVerbose</span>(<span style="color:#a6e22e">level</span>, <span style="color:#a6e22e">v</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">level</span>)
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newVerbose</span>(<span style="color:#a6e22e">level</span>, <span style="color:#66d9ef">false</span>)
+}
+</code></pre></div><h2 id="verbose-函数列表">
+  Verbose 函数列表
+  <a class="anchor" href="#verbose-%e5%87%bd%e6%95%b0%e5%88%97%e8%a1%a8">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Enabled</span>() <span style="color:#66d9ef">bool</span>
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Infoln</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Infof</span>(<span style="color:#a6e22e">format</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">InfoS</span>(<span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>, <span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">ErrorS</span>(<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>, <span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+</code></pre></div><h3 id="infos">
+  Infos
+  <a class="anchor" href="#infos">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// InfoS structured logs to the INFO log.
+</span><span style="color:#75715e">// The msg argument used to add constant description to the log line.
+</span><span style="color:#75715e">// The key/value pairs would be join by &#34;=&#34; ; a newline is always appended.
+</span><span style="color:#75715e">//
+</span><span style="color:#75715e">// Basic examples:
+</span><span style="color:#75715e">// &gt;&gt; klog.InfoS(&#34;Pod status updated&#34;, &#34;pod&#34;, &#34;kubedns&#34;, &#34;status&#34;, &#34;ready&#34;)
+</span><span style="color:#75715e">// output:
+</span><span style="color:#75715e">// &gt;&gt; I1025 00:15:15.525108       1 controller_utils.go:116] &#34;Pod status updated&#34; pod=&#34;kubedns&#34; status=&#34;ready&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">InfoS</span>(<span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+	<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">infoS</span>(<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span><span style="color:#f92672">...</span>)
+}
+</code></pre></div></article>
  
       
 
@@ -1431,12 +1561,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/32f95416ddcb3cd32fc913117702f5ab28c99d1d" title='Last modified by yewang | 2020-07-04' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-07-04</span>
-    </a>
-  </div>
 
 
 
@@ -1490,7 +1614,16 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#v-级别">V() 级别</a></li>
+    <li><a href="#verbose-函数列表">Verbose 函数列表</a>
+      <ul>
+        <li><a href="#infos">Infos</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  
