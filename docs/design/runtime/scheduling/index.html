@@ -5,19 +5,19 @@
   <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 1.0.0 源码分析 #  https://github.com/golang/go/tree/go1.0.1
- 代码行数 #  AlDanial/cloc $ cloc . 15969 text files. 15884 unique files. 13164 files ignored. github.com/AlDanial/cloc v 1.86 T=19.15 s (146.5 files/s, 35024.2 lines/s) -------------------------------------------------------------------------------- Language files blank comment code -------------------------------------------------------------------------------- Go 2023 38800 49499 302225 C 369 20497 20388 149600 HTML 58 4234 252 25508 C/C&#43;&#43; Header 98 1752 2759 15100 Assembly 134 1510 2073 8203 yacc 6 449 396 5212 Perl 12 718 937 4774 Python 6 577 749 2898 JavaScript 6 591 422 2594 XML 16 91 20 1298 Bourne Shell 13 172 348 1064 CSS 6 121 32 888 Bourne Again Shell 17 173 147 758 Lisp 2 108 147 618 vim script 9 94 157 456 Pascal 1 48 222 256 DOS Batch 4 44 1 193 make 19 64 64 161 WiX source 1 12 13 139 awk 2 12 35 104 YAML 3 14 12 60 JSON 2 0 0 20 -------------------------------------------------------------------------------- SUM: 2807 70081 78673 522129 -------------------------------------------------------------------------------- ">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="1.0.0" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/code/source/1.0.1/" />
+<meta name="description" content="Go 调度 #  Go 调度器的发展 #   单线程调度器・0.x  只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成；   多线程调度器・1.0  允许运行多线程的程序； 全局锁导致竞争严重；   任务窃取调度器・1.1  引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；   抢占式调度器・1.2 ~ 至今  基于协作的抢占式调度器 - 1.2 ~ 1.13  通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；   基于信号的抢占式调度器 - 1.14 ~ 至今  实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况；     非均匀存储访问调度器・提案  对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程；    除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Go 调度" />
+<meta property="og:description" content="Go 调度 #  Go 调度器的发展 #   单线程调度器・0.x  只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成；   多线程调度器・1.0  允许运行多线程的程序； 全局锁导致竞争严重；   任务窃取调度器・1.1  引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；   抢占式调度器・1.2 ~ 至今  基于协作的抢占式调度器 - 1.2 ~ 1.13  通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；   基于信号的抢占式调度器 - 1.14 ~ 至今  实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况；     非均匀存储访问调度器・提案  对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程；    除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/design/runtime/scheduling/" /><meta property="article:section" content="docs" />
 
-<title>1.0.0 | Go 学习笔记</title>
+
+
+<title>Go 调度 | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.b443e0e15a658627f82c83c1b0481b258183b91fcad82f071ac7a4da22c19032.js" integrity="sha256-tEPg4Vplhif4LIPBsEgbJYGDuR/K2C8HGsek2iLBkDI="></script>
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/code/source/1.0.1/index.xml" title="Go 学习笔记" />
+<script defer src="/study-go/en.search.min.4c991d5a37f716c9235f81b17011e33258d8586b34f67a6e9008973f4de842d5.js" integrity="sha256-TJkdWjf3FskjX4GxcBHjMljYWGs09npukAiXP03oQtU="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1035,9 +1035,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-49b663b02f020594ed0261630ee92402" class="toggle"  />
-    <label for="section-49b663b02f020594ed0261630ee92402" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/code/type/" class="">3.1 数据类型</a>
+    <input type="checkbox" id="section-aaf02f04309ebf960c0668046a136929" class="toggle"  />
+    <label for="section-aaf02f04309ebf960c0668046a136929" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/design/type/" class="">3.1 数据类型</a>
     </label>
   
 
@@ -1051,9 +1051,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-903b0f9b7f66cc6b62bcb2b45db8a3ff" class="toggle"  />
-    <label for="section-903b0f9b7f66cc6b62bcb2b45db8a3ff" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/code/type/type/" class="">类型系统</a>
+    <input type="checkbox" id="section-221c2feeb76da2c573a0e8093b02a0e6" class="toggle"  />
+    <label for="section-221c2feeb76da2c573a0e8093b02a0e6" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/design/type/type/" class="">类型系统</a>
     </label>
   
 
@@ -1072,9 +1072,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-31b13e72ffe3de8e40f0fe1309389c56" class="toggle"  />
-    <label for="section-31b13e72ffe3de8e40f0fe1309389c56" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/code/keyword/" class="">3.2 关键字</a>
+    <input type="checkbox" id="section-04f123cc9a87e9e64680fa0fd29a97e8" class="toggle"  />
+    <label for="section-04f123cc9a87e9e64680fa0fd29a97e8" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/design/keyword/" class="">3.2 关键字</a>
     </label>
   
 
@@ -1088,9 +1088,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-3a77838bbe1305ef124851ed8c593684" class="toggle"  />
-    <label for="section-3a77838bbe1305ef124851ed8c593684" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/code/keyword/interface/" class="">interface</a>
+    <input type="checkbox" id="section-dd92374434f716188d0a0725e3d96dc5" class="toggle"  />
+    <label for="section-dd92374434f716188d0a0725e3d96dc5" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/design/keyword/interface/" class="">interface</a>
     </label>
   
 
@@ -1109,9 +1109,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-82a93258ddcc1fe5f28971ec4ce5f9bf" class="toggle"  />
-    <label for="section-82a93258ddcc1fe5f28971ec4ce5f9bf" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/code/runtime/" class="">3.3 运行时</a>
+    <input type="checkbox" id="section-7f0bd8ed1ead1f5e1c351a5e0d7ab339" class="toggle" checked />
+    <label for="section-7f0bd8ed1ead1f5e1c351a5e0d7ab339" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/design/runtime/" class="">3.3 运行时</a>
     </label>
   
 
@@ -1125,9 +1125,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0d7e73f552173eb8fb8b5f7f67e2b08b" class="toggle"  />
-    <label for="section-0d7e73f552173eb8fb8b5f7f67e2b08b" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/code/runtime/init/" class="">Go 初始化</a>
+    <input type="checkbox" id="section-5f598dec44876bb8e9d30bcb25c1464b" class="toggle"  />
+    <label for="section-5f598dec44876bb8e9d30bcb25c1464b" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/design/runtime/init/" class="">Go 初始化</a>
     </label>
   
 
@@ -1141,9 +1141,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a9dd115cc04172f05c3b1c284915b1f3" class="toggle"  />
-    <label for="section-a9dd115cc04172f05c3b1c284915b1f3" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/code/runtime/scheduling/" class="">Go 调度</a>
+    <input type="checkbox" id="section-5c872a4f182dfd871ee4afe673eeac2e" class="toggle" checked />
+    <label for="section-5c872a4f182dfd871ee4afe673eeac2e" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/design/runtime/scheduling/" class="active">Go 调度</a>
     </label>
   
 
@@ -1157,9 +1157,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-6e4d680d20e8b74080a4fb7cf9540bf3" class="toggle"  />
-    <label for="section-6e4d680d20e8b74080a4fb7cf9540bf3" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/code/runtime/gc/" class="">GC</a>
+    <input type="checkbox" id="section-1863bc83fe1866561c4abdd674bad9b8" class="toggle"  />
+    <label for="section-1863bc83fe1866561c4abdd674bad9b8" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/design/runtime/gc/" class="">GC</a>
     </label>
   
 
@@ -1178,7 +1178,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://ikingye.github.io/study-go/docs/code/source/" class="">3.7 源码分析</a>
+    <a href="https://ikingye.github.io/study-go/docs/design/code/" class="">3.7 源码分析</a>
   
 
           
@@ -1191,9 +1191,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-419b7ed413ff47930a7b91ca7ad17009" class="toggle" checked />
-    <label for="section-419b7ed413ff47930a7b91ca7ad17009" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/code/source/1.0.1/" class="active">1.0.0</a>
+    <input type="checkbox" id="section-1961cb32dbcc8253c93f50df2027950b" class="toggle"  />
+    <label for="section-1961cb32dbcc8253c93f50df2027950b" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/design/code/1.0.1/" class="">1.0.0</a>
     </label>
   
 
@@ -1386,7 +1386,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>1.0.0</strong>
+  <strong>Go 调度</strong>
 
   <label for="toc-control">
     
@@ -1402,7 +1402,13 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#代码行数">代码行数</a></li>
+    <li><a href="#go-调度器的发展">Go 调度器的发展</a></li>
+    <li><a href="#参考">参考</a>
+      <ul>
+        <li><a href="#scheduling-in-gohttpswwwardanlabscomblog201808scheduling-in-go-part1html"><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html">Scheduling In Go</a></a></li>
+        <li><a href="#garbage-collection-in-gohttpswwwardanlabscomblog201812garbage-collection-in-go-part1-semanticshtml"><a href="https://www.ardanlabs.com/blog/2018/12/garbage-collection-in-go-part1-semantics.html">Garbage Collection In Go</a></a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1415,52 +1421,87 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="go-100-源码分析">
-  Go 1.0.0 源码分析
-  <a class="anchor" href="#go-100-%e6%ba%90%e7%a0%81%e5%88%86%e6%9e%90">#</a>
+  <article class="markdown"><h1 id="go-调度">
+  Go 调度
+  <a class="anchor" href="#go-%e8%b0%83%e5%ba%a6">#</a>
 </h1>
-<p><a href="https://github.com/golang/go/tree/go1.0.1">https://github.com/golang/go/tree/go1.0.1</a></p>
-<hr>
-<h2 id="代码行数">
-  代码行数
-  <a class="anchor" href="#%e4%bb%a3%e7%a0%81%e8%a1%8c%e6%95%b0">#</a>
+<h2 id="go-调度器的发展">
+  Go 调度器的发展
+  <a class="anchor" href="#go-%e8%b0%83%e5%ba%a6%e5%99%a8%e7%9a%84%e5%8f%91%e5%b1%95">#</a>
 </h2>
-<p><a href="https://github.com/AlDanial/cloc">AlDanial/cloc</a> <img src="https://img.shields.io/github/stars/AlDanial/cloc.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/AlDanial/cloc.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/AlDanial/cloc.svg?sort=semver" alt="Last Tag" /> <img src="https://img.shields.io/github/last-commit/AlDanial/cloc.svg" alt="Last commit" /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cloc .
-   <span style="color:#ae81ff">15969</span> text files.
-   <span style="color:#ae81ff">15884</span> unique files.
-   <span style="color:#ae81ff">13164</span> files ignored.
-
-github.com/AlDanial/cloc v 1.86  T<span style="color:#f92672">=</span>19.15 s <span style="color:#f92672">(</span>146.5 files/s, 35024.2 lines/s<span style="color:#f92672">)</span>
---------------------------------------------------------------------------------
-Language                      files          blank        comment           code
---------------------------------------------------------------------------------
-Go                             <span style="color:#ae81ff">2023</span>          <span style="color:#ae81ff">38800</span>          <span style="color:#ae81ff">49499</span>         <span style="color:#ae81ff">302225</span>
-C                               <span style="color:#ae81ff">369</span>          <span style="color:#ae81ff">20497</span>          <span style="color:#ae81ff">20388</span>         <span style="color:#ae81ff">149600</span>
-HTML                             <span style="color:#ae81ff">58</span>           <span style="color:#ae81ff">4234</span>            <span style="color:#ae81ff">252</span>          <span style="color:#ae81ff">25508</span>
-C/C++ Header                     <span style="color:#ae81ff">98</span>           <span style="color:#ae81ff">1752</span>           <span style="color:#ae81ff">2759</span>          <span style="color:#ae81ff">15100</span>
-Assembly                        <span style="color:#ae81ff">134</span>           <span style="color:#ae81ff">1510</span>           <span style="color:#ae81ff">2073</span>           <span style="color:#ae81ff">8203</span>
-yacc                              <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">449</span>            <span style="color:#ae81ff">396</span>           <span style="color:#ae81ff">5212</span>
-Perl                             <span style="color:#ae81ff">12</span>            <span style="color:#ae81ff">718</span>            <span style="color:#ae81ff">937</span>           <span style="color:#ae81ff">4774</span>
-Python                            <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">577</span>            <span style="color:#ae81ff">749</span>           <span style="color:#ae81ff">2898</span>
-JavaScript                        <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">591</span>            <span style="color:#ae81ff">422</span>           <span style="color:#ae81ff">2594</span>
-XML                              <span style="color:#ae81ff">16</span>             <span style="color:#ae81ff">91</span>             <span style="color:#ae81ff">20</span>           <span style="color:#ae81ff">1298</span>
-Bourne Shell                     <span style="color:#ae81ff">13</span>            <span style="color:#ae81ff">172</span>            <span style="color:#ae81ff">348</span>           <span style="color:#ae81ff">1064</span>
-CSS                               <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">121</span>             <span style="color:#ae81ff">32</span>            <span style="color:#ae81ff">888</span>
-Bourne Again Shell               <span style="color:#ae81ff">17</span>            <span style="color:#ae81ff">173</span>            <span style="color:#ae81ff">147</span>            <span style="color:#ae81ff">758</span>
-Lisp                              <span style="color:#ae81ff">2</span>            <span style="color:#ae81ff">108</span>            <span style="color:#ae81ff">147</span>            <span style="color:#ae81ff">618</span>
-vim script                        <span style="color:#ae81ff">9</span>             <span style="color:#ae81ff">94</span>            <span style="color:#ae81ff">157</span>            <span style="color:#ae81ff">456</span>
-Pascal                            <span style="color:#ae81ff">1</span>             <span style="color:#ae81ff">48</span>            <span style="color:#ae81ff">222</span>            <span style="color:#ae81ff">256</span>
-DOS Batch                         <span style="color:#ae81ff">4</span>             <span style="color:#ae81ff">44</span>              <span style="color:#ae81ff">1</span>            <span style="color:#ae81ff">193</span>
-make                             <span style="color:#ae81ff">19</span>             <span style="color:#ae81ff">64</span>             <span style="color:#ae81ff">64</span>            <span style="color:#ae81ff">161</span>
-WiX source                        <span style="color:#ae81ff">1</span>             <span style="color:#ae81ff">12</span>             <span style="color:#ae81ff">13</span>            <span style="color:#ae81ff">139</span>
-awk                               <span style="color:#ae81ff">2</span>             <span style="color:#ae81ff">12</span>             <span style="color:#ae81ff">35</span>            <span style="color:#ae81ff">104</span>
-YAML                              <span style="color:#ae81ff">3</span>             <span style="color:#ae81ff">14</span>             <span style="color:#ae81ff">12</span>             <span style="color:#ae81ff">60</span>
-JSON                              <span style="color:#ae81ff">2</span>              <span style="color:#ae81ff">0</span>              <span style="color:#ae81ff">0</span>             <span style="color:#ae81ff">20</span>
---------------------------------------------------------------------------------
-SUM:                           <span style="color:#ae81ff">2807</span>          <span style="color:#ae81ff">70081</span>          <span style="color:#ae81ff">78673</span>         <span style="color:#ae81ff">522129</span>
---------------------------------------------------------------------------------
-</code></pre></div></article>
+<ul>
+<li>单线程调度器・<a href="https://github.com/golang/go/blob/96824000ed89d13665f6f24ddc10b3bf812e7f47/src/runtime/proc.c">0.x</a>
+<ul>
+<li>只包含 40 多行代码；</li>
+<li>程序中只能存在一个活跃线程，由 G-M 模型组成；</li>
+</ul>
+</li>
+<li>多线程调度器・<a href="https://github.com/golang/go/blob/go1.0.1/src/pkg/runtime/proc.c">1.0</a>
+<ul>
+<li>允许运行多线程的程序；</li>
+<li>全局锁导致竞争严重；</li>
+</ul>
+</li>
+<li>任务窃取调度器・<a href="https://github.com/golang/go/blob/779c45a50700bda0f6ec98429720802e6c1624e8/src/pkg/runtime/proc.c">1.1</a>
+<ul>
+<li>引入了处理器 P，构成了目前的  G-M-P  模型；</li>
+<li>在处理器 P 的基础上实现了基于工作窃取的调度器；</li>
+<li>在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题；</li>
+<li>时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；</li>
+</ul>
+</li>
+<li>抢占式调度器・<a href="https://github.com/golang/go/blob/go1.2/src/pkg/runtime/proc.c">1.2</a> ~ 至今
+<ul>
+<li>基于协作的抢占式调度器 - 1.2 ~ 1.13
+<ul>
+<li>通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度；</li>
+<li>Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；</li>
+</ul>
+</li>
+<li>基于信号的抢占式调度器 - 1.14 ~ 至今
+<ul>
+<li>实现基于信号的真抢占式调度；</li>
+<li>垃圾回收在扫描栈时会触发抢占调度；</li>
+<li>抢占的时间点不够多，还不能覆盖全部的边缘情况；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>非均匀存储访问调度器・提案
+<ul>
+<li>对运行时的各种资源进行分区；</li>
+<li>实现非常复杂，到今天还没有提上日程；</li>
+</ul>
+</li>
+</ul>
+<p>除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。</p>
+<hr>
+<h2 id="参考">
+  参考
+  <a class="anchor" href="#%e5%8f%82%e8%80%83">#</a>
+</h2>
+<ul>
+<li><a href="https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-goroutine/">Go 语言调度器与 Goroutine 实现原理</a></li>
+</ul>
+<h3 id="scheduling-in-gohttpswwwardanlabscomblog201808scheduling-in-go-part1html">
+  <a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html">Scheduling In Go</a>
+  <a class="anchor" href="#scheduling-in-gohttpswwwardanlabscomblog201808scheduling-in-go-part1html">#</a>
+</h3>
+<ol>
+<li><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html">Scheduling In Go : Part I - OS Scheduler</a></li>
+<li><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part2.html">Scheduling In Go : Part II - Go Scheduler</a></li>
+<li><a href="https://www.ardanlabs.com/blog/2018/12/scheduling-in-go-part3.html">Scheduling In Go : Part III - Concurrency</a></li>
+</ol>
+<h3 id="garbage-collection-in-gohttpswwwardanlabscomblog201812garbage-collection-in-go-part1-semanticshtml">
+  <a href="https://www.ardanlabs.com/blog/2018/12/garbage-collection-in-go-part1-semantics.html">Garbage Collection In Go</a>
+  <a class="anchor" href="#garbage-collection-in-gohttpswwwardanlabscomblog201812garbage-collection-in-go-part1-semanticshtml">#</a>
+</h3>
+<ol>
+<li><a href="https://www.ardanlabs.com/blog/2018/12/garbage-collection-in-go-part1-semantics.html">Garbage Collection In Go : Part I - Semantics</a></li>
+<li><a href="https://www.ardanlabs.com/blog/2019/05/garbage-collection-in-go-part2-gctraces.html">Garbage Collection In Go : Part II - GC Traces</a></li>
+<li><a href="https://www.ardanlabs.com/blog/2019/07/garbage-collection-in-go-part3-gcpacing.html">Garbage Collection In Go : Part III - GC Pacing</a></li>
+</ol>
+</article>
  
       
 
@@ -1469,12 +1510,6 @@ SUM:                           <span style="color:#ae81ff">2807</span>          
   <div class="flex flex-wrap justify-between">
 
 
-
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/d69b4d1da1337d0a9b1c0071c193e9cbc7354ff2" title='Last modified by yewang | 2020-10-09' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-10-09</span>
-    </a>
-  </div>
 
 
 
@@ -1530,7 +1565,13 @@ SUM:                           <span style="color:#ae81ff">2807</span>          
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#代码行数">代码行数</a></li>
+    <li><a href="#go-调度器的发展">Go 调度器的发展</a></li>
+    <li><a href="#参考">参考</a>
+      <ul>
+        <li><a href="#scheduling-in-gohttpswwwardanlabscomblog201808scheduling-in-go-part1html"><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html">Scheduling In Go</a></a></li>
+        <li><a href="#garbage-collection-in-gohttpswwwardanlabscomblog201812garbage-collection-in-go-part1-semanticshtml"><a href="https://www.ardanlabs.com/blog/2018/12/garbage-collection-in-go-part1-semantics.html">Garbage Collection In Go</a></a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
