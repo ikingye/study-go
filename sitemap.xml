@@ -24,7 +24,7 @@
     <lastmod>2020-04-17T00:53:48+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/design/</loc>
-    <lastmod>2020-07-04T23:53:19+08:00</lastmod>
+    <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/appendix/interview/expert/</loc>
     <lastmod>2020-04-17T00:53:48+08:00</lastmod>
@@ -33,6 +33,7 @@
     <lastmod>2020-07-16T20:42:52+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/design/code/1.0.1/</loc>
+    <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/basic/ref/</loc>
     <lastmod>2021-04-29T10:53:24+08:00</lastmod>
@@ -44,6 +45,7 @@
     <lastmod>2020-07-29T17:22:14+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/design/type/</loc>
+    <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/appendix/tutorial/</loc>
     <lastmod>2021-04-08T11:44:22+08:00</lastmod>
@@ -64,14 +66,16 @@
     <lastmod>2021-04-29T10:53:24+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/design/runtime/init/</loc>
-    <lastmod>2020-07-04T23:53:19+08:00</lastmod>
+    <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/design/runtime/scheduling/</loc>
+    <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/basic/ref/keyword/func/init/</loc>
     <lastmod>2021-04-29T10:53:24+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/design/keyword/interface/</loc>
+    <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/advanced/pkg/klog/</loc>
     <lastmod>2021-06-23T17:37:16+08:00</lastmod>
@@ -98,6 +102,7 @@
     <lastmod>2020-07-04T23:53:19+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/design/keyword/</loc>
+    <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/appendix/interview/</loc>
     <lastmod>2021-03-18T11:52:21+08:00</lastmod>
@@ -124,6 +129,7 @@
     <lastmod>2021-04-29T10:53:24+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/design/type/type/</loc>
+    <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/basic/others/compile/</loc>
     <lastmod>2020-07-06T17:32:24+08:00</lastmod>
@@ -135,7 +141,7 @@
     <lastmod>2021-03-25T21:04:53+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/design/runtime/</loc>
-    <lastmod>2020-07-04T23:53:19+08:00</lastmod>
+    <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/appendix/attention/</loc>
     <lastmod>2021-04-26T16:02:46+08:00</lastmod>
@@ -180,6 +186,7 @@
     <lastmod>2020-09-07T11:13:21+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/design/runtime/gc/</loc>
+    <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/basic/others/plugin/</loc>
     <lastmod>2020-07-06T17:32:24+08:00</lastmod>
@@ -215,11 +222,12 @@
     <lastmod>2020-07-14T23:15:07+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/design/code/</loc>
+    <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/categories/</loc>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/</loc>
-    <lastmod>2021-06-23T17:37:16+08:00</lastmod>
+    <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/tags/</loc>
   </url><url>
