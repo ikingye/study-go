@@ -5,7 +5,7 @@
   <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 编程规范 #  代码组织 #  目录 #  /cmd # 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的. # 把你真正的应用代码放在 /internal/app 目录 (比如: /internal/app/myapp) 把你的应用间共享的代码放在 /internal/pkg 目录 (比如: internal/pkg/myprivlib) /internal /pkg 不应该存在的目录 #  /src 参考：
+<meta name="description" content="Go 编程规范 #   Go Code Review Comments  代码组织 #  目录 #  /cmd # 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的. # 把你真正的应用代码放在 /internal/app 目录 (比如: /internal/app/myapp) 把你的应用间共享的代码放在 /internal/pkg 目录 (比如: internal/pkg/myprivlib) /internal /pkg 不应该存在的目录 #  /src 参考：
  golang-standards/project-layout    文件内容 #  建议文件按以下顺序进行布局：
  General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。 package: 当前 package 定义 imports: 包含的头文件 Constants: 常量 Typedefs: 类型定义 Globals: 全局变量定义 functions: 函数实现   语言规范 #  申明 slice #  申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="1.3 编程规范" />
@@ -17,7 +17,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f6e0b7c767fc3bbfe0e3366c37b79ef055a32f7720036d5ee14f8e529576a510.js" integrity="sha256-9uC3x2f8O7/g4zZsN7ee8FWjL3cgA21e4U&#43;OUpV2pRA="></script>
+<script defer src="/study-go/en.search.min.81c3dc2580f98f65e8713bda431ae951ef5047395e193832c88b52a66255d38c.js" integrity="sha256-gcPcJYD5j2XocTvaQxrpUe9QRzleGTgyyItSpmJV04w="></script>
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/spec/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -1454,6 +1454,9 @@ https://github.com/alex-shpak/hugo-book
   Go 编程规范
   <a class="anchor" href="#go-%e7%bc%96%e7%a8%8b%e8%a7%84%e8%8c%83">#</a>
 </h1>
+<ul>
+<li><a href="https://github.com/golang/go/wiki/CodeReviewComments">Go Code Review Comments</a></li>
+</ul>
 <h2 id="代码组织">
   代码组织
   <a class="anchor" href="#%e4%bb%a3%e7%a0%81%e7%bb%84%e7%bb%87">#</a>
