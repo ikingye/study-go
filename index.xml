@@ -73,10 +73,9 @@ Go 1.0 之后，go tool 利用 GOROOT 查找 Go 编译器（保存在 $GOROOT/pk
       <description>Go 教程 #  基础 #  Go by Example #  mmcgrana/gobyexample 中文翻译： gobyexample-cn/gobyexample https://gobyexample-cn.github.io/
 build web application with golang #  astaxie/build-web-application-with-golang A golang ebook intro how to build a web with golang
 7days-golang #  geektutu/7days-golang 7 天用 Go 动手写 / 从零实现系列
-Go 语言 101 #  golang101/golang101 Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.go101.org
-Golang 标准库 #  polaris1119/The-Golang-Standard-Library-by-Example Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。
-以示例驱动的方式讲解 Golang 的标准库。
-Learn Go with test #  quii/learn-go-with-tests Learn Go with test-driven development</description>
+Go 语言 101 #  go101/go101 An online book focusing on Go syntax/semantics and runtime related things
+https://go101.org
+Go 语言 101 #  golang101/golang101 Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书</description>
     </item>
     
     <item>
@@ -393,15 +392,6 @@ chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt
     </item>
     
     <item>
-      <title>Cond</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/std/sync/cond/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/basic/std/sync/cond/</guid>
-      <description>Cond #  type Cond struct { // L is held while observing or changing the condition 	L Locker // contains filtered or unexported fields } // Broadcast 会唤醒所有等待 c 的 goroutine func (c *Cond) Broadcast() // Signal 只唤醒 1 个等待 c 的 goroutine func (c *Cond) Signal() // Wait() 会自动释放 c.L，并挂起调用者的 goroutine。之后恢复执行，Wait() 会在返回时对 c.L 加锁。 // 除非被 Signal 或者 Broadcast 唤醒，否则 Wait() 不会返回 func (c *Cond) Wait()  条件  一个条件一定要有一个信号   信号  wait 等待的是信号 signal 发送的是信号 一个信号可以对应到多个条件    sync.</description>
-    </item>
-    
-    <item>
       <title>GC</title>
       <link>https://ikingye.github.io/study-go/docs/design/runtime/gc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -447,12 +437,22 @@ $ gvm listall $ gvm list $ gvm install go1.15 $ gvm user go1.15 $ gvm uninstall 
     </item>
     
     <item>
-      <title>Mutex</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/std/sync/mutex/</link>
+      <title>io</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/io/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/std/sync/mutex/</guid>
-      <description>Mutex #  Mutex 互斥锁 #   在一个 goroutine 获得 Mutex 后，其他 goroutine 只能等到这个 goroutine 释放该 Mutex 使用 Lock() 加锁后，不能再继续对其加锁，直到利用 Unlock() 解锁后才能再加锁  在同一个 goroutine 中的 Mutex 解锁之前再次进行加锁，会导致死锁   在 Lock() 之前使用 Unlock() 会导致 panic 异常 已经锁定的 Mutex 并不与特定的 goroutine 相关联，这样可以利用一个 goroutine 对其加锁，再利用其他 goroutine 对其解锁 适用于读写不确定，并且只有一个读或者写的场景  type Mutex struct { // contains filtered or unexported fields } func (m *Mutex) Lock() func (m *Mutex) Unlock() RWMutex 读写锁（读多写少） #  RWMutex 基于 Mutex 实现</description>
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/io/</guid>
+      <description>io #   小数据量的拷贝，使用 ioutil.ReadAll 无伤大雅； 数据量较大时，ReadAll 就是性能炸弹了，最好使用 io.Copy  参考：
+ golang 中的 ioutil.ReadAll vs io.Copy  </description>
+    </item>
+    
+    <item>
+      <title>net</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/net/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/net/</guid>
+      <description>net #  http #  cgi #   fcgi #   httputil #   pprof #    rpc #    url #  </description>
     </item>
     
     <item>
@@ -466,6 +466,15 @@ By default, a synchronous signal is converted into a run-time panic.
 A SIGHUP, SIGINT, or SIGTERM signal causes the program to exit.
 A SIGQUIT, SIGILL, SIGTRAP, SIGABRT, SIGSTKFLT, SIGEMT, or SIGSYS signal causes the program to exit with a stack dump.
 A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these signals are used by the shell for job control).</description>
+    </item>
+    
+    <item>
+      <title>sync</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/sync/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/sync/</guid>
+      <description>sync #   sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond  锁的类型 #  Mutex 互斥锁 #  type Mutex struct { state int32 sema uint32 // semaphore 信号量 }  sync.Mutex.Lock 和 sync.Mutex.Unlock  state #  # 8 位 **** **** ***** * * * waitersCount mutexStarving mutexWoken mutexLocked  mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态  Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时   waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个)   RWMutex #  type RWMutex struct { w Mutex writerSem uint32 readerSem uint32 readerCount int32 readerWait int32 }  写操作使用 sync.</description>
     </item>
     
     <item>
@@ -484,6 +493,15 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
       
       <guid>https://ikingye.github.io/study-go/docs/basic/std/time/</guid>
       <description>time #  格式化 #  // 1 2 3 4 5 6 const ANSIC = &amp;#34;Mon Jan _2 15:04:05 2006&amp;#34; time.Now().Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) </description>
+    </item>
+    
+    <item>
+      <title>并发</title>
+      <link>https://ikingye.github.io/study-go/docs/design/runtime/concurrent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/design/runtime/concurrent/</guid>
+      <description>Go 并发 #  Mutex #  type Mutex struct { state int32 // 状态 	sema uint32 // 信号量 }  state (32 位)  waitersCount (29 位): 当前互斥锁上等待的 Goroutine 个数 mutexStarving (1 位): 当前的互斥锁进入饥饿状态  Goroutine 超过 1 ms 没有获取到锁，就会转为饥饿模式   mutexWoken (1 位): 从正常模式被从唤醒 mutexLocked (1 位): 互斥锁的锁定状态    </description>
     </item>
     
   </channel>

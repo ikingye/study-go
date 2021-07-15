@@ -5,20 +5,19 @@
   <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 命令 #  go get 等于 go get -d 加 go install
-go get #  -d 只下载不安装 -u 强制使用网络去更新包和它的依赖包 -f 只有在你包含了 -u 参数的时候才有效，不让 -u 去验证 import 中的每一个都已经获取了，这对于本地 fork 的包特别有用 -v 显示执行的命令 -t 同时也下载需要为运行测试所需要的包 -fix 在获取源码之后先运行 fix，然后再去做其他的事情 -insecure 允许使用不安全的 HTTP 方式进行下载操作 go get 后面不带参数时 #   go get 等同于 go install go get -d 等同于 go list  参考：
- What is the difference between go get and go install?">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Go 命令" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/others/command/" />
+<meta name="description" content="Go 并发 #  Mutex #  type Mutex struct { state int32 // 状态 	sema uint32 // 信号量 }  state (32 位)  waitersCount (29 位): 当前互斥锁上等待的 Goroutine 个数 mutexStarving (1 位): 当前的互斥锁进入饥饿状态  Goroutine 超过 1 ms 没有获取到锁，就会转为饥饿模式   mutexWoken (1 位): 从正常模式被从唤醒 mutexLocked (1 位): 互斥锁的锁定状态    ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="并发" />
+<meta property="og:description" content="Go 并发 #  Mutex #  type Mutex struct { state int32 // 状态 	sema uint32 // 信号量 }  state (32 位)  waitersCount (29 位): 当前互斥锁上等待的 Goroutine 个数 mutexStarving (1 位): 当前的互斥锁进入饥饿状态  Goroutine 超过 1 ms 没有获取到锁，就会转为饥饿模式   mutexWoken (1 位): 从正常模式被从唤醒 mutexLocked (1 位): 互斥锁的锁定状态    " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/design/runtime/concurrent/" /><meta property="article:section" content="docs" />
 
-<title>Go 命令 | Go 学习笔记</title>
+
+
+<title>并发 | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
 <script defer src="/study-go/en.search.min.ae881c8b3523d1861dd366167790035989cd61447dc5dbc815d553145b68dd7d.js" integrity="sha256-rogcizUj0YYd02YWd5ADWYnNYUR9xdvIFdVTFFto3X0="></script>
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/others/command/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -555,7 +554,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-88f1811bb6a396226176f604fec52cf2" class="toggle" checked />
+    <input type="checkbox" id="section-88f1811bb6a396226176f604fec52cf2" class="toggle"  />
     <label for="section-88f1811bb6a396226176f604fec52cf2" class="flex justify-between">
       <a href="https://ikingye.github.io/study-go/docs/basic/others/" class="">1.4 其他</a>
     </label>
@@ -668,9 +667,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-5cbc1b525b4974b3de37752a2d557571" class="toggle" checked />
+    <input type="checkbox" id="section-5cbc1b525b4974b3de37752a2d557571" class="toggle"  />
     <label for="section-5cbc1b525b4974b3de37752a2d557571" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/basic/others/command/" class="active">Go 命令</a>
+      <a href="https://ikingye.github.io/study-go/docs/basic/others/command/" class="">Go 命令</a>
     </label>
   
 
@@ -1105,7 +1104,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7f0bd8ed1ead1f5e1c351a5e0d7ab339" class="toggle"  />
+    <input type="checkbox" id="section-7f0bd8ed1ead1f5e1c351a5e0d7ab339" class="toggle" checked />
     <label for="section-7f0bd8ed1ead1f5e1c351a5e0d7ab339" class="flex justify-between">
       <a href="https://ikingye.github.io/study-go/docs/design/runtime/" class="">3.3 运行时</a>
     </label>
@@ -1169,9 +1168,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0d2a4ede046ba86396afd018f7b28795" class="toggle"  />
+    <input type="checkbox" id="section-0d2a4ede046ba86396afd018f7b28795" class="toggle" checked />
     <label for="section-0d2a4ede046ba86396afd018f7b28795" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/design/runtime/concurrent/" class="">并发</a>
+      <a href="https://ikingye.github.io/study-go/docs/design/runtime/concurrent/" class="active">并发</a>
     </label>
   
 
@@ -1398,7 +1397,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Go 命令</strong>
+  <strong>并发</strong>
 
   <label for="toc-control">
     
@@ -1414,19 +1413,7 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-gethttpsgolangorgcmdgohdr-add_dependencies_to_current_module_and_install_them"><a href="https://golang.org/cmd/go/#hdr-Add_dependencies_to_current_module_and_install_them">go get</a></a>
-      <ul>
-        <li><a href="#go-get-后面不带参数时"><code>go get</code> 后面不带参数时</a></li>
-      </ul>
-    </li>
-    <li><a href="#go-install">go install</a></li>
-    <li><a href="#go-list">go list</a></li>
-    <li><a href="#go-build">go build</a>
-      <ul>
-        <li><a href="#ldflags">ldflags</a></li>
-        <li><a href="#gcflags">gcflags</a></li>
-      </ul>
-    </li>
+    <li><a href="#mutex">Mutex</a></li>
   </ul>
 </nav>
 
@@ -1439,78 +1426,33 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="go-命令httpsgolangorgcmdgo">
-  <a href="https://golang.org/cmd/go/">Go 命令</a>
-  <a class="anchor" href="#go-%e5%91%bd%e4%bb%a4httpsgolangorgcmdgo">#</a>
+  <article class="markdown"><h1 id="go-并发">
+  Go 并发
+  <a class="anchor" href="#go-%e5%b9%b6%e5%8f%91">#</a>
 </h1>
-<p><code>go get</code> 等于 <code>go get -d</code> 加 <code>go install</code></p>
-<h2 id="go-gethttpsgolangorgcmdgohdr-add_dependencies_to_current_module_and_install_them">
-  <a href="https://golang.org/cmd/go/#hdr-Add_dependencies_to_current_module_and_install_them">go get</a>
-  <a class="anchor" href="#go-gethttpsgolangorgcmdgohdr-add_dependencies_to_current_module_and_install_them">#</a>
+<h2 id="mutex">
+  Mutex
+  <a class="anchor" href="#mutex">#</a>
 </h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-d 只下载不安装
--u 强制使用网络去更新包和它的依赖包
--f 只有在你包含了 -u 参数的时候才有效，不让 -u 去验证 import 中的每一个都已经获取了，这对于本地 fork 的包特别有用
--v 显示执行的命令
--t 同时也下载需要为运行测试所需要的包
--fix 在获取源码之后先运行 fix，然后再去做其他的事情
--insecure 允许使用不安全的 HTTP 方式进行下载操作
-</code></pre></div><h3 id="go-get-后面不带参数时">
-  <code>go get</code> 后面不带参数时
-  <a class="anchor" href="#go-get-%e5%90%8e%e9%9d%a2%e4%b8%8d%e5%b8%a6%e5%8f%82%e6%95%b0%e6%97%b6">#</a>
-</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Mutex</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">state</span> <span style="color:#66d9ef">int32</span>  <span style="color:#75715e">// 状态
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sema</span>  <span style="color:#66d9ef">uint32</span> <span style="color:#75715e">// 信号量
+</span><span style="color:#75715e"></span>}
+</code></pre></div><ul>
+<li>state (32 位)
 <ul>
-<li><code>go get</code> 等同于 <code>go install</code></li>
-<li><code>go get -d</code> 等同于 <code>go list</code></li>
-</ul>
-<p>参考：</p>
+<li>waitersCount (29 位): 当前互斥锁上等待的 Goroutine 个数</li>
+<li>mutexStarving (1 位): 当前的互斥锁进入<strong>饥饿状态</strong>
 <ul>
-<li><a href="https://stackoverflow.com/questions/24878737/what-is-the-difference-between-go-get-and-go-install">What is the difference between go get and go install?</a></li>
+<li>Goroutine 超过 1 ms 没有获取到锁，就会转为饥饿模式</li>
 </ul>
-<hr>
-<h2 id="go-install">
-  go install
-  <a class="anchor" href="#go-install">#</a>
-</h2>
-<ol>
-<li>第一步是生成结果文件（可执行文件或者 .a 包），</li>
-<li>第二步会把编译好的结果移到 $GOPATH/pkg 或者 $GOPATH/bin。</li>
-</ol>
-<hr>
-<h2 id="go-list">
-  go list
-  <a class="anchor" href="#go-list">#</a>
-</h2>
-<hr>
-<h2 id="go-build">
-  go build
-  <a class="anchor" href="#go-build">#</a>
-</h2>
-<h3 id="ldflags">
-  ldflags
-  <a class="anchor" href="#ldflags">#</a>
-</h3>
-<p><code>go tool link --help</code> 查看 ldflags 各参数含义</p>
-<ul>
-<li><code>-w</code> 禁止生成 debug 信息，注意使用该选项后，无法使用 gdb 进行调试</li>
-<li><code>-s</code> 禁用符号表</li>
+</li>
+<li>mutexWoken (1 位): 从正常模式被从唤醒</li>
+<li>mutexLocked (1 位): 互斥锁的锁定状态</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -ldflags <span style="color:#e6db74">&#39;-w -s&#39;</span>
-
-<span style="color:#75715e"># makefile</span>
-buildInfo :<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; -X &#39;</span><span style="color:#66d9ef">$(</span>utilImport<span style="color:#66d9ef">)</span><span style="color:#e6db74">.goVersion=</span><span style="color:#66d9ef">$(</span>shell <span style="color:#66d9ef">$(</span>GO<span style="color:#66d9ef">)</span> version<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;</span><span style="color:#66d9ef">$(</span>utilImport<span style="color:#66d9ef">)</span><span style="color:#e6db74">.buildTime=</span><span style="color:#66d9ef">$(</span>shell date +<span style="color:#e6db74">&#34;%Y-%m-%d %H:%M:%S&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;</span><span style="color:#66d9ef">$(</span>utilImport<span style="color:#66d9ef">)</span><span style="color:#e6db74">.gitHash=</span><span style="color:#66d9ef">$(</span>shell git log -n1 --format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;%h&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; &#34;</span>
-go build -ldflags <span style="color:#66d9ef">$(</span>buildInfo<span style="color:#66d9ef">)</span>
-</code></pre></div><h3 id="gcflags">
-  gcflags
-  <a class="anchor" href="#gcflags">#</a>
-</h3>
-<p><code>go tool compile --help</code> 查看 gcflags 各参数含义</p>
-<ul>
-<li><code>-N</code> 禁止编译优化</li>
-<li><code>-l</code> 禁止内联，禁止内联也可以一定程度上减小可执行程序大小</li>
+</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -gcflags <span style="color:#e6db74">&#39;-N -l&#39;</span>
-</code></pre></div></article>
+</article>
  
       
 
@@ -1519,12 +1461,6 @@ go build -ldflags <span style="color:#66d9ef">$(</span>buildInfo<span style="col
   <div class="flex flex-wrap justify-between">
 
 
-
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/4912b115a0f7a4fecdc31962a12584f0b53efb0c" title='Last modified by yewang | 2021-04-11' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2021-04-11</span>
-    </a>
-  </div>
 
 
 
@@ -1580,19 +1516,7 @@ go build -ldflags <span style="color:#66d9ef">$(</span>buildInfo<span style="col
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-gethttpsgolangorgcmdgohdr-add_dependencies_to_current_module_and_install_them"><a href="https://golang.org/cmd/go/#hdr-Add_dependencies_to_current_module_and_install_them">go get</a></a>
-      <ul>
-        <li><a href="#go-get-后面不带参数时"><code>go get</code> 后面不带参数时</a></li>
-      </ul>
-    </li>
-    <li><a href="#go-install">go install</a></li>
-    <li><a href="#go-list">go list</a></li>
-    <li><a href="#go-build">go build</a>
-      <ul>
-        <li><a href="#ldflags">ldflags</a></li>
-        <li><a href="#gcflags">gcflags</a></li>
-      </ul>
-    </li>
+    <li><a href="#mutex">Mutex</a></li>
   </ul>
 </nav>
 

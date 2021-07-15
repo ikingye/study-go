@@ -5,19 +5,21 @@
   <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Cond #  type Cond struct { // L is held while observing or changing the condition 	L Locker // contains filtered or unexported fields } // Broadcast 会唤醒所有等待 c 的 goroutine func (c *Cond) Broadcast() // Signal 只唤醒 1 个等待 c 的 goroutine func (c *Cond) Signal() // Wait() 会自动释放 c.L，并挂起调用者的 goroutine。之后恢复执行，Wait() 会在返回时对 c.L 加锁。 // 除非被 Signal 或者 Broadcast 唤醒，否则 Wait() 不会返回 func (c *Cond) Wait()  条件  一个条件一定要有一个信号   信号  wait 等待的是信号 signal 发送的是信号 一个信号可以对应到多个条件    sync.">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Cond" />
-<meta property="og:description" content="Cond #  type Cond struct { // L is held while observing or changing the condition 	L Locker // contains filtered or unexported fields } // Broadcast 会唤醒所有等待 c 的 goroutine func (c *Cond) Broadcast() // Signal 只唤醒 1 个等待 c 的 goroutine func (c *Cond) Signal() // Wait() 会自动释放 c.L，并挂起调用者的 goroutine。之后恢复执行，Wait() 会在返回时对 c.L 加锁。 // 除非被 Signal 或者 Broadcast 唤醒，否则 Wait() 不会返回 func (c *Cond) Wait()  条件  一个条件一定要有一个信号   信号  wait 等待的是信号 signal 发送的是信号 一个信号可以对应到多个条件    sync." />
+<meta name="description" content="io #   小数据量的拷贝，使用 ioutil.ReadAll 无伤大雅； 数据量较大时，ReadAll 就是性能炸弹了，最好使用 io.Copy  参考：
+ golang 中的 ioutil.ReadAll vs io.Copy  ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="io" />
+<meta property="og:description" content="io #   小数据量的拷贝，使用 ioutil.ReadAll 无伤大雅； 数据量较大时，ReadAll 就是性能炸弹了，最好使用 io.Copy  参考：
+ golang 中的 ioutil.ReadAll vs io.Copy  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/sync/cond/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/io/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2020-09-07T11:13:21&#43;08:00" />
 
-<title>Cond | Go 学习笔记</title>
+
+<title>io | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.3fed17e6d4dc86ed1e3ef122f3ac895ff62277e9524e2035ab99aaa5c077458e.js" integrity="sha256-P&#43;0X5tTchu0ePvEi86yJX/Yid&#43;lSTiA1q5mqpcB3RY4="></script>
+<script defer src="/study-go/en.search.min.ae881c8b3523d1861dd366167790035989cd61447dc5dbc815d553145b68dd7d.js" integrity="sha256-rogcizUj0YYd02YWd5ADWYnNYUR9xdvIFdVTFFto3X0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -419,6 +421,38 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-166aac2fd0d3f4f02712564f8818e139" class="toggle" checked />
+    <label for="section-166aac2fd0d3f4f02712564f8818e139" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/io/" class="active">io</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0ac55e5ade0fdfc89cee82f125ca60f9" class="toggle"  />
+    <label for="section-0ac55e5ade0fdfc89cee82f125ca60f9" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/net/" class="">net</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-d6f9f8ce20b7789b98f1ae57ad9901d6" class="toggle"  />
     <label for="section-d6f9f8ce20b7789b98f1ae57ad9901d6" class="flex justify-between">
       <a href="https://ikingye.github.io/study-go/docs/basic/std/signal/" class="">signal</a>
@@ -435,48 +469,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-2f0743996569d517b9c66fedb32da2ee" class="toggle" checked />
-    <label for="section-2f0743996569d517b9c66fedb32da2ee" class="flex justify-between">
+    <input type="checkbox" id="section-c1e4a8f9ab9c7424ba0a41bcce0ad64e" class="toggle"  />
+    <label for="section-c1e4a8f9ab9c7424ba0a41bcce0ad64e" class="flex justify-between">
       <a href="https://ikingye.github.io/study-go/docs/basic/std/sync/" class="">sync</a>
     </label>
   
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-938fb12ed606b3f5a80288d10051fc85" class="toggle" checked />
-    <label for="section-938fb12ed606b3f5a80288d10051fc85" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/basic/std/sync/cond/" class="active">Cond</a>
-    </label>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-ee602ed5e44c1ba01a3e76385567d5a1" class="toggle"  />
-    <label for="section-ee602ed5e44c1ba01a3e76385567d5a1" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/basic/std/sync/mutex/" class="">Mutex</a>
-    </label>
-  
-
-        </li>
-      
-    
-  </ul>
 
         </li>
       
@@ -1166,6 +1163,22 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0d2a4ede046ba86396afd018f7b28795" class="toggle"  />
+    <label for="section-0d2a4ede046ba86396afd018f7b28795" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/design/runtime/concurrent/" class="">并发</a>
+    </label>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1386,7 +1399,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Cond</strong>
+  <strong>io</strong>
 
   <label for="toc-control">
     
@@ -1400,12 +1413,7 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#synccond-vs-syncmutex"><code>sync.Cond</code> vs <code>sync.Mutex</code></a></li>
-    <li><a href="#参考">参考</a></li>
-  </ul>
-</nav>
+<nav id="TableOfContents"></nav>
 
 
 
@@ -1416,63 +1424,17 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="cond">
-  Cond
-  <a class="anchor" href="#cond">#</a>
+  <article class="markdown"><h1 id="iohttpsgolangorgpkgio">
+  <a href="https://golang.org/pkg/io/">io</a>
+  <a class="anchor" href="#iohttpsgolangorgpkgio">#</a>
 </h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Cond</span> <span style="color:#66d9ef">struct</span> {
-
-	<span style="color:#75715e">// L is held while observing or changing the condition
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">L</span> <span style="color:#a6e22e">Locker</span>
-	<span style="color:#75715e">// contains filtered or unexported fields
-</span><span style="color:#75715e"></span>}
-
-<span style="color:#75715e">// Broadcast 会唤醒所有等待 c 的 goroutine
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Cond</span>) <span style="color:#a6e22e">Broadcast</span>()
-
-<span style="color:#75715e">// Signal 只唤醒 1 个等待 c 的 goroutine
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Cond</span>) <span style="color:#a6e22e">Signal</span>()
-
-<span style="color:#75715e">// Wait() 会自动释放 c.L，并挂起调用者的 goroutine。之后恢复执行，Wait() 会在返回时对 c.L 加锁。
-</span><span style="color:#75715e">// 除非被 Signal 或者 Broadcast 唤醒，否则 Wait() 不会返回
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Cond</span>) <span style="color:#a6e22e">Wait</span>()
-</code></pre></div><ul>
-<li>条件
 <ul>
-<li>一个条件一定要有一个信号</li>
+<li>小数据量的拷贝，使用 ioutil.ReadAll 无伤大雅；</li>
+<li>数据量较大时，ReadAll 就是性能炸弹了，最好使用 io.Copy</li>
 </ul>
-</li>
-<li>信号
+<p>参考：</p>
 <ul>
-<li>wait 等待的是信号</li>
-<li>signal 发送的是信号</li>
-<li>一个信号可以对应到<em>多个条件</em></li>
-</ul>
-</li>
-</ul>
-<h2 id="synccond-vs-syncmutex">
-  <code>sync.Cond</code> vs <code>sync.Mutex</code>
-  <a class="anchor" href="#synccond-vs-syncmutex">#</a>
-</h2>
-<ul>
-<li>Mutex
-<ul>
-<li>one goroutine for each write and read</li>
-</ul>
-</li>
-<li>Cond
-<ul>
-<li>multiple readers wait for the shared resources to be available</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="参考">
-  参考
-  <a class="anchor" href="#%e5%8f%82%e8%80%83">#</a>
-</h2>
-<ul>
-<li><a href="https://stackoverflow.com/questions/36857167/how-to-correctly-use-sync-cond">How to correctly use sync.Cond?</a></li>
+<li><a href="https://juejin.cn/post/6977640348679929886">golang 中的 ioutil.ReadAll vs io.Copy</a></li>
 </ul>
 </article>
  
@@ -1483,12 +1445,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/02b09e7937a7c64ab6cd5b3858aa3fd918f0fcfb" title='Last modified by yewang | 2020-09-07' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-09-07</span>
-    </a>
-  </div>
 
 
 
@@ -1542,12 +1498,7 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#synccond-vs-syncmutex"><code>sync.Cond</code> vs <code>sync.Mutex</code></a></li>
-    <li><a href="#参考">参考</a></li>
-  </ul>
-</nav>
+<nav id="TableOfContents"></nav>
 
 
  

@@ -35,6 +35,25 @@
     </item>
     
     <item>
+      <title>io</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/io/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/io/</guid>
+      <description>io #   小数据量的拷贝，使用 ioutil.ReadAll 无伤大雅； 数据量较大时，ReadAll 就是性能炸弹了，最好使用 io.Copy  参考：
+ golang 中的 ioutil.ReadAll vs io.Copy  </description>
+    </item>
+    
+    <item>
+      <title>net</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/net/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/net/</guid>
+      <description>net #  http #  cgi #   fcgi #   httputil #   pprof #    rpc #    url #  </description>
+    </item>
+    
+    <item>
       <title>signal</title>
       <link>https://ikingye.github.io/study-go/docs/basic/std/signal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -45,6 +64,15 @@ By default, a synchronous signal is converted into a run-time panic.
 A SIGHUP, SIGINT, or SIGTERM signal causes the program to exit.
 A SIGQUIT, SIGILL, SIGTRAP, SIGABRT, SIGSTKFLT, SIGEMT, or SIGSYS signal causes the program to exit with a stack dump.
 A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these signals are used by the shell for job control).</description>
+    </item>
+    
+    <item>
+      <title>sync</title>
+      <link>https://ikingye.github.io/study-go/docs/basic/std/sync/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/basic/std/sync/</guid>
+      <description>sync #   sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond  锁的类型 #  Mutex 互斥锁 #  type Mutex struct { state int32 sema uint32 // semaphore 信号量 }  sync.Mutex.Lock 和 sync.Mutex.Unlock  state #  # 8 位 **** **** ***** * * * waitersCount mutexStarving mutexWoken mutexLocked  mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态  Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时   waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个)   RWMutex #  type RWMutex struct { w Mutex writerSem uint32 readerSem uint32 readerCount int32 readerWait int32 }  写操作使用 sync.</description>
     </item>
     
     <item>

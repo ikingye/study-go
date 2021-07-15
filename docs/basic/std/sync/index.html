@@ -7,16 +7,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="sync #   sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond  锁的类型 #  Mutex 互斥锁 #  type Mutex struct { state int32 sema uint32 // semaphore 信号量 }  sync.Mutex.Lock 和 sync.Mutex.Unlock  state #  # 8 位 **** **** ***** * * * waitersCount mutexStarving mutexWoken mutexLocked  mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态  Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时   waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个)   RWMutex #  type RWMutex struct { w Mutex writerSem uint32 readerSem uint32 readerCount int32 readerWait int32 }  写操作使用 sync.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="sync" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/sync/" />
+<meta property="og:description" content="sync #   sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond  锁的类型 #  Mutex 互斥锁 #  type Mutex struct { state int32 sema uint32 // semaphore 信号量 }  sync.Mutex.Lock 和 sync.Mutex.Unlock  state #  # 8 位 **** **** ***** * * * waitersCount mutexStarving mutexWoken mutexLocked  mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态  Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时   waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个)   RWMutex #  type RWMutex struct { w Mutex writerSem uint32 readerSem uint32 readerCount int32 readerWait int32 }  写操作使用 sync." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/std/sync/" /><meta property="article:section" content="docs" />
+
+
 
 <title>sync | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.3fed17e6d4dc86ed1e3ef122f3ac895ff62277e9524e2035ab99aaa5c077458e.js" integrity="sha256-P&#43;0X5tTchu0ePvEi86yJX/Yid&#43;lSTiA1q5mqpcB3RY4="></script>
-<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/std/sync/index.xml" title="Go 学习笔记" />
+<script defer src="/study-go/en.search.min.ae881c8b3523d1861dd366167790035989cd61447dc5dbc815d553145b68dd7d.js" integrity="sha256-rogcizUj0YYd02YWd5ADWYnNYUR9xdvIFdVTFFto3X0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -418,6 +419,38 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-166aac2fd0d3f4f02712564f8818e139" class="toggle"  />
+    <label for="section-166aac2fd0d3f4f02712564f8818e139" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/io/" class="">io</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0ac55e5ade0fdfc89cee82f125ca60f9" class="toggle"  />
+    <label for="section-0ac55e5ade0fdfc89cee82f125ca60f9" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/basic/std/net/" class="">net</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-d6f9f8ce20b7789b98f1ae57ad9901d6" class="toggle"  />
     <label for="section-d6f9f8ce20b7789b98f1ae57ad9901d6" class="flex justify-between">
       <a href="https://ikingye.github.io/study-go/docs/basic/std/signal/" class="">signal</a>
@@ -434,48 +467,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-2f0743996569d517b9c66fedb32da2ee" class="toggle" checked />
-    <label for="section-2f0743996569d517b9c66fedb32da2ee" class="flex justify-between">
+    <input type="checkbox" id="section-c1e4a8f9ab9c7424ba0a41bcce0ad64e" class="toggle" checked />
+    <label for="section-c1e4a8f9ab9c7424ba0a41bcce0ad64e" class="flex justify-between">
       <a href="https://ikingye.github.io/study-go/docs/basic/std/sync/" class="active">sync</a>
     </label>
   
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-938fb12ed606b3f5a80288d10051fc85" class="toggle"  />
-    <label for="section-938fb12ed606b3f5a80288d10051fc85" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/basic/std/sync/cond/" class="">Cond</a>
-    </label>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-ee602ed5e44c1ba01a3e76385567d5a1" class="toggle"  />
-    <label for="section-ee602ed5e44c1ba01a3e76385567d5a1" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/basic/std/sync/mutex/" class="">Mutex</a>
-    </label>
-  
-
-        </li>
-      
-    
-  </ul>
 
         </li>
       
@@ -1165,6 +1161,22 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0d2a4ede046ba86396afd018f7b28795" class="toggle"  />
+    <label for="section-0d2a4ede046ba86396afd018f7b28795" class="flex justify-between">
+      <a href="https://ikingye.github.io/study-go/docs/design/runtime/concurrent/" class="">并发</a>
+    </label>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1418,6 +1430,18 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#cond">Cond</a></li>
       </ul>
     </li>
+    <li><a href="#mutex">Mutex</a>
+      <ul>
+        <li><a href="#mutex-互斥锁-1">Mutex 互斥锁</a></li>
+        <li><a href="#rwmutex-读写锁读多写少">RWMutex 读写锁（读多写少）</a></li>
+      </ul>
+    </li>
+    <li><a href="#cond-1">Cond</a>
+      <ul>
+        <li><a href="#synccond-vs-syncmutex"><code>sync.Cond</code> vs <code>sync.Mutex</code></a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1572,6 +1596,121 @@ waitersCount  mutexStarving   mutexWoken   mutexLocked
 <li>sync.Cond.Signal 唤醒队列最前面的 Goroutine</li>
 <li>sync.Cond.Broadcast 唤醒队列中全部的 Goroutine</li>
 </ul>
+<hr>
+<hr>
+<h2 id="mutex">
+  Mutex
+  <a class="anchor" href="#mutex">#</a>
+</h2>
+<h3 id="mutex-互斥锁-1">
+  Mutex 互斥锁
+  <a class="anchor" href="#mutex-%e4%ba%92%e6%96%a5%e9%94%81-1">#</a>
+</h3>
+<ul>
+<li>在一个 goroutine 获得 Mutex 后，其他 goroutine 只能等到这个 goroutine 释放该 Mutex</li>
+<li>使用 Lock() 加锁后，不能再继续对其加锁，直到利用 Unlock() 解锁后才能再加锁
+<ul>
+<li>在<strong>同一个 goroutine</strong> 中的 Mutex 解锁之前再次进行加锁，会导致死锁</li>
+</ul>
+</li>
+<li>在 Lock() 之前使用 Unlock() 会导致 panic 异常</li>
+<li>已经锁定的 Mutex 并不与特定的 goroutine 相关联，这样可以利用一个 goroutine 对其加锁，再利用其他 goroutine 对其解锁</li>
+<li>适用于读写不确定，并且只有一个读或者写的场景</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Mutex</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#75715e">// contains filtered or unexported fields
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Mutex</span>) <span style="color:#a6e22e">Lock</span>()
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Mutex</span>) <span style="color:#a6e22e">Unlock</span>()
+</code></pre></div><h3 id="rwmutex-读写锁读多写少">
+  RWMutex 读写锁（读多写少）
+  <a class="anchor" href="#rwmutex-%e8%af%bb%e5%86%99%e9%94%81%e8%af%bb%e5%a4%9a%e5%86%99%e5%b0%91">#</a>
+</h3>
+<p>RWMutex 基于 Mutex 实现</p>
+<ul>
+<li>RWMutex 是单写多读锁，该锁可以加一个写锁或者多个读锁</li>
+<li>写锁会阻止其他 goroutine（无论读和写）进来，整个锁由该 goroutine 独占
+<ul>
+<li>Lock() 加写锁，Unlock() 解写锁</li>
+<li>在 Lock() 之前使用 Unlock() 会导致 panic 异常</li>
+<li>如果在加写锁之前已经有其他的读锁和写锁，则 Lock() 会阻塞直到该锁可用，为确保该锁可用，已经阻塞的 Lock() 调用会从获得的锁中排除新的读取器，即<strong>写锁权限高于读锁</strong>，有写锁时优先进行写锁定</li>
+</ul>
+</li>
+<li>读锁占用的情况下会阻止写，不会阻止读，多个 goroutine 可以同时获取读锁
+<ul>
+<li>RLock() 加读锁，RUnlock() 解读锁</li>
+<li>RLock() 加读锁时，如果存在写锁，则无法加读锁</li>
+<li>在没有读锁的情况下调用 RUnlock() 会导致 panic 错误
+<ul>
+<li>RUnlock() 的个数不得多余 RLock()，否则会导致 panic 错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>适用于<strong>读多写少</strong>的场景</li>
+</ul>
+<hr>
+<hr>
+<h2 id="cond-1">
+  Cond
+  <a class="anchor" href="#cond-1">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Cond</span> <span style="color:#66d9ef">struct</span> {
+
+	<span style="color:#75715e">// L is held while observing or changing the condition
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">L</span> <span style="color:#a6e22e">Locker</span>
+	<span style="color:#75715e">// contains filtered or unexported fields
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">// Broadcast 会唤醒所有等待 c 的 goroutine
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Cond</span>) <span style="color:#a6e22e">Broadcast</span>()
+
+<span style="color:#75715e">// Signal 只唤醒 1 个等待 c 的 goroutine
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Cond</span>) <span style="color:#a6e22e">Signal</span>()
+
+<span style="color:#75715e">// Wait() 会自动释放 c.L，并挂起调用者的 goroutine。之后恢复执行，Wait() 会在返回时对 c.L 加锁。
+</span><span style="color:#75715e">// 除非被 Signal 或者 Broadcast 唤醒，否则 Wait() 不会返回
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Cond</span>) <span style="color:#a6e22e">Wait</span>()
+</code></pre></div><ul>
+<li>条件
+<ul>
+<li>一个条件一定要有一个信号</li>
+</ul>
+</li>
+<li>信号
+<ul>
+<li>wait 等待的是信号</li>
+<li>signal 发送的是信号</li>
+<li>一个信号可以对应到<em>多个条件</em></li>
+</ul>
+</li>
+</ul>
+<h3 id="synccond-vs-syncmutex">
+  <code>sync.Cond</code> vs <code>sync.Mutex</code>
+  <a class="anchor" href="#synccond-vs-syncmutex">#</a>
+</h3>
+<ul>
+<li>Mutex
+<ul>
+<li>one goroutine for each write and read</li>
+</ul>
+</li>
+<li>Cond
+<ul>
+<li>multiple readers wait for the shared resources to be available</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="参考">
+  参考
+  <a class="anchor" href="#%e5%8f%82%e8%80%83">#</a>
+</h3>
+<ul>
+<li><a href="https://stackoverflow.com/questions/36857167/how-to-correctly-use-sync-cond">How to correctly use sync.Cond?</a></li>
+</ul>
 </article>
  
       
@@ -1581,12 +1720,6 @@ waitersCount  mutexStarving   mutexWoken   mutexLocked
   <div class="flex flex-wrap justify-between">
 
 
-
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/99dd57038718adf0d2740553658d030db5bc56dd" title='Last modified by yewang | 2020-07-30' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-07-30</span>
-    </a>
-  </div>
 
 
 
@@ -1657,6 +1790,18 @@ waitersCount  mutexStarving   mutexWoken   mutexLocked
         </li>
         <li><a href="#once">Once</a></li>
         <li><a href="#cond">Cond</a></li>
+      </ul>
+    </li>
+    <li><a href="#mutex">Mutex</a>
+      <ul>
+        <li><a href="#mutex-互斥锁-1">Mutex 互斥锁</a></li>
+        <li><a href="#rwmutex-读写锁读多写少">RWMutex 读写锁（读多写少）</a></li>
+      </ul>
+    </li>
+    <li><a href="#cond-1">Cond</a>
+      <ul>
+        <li><a href="#synccond-vs-syncmutex"><code>sync.Cond</code> vs <code>sync.Mutex</code></a></li>
+        <li><a href="#参考">参考</a></li>
       </ul>
     </li>
   </ul>

@@ -14,10 +14,9 @@
       <description>Go 教程 #  基础 #  Go by Example #  mmcgrana/gobyexample 中文翻译： gobyexample-cn/gobyexample https://gobyexample-cn.github.io/
 build web application with golang #  astaxie/build-web-application-with-golang A golang ebook intro how to build a web with golang
 7days-golang #  geektutu/7days-golang 7 天用 Go 动手写 / 从零实现系列
-Go 语言 101 #  golang101/golang101 Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书 https://gfw.go101.org
-Golang 标准库 #  polaris1119/The-Golang-Standard-Library-by-Example Golang 标准库。对于程序员而言，标准库与语言本身同样重要，它好比一个百宝箱，能为各种常见的任务提供完美的解决方案。
-以示例驱动的方式讲解 Golang 的标准库。
-Learn Go with test #  quii/learn-go-with-tests Learn Go with test-driven development</description>
+Go 语言 101 #  go101/go101 An online book focusing on Go syntax/semantics and runtime related things
+https://go101.org
+Go 语言 101 #  golang101/golang101 Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书</description>
     </item>
     
     <item>
