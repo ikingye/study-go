@@ -48,7 +48,7 @@
     <lastmod>2021-06-25T16:30:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/appendix/tutorial/</loc>
-    <lastmod>2021-07-14T18:11:51+08:00</lastmod>
+    <lastmod>2021-07-15T17:31:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/advanced/pkg/cobra/</loc>
     <lastmod>2021-03-23T15:05:52+08:00</lastmod>
@@ -195,13 +195,16 @@
     <lastmod>2021-02-22T16:15:20+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/basic/std/io/</loc>
+    <lastmod>2021-07-15T17:31:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/basic/std/net/</loc>
+    <lastmod>2021-07-15T17:31:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/basic/std/signal/</loc>
     <lastmod>2020-07-04T23:53:19+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/basic/std/sync/</loc>
+    <lastmod>2021-07-15T17:31:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/basic/std/strings/</loc>
     <lastmod>2021-03-30T11:38:02+08:00</lastmod>
@@ -210,6 +213,7 @@
     <lastmod>2020-07-04T23:53:19+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/design/runtime/concurrent/</loc>
+    <lastmod>2021-07-15T17:31:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/basic/others/version/</loc>
     <lastmod>2021-02-22T16:15:20+08:00</lastmod>
@@ -226,7 +230,7 @@
     <loc>https://ikingye.github.io/study-go/categories/</loc>
   </url><url>
     <loc>https://ikingye.github.io/study-go/docs/</loc>
-    <lastmod>2021-07-14T18:11:51+08:00</lastmod>
+    <lastmod>2021-07-15T17:31:08+08:00</lastmod>
   </url><url>
     <loc>https://ikingye.github.io/study-go/tags/</loc>
   </url><url>
