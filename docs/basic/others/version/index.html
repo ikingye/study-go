@@ -5,8 +5,7 @@
   <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 版本 #  golang/go #  版本控制 #   gvm   版本历史 #  1.15 (2020-08-11) #  1.15.1 (2020-09-01) #   1.14 (2020-02-25) #   嵌入接口的方法集可重叠  1.14.4 (2020-06-01) #  1.14.6 (2020-07-16) #  参考：
- Go 1.14 中值得关注的几个变化   1.13 (2019-09-03) #   1.12 (2019-02-25) #   1.11 (2018-08-24) #   pprof   1.10 (2018-02-16) #  不用手动设置 GOROOT 了。">
+<meta name="description" content="Go 版本 #  golang/go #  版本控制 #   gvm   版本历史 #  1.16 (2021-02-16) #   go build / go run命令不再自动更新 go.mod 和 go.sum 了  需要使用 go get go mod tidy 依然执行对 go.mod 的清理 自动更新 go.mod &ndash;&gt; -mod=readonly 选项避免自动更新 go.mod &ndash;&gt; 取消自动更新 go.mod    后续，Go 团队会让 go get 将专注于分析依赖，并获取 go 包/module，更新 go.mod/go.sum，而不再具有安装可执行 Go 程序的行为能力， 这样 go get 和 go install 就会各司其职，Gopher 们也不会再被两者的重叠行为所迷惑了。 现在如果不想 go get 编译安装，可使用 go get -d">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="版本" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -16,7 +15,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.53c86fb7c708005c13060ac313f97752e178b813eca9f7442b7f21be6851a972.js" integrity="sha256-U8hvt8cIAFwTBgrDE/l3UuF4uBPsqfdEK38hvmhRqXI="></script>
+<script defer src="/study-go/en.search.min.07ade4b5a458f51cc07e93708b0f73e637b0e5f2e63df08e5aa7f92330f57a09.js" integrity="sha256-B63ktaRY9RzAfpNwiw9z5jew5fLmPfCOWqf5IzD1egk="></script>
 <link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-go/docs/basic/others/version/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -1417,6 +1416,11 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#版本控制">版本控制</a></li>
     <li><a href="#版本历史httpsgolangorgdocdevelreleasehtml"><a href="https://golang.org/doc/devel/release.html">版本历史</a></a>
       <ul>
+        <li><a href="#116httpsgolangorgdocgo116-2021-02-16"><a href="https://golang.org/doc/go1.16">1.16</a> (2021-02-16)</a>
+          <ul>
+            <li><a href="#1161-2021-03-10">1.16.1 (2021-03-10)</a></li>
+          </ul>
+        </li>
         <li><a href="#115httpsgolangorgdocgo115-2020-08-11"><a href="https://golang.org/doc/go1.15">1.15</a> (2020-08-11)</a>
           <ul>
             <li><a href="#1151-2020-09-01">1.15.1 (2020-09-01)</a></li>
@@ -1476,6 +1480,27 @@ https://github.com/alex-shpak/hugo-book
   <a href="https://golang.org/doc/devel/release.html">版本历史</a>
   <a class="anchor" href="#%e7%89%88%e6%9c%ac%e5%8e%86%e5%8f%b2httpsgolangorgdocdevelreleasehtml">#</a>
 </h2>
+<h3 id="116httpsgolangorgdocgo116-2021-02-16">
+  <a href="https://golang.org/doc/go1.16">1.16</a> (2021-02-16)
+  <a class="anchor" href="#116httpsgolangorgdocgo116-2021-02-16">#</a>
+</h3>
+<ul>
+<li><code>go build</code> / <code>go run</code>命令不再自动更新 go.mod 和 go.sum 了
+<ul>
+<li>需要使用 <code>go get</code></li>
+<li><code>go mod tidy</code> 依然执行对 go.mod 的清理</li>
+<li><code>自动更新 go.mod</code> &ndash;&gt; <code>-mod=readonly 选项避免自动更新 go.mod</code> &ndash;&gt; <code>取消自动更新 go.mod</code></li>
+</ul>
+</li>
+</ul>
+<p>后续，Go 团队会让 go get 将专注于分析依赖，并获取 go 包/module，更新 go.mod/go.sum，而不再具有安装可执行 Go 程序的行为能力，
+这样 go get 和 go install 就会各司其职，Gopher 们也不会再被两者的重叠行为所迷惑了。
+现在如果不想 go get 编译安装，可使用 <code>go get -d</code></p>
+<h4 id="1161-2021-03-10">
+  1.16.1 (2021-03-10)
+  <a class="anchor" href="#1161-2021-03-10">#</a>
+</h4>
+<hr>
 <h3 id="115httpsgolangorgdocgo115-2020-08-11">
   <a href="https://golang.org/doc/go1.15">1.15</a> (2020-08-11)
   <a class="anchor" href="#115httpsgolangorgdocgo115-2020-08-11">#</a>
@@ -1554,7 +1579,7 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>标准库
 <ul>
-<li>context.Context</li>
+<li><a href="https://golang.org/doc/go1.7#context">context.Context</a></li>
 </ul>
 </li>
 </ul>
@@ -1670,6 +1695,11 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#版本控制">版本控制</a></li>
     <li><a href="#版本历史httpsgolangorgdocdevelreleasehtml"><a href="https://golang.org/doc/devel/release.html">版本历史</a></a>
       <ul>
+        <li><a href="#116httpsgolangorgdocgo116-2021-02-16"><a href="https://golang.org/doc/go1.16">1.16</a> (2021-02-16)</a>
+          <ul>
+            <li><a href="#1161-2021-03-10">1.16.1 (2021-03-10)</a></li>
+          </ul>
+        </li>
         <li><a href="#115httpsgolangorgdocgo115-2020-08-11"><a href="https://golang.org/doc/go1.15">1.15</a> (2020-08-11)</a>
           <ul>
             <li><a href="#1151-2020-09-01">1.15.1 (2020-09-01)</a></li>
