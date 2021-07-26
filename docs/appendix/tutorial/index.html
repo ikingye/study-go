@@ -5,19 +5,17 @@
   <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 教程 #  基础 #  Go by Example #  mmcgrana/gobyexample 中文翻译： gobyexample-cn/gobyexample https://gobyexample-cn.github.io/
+<meta name="description" content="Go 教程 #  基础 #  50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs #  Go 新手可能会踩的 50 个坑
+Go by Example #  mmcgrana/gobyexample 中文翻译： gobyexample-cn/gobyexample https://gobyexample-cn.github.io/
 build web application with golang #  astaxie/build-web-application-with-golang A golang ebook intro how to build a web with golang
-7days-golang #  geektutu/7days-golang 7 天用 Go 动手写 / 从零实现系列
-Go 语言 101 #  go101/go101 An online book focusing on Go syntax/semantics and runtime related things
-https://go101.org
-Go 语言 101 #  golang101/golang101 Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书">
+Go 语言高性能编程 #  geektutu/high-performance-go 7days-golang #  geektutu/7days-golang 7 天用 Go 从零实现系列
+Go 语言 101 #  go101/go101 An online book focusing on Go syntax/semantics and runtime related things">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="4.1 教程" />
-<meta property="og:description" content="Go 教程 #  基础 #  Go by Example #  mmcgrana/gobyexample 中文翻译： gobyexample-cn/gobyexample https://gobyexample-cn.github.io/
+<meta property="og:description" content="Go 教程 #  基础 #  50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs #  Go 新手可能会踩的 50 个坑
+Go by Example #  mmcgrana/gobyexample 中文翻译： gobyexample-cn/gobyexample https://gobyexample-cn.github.io/
 build web application with golang #  astaxie/build-web-application-with-golang A golang ebook intro how to build a web with golang
-7days-golang #  geektutu/7days-golang 7 天用 Go 动手写 / 从零实现系列
-Go 语言 101 #  go101/go101 An online book focusing on Go syntax/semantics and runtime related things
-https://go101.org
-Go 语言 101 #  golang101/golang101 Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书" />
+Go 语言高性能编程 #  geektutu/high-performance-go 7days-golang #  geektutu/7days-golang 7 天用 Go 从零实现系列
+Go 语言 101 #  go101/go101 An online book focusing on Go syntax/semantics and runtime related things" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/appendix/tutorial/" /><meta property="article:section" content="docs" />
 
@@ -27,7 +25,7 @@ Go 语言 101 #  golang101/golang101 Go 语言 101 : 一本侧重于 Go 语言�
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.07ade4b5a458f51cc07e93708b0f73e637b0e5f2e63df08e5aa7f92330f57a09.js" integrity="sha256-B63ktaRY9RzAfpNwiw9z5jew5fLmPfCOWqf5IzD1egk="></script>
+<script defer src="/study-go/en.search.min.1f4198f47575661d659b9f46afe9b3858a3bb02800c161dce920059658743154.js" integrity="sha256-H0GY9HV1Zh1lm59Gr&#43;mzhYo7sCgAwWHc6SAFllh0MVQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1272,58 +1270,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1291561338a2c243cca077171f0fe528" class="toggle"  />
-    <label for="section-1291561338a2c243cca077171f0fe528" class="flex justify-between">
+    <input type="checkbox" id="section-1141a4bba37d01f14e63bf36d9c7071d" class="toggle"  />
+    <label for="section-1141a4bba37d01f14e63bf36d9c7071d" class="flex justify-between">
       <a href="https://ikingye.github.io/study-go/docs/appendix/interview/" class="">4.2 面试题</a>
     </label>
   
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-7acebfc4b461748521469ab23214109e" class="toggle"  />
-    <label for="section-7acebfc4b461748521469ab23214109e" class="flex justify-between">
-      <a href="https://ikingye.github.io/study-go/docs/appendix/interview/basic/" class="">基础</a>
-    </label>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="https://ikingye.github.io/study-go/docs/appendix/interview/advanced/" class="">进阶</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="https://ikingye.github.io/study-go/docs/appendix/interview/expert/" class="">高阶</a>
-  
-
-        </li>
-      
-    
-  </ul>
 
         </li>
       
@@ -1425,8 +1376,10 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#基础">基础</a>
       <ul>
+        <li><a href="#50-shades-of-go-traps-gotchas-and-common-mistakes-for-new-golang-devshttpdevscloudimmunitycomgotchas-and-common-mistakes-in-go-golang"><a href="http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/">50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs</a></a></li>
         <li><a href="#go-by-examplehttpsgobyexamplecom"><a href="https://gobyexample.com/">Go by Example</a></a></li>
         <li><a href="#build-web-application-with-golang">build web application with golang</a></li>
+        <li><a href="#go-语言高性能编程">Go 语言高性能编程</a></li>
         <li><a href="#7days-golang">7days-golang</a></li>
         <li><a href="#go-语言-101">Go 语言 101</a>
           <ul>
@@ -1474,6 +1427,11 @@ https://github.com/alex-shpak/hugo-book
   基础
   <a class="anchor" href="#%e5%9f%ba%e7%a1%80">#</a>
 </h2>
+<h3 id="50-shades-of-go-traps-gotchas-and-common-mistakes-for-new-golang-devshttpdevscloudimmunitycomgotchas-and-common-mistakes-in-go-golang">
+  <a href="http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/">50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs</a>
+  <a class="anchor" href="#50-shades-of-go-traps-gotchas-and-common-mistakes-for-new-golang-devshttpdevscloudimmunitycomgotchas-and-common-mistakes-in-go-golang">#</a>
+</h3>
+<p><a href="https://yinzige.com/2018/03/07/50-shades-of-golang-traps-gotchas-mistakes/">Go 新手可能会踩的 50 个坑</a></p>
 <h3 id="go-by-examplehttpsgobyexamplecom">
   <a href="https://gobyexample.com/">Go by Example</a>
   <a class="anchor" href="#go-by-examplehttpsgobyexamplecom">#</a>
@@ -1488,12 +1446,17 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <p><a href="https://github.com/astaxie/build-web-application-with-golang">astaxie/build-web-application-with-golang</a> <img src="https://img.shields.io/github/stars/astaxie/build-web-application-with-golang.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/astaxie/build-web-application-with-golang.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/astaxie/build-web-application-with-golang.svg?sort=semver" alt="Last Tag" /> <img src="https://img.shields.io/github/last-commit/astaxie/build-web-application-with-golang.svg" alt="Last commit" /></p>
 <p>A golang ebook intro how to build a web with golang</p>
+<h3 id="go-语言高性能编程">
+  Go 语言高性能编程
+  <a class="anchor" href="#go-%e8%af%ad%e8%a8%80%e9%ab%98%e6%80%a7%e8%83%bd%e7%bc%96%e7%a8%8b">#</a>
+</h3>
+<p><a href="https://github.com/geektutu/high-performance-go">geektutu/high-performance-go</a> <img src="https://img.shields.io/github/stars/geektutu/high-performance-go.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/geektutu/high-performance-go.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/geektutu/high-performance-go.svg?sort=semver" alt="Last Tag" /> <img src="https://img.shields.io/github/last-commit/geektutu/high-performance-go.svg" alt="Last commit" /></p>
 <h3 id="7days-golang">
   7days-golang
   <a class="anchor" href="#7days-golang">#</a>
 </h3>
 <p><a href="https://github.com/geektutu/7days-golang">geektutu/7days-golang</a> <img src="https://img.shields.io/github/stars/geektutu/7days-golang.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/geektutu/7days-golang.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/geektutu/7days-golang.svg?sort=semver" alt="Last Tag" /> <img src="https://img.shields.io/github/last-commit/geektutu/7days-golang.svg" alt="Last commit" /></p>
-<p>7 天用 Go 动手写 / 从零实现系列</p>
+<p>7 天用 Go 从零实现系列</p>
 <h3 id="go-语言-101">
   Go 语言 101
   <a class="anchor" href="#go-%e8%af%ad%e8%a8%80-101">#</a>
@@ -1672,8 +1635,10 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#基础">基础</a>
       <ul>
+        <li><a href="#50-shades-of-go-traps-gotchas-and-common-mistakes-for-new-golang-devshttpdevscloudimmunitycomgotchas-and-common-mistakes-in-go-golang"><a href="http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/">50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs</a></a></li>
         <li><a href="#go-by-examplehttpsgobyexamplecom"><a href="https://gobyexample.com/">Go by Example</a></a></li>
         <li><a href="#build-web-application-with-golang">build web application with golang</a></li>
+        <li><a href="#go-语言高性能编程">Go 语言高性能编程</a></li>
         <li><a href="#7days-golang">7days-golang</a></li>
         <li><a href="#go-语言-101">Go 语言 101</a>
           <ul>

@@ -38,44 +38,16 @@ Go 1.0 之后，go tool 利用 GOROOT 查找 Go 编译器（保存在 $GOROOT/pk
     </item>
     
     <item>
-      <title>基础</title>
-      <link>https://ikingye.github.io/study-go/docs/appendix/interview/basic/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/appendix/interview/basic/</guid>
-      <description>基础面试题 #  </description>
-    </item>
-    
-    <item>
-      <title>进阶</title>
-      <link>https://ikingye.github.io/study-go/docs/appendix/interview/advanced/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/appendix/interview/advanced/</guid>
-      <description>进阶面试题 #  </description>
-    </item>
-    
-    <item>
-      <title>高阶</title>
-      <link>https://ikingye.github.io/study-go/docs/appendix/interview/expert/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ikingye.github.io/study-go/docs/appendix/interview/expert/</guid>
-      <description>高阶面试题 #  </description>
-    </item>
-    
-    <item>
       <title>4.1 教程</title>
       <link>https://ikingye.github.io/study-go/docs/appendix/tutorial/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/appendix/tutorial/</guid>
-      <description>Go 教程 #  基础 #  Go by Example #  mmcgrana/gobyexample 中文翻译： gobyexample-cn/gobyexample https://gobyexample-cn.github.io/
+      <description>Go 教程 #  基础 #  50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs #  Go 新手可能会踩的 50 个坑
+Go by Example #  mmcgrana/gobyexample 中文翻译： gobyexample-cn/gobyexample https://gobyexample-cn.github.io/
 build web application with golang #  astaxie/build-web-application-with-golang A golang ebook intro how to build a web with golang
-7days-golang #  geektutu/7days-golang 7 天用 Go 动手写 / 从零实现系列
-Go 语言 101 #  go101/go101 An online book focusing on Go syntax/semantics and runtime related things
-https://go101.org
-Go 语言 101 #  golang101/golang101 Go 语言 101 : 一本侧重于 Go 语言语法和语义的编程解释和指导书</description>
+Go 语言高性能编程 #  geektutu/high-performance-go 7days-golang #  geektutu/7days-golang 7 天用 Go 从零实现系列
+Go 语言 101 #  go101/go101 An online book focusing on Go syntax/semantics and runtime related things</description>
     </item>
     
     <item>
@@ -220,6 +192,16 @@ package 级别的变量 #  初始化顺序与初始化依赖有关</description>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/std/format/</guid>
       <description>格式化输出 #  // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&amp;#34;%v\n&amp;#34;, p) // 如果值是一个结构体，`%+v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&amp;#34;%+v\n&amp;#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&amp;#34;%#v\n&amp;#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&amp;#34;%T\n&amp;#34;, p) // 格式化布尔值很简单。 fmt.Printf(&amp;#34;%t\n&amp;#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&amp;#34;%d\n&amp;#34;, 123) // +123 (输出符号) fmt.Printf(&amp;#34;%+d\n&amp;#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&amp;#34;%b\n&amp;#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&amp;#34;%c\n&amp;#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&amp;#34;%x\n&amp;#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&amp;#34;%f\n&amp;#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt.</description>
+    </item>
+    
+    <item>
+      <title>4.2 面试题</title>
+      <link>https://ikingye.github.io/study-go/docs/appendix/interview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ikingye.github.io/study-go/docs/appendix/interview/</guid>
+      <description>Go 语言面试题 #  基础题 #   Using reference to loop iterator variable Using goroutines on loop iterator variables  参考：go 易错点
+进阶题 #  综合 #   shomali11/go-interview  lifei6671/interview-go  你遇到过哪些高质量的 Go 语言面试题？  </description>
     </item>
     
     <item>
