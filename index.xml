@@ -79,10 +79,11 @@ var rootCmd = &amp;amp;cobra.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ikingye.github.io/study-go/docs/basic/ref/keyword/defer/</guid>
-      <description>defer #  用于确保程序在执行完成后，会调用某个函数，一般是执行清理工作。
-Defer 的用途跟其他语言的 ensure 或 finally 类似。
-当 defer 释放锁遇到尾递归 #  var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 { return i } i++ return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。
-根因是 golang 处理 defer 和 return 的顺序为， 计算 return 语句的返回值、赋值给匿名 / 有名返回值 -&amp;gt;defer-&amp;gt;RET 退出函数</description>
+      <description>defer #  Go 处理 defer 和 return 的顺序为：
+ 计算 return 语句的返回值 赋值给匿名 / 有名返回值 执行 defer return 退出函数  Defer 的用途跟其他语言的 ensure 或 finally 类似。
+当 defer 释放锁遇到尾递归，会产生死锁 #   如果一个函数中所有递归形式的调用都出现在函数的末尾，我们称这个递归函数是尾递归的。
+ 计算 return 语句的值，赋值给匿名/有名返回值 -&amp;gt; defer -&amp;gt; return 退出函数
+var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 { return i } i++ return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。</description>
     </item>
     
     <item>

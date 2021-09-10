@@ -5,15 +5,17 @@
   <meta name="generator" content="Hugo 0.87.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="defer #  用于确保程序在执行完成后，会调用某个函数，一般是执行清理工作。
-Defer 的用途跟其他语言的 ensure 或 finally 类似。
-当 defer 释放锁遇到尾递归 #  var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 { return i } i&#43;&#43; return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。
-根因是 golang 处理 defer 和 return 的顺序为， 计算 return 语句的返回值、赋值给匿名 / 有名返回值 -&gt;defer-&gt;RET 退出函数">
+<meta name="description" content="defer #  Go 处理 defer 和 return 的顺序为：
+ 计算 return 语句的返回值 赋值给匿名 / 有名返回值 执行 defer return 退出函数  Defer 的用途跟其他语言的 ensure 或 finally 类似。
+当 defer 释放锁遇到尾递归，会产生死锁 #   如果一个函数中所有递归形式的调用都出现在函数的末尾，我们称这个递归函数是尾递归的。
+ 计算 return 语句的值，赋值给匿名/有名返回值 -&gt; defer -&gt; return 退出函数
+var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 { return i } i&#43;&#43; return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="defer" />
-<meta property="og:description" content="defer #  用于确保程序在执行完成后，会调用某个函数，一般是执行清理工作。
-Defer 的用途跟其他语言的 ensure 或 finally 类似。
-当 defer 释放锁遇到尾递归 #  var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 { return i } i&#43;&#43; return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。
-根因是 golang 处理 defer 和 return 的顺序为， 计算 return 语句的返回值、赋值给匿名 / 有名返回值 -&gt;defer-&gt;RET 退出函数" />
+<meta property="og:description" content="defer #  Go 处理 defer 和 return 的顺序为：
+ 计算 return 语句的返回值 赋值给匿名 / 有名返回值 执行 defer return 退出函数  Defer 的用途跟其他语言的 ensure 或 finally 类似。
+当 defer 释放锁遇到尾递归，会产生死锁 #   如果一个函数中所有递归形式的调用都出现在函数的末尾，我们称这个递归函数是尾递归的。
+ 计算 return 语句的值，赋值给匿名/有名返回值 -&gt; defer -&gt; return 退出函数
+var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 { return i } i&#43;&#43; return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ikingye.github.io/study-go/docs/basic/ref/keyword/defer/" /><meta property="article:section" content="docs" />
 
@@ -23,7 +25,7 @@ Defer 的用途跟其他语言的 ensure 或 finally 类似。
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f4550feea5b0987b614582559e488cc36430f1705a4cdd1437a8c5472cc560db.js" integrity="sha256-9FUP7qWwmHthRYJVnkiMw2Qw8XBaTN0UN6jFRyzFYNs="></script>
+<script defer src="/study-go/en.search.min.96a23504fd7306ac493c0807d320b02e72344e347b0860bb9aac1685a5d6a938.js" integrity="sha256-lqI1BP1zBqxJPAgH0yCwLnI0TjR7CGC7mqwWhaXWqTg="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1372,7 +1374,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#当-defer-释放锁遇到尾递归">当 defer 释放锁遇到尾递归</a></li>
+    <li><a href="#当-defer-释放锁遇到尾递归会产生死锁">当 defer 释放锁遇到<strong>尾递归</strong>，会产生死锁</a></li>
+    <li><a href="#返回值求值">返回值求值</a></li>
   </ul>
 </nav>
 
@@ -1389,12 +1392,22 @@ https://github.com/alex-shpak/hugo-book
   defer
   <a class="anchor" href="#defer">#</a>
 </h1>
-<p>用于确保程序在执行完成后，会调用某个函数，一般是执行清理工作。</p>
+<p>Go 处理 defer 和 return 的顺序为：</p>
+<ol>
+<li>计算 return 语句的返回值</li>
+<li>赋值给匿名 / 有名返回值</li>
+<li>执行 defer</li>
+<li>return 退出函数</li>
+</ol>
 <p>Defer 的用途跟其他语言的 <code>ensure</code> 或 <code>finally</code> 类似。</p>
-<h2 id="当-defer-释放锁遇到尾递归">
-  当 defer 释放锁遇到尾递归
-  <a class="anchor" href="#%e5%bd%93-defer-%e9%87%8a%e6%94%be%e9%94%81%e9%81%87%e5%88%b0%e5%b0%be%e9%80%92%e5%bd%92">#</a>
+<h2 id="当-defer-释放锁遇到尾递归会产生死锁">
+  当 defer 释放锁遇到<strong>尾递归</strong>，会产生死锁
+  <a class="anchor" href="#%e5%bd%93-defer-%e9%87%8a%e6%94%be%e9%94%81%e9%81%87%e5%88%b0%e5%b0%be%e9%80%92%e5%bd%92%e4%bc%9a%e4%ba%a7%e7%94%9f%e6%ad%bb%e9%94%81">#</a>
 </h2>
+<blockquote>
+<p>如果一个函数中所有递归形式的调用都出现在函数的末尾，我们称这个递归函数是<strong>尾递归</strong>的。</p>
+</blockquote>
+<p>计算 return 语句的值，赋值给匿名/有名返回值 -&gt; defer -&gt; return 退出函数</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mut</span> = <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>{}
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">tailRec</span>(<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
     <span style="color:#a6e22e">mut</span>.<span style="color:#a6e22e">Lock</span>()          <span style="color:#75715e">// 加锁
@@ -1407,9 +1420,41 @@ https://github.com/alex-shpak/hugo-book
 </span><span style="color:#75715e"></span>}
 </code></pre></div><p>以上代码执行会发生<strong>死锁</strong>，原因是 return 语句后的命令先执行，赋值给<em>匿名返回值</em>后，再调用 defer，
 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。</p>
-<p>根因是 golang 处理 defer 和 return 的顺序为，
-计算 return 语句的返回值、赋值给匿名 / 有名返回值 -&gt;defer-&gt;RET 退出函数</p>
-</article>
+<p>参考：</p>
+<ul>
+<li><a href="https://github.com/golang/go/issues/14939">defer 有性能消耗</a></li>
+</ul>
+<h2 id="返回值求值">
+  返回值求值
+  <a class="anchor" href="#%e8%bf%94%e5%9b%9e%e5%80%bc%e6%b1%82%e5%80%bc">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 匿名返回值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test_unnamed</span>()(<span style="color:#66d9ef">int</span>) {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>
+    <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+        <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;defer a:&#34;</span>, <span style="color:#a6e22e">i</span>)
+    }()
+    <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+        <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;defer b :&#34;</span>, <span style="color:#a6e22e">i</span>)
+    }()
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">i</span> <span style="color:#75715e">// 0
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">// 具名返回值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test_named</span>()(<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>) {
+    <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+        <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;defer c:&#34;</span>, <span style="color:#a6e22e">i</span>)
+    }()
+    <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+        <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;defer d :&#34;</span>, <span style="color:#a6e22e">i</span>)
+    }()
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">i</span> <span style="color:#75715e">// 2
+</span><span style="color:#75715e"></span>}
+</code></pre></div></article>
  
       
 
@@ -1479,7 +1524,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#当-defer-释放锁遇到尾递归">当 defer 释放锁遇到尾递归</a></li>
+    <li><a href="#当-defer-释放锁遇到尾递归会产生死锁">当 defer 释放锁遇到<strong>尾递归</strong>，会产生死锁</a></li>
+    <li><a href="#返回值求值">返回值求值</a></li>
   </ul>
 </nav>
 
