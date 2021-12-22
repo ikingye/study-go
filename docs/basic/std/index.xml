@@ -2,63 +2,63 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>1.2 标准库 on Go 学习笔记</title>
-    <link>https://ikingye.github.io/study-go/docs/basic/std/</link>
+    <link>https://kingye.me/study-go/docs/basic/std/</link>
     <description>Recent content in 1.2 标准库 on Go 学习笔记</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://ikingye.github.io/study-go/docs/basic/std/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://kingye.me/study-go/docs/basic/std/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>sort</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/std/sort/</link>
+      <link>https://kingye.me/study-go/docs/basic/std/sort/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/std/sort/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/std/sort/</guid>
       <description>sort #  自定义排序 #  实现 Len、Less 和 Swap 方法
 // 有时候，我们可能想根据自然顺序以外的方式来对集合进行排序。 // 例如，假设我们要按字符串的长度而不是按字母顺序对它们进行排序。 // 这儿有一个在 Go 中自定义排序的示例。  package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sort&amp;#34; ) // 为了在 Go 中使用自定义函数进行排序，我们需要一个对应的类型。 // 我们在这里创建了一个 `byLength` 类型，它只是内建类型 `[]string` 的别名。 type byLength []string // 我们为该类型实现了 `sort.Interface` 接口的 `Len`、`Less` 和 `Swap` 方法， // 这样我们就可以使用 `sort` 包的通用 `Sort` 方法了， // `Len` 和 `Swap` 在各个类型中的实现都差不多， // `Less` 将控制实际的自定义排序逻辑。 // 在这个的例子中，我们想按字符串长度递增的顺序来排序， // 所以这里使用了 `len(s[i])` 和 `len(s[j])` 来实现 `Less`。 func (s byLength) Len() int { return len(s) } func (s byLength) Swap(i, j int) { s[i], s[j] = s[j], s[i] } func (s byLength) Less(i, j int) bool { return len(s[i]) &amp;lt; len(s[j]) } // 一切准备就绪后，我们就可以通过将切片 `fruits` 强转为 `byLength` 类型的切片， // 然后对该切片使用 `sort.</description>
     </item>
     
     <item>
       <title>context</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/std/context/</link>
+      <link>https://kingye.me/study-go/docs/basic/std/context/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/std/context/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/std/context/</guid>
       <description>context #  context.Context #   在 Goroutine 构成的树形结构中对信号进行同步以减少计算资源的浪费是 context.Context 的最大作用。 我们可能会创建多个 Goroutine 来处理一次请求，而 context.Context 的作用就是在不同 Goroutine 之间同步  请求特定数据 取消信号 处理请求的截止时间   多个 Goroutine 同时订阅 ctx.Done() 管道中的消息，一旦接收到取消信号就立刻停止当前正在执行的工作  context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：
  Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期； Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel； Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值；  如果 context.Context 被取消，会返回 Canceled 错误； 如果 context.Context 超时，会返回 DeadlineExceeded 错误；   Value — 从 context.</description>
     </item>
     
     <item>
       <title>格式化输出</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/std/format/</link>
+      <link>https://kingye.me/study-go/docs/basic/std/format/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/std/format/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/std/format/</guid>
       <description>格式化输出 #  // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&amp;#34;%v\n&amp;#34;, p) // 如果值是一个结构体，`%+v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&amp;#34;%+v\n&amp;#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&amp;#34;%#v\n&amp;#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&amp;#34;%T\n&amp;#34;, p) // 格式化布尔值很简单。 fmt.Printf(&amp;#34;%t\n&amp;#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&amp;#34;%d\n&amp;#34;, 123) // +123 (输出符号) fmt.Printf(&amp;#34;%+d\n&amp;#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&amp;#34;%b\n&amp;#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&amp;#34;%c\n&amp;#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&amp;#34;%x\n&amp;#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&amp;#34;%f\n&amp;#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt.</description>
     </item>
     
     <item>
       <title>io</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/std/io/</link>
+      <link>https://kingye.me/study-go/docs/basic/std/io/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/std/io/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/std/io/</guid>
       <description>io #   小数据量的拷贝，使用 ioutil.ReadAll 无伤大雅； 数据量较大时，ReadAll 就是性能炸弹了，最好使用 io.Copy  参考：
  golang 中的 ioutil.ReadAll vs io.Copy  </description>
     </item>
     
     <item>
       <title>net</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/std/net/</link>
+      <link>https://kingye.me/study-go/docs/basic/std/net/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/std/net/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/std/net/</guid>
       <description>net #  http #  cgi #   fcgi #   httputil #   pprof #    rpc #    url #  </description>
     </item>
     
     <item>
       <title>signal</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/std/signal/</link>
+      <link>https://kingye.me/study-go/docs/basic/std/signal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/std/signal/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/std/signal/</guid>
       <description>signal #  The signals SIGKILL and SIGSTOP may not be caught by a program, and therefore cannot be affected by this package.
 By default, a synchronous signal is converted into a run-time panic.
 A SIGHUP, SIGINT, or SIGTERM signal causes the program to exit.
@@ -68,28 +68,28 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
     
     <item>
       <title>sync</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/std/sync/</link>
+      <link>https://kingye.me/study-go/docs/basic/std/sync/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/std/sync/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/std/sync/</guid>
       <description>sync #   sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond  锁的类型 #  Mutex 互斥锁 #  type Mutex struct { state int32 sema uint32 // semaphore 信号量 }  sync.Mutex.Lock 和 sync.Mutex.Unlock  state #  # 8 位 **** **** ***** * * * waitersCount mutexStarving mutexWoken mutexLocked  mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态  Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时   waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个)   RWMutex #  type RWMutex struct { w Mutex writerSem uint32 readerSem uint32 readerCount int32 readerWait int32 }  写操作使用 sync.</description>
     </item>
     
     <item>
       <title>time</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/std/strings/</link>
+      <link>https://kingye.me/study-go/docs/basic/std/strings/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/std/strings/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/std/strings/</guid>
       <description>time #  格式化 #  // 1 2 3 4 5 6 const ANSIC = &amp;#34;Mon Jan _2 15:04:05 2006&amp;#34; time.Now().Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) </description>
     </item>
     
     <item>
       <title>time</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/std/time/</link>
+      <link>https://kingye.me/study-go/docs/basic/std/time/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/std/time/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/std/time/</guid>
       <description>time #  格式化 #  // 1 2 3 4 5 6 const ANSIC = &amp;#34;Mon Jan _2 15:04:05 2006&amp;#34; time.Now().Unix() time.Now().Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) </description>
     </item>
     

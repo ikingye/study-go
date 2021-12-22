@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>1.4 其他 on Go 学习笔记</title>
-    <link>https://ikingye.github.io/study-go/docs/basic/others/</link>
+    <link>https://kingye.me/study-go/docs/basic/others/</link>
     <description>Recent content in 1.4 其他 on Go 学习笔记</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://ikingye.github.io/study-go/docs/basic/others/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://kingye.me/study-go/docs/basic/others/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go 快速上手</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/quick/</link>
+      <link>https://kingye.me/study-go/docs/basic/others/quick/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/quick/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/others/quick/</guid>
       <description>Go 快速上手 #  Go 环境 #  GOROOT #  GOROOT: 指定安装 GO 的根目录
 Go 1.0 之后，go tool 利用 GOROOT 查找 Go 编译器（保存在 $GOROOT/pkg/tool/$GOOS_$GOARCH） 和标准库（在 $GOROOT/pkg/$GOOS_$GOARCH）
 可以将 GOROOT 理解为 Java 的 JAVA_HOME。
@@ -20,10 +20,10 @@ Go 1.0 之后，go tool 利用 GOROOT 查找 Go 编译器（保存在 $GOROOT/pk
     
     <item>
       <title>优劣</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/pros-and-cons/</link>
+      <link>https://kingye.me/study-go/docs/basic/others/pros-and-cons/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/pros-and-cons/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/others/pros-and-cons/</guid>
       <description>Go 语言优劣 #  Go 的优点 #  部署简单 #   直接编译成机器码 不依赖其他库 直接运行即可部署  静态类型语言 #  编译时可检测出隐藏的大多数问题
 语言层面实现并发（goroutine） #  强大的标准库 #   runtime 系统调度机制 高效的 GC（垃圾回收） 丰富的标准库  简单易学 #   25 个关键字 内嵌 C 语法支持（CGO） 面向对象 跨平台  背靠大厂（Google） #  性能好 #   Go 的缺点 #  无泛化类型 #  传言 Go 2.0 会加上
 无 Exception，都用 Error #  有争议
@@ -32,10 +32,10 @@ Go 1.0 之后，go tool 利用 GOROOT 查找 Go 编译器（保存在 $GOROOT/pk
     
     <item>
       <title>Go build</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/gobuild/</link>
+      <link>https://kingye.me/study-go/docs/basic/others/gobuild/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/gobuild/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/others/gobuild/</guid>
       <description>Go build #  -tag #  // +build dev 前后须有一个空行隔开
  release_config.go 文件 go build -tags dev -o dev_version  // +build dev  package main var version = &amp;#34;DEV&amp;#34;  dev_config.go 文件 go build -tags dev -o dev_version  // +build release  package main const version = &amp;#34;RELEASE&amp;#34;  Go 热编译工具 #  caixw/gobuild #  gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。
 gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示 gobuild 和 Go 程序的版本信息； -r 是否搜索子目录，默认为 true； -i 是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示； -o 执行编译后的可执行文件名； -x 传递给编译程序的参数； -ext 需要监视的扩展名，默认值为&amp;#34;go&amp;#34;，区分大小写，会去掉每个扩展名的首尾空格。 若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件； -main 指定需要编译的文件，默认为&amp;#34;&amp;#34;。 dependents: 指定其它依赖的目录，只能出现在命令的尾部。 penggy/gobuild #  EasyDarwin 依赖</description>
@@ -43,10 +43,10 @@ gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示
     
     <item>
       <title>Go Modules</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/gomod/</link>
+      <link>https://kingye.me/study-go/docs/basic/others/gomod/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/gomod/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/others/gomod/</guid>
       <description>Go Modules #   Using Go Modules  import #  import &amp;#34;目录&amp;#34; // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
 它的 go.mod 第一行是 module k8s.io/klog/v2
 根目录有个文件 klog.go，第一行 package klog
@@ -61,10 +61,10 @@ klog 库自身升级，只需要在它的 go.mod 里第一行改成 module k8s.i
     
     <item>
       <title>gopls</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/gopls/</link>
+      <link>https://kingye.me/study-go/docs/basic/others/gopls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/gopls/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/others/gopls/</guid>
       <description>gopls #  gopls (pronounced: &amp;ldquo;go please&amp;rdquo;) is the official language server for the Go language.
 Go 扩展默认是使用大量的 Go 工具来提供各种功能的， 每个工具提供某个方面的能力，比如代码提示是依靠 gocode 的.
 不过微软在开发 VS Code 过程中，定义一种协议，语言服务器协议， Language Server Protocol.
@@ -74,10 +74,10 @@ gopls 就是官方的语言服务器，当前处于 alpha 状态.</description>
     
     <item>
       <title>包管理</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/pm/</link>
+      <link>https://kingye.me/study-go/docs/basic/others/pm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/pm/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/others/pm/</guid>
       <description>包管理 #  Go 包管理概述 #  Go 1.4 及之前 #   必须设置 GOPATH 环境变量，且源代码必须存放在 GOPATH 下 拉取外部依赖包时，总是拉取最新的版本，无法指定需要的版本  设置 GOPATH 环境变量有两个原因：
  它规定了 go get 命令下载的依赖包的存储位置（$GOPATH/src） 通过设置 GOPATH，可以方便 Golang 计算出 import 的路径  Go 1.5 至 Go 1.10 #  每个项目的根目录下可以有一个 vendor 目录，里面存放了该项目的依赖的包
 Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 export GO111MODULE=on，使用 Go Modules  GO111MODULE 为 off 时：
@@ -86,28 +86,28 @@ Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 expo
     
     <item>
       <title>编译</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/compile/</link>
+      <link>https://kingye.me/study-go/docs/basic/others/compile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/compile/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/others/compile/</guid>
       <description>编译 #  Makefile #  Go Makefile 样例 #  include .env PROJECTNAME=$(shell basename &amp;#34;$(PWD)&amp;#34;) # Go related variables. GOBASE=$(shell pwd) GOPATH=&amp;#34;$(GOBASE)/vendor:$(GOBASE)&amp;#34; GOBIN=$(GOBASE)/bin GOFILES=$(wildcard *.go) # Redirect error output to a file, so we can show it in development mode. STDERR=/tmp/.$(PROJECTNAME)-stderr.txt # PID file will keep the process id of the server PID=/tmp/.$(PROJECTNAME).pid # Make is verbose in Linux. Make it silent. MAKEFLAGS += --silent ## install: Install missing dependencies.</description>
     </item>
     
     <item>
       <title>历史</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/history/</link>
+      <link>https://kingye.me/study-go/docs/basic/others/history/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/history/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/others/history/</guid>
       <description>Go 历史 #  </description>
     </item>
     
     <item>
       <title>Go 插件系统</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/plugin/</link>
+      <link>https://kingye.me/study-go/docs/basic/others/plugin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/plugin/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/others/plugin/</guid>
       <description>Go 插件系统 #  Go 1.8 版本开始提供了一个创建共享库的新工具，称为 Plugins.
 Go 插件是使用 -buildmode=plugin 标记编译的一个包，用于生成一个共享对象（.so）库文件。 Go 包中的导出的函数和变量被公开为 ELF 符号，可以使用 plugin 包在运行时查找并绑定 ELF 符号。
 Go 编译器能够使用 build flag -buildmode=c-shared 创建 C 风格的动态共享库。
@@ -116,10 +116,10 @@ Go 编译器能够使用 build flag -buildmode=c-shared 创建 C 风格的动态
     
     <item>
       <title>goroutine</title>
-      <link>https://ikingye.github.io/study-go/docs/basic/others/goroutine/</link>
+      <link>https://kingye.me/study-go/docs/basic/others/goroutine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/basic/others/goroutine/</guid>
+      <guid>https://kingye.me/study-go/docs/basic/others/goroutine/</guid>
       <description>goroutine #  golang 并发模型 #  goroutine 记得 return 或者中断，不然容易造成 goroutine 占用大量 CPU #   Goroutine 如何调度？ #  每个线程会都占用 1MB 以上的内存空间，在对线程进行切换时不止会消耗较多的内存，恢复寄存器中的内容还需要向操作系统申请或者销毁对应的资源， 每一次线程上下文的切换都需要消耗约为 1us， 但是 Go 调度器对 Goroutine 的上下文切换约为 0.2us，减少了 80% 的额外开销。
 Go 语言的调度器通过使用与 CPU 数量相等的线程减少线程频繁切换的内存开销， 同时在每一个线程上执行额外开销更低的 Goroutine 来降低操作系统和硬件的负载。
  一个 Goroutine 既要包含要执行的代码， 又要包含用于执行该代码的栈和 PC、SP 指针。

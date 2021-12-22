@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>第四部分 附录 on Go 学习笔记</title>
-    <link>https://ikingye.github.io/study-go/docs/appendix/</link>
+    <link>https://kingye.me/study-go/docs/appendix/</link>
     <description>Recent content in 第四部分 附录 on Go 学习笔记</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://ikingye.github.io/study-go/docs/appendix/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://kingye.me/study-go/docs/appendix/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>4.1 教程</title>
-      <link>https://ikingye.github.io/study-go/docs/appendix/tutorial/</link>
+      <link>https://kingye.me/study-go/docs/appendix/tutorial/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/appendix/tutorial/</guid>
+      <guid>https://kingye.me/study-go/docs/appendix/tutorial/</guid>
       <description>Go 教程 #  基础 #  50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs #  Go 新手可能会踩的 50 个坑
 Go by Example #  mmcgrana/gobyexample 中文翻译： gobyexample-cn/gobyexample https://gobyexample-cn.github.io/
 build web application with golang #  astaxie/build-web-application-with-golang A golang ebook intro how to build a web with golang
@@ -20,30 +20,30 @@ Go 语言 101 #  go101/go101 An online book focusing on Go syntax/semantics and 
     
     <item>
       <title>4.2 面试题</title>
-      <link>https://ikingye.github.io/study-go/docs/appendix/interview/</link>
+      <link>https://kingye.me/study-go/docs/appendix/interview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/appendix/interview/</guid>
+      <guid>https://kingye.me/study-go/docs/appendix/interview/</guid>
       <description>Go 语言面试题 #  基础题 #   Using reference to loop iterator variable Using goroutines on loop iterator variables  参考：go 易错点
 进阶题 #  综合 #   shomali11/go-interview  lifei6671/interview-go  你遇到过哪些高质量的 Go 语言面试题？  </description>
     </item>
     
     <item>
       <title>4.3 关注项目</title>
-      <link>https://ikingye.github.io/study-go/docs/appendix/attention/</link>
+      <link>https://kingye.me/study-go/docs/appendix/attention/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/appendix/attention/</guid>
+      <guid>https://kingye.me/study-go/docs/appendix/attention/</guid>
       <description>关注项目 #  golang/go #  kubernetes/kubernetes #  moby/moby #  etcd-io/etcd #  Distributed reliable key-value store for the most critical data of a distributed system
  Web 框架 #  gin-gonic/gin #  Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.</description>
     </item>
     
     <item>
       <title>4.4 一些八卦</title>
-      <link>https://ikingye.github.io/study-go/docs/appendix/gossip/</link>
+      <link>https://kingye.me/study-go/docs/appendix/gossip/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ikingye.github.io/study-go/docs/appendix/gossip/</guid>
+      <guid>https://kingye.me/study-go/docs/appendix/gossip/</guid>
       <description>一些八卦 #  golang.org/pkg/ vs pkg.go.dev #   golang.org/pkg/ 等于 pkg.go.dev/std pkg.go.dev/std 有各种版本  godoc.org #  godoc.org 会跳转到 pkg.go.dev/?utm_source=godoc 再跳转到 pkg.go.dev</description>
     </item>
     
