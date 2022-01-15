@@ -15,7 +15,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.27dabfa611293f7bfe9e203a0a7d3ad8018322693a57ee2a7f7feb3067b57872.js" integrity="sha256-J9q/phEpP3v&#43;niA6Cn062AGDImk6V&#43;4qf3/rMGe1eHI="></script>
+<script defer src="/study-go/en.search.min.8d7a9d3eec920a48b5408cc77a6459fad73ae6608f2c292f209441392d05a250.js" integrity="sha256-jXqdPuySCki1QIzHemRZ&#43;tc65mCPLCkvIJRBOS0FolA="></script>
 <link rel="alternate" type="application/rss+xml" href="https://kingye.me/study-go/docs/basic/others/version/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -1512,7 +1512,15 @@ https://github.com/alex-shpak/hugo-book
   1.10 (2018-02-16)
   <a class="anchor" href="#110-2018-02-16">#</a>
 </h3>
-<p>不用手动设置 GOROOT 了。</p>
+<ul>
+<li>不用手动设置 GOROOT 了。</li>
+<li>引入包列表模式
+<ul>
+<li>包列表模式下，go test 为每个包生成一个测试二进制文件，并分别执行它</li>
+<li><code>go test package</code></li>
+</ul>
+</li>
+</ul>
 <p>参考：</p>
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/93776289">你再也不用设置 GOROOT 了</a></li>
