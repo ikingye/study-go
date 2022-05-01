@@ -2,16 +2,16 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="select #  Go 的 选择器（select） 让你可以同时等待多个通道操作。
 将协程、通道和选择器结合，是 Go 的一个强大特性。
-// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string) // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() { time.Sleep(1 * time.Second) c1 &lt;- &#34;one&#34; }() go func() { time.Sleep(2 * time.Second) c2 &lt;- &#34;two&#34; }() // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &lt; 2; i&#43;&#43; { select { case msg1 := &lt;-c1: fmt.Println(&#34;received&#34;, msg1) case msg2 := &lt;-c2: fmt.">
+// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string)  // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() {  time.Sleep(1 * time.Second)  c1 &lt;- &#34;one&#34; }() go func() {  time.Sleep(2 * time.Second)  c2 &lt;- &#34;two&#34; }()  // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &lt; 2; i&#43;&#43; {  select {  case msg1 := &lt;-c1:  fmt.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="select" />
 <meta property="og:description" content="select #  Go 的 选择器（select） 让你可以同时等待多个通道操作。
 将协程、通道和选择器结合，是 Go 的一个强大特性。
-// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string) // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() { time.Sleep(1 * time.Second) c1 &lt;- &#34;one&#34; }() go func() { time.Sleep(2 * time.Second) c2 &lt;- &#34;two&#34; }() // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &lt; 2; i&#43;&#43; { select { case msg1 := &lt;-c1: fmt.Println(&#34;received&#34;, msg1) case msg2 := &lt;-c2: fmt." />
+// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string)  // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() {  time.Sleep(1 * time.Second)  c1 &lt;- &#34;one&#34; }() go func() {  time.Sleep(2 * time.Second)  c2 &lt;- &#34;two&#34; }()  // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &lt; 2; i&#43;&#43; {  select {  case msg1 := &lt;-c1:  fmt." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/basic/ref/keyword/select/" /><meta property="article:section" content="docs" />
 
@@ -21,7 +21,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1326,7 +1326,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1381,32 +1381,32 @@ https://github.com/alex-shpak/hugo-book
 </h1>
 <p>Go 的 <strong>选择器（select）</strong> 让你可以同时等待多个通道操作。</p>
 <p>将协程、通道和选择器结合，是 Go 的一个强大特性。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 在这个例子中，我们将从两个通道中选择。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">c1</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>)
-<span style="color:#a6e22e">c2</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>)
-
-<span style="color:#75715e">// 各个通道将在一定时间后接收一个值，
-</span><span style="color:#75715e">// 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
-    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
-    <span style="color:#a6e22e">c1</span> <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;one&#34;</span>
-}()
-<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
-    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
-    <span style="color:#a6e22e">c2</span> <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;two&#34;</span>
-}()
-
-<span style="color:#75715e">// 我们使用 `select` 关键字来同时等待这两个值，
-</span><span style="color:#75715e">// 并打印各自接收到的值。
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">2</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-    <span style="color:#66d9ef">select</span> {
-    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">msg1</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c1</span>:
-        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;received&#34;</span>, <span style="color:#a6e22e">msg1</span>)
-    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">msg2</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c2</span>:
-        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;received&#34;</span>, <span style="color:#a6e22e">msg2</span>)
-    }
-}
-</code></pre></div><h2 id="随机选则">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// 在这个例子中，我们将从两个通道中选择。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">c1</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">c2</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 各个通道将在一定时间后接收一个值，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">c1</span> <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;one&#34;</span>
+</span></span><span style="display:flex;"><span>}()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">c2</span> <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;two&#34;</span>
+</span></span><span style="display:flex;"><span>}()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 我们使用 `select` 关键字来同时等待这两个值，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 并打印各自接收到的值。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">2</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">select</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">msg1</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;received&#34;</span>, <span style="color:#a6e22e">msg1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">msg2</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c2</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;received&#34;</span>, <span style="color:#a6e22e">msg2</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="随机选则">
   随机选则
   <a class="anchor" href="#%e9%9a%8f%e6%9c%ba%e9%80%89%e5%88%99">#</a>
 </h2>
@@ -1419,18 +1419,18 @@ https://github.com/alex-shpak/hugo-book
   default 为空
   <a class="anchor" href="#default-%e4%b8%ba%e7%a9%ba">#</a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sendTime</span>(<span style="color:#a6e22e">c</span> <span style="color:#66d9ef">interface</span>{}, <span style="color:#a6e22e">seq</span> <span style="color:#66d9ef">uintptr</span>) {
-	<span style="color:#75715e">// Non-blocking send of time on c.
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// Used in NewTimer, it cannot block anyway (buffer).
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// Used in NewTicker, dropping sends on the floor is
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// the desired behavior when the reader gets behind,
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// because the sends are periodic.
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">select</span> {
-	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">c</span>.(<span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">Time</span>) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Now</span>():
-	<span style="color:#66d9ef">default</span>:
-	}
-}
-</code></pre></div></article>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sendTime</span>(<span style="color:#a6e22e">c</span> <span style="color:#66d9ef">interface</span>{}, <span style="color:#a6e22e">seq</span> <span style="color:#66d9ef">uintptr</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Non-blocking send of time on c.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// Used in NewTimer, it cannot block anyway (buffer).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// Used in NewTicker, dropping sends on the floor is
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// the desired behavior when the reader gets behind,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// because the sends are periodic.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">select</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">c</span>.(<span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">Time</span>) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Now</span>():
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">default</span>:
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></article>
  
       
 

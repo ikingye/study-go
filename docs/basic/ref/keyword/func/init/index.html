@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="init 函数 #   作用 #   初始化不能采用初始化表达式初始化的变量 程序运行前的注册 实现 sync.Once 功能   特点 #   init 函数先于 main 函数自动执行 init 不能被其他函数调用 init 函数没有输入参数、返回值 每个包可以有多个 init 函数  包的每个源文件也可以有多个 init 函数   同一个包的 init 执行顺序，golang 没有明确定义，编程时要注意程序不要依赖这个执行顺序 不同包的 init 函数按照包导入的依赖关系决定执行顺序   问答 #  只想调用该包的 init 函数，不使用包导出的变量或者方法 #  import _ &#34;net/http/pprof&#34; 执行上述导入后，init 函数会启动一个异步协程采集该进程实例的资源占用情况，并以 http 服务接口方式提供给用户查询。
@@ -19,7 +19,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1324,7 +1324,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1415,8 +1415,8 @@ https://github.com/alex-shpak/hugo-book
   只想调用该包的 init 函数，不使用包导出的变量或者方法
   <a class="anchor" href="#%e5%8f%aa%e6%83%b3%e8%b0%83%e7%94%a8%e8%af%a5%e5%8c%85%e7%9a%84-init-%e5%87%bd%e6%95%b0%e4%b8%8d%e4%bd%bf%e7%94%a8%e5%8c%85%e5%af%bc%e5%87%ba%e7%9a%84%e5%8f%98%e9%87%8f%e6%88%96%e8%80%85%e6%96%b9%e6%b3%95">#</a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> <span style="color:#a6e22e">_</span> <span style="color:#e6db74">&#34;net/http/pprof&#34;</span>
-</code></pre></div><p>执行上述导入后，init 函数会启动一个异步协程采集该进程实例的资源占用情况，并以 http 服务接口方式提供给用户查询。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#a6e22e">_</span> <span style="color:#e6db74">&#34;net/http/pprof&#34;</span>
+</span></span></code></pre></div><p>执行上述导入后，init 函数会启动一个异步协程采集该进程实例的资源占用情况，并以 http 服务接口方式提供给用户查询。</p>
 <hr>
 <h2 id="参考">
   参考

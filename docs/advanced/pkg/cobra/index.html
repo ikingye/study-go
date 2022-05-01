@@ -2,20 +2,18 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="cobra #  spf13/cobra A Commander for modern Go CLI interactions
 quick start #  typically a Cobra-based application will follow the following organizational structure:
-▾ appName/ ▾ cmd/ add.go your.go commands.go here.go main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
-package main import ( &#34;{pathToYourApp}/cmd&#34; ) func main() { cmd.Execute() } Ideally you place this in app/cmd/root.go:
-var rootCmd = &amp;cobra.">
+ ▾ appName/  ▾ cmd/  add.go  your.go  commands.go  here.go  main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
+package main  import (  &#34;{pathToYourApp}/cmd&#34; )  func main() {  cmd.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="cobra" />
 <meta property="og:description" content="cobra #  spf13/cobra A Commander for modern Go CLI interactions
 quick start #  typically a Cobra-based application will follow the following organizational structure:
-▾ appName/ ▾ cmd/ add.go your.go commands.go here.go main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
-package main import ( &#34;{pathToYourApp}/cmd&#34; ) func main() { cmd.Execute() } Ideally you place this in app/cmd/root.go:
-var rootCmd = &amp;cobra." />
+ ▾ appName/  ▾ cmd/  add.go  your.go  commands.go  here.go  main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
+package main  import (  &#34;{pathToYourApp}/cmd&#34; )  func main() {  cmd." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/advanced/pkg/cobra/" /><meta property="article:section" content="docs" />
 
@@ -25,7 +23,7 @@ var rootCmd = &amp;cobra." />
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1330,7 +1328,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1385,42 +1383,42 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#quick-start">#</a>
 </h2>
 <p>typically a Cobra-based application will follow the following organizational structure:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  ▾ appName/
-    ▾ cmd/
-        add.go
-        your.go
-        commands.go
-        here.go
-      main.go
-</code></pre></div><p>In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
-
-<span style="color:#f92672">import</span> (
-  <span style="color:#e6db74">&#34;{pathToYourApp}/cmd&#34;</span>
-)
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-  <span style="color:#a6e22e">cmd</span>.<span style="color:#a6e22e">Execute</span>()
-}
-</code></pre></div><p>Ideally you place this in app/cmd/root.go:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">rootCmd</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>{
-  <span style="color:#a6e22e">Use</span>:   <span style="color:#e6db74">&#34;hugo&#34;</span>,
-  <span style="color:#a6e22e">Short</span>: <span style="color:#e6db74">&#34;Hugo is a very fast static site generator&#34;</span>,
-  <span style="color:#a6e22e">Long</span>: <span style="color:#e6db74">`A Fast and Flexible Static Site Generator built with
-</span><span style="color:#e6db74">                love by spf13 and friends in Go.
-</span><span style="color:#e6db74">                Complete documentation is available at http://hugo.spf13.com`</span>,
-  <span style="color:#a6e22e">Run</span>: <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">cmd</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>, <span style="color:#a6e22e">args</span> []<span style="color:#66d9ef">string</span>) {
-    <span style="color:#75715e">// 在这里写应用逻辑
-</span><span style="color:#75715e"></span>  },
-}
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Execute</span>() {
-  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rootCmd</span>.<span style="color:#a6e22e">Execute</span>(); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
-    <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">1</span>)
-  }
-}
-</code></pre></div></article>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  ▾ appName/
+</span></span><span style="display:flex;"><span>    ▾ cmd/
+</span></span><span style="display:flex;"><span>        add.go
+</span></span><span style="display:flex;"><span>        your.go
+</span></span><span style="display:flex;"><span>        commands.go
+</span></span><span style="display:flex;"><span>        here.go
+</span></span><span style="display:flex;"><span>      main.go
+</span></span></code></pre></div><p>In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;{pathToYourApp}/cmd&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">cmd</span>.<span style="color:#a6e22e">Execute</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ideally you place this in app/cmd/root.go:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">rootCmd</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Use</span>:   <span style="color:#e6db74">&#34;hugo&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Short</span>: <span style="color:#e6db74">&#34;Hugo is a very fast static site generator&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Long</span>: <span style="color:#e6db74">`A Fast and Flexible Static Site Generator built with
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                love by spf13 and friends in Go.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                Complete documentation is available at http://hugo.spf13.com`</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Run</span>: <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">cmd</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>, <span style="color:#a6e22e">args</span> []<span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在这里写应用逻辑
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  },
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Execute</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rootCmd</span>.<span style="color:#a6e22e">Execute</span>(); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></article>
  
       
 

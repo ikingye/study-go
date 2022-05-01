@@ -2,16 +2,16 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Go build #  -tag #  // &#43;build dev 前后须有一个空行隔开
- release_config.go 文件 go build -tags dev -o dev_version  // &#43;build dev  package main var version = &#34;DEV&#34;  dev_config.go 文件 go build -tags dev -o dev_version  // &#43;build release  package main const version = &#34;RELEASE&#34;  Go 热编译工具 #  caixw/gobuild #  gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。
-gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示 gobuild 和 Go 程序的版本信息； -r 是否搜索子目录，默认为 true； -i 是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示； -o 执行编译后的可执行文件名； -x 传递给编译程序的参数； -ext 需要监视的扩展名，默认值为&#34;go&#34;，区分大小写，会去掉每个扩展名的首尾空格。 若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件； -main 指定需要编译的文件，默认为&#34;&#34;。 dependents: 指定其它依赖的目录，只能出现在命令的尾部。 penggy/gobuild #  EasyDarwin 依赖">
+ release_config.go 文件 go build -tags dev -o dev_version  // &#43;build dev  package main  var version = &#34;DEV&#34;  dev_config.go 文件 go build -tags dev -o dev_version  // &#43;build release  package main  const version = &#34;RELEASE&#34;  Go 热编译工具 #  caixw/gobuild #  gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。
+gobuild [options] [dependents]  options:  -h 显示当前帮助信息；  -v 显示 gobuild 和 Go 程序的版本信息；  -r 是否搜索子目录，默认为 true；  -i 是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示；  -o 执行编译后的可执行文件名；  -x 传递给编译程序的参数；  -ext 需要监视的扩展名，默认值为&#34;go&#34;，区分大小写，会去掉每个扩展名的首尾空格。  若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件；  -main 指定需要编译的文件，默认为&#34;&#34;。  dependents:  指定其它依赖的目录，只能出现在命令的尾部。 penggy/gobuild #  EasyDarwin 依赖">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Go build" />
 <meta property="og:description" content="Go build #  -tag #  // &#43;build dev 前后须有一个空行隔开
- release_config.go 文件 go build -tags dev -o dev_version  // &#43;build dev  package main var version = &#34;DEV&#34;  dev_config.go 文件 go build -tags dev -o dev_version  // &#43;build release  package main const version = &#34;RELEASE&#34;  Go 热编译工具 #  caixw/gobuild #  gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。
-gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示 gobuild 和 Go 程序的版本信息； -r 是否搜索子目录，默认为 true； -i 是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示； -o 执行编译后的可执行文件名； -x 传递给编译程序的参数； -ext 需要监视的扩展名，默认值为&#34;go&#34;，区分大小写，会去掉每个扩展名的首尾空格。 若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件； -main 指定需要编译的文件，默认为&#34;&#34;。 dependents: 指定其它依赖的目录，只能出现在命令的尾部。 penggy/gobuild #  EasyDarwin 依赖" />
+ release_config.go 文件 go build -tags dev -o dev_version  // &#43;build dev  package main  var version = &#34;DEV&#34;  dev_config.go 文件 go build -tags dev -o dev_version  // &#43;build release  package main  const version = &#34;RELEASE&#34;  Go 热编译工具 #  caixw/gobuild #  gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。
+gobuild [options] [dependents]  options:  -h 显示当前帮助信息；  -v 显示 gobuild 和 Go 程序的版本信息；  -r 是否搜索子目录，默认为 true；  -i 是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示；  -o 执行编译后的可执行文件名；  -x 传递给编译程序的参数；  -ext 需要监视的扩展名，默认值为&#34;go&#34;，区分大小写，会去掉每个扩展名的首尾空格。  若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件；  -main 指定需要编译的文件，默认为&#34;&#34;。  dependents:  指定其它依赖的目录，只能出现在命令的尾部。 penggy/gobuild #  EasyDarwin 依赖" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/basic/others/gobuild/" /><meta property="article:section" content="docs" />
 
@@ -21,7 +21,7 @@ gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1326,7 +1326,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1392,58 +1392,58 @@ https://github.com/alex-shpak/hugo-book
 <li><code>release_config.go</code> 文件</li>
 <li><code>go build -tags dev -o dev_version</code></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// +build dev
-</span><span style="color:#75715e"></span>
-<span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
-
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;DEV&#34;</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// +build dev
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;DEV&#34;</span>
+</span></span></code></pre></div><ul>
 <li><code>dev_config.go</code> 文件</li>
 <li><code>go build -tags dev -o dev_version</code></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// +build release
-</span><span style="color:#75715e"></span>
-<span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;RELEASE&#34;</span>
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// +build release
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;RELEASE&#34;</span>
+</span></span></code></pre></div><hr>
 <h2 id="go-热编译工具">
   Go 热编译工具
   <a class="anchor" href="#go-%e7%83%ad%e7%bc%96%e8%af%91%e5%b7%a5%e5%85%b7">#</a>
 </h2>
-<a href="https://github.com/caixw/gobuild">caixw/gobuild</a> <h3 id="caixwgobuildhttpsgithubcomcaixwgobuild-github-starshttpsimgshieldsiogithubstarscaixwgobuildsvg">
-  <img src="https://img.shields.io/github/stars/caixw/gobuild.svg" alt="Github stars" />
+<h3 id="caixwgobuildhttpsgithubcomcaixwgobuild-github-starshttpsimgshieldsiogithubstarscaixwgobuildsvg">
+  <a href="https://github.com/caixw/gobuild">caixw/gobuild</a> <img src="https://img.shields.io/github/stars/caixw/gobuild.svg" alt="Github stars" />
   <a class="anchor" href="#caixwgobuildhttpsgithubcomcaixwgobuild-github-starshttpsimgshieldsiogithubstarscaixwgobuildsvg">#</a>
 </h3>
 <p>gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gobuild <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>dependents<span style="color:#f92672">]</span>
-
-options:
- -h    显示当前帮助信息；
- -v    显示 gobuild 和 Go 程序的版本信息；
- -r    是否搜索子目录，默认为 true；
- -i    是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示；
- -o    执行编译后的可执行文件名；
- -x    传递给编译程序的参数；
- -ext  需要监视的扩展名，默认值为<span style="color:#e6db74">&#34;go&#34;</span>，区分大小写，会去掉每个扩展名的首尾空格。
-       若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件；
- -main 指定需要编译的文件，默认为<span style="color:#e6db74">&#34;&#34;</span>。
-
-dependents:
- 指定其它依赖的目录，只能出现在命令的尾部。
-</code></pre></div><a href="https://github.com/penggy/gobuild">penggy/gobuild</a> <h4 id="penggygobuildhttpsgithubcompenggygobuild-github-starshttpsimgshieldsiogithubstarspenggygobuildsvg">
-  <img src="https://img.shields.io/github/stars/penggy/gobuild.svg" alt="Github stars" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>gobuild <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>dependents<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>options:
+</span></span><span style="display:flex;"><span> -h    显示当前帮助信息；
+</span></span><span style="display:flex;"><span> -v    显示 gobuild 和 Go 程序的版本信息；
+</span></span><span style="display:flex;"><span> -r    是否搜索子目录，默认为 true；
+</span></span><span style="display:flex;"><span> -i    是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示；
+</span></span><span style="display:flex;"><span> -o    执行编译后的可执行文件名；
+</span></span><span style="display:flex;"><span> -x    传递给编译程序的参数；
+</span></span><span style="display:flex;"><span> -ext  需要监视的扩展名，默认值为<span style="color:#e6db74">&#34;go&#34;</span>，区分大小写，会去掉每个扩展名的首尾空格。
+</span></span><span style="display:flex;"><span>       若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件；
+</span></span><span style="display:flex;"><span> -main 指定需要编译的文件，默认为<span style="color:#e6db74">&#34;&#34;</span>。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dependents:
+</span></span><span style="display:flex;"><span> 指定其它依赖的目录，只能出现在命令的尾部。
+</span></span></code></pre></div><h4 id="penggygobuildhttpsgithubcompenggygobuild-github-starshttpsimgshieldsiogithubstarspenggygobuildsvg">
+  <a href="https://github.com/penggy/gobuild">penggy/gobuild</a> <img src="https://img.shields.io/github/stars/penggy/gobuild.svg" alt="Github stars" />
   <a class="anchor" href="#penggygobuildhttpsgithubcompenggygobuild-github-starshttpsimgshieldsiogithubstarspenggygobuildsvg">#</a>
 </h4>
 <p>EasyDarwin 依赖</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># go tools</span>
-go get -u -v github.com/kardianos/govendor
-go get -u -v github.com/penggy/gobuild
-
-<span style="color:#75715e"># npm tools</span>
-npm i -g apidoc
-npm i -g rimraf
-</code></pre></div></article>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># go tools</span>
+</span></span><span style="display:flex;"><span>go get -u -v github.com/kardianos/govendor
+</span></span><span style="display:flex;"><span>go get -u -v github.com/penggy/gobuild
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># npm tools</span>
+</span></span><span style="display:flex;"><span>npm i -g apidoc
+</span></span><span style="display:flex;"><span>npm i -g rimraf
+</span></span></code></pre></div></article>
  
       
 

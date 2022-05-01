@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Go 命令 #  go get 等于 go get -d 加 go install
@@ -17,7 +17,7 @@ go get #  -d 只下载不安装 -u 强制使用网络去更新包和它的依赖
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <link rel="alternate" type="application/rss+xml" href="https://kingye.me/study-go/docs/basic/others/command/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -1323,7 +1323,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1388,14 +1388,14 @@ https://github.com/alex-shpak/hugo-book
   <a href="https://golang.org/cmd/go/#hdr-Add_dependencies_to_current_module_and_install_them">go get</a>
   <a class="anchor" href="#go-gethttpsgolangorgcmdgohdr-add_dependencies_to_current_module_and_install_them">#</a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-d 只下载不安装
--u 强制使用网络去更新包和它的依赖包
--f 只有在你包含了 -u 参数的时候才有效，不让 -u 去验证 import 中的每一个都已经获取了，这对于本地 fork 的包特别有用
--v 显示执行的命令
--t 同时也下载需要为运行测试所需要的包
--fix 在获取源码之后先运行 fix，然后再去做其他的事情
--insecure 允许使用不安全的 HTTP 方式进行下载操作
-</code></pre></div><h3 id="go-get-后面不带参数时">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>-d 只下载不安装
+</span></span><span style="display:flex;"><span>-u 强制使用网络去更新包和它的依赖包
+</span></span><span style="display:flex;"><span>-f 只有在你包含了 -u 参数的时候才有效，不让 -u 去验证 import 中的每一个都已经获取了，这对于本地 fork 的包特别有用
+</span></span><span style="display:flex;"><span>-v 显示执行的命令
+</span></span><span style="display:flex;"><span>-t 同时也下载需要为运行测试所需要的包
+</span></span><span style="display:flex;"><span>-fix 在获取源码之后先运行 fix，然后再去做其他的事情
+</span></span><span style="display:flex;"><span>-insecure 允许使用不安全的 HTTP 方式进行下载操作
+</span></span></code></pre></div><h3 id="go-get-后面不带参数时">
   <code>go get</code> 后面不带参数时
   <a class="anchor" href="#go-get-%e5%90%8e%e9%9d%a2%e4%b8%8d%e5%b8%a6%e5%8f%82%e6%95%b0%e6%97%b6">#</a>
 </h3>
@@ -1435,12 +1435,12 @@ https://github.com/alex-shpak/hugo-book
 <li><code>-w</code> 禁止生成 debug 信息，注意使用该选项后，无法使用 gdb 进行调试</li>
 <li><code>-s</code> 禁用符号表</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -ldflags <span style="color:#e6db74">&#39;-w -s&#39;</span>
-
-<span style="color:#75715e"># makefile</span>
-buildInfo :<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; -X &#39;</span><span style="color:#66d9ef">$(</span>utilImport<span style="color:#66d9ef">)</span><span style="color:#e6db74">.goVersion=</span><span style="color:#66d9ef">$(</span>shell <span style="color:#66d9ef">$(</span>GO<span style="color:#66d9ef">)</span> version<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;</span><span style="color:#66d9ef">$(</span>utilImport<span style="color:#66d9ef">)</span><span style="color:#e6db74">.buildTime=</span><span style="color:#66d9ef">$(</span>shell date +<span style="color:#e6db74">&#34;%Y-%m-%d %H:%M:%S&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;</span><span style="color:#66d9ef">$(</span>utilImport<span style="color:#66d9ef">)</span><span style="color:#e6db74">.gitHash=</span><span style="color:#66d9ef">$(</span>shell git log -n1 --format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;%h&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; &#34;</span>
-go build -ldflags <span style="color:#66d9ef">$(</span>buildInfo<span style="color:#66d9ef">)</span>
-</code></pre></div><h3 id="gcflags">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>go build -ldflags <span style="color:#e6db74">&#39;-w -s&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># makefile</span>
+</span></span><span style="display:flex;"><span>buildInfo :<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; -X &#39;</span><span style="color:#66d9ef">$(</span>utilImport<span style="color:#66d9ef">)</span><span style="color:#e6db74">.goVersion=</span><span style="color:#66d9ef">$(</span>shell <span style="color:#66d9ef">$(</span>GO<span style="color:#66d9ef">)</span> version<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;</span><span style="color:#66d9ef">$(</span>utilImport<span style="color:#66d9ef">)</span><span style="color:#e6db74">.buildTime=</span><span style="color:#66d9ef">$(</span>shell date +<span style="color:#e6db74">&#34;%Y-%m-%d %H:%M:%S&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; -X &#39;</span><span style="color:#66d9ef">$(</span>utilImport<span style="color:#66d9ef">)</span><span style="color:#e6db74">.gitHash=</span><span style="color:#66d9ef">$(</span>shell git log -n1 --format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;%h&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39; &#34;</span>
+</span></span><span style="display:flex;"><span>go build -ldflags <span style="color:#66d9ef">$(</span>buildInfo<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><h3 id="gcflags">
   gcflags
   <a class="anchor" href="#gcflags">#</a>
 </h3>
@@ -1449,8 +1449,8 @@ go build -ldflags <span style="color:#66d9ef">$(</span>buildInfo<span style="col
 <li><code>-N</code> 禁止编译优化</li>
 <li><code>-l</code> 禁止内联，禁止内联也可以一定程度上减小可执行程序大小</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -gcflags <span style="color:#e6db74">&#39;-N -l&#39;</span>
-</code></pre></div></article>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>go build -gcflags <span style="color:#e6db74">&#39;-N -l&#39;</span>
+</span></span></code></pre></div></article>
  
       
 

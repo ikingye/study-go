@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Go 类型系统 #  Underlying Type #   每一个类型都有自己的 Underlying Type  如果 T 是 Pre-declared type 或者 Type Literal，它们对应的 Underlying Type 就是自身 T  比如 type T int 的 Underlying Type 是 int  int 是 Pre-declared   type T map[int]string 的 Underlying Type 是 map[int]string  map[int]string 是 Type Literal     否则 T 的 Underlying Type 是 T 定义时引用的类型的 Underlying Type    Underlying Type 相同 #  如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：">
@@ -17,7 +17,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1322,7 +1322,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1407,34 +1407,34 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>
 <p>如果两个 type 都是 named type ，彼此之间不能相互赋值</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">NewString</span> <span style="color:#66d9ef">string</span>
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">my</span> <span style="color:#66d9ef">string</span> =<span style="color:#e6db74">&#34;a&#34;</span>
-<span style="color:#75715e">// cannot use my (type string) as type NewString in assignment
-</span><span style="color:#75715e">// 虽然它们的 Underlying Type 都是 string，但 string 类型的 my 不能赋值给 NewString 类型的 you
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">NewString</span> = <span style="color:#a6e22e">my</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">NewString</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">my</span> <span style="color:#66d9ef">string</span> =<span style="color:#e6db74">&#34;a&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// cannot use my (type string) as type NewString in assignment
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 虽然它们的 Underlying Type 都是 string，但 string 类型的 my 不能赋值给 NewString 类型的 you
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">NewString</span> = <span style="color:#a6e22e">my</span>
+</span></span></code></pre></div></li>
 <li>
 <p>如果两个 type 其中一个是 Unnamed Type，彼此之间可以相互赋值</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
-
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Ptr</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">int</span>
-<span style="color:#75715e">//named type
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Map</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span>
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">MapMap</span> <span style="color:#a6e22e">Map</span>
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">p</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">int</span>
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mm</span> <span style="color:#a6e22e">Map</span>
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mmm</span> <span style="color:#a6e22e">MapMap</span>
-    <span style="color:#75715e">// m1 m2 是 Unnamed Type
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m1</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span> = <span style="color:#a6e22e">mm</span>
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m2</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span> = <span style="color:#a6e22e">mmm</span>
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ptr</span> <span style="color:#a6e22e">Ptr</span> = <span style="color:#a6e22e">p</span>
-    print(<span style="color:#a6e22e">ptr</span>)
-    print(<span style="color:#a6e22e">m1</span>)
-    print(<span style="color:#a6e22e">m2</span>)
-}
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Ptr</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//named type
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Map</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">MapMap</span> <span style="color:#a6e22e">Map</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">p</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mm</span> <span style="color:#a6e22e">Map</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mmm</span> <span style="color:#a6e22e">MapMap</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// m1 m2 是 Unnamed Type
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m1</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span> = <span style="color:#a6e22e">mm</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m2</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span> = <span style="color:#a6e22e">mmm</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ptr</span> <span style="color:#a6e22e">Ptr</span> = <span style="color:#a6e22e">p</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#a6e22e">ptr</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#a6e22e">m1</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#a6e22e">m2</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
 </ul>
 <p>原因：
 如果为一个类型起了名字，说明你想要做区分，所以两个 named types 即使 Underlying Type 相同也是不能相互赋值的。</p>

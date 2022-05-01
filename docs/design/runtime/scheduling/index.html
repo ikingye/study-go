@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Go 调度 #  Go 调度器的发展 #   单线程调度器・0.x  只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成；   多线程调度器・1.0  允许运行多线程的程序； 全局锁导致竞争严重；   任务窃取调度器・1.1  引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；   抢占式调度器・1.2 ~ 至今  基于协作的抢占式调度器 - 1.2 ~ 1.13  通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；   基于信号的抢占式调度器 - 1.14 ~ 至今  实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况；     非均匀存储访问调度器・提案  对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程；    除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。">
@@ -17,7 +17,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1322,7 +1322,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

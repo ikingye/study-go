@@ -37,8 +37,8 @@ Go 1.0 之后，go tool 利用 GOROOT 查找 Go 编译器（保存在 $GOROOT/pk
       
       <guid>https://kingye.me/study-go/docs/basic/others/gobuild/</guid>
       <description>Go build #  -tag #  // +build dev 前后须有一个空行隔开
- release_config.go 文件 go build -tags dev -o dev_version  // +build dev  package main var version = &amp;#34;DEV&amp;#34;  dev_config.go 文件 go build -tags dev -o dev_version  // +build release  package main const version = &amp;#34;RELEASE&amp;#34;  Go 热编译工具 #  caixw/gobuild #  gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。
-gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示 gobuild 和 Go 程序的版本信息； -r 是否搜索子目录，默认为 true； -i 是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示； -o 执行编译后的可执行文件名； -x 传递给编译程序的参数； -ext 需要监视的扩展名，默认值为&amp;#34;go&amp;#34;，区分大小写，会去掉每个扩展名的首尾空格。 若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件； -main 指定需要编译的文件，默认为&amp;#34;&amp;#34;。 dependents: 指定其它依赖的目录，只能出现在命令的尾部。 penggy/gobuild #  EasyDarwin 依赖</description>
+ release_config.go 文件 go build -tags dev -o dev_version  // +build dev  package main  var version = &amp;#34;DEV&amp;#34;  dev_config.go 文件 go build -tags dev -o dev_version  // +build release  package main  const version = &amp;#34;RELEASE&amp;#34;  Go 热编译工具 #  caixw/gobuild #  gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。
+gobuild [options] [dependents]  options:  -h 显示当前帮助信息；  -v 显示 gobuild 和 Go 程序的版本信息；  -r 是否搜索子目录，默认为 true；  -i 是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示；  -o 执行编译后的可执行文件名；  -x 传递给编译程序的参数；  -ext 需要监视的扩展名，默认值为&amp;#34;go&amp;#34;，区分大小写，会去掉每个扩展名的首尾空格。  若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件；  -main 指定需要编译的文件，默认为&amp;#34;&amp;#34;。  dependents:  指定其它依赖的目录，只能出现在命令的尾部。 penggy/gobuild #  EasyDarwin 依赖</description>
     </item>
     
     <item>
@@ -47,7 +47,7 @@ gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kingye.me/study-go/docs/basic/others/gomod/</guid>
-      <description>Go Modules #   Using Go Modules  import #  import &amp;#34;目录&amp;#34; // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
+      <description>Go Modules #   Using Go Modules  import #  import &amp;#34;目录&amp;#34;  // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
 它的 go.mod 第一行是 module k8s.io/klog/v2
 根目录有个文件 klog.go，第一行 package klog
 所以我们在使用 klog 库时，
@@ -90,7 +90,7 @@ Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 expo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kingye.me/study-go/docs/basic/others/compile/</guid>
-      <description>编译 #  Makefile #  Go Makefile 样例 #  include .env PROJECTNAME=$(shell basename &amp;#34;$(PWD)&amp;#34;) # Go related variables. GOBASE=$(shell pwd) GOPATH=&amp;#34;$(GOBASE)/vendor:$(GOBASE)&amp;#34; GOBIN=$(GOBASE)/bin GOFILES=$(wildcard *.go) # Redirect error output to a file, so we can show it in development mode. STDERR=/tmp/.$(PROJECTNAME)-stderr.txt # PID file will keep the process id of the server PID=/tmp/.$(PROJECTNAME).pid # Make is verbose in Linux. Make it silent. MAKEFLAGS += --silent ## install: Install missing dependencies.</description>
+      <description>编译 #  Makefile #  Go Makefile 样例 #  include .env  PROJECTNAME=$(shell basename &amp;#34;$(PWD)&amp;#34;)  # Go related variables. GOBASE=$(shell pwd) GOPATH=&amp;#34;$(GOBASE)/vendor:$(GOBASE)&amp;#34; GOBIN=$(GOBASE)/bin GOFILES=$(wildcard *.go)  # Redirect error output to a file, so we can show it in development mode. STDERR=/tmp/.$(PROJECTNAME)-stderr.txt  # PID file will keep the process id of the server PID=/tmp/.$(PROJECTNAME).pid  # Make is verbose in Linux. Make it silent. MAKEFLAGS += --silent  ## install: Install missing dependencies.</description>
     </item>
     
     <item>

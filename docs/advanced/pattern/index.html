@@ -2,10 +2,10 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 设计模式 #  单例模式 #  常规 #  package singleton import &#34;sync&#34; var ( instance *Instance lock sync.Mutex ) type Instance struct { Name string } // 双重检查 func GetInstance(name string) *Instance { if instance == nil { lock.Lock() defer lock.Unlock() if instance == nil { instance = &amp;Instance{Name: name} } } return instance } sync.Once #  package singleton import &#34;sync&#34; var ( goInstance *Instance once sync.Once ) func GoInstance(name string) *Instance { if goInstance == nil { once.">
+<meta name="description" content="Go 设计模式 #  单例模式 #  常规 #  package singleton import &#34;sync&#34;  var (  instance *Instance  lock sync.Mutex )  type Instance struct {  Name string }  // 双重检查 func GetInstance(name string) *Instance {  if instance == nil {  lock.Lock()  defer lock.Unlock()  if instance == nil {  instance = &amp;Instance{Name: name}  }  }  return instance } sync.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="2.1 设计模式" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -15,7 +15,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <link rel="alternate" type="application/rss+xml" href="https://kingye.me/study-go/docs/advanced/pattern/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -1321,7 +1321,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1388,63 +1388,63 @@ https://github.com/alex-shpak/hugo-book
   常规
   <a class="anchor" href="#%e5%b8%b8%e8%a7%84">#</a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">singleton</span>
-<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;sync&#34;</span>
-
-<span style="color:#66d9ef">var</span> (
-    <span style="color:#a6e22e">instance</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Instance</span>
-    <span style="color:#a6e22e">lock</span>     <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>
-)
-
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Instance</span> <span style="color:#66d9ef">struct</span> {
-    <span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span>
-}
-
-<span style="color:#75715e">// 双重检查
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GetInstance</span>(<span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">Instance</span> {
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">instance</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
-        <span style="color:#a6e22e">lock</span>.<span style="color:#a6e22e">Lock</span>()
-        <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">lock</span>.<span style="color:#a6e22e">Unlock</span>()
-        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">instance</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
-            <span style="color:#a6e22e">instance</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Instance</span>{<span style="color:#a6e22e">Name</span>: <span style="color:#a6e22e">name</span>}
-        }
-    }
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">instance</span>
-}
-</code></pre></div><h3 id="synconce">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">singleton</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;sync&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">instance</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Instance</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lock</span>     <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Instance</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 双重检查
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GetInstance</span>(<span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">Instance</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">instance</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">lock</span>.<span style="color:#a6e22e">Lock</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">lock</span>.<span style="color:#a6e22e">Unlock</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">instance</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">instance</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Instance</span>{<span style="color:#a6e22e">Name</span>: <span style="color:#a6e22e">name</span>}
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">instance</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="synconce">
   sync.Once
   <a class="anchor" href="#synconce">#</a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">singleton</span>
-
-<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;sync&#34;</span>
-
-<span style="color:#66d9ef">var</span> (
-    <span style="color:#a6e22e">goInstance</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Instance</span>
-    <span style="color:#a6e22e">once</span>       <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Once</span>
-)
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GoInstance</span>(<span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">Instance</span> {
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">goInstance</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
-        <span style="color:#a6e22e">once</span>.<span style="color:#a6e22e">Do</span>(<span style="color:#66d9ef">func</span>() {
-            <span style="color:#a6e22e">goInstance</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Instance</span>{
-                <span style="color:#a6e22e">Name</span>: <span style="color:#a6e22e">name</span>,
-            }
-        })
-    }
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">goInstance</span>
-}
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">singleton</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;sync&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">goInstance</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Instance</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">once</span>       <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Once</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GoInstance</span>(<span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">Instance</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">goInstance</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">once</span>.<span style="color:#a6e22e">Do</span>(<span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">goInstance</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Instance</span>{
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">Name</span>: <span style="color:#a6e22e">name</span>,
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">goInstance</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
 <h2 id="参考">
   参考
   <a class="anchor" href="#%e5%8f%82%e8%80%83">#</a>
 </h2>
-<a href="https://github.com/tmrts/go-patterns">tmrts/go-patterns</a> <h3 id="tmrtsgo-patternshttpsgithubcomtmrtsgo-patterns-github-starshttpsimgshieldsiogithubstarstmrtsgo-patternssvg">
-  <img src="https://img.shields.io/github/stars/tmrts/go-patterns.svg" alt="Github stars" />
+<h3 id="tmrtsgo-patternshttpsgithubcomtmrtsgo-patterns-github-starshttpsimgshieldsiogithubstarstmrtsgo-patternssvg">
+  <a href="https://github.com/tmrts/go-patterns">tmrts/go-patterns</a> <img src="https://img.shields.io/github/stars/tmrts/go-patterns.svg" alt="Github stars" />
   <a class="anchor" href="#tmrtsgo-patternshttpsgithubcomtmrtsgo-patterns-github-starshttpsimgshieldsiogithubstarstmrtsgo-patternssvg">#</a>
 </h3>
-<a href="https://github.com/senghoo/golang-design-pattern">senghoo/golang-design-pattern</a> <img src="https://img.shields.io/github/stars/senghoo/golang-design-pattern.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/senghoo/golang-design-pattern.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/senghoo/golang-design-pattern.svg?sort=semver" alt="Last Tag" /> <h3 id="senghoogolang-design-patternhttpsgithubcomsenghoogolang-design-pattern-github-starshttpsimgshieldsiogithubstarssenghoogolang-design-patternsvg-languagehttpsimgshieldsiogithublanguagestopsenghoogolang-design-patternsvg-last-taghttpsimgshieldsiogithubvtagsenghoogolang-design-patternsvgsortsemver-last-commithttpsimgshieldsiogithublast-commitsenghoogolang-design-patternsvg">
-  <img src="https://img.shields.io/github/last-commit/senghoo/golang-design-pattern.svg" alt="Last commit" />
+<h3 id="senghoogolang-design-patternhttpsgithubcomsenghoogolang-design-pattern-github-starshttpsimgshieldsiogithubstarssenghoogolang-design-patternsvg-languagehttpsimgshieldsiogithublanguagestopsenghoogolang-design-patternsvg-last-taghttpsimgshieldsiogithubvtagsenghoogolang-design-patternsvgsortsemver-last-commithttpsimgshieldsiogithublast-commitsenghoogolang-design-patternsvg">
+  <a href="https://github.com/senghoo/golang-design-pattern">senghoo/golang-design-pattern</a> <img src="https://img.shields.io/github/stars/senghoo/golang-design-pattern.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/senghoo/golang-design-pattern.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/senghoo/golang-design-pattern.svg?sort=semver" alt="Last Tag" /> <img src="https://img.shields.io/github/last-commit/senghoo/golang-design-pattern.svg" alt="Last commit" />
   <a class="anchor" href="#senghoogolang-design-patternhttpsgithubcomsenghoogolang-design-pattern-github-starshttpsimgshieldsiogithubstarssenghoogolang-design-patternsvg-languagehttpsimgshieldsiogithublanguagestopsenghoogolang-design-patternsvg-last-taghttpsimgshieldsiogithubvtagsenghoogolang-design-patternsvgsortsemver-last-commithttpsimgshieldsiogithublast-commitsenghoogolang-design-patternsvg">#</a>
 </h3>
 </article>

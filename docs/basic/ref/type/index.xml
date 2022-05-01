@@ -12,7 +12,7 @@
       
       <guid>https://kingye.me/study-go/docs/basic/ref/type/error/</guid>
       <description>error #  实现 Error() string 方法的类型，都是 error 类型
-type error interface { Error() string } errors.New(&amp;#34;xxxx&amp;#34;) fmt.Errorf(format string, a ...interface{}) </description>
+type error interface { 	Error() string } errors.New(&amp;#34;xxxx&amp;#34;)  fmt.Errorf(format string, a ...interface{}) </description>
     </item>
     
     <item>
@@ -50,7 +50,7 @@ type error interface { Error() string } errors.New(&amp;#34;xxxx&amp;#34;) fmt.E
       
       <guid>https://kingye.me/study-go/docs/basic/ref/type/channel/</guid>
       <description>Chiannel #  channel 类型 #  chan T // can be used to send and receive values of type T chan&amp;lt;- float64 // can only be used to send float64s &amp;lt;-chan int // can only be used to receive ints The &amp;lt;- operator associates with the leftmost chan possible:
-chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt;-chan int // same as chan&amp;lt;- (&amp;lt;-chan int) &amp;lt;-chan &amp;lt;-chan int // same as &amp;lt;-chan (&amp;lt;-chan int) chan (&amp;lt;-chan int)  常见用法 #  // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &amp;lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&amp;#34;ping&amp;#34;` 到上面创建的 `messages` 通道中。 go func() { messages &amp;lt;- &amp;#34;ping&amp;#34; }() // 使用 `&amp;lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&amp;#34;ping&amp;#34;` 消息并将其打印出来。 msg := &amp;lt;-messages fmt.</description>
+chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt;-chan int // same as chan&amp;lt;- (&amp;lt;-chan int) &amp;lt;-chan &amp;lt;-chan int // same as &amp;lt;-chan (&amp;lt;-chan int) chan (&amp;lt;-chan int)  常见用法 #  // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string)  // 使用 `channel &amp;lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&amp;#34;ping&amp;#34;` 到上面创建的 `messages` 通道中。 go func() { messages &amp;lt;- &amp;#34;ping&amp;#34; }()  // 使用 `&amp;lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&amp;#34;ping&amp;#34;` 消息并将其打印出来。 msg := &amp;lt;-messages fmt.</description>
     </item>
     
     <item>

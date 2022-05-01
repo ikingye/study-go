@@ -2,12 +2,12 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 并发 #  Mutex #  type Mutex struct { state int32 // 状态 	sema uint32 // 信号量 }  state (32 位)  waitersCount (29 位): 当前互斥锁上等待的 Goroutine 个数 mutexStarving (1 位): 当前的互斥锁进入饥饿状态  Goroutine 超过 1 ms 没有获取到锁，就会转为饥饿模式   mutexWoken (1 位): 从正常模式被从唤醒 mutexLocked (1 位): 互斥锁的锁定状态    ">
+<meta name="description" content="Go 并发 #  Mutex #  type Mutex struct { 	state int32 // 状态 	sema uint32 // 信号量 }  state (32 位)  waitersCount (29 位): 当前互斥锁上等待的 Goroutine 个数 mutexStarving (1 位): 当前的互斥锁进入饥饿状态  Goroutine 超过 1 ms 没有获取到锁，就会转为饥饿模式   mutexWoken (1 位): 从正常模式被从唤醒 mutexLocked (1 位): 互斥锁的锁定状态    ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="并发" />
-<meta property="og:description" content="Go 并发 #  Mutex #  type Mutex struct { state int32 // 状态 	sema uint32 // 信号量 }  state (32 位)  waitersCount (29 位): 当前互斥锁上等待的 Goroutine 个数 mutexStarving (1 位): 当前的互斥锁进入饥饿状态  Goroutine 超过 1 ms 没有获取到锁，就会转为饥饿模式   mutexWoken (1 位): 从正常模式被从唤醒 mutexLocked (1 位): 互斥锁的锁定状态    " />
+<meta property="og:description" content="Go 并发 #  Mutex #  type Mutex struct { 	state int32 // 状态 	sema uint32 // 信号量 }  state (32 位)  waitersCount (29 位): 当前互斥锁上等待的 Goroutine 个数 mutexStarving (1 位): 当前的互斥锁进入饥饿状态  Goroutine 超过 1 ms 没有获取到锁，就会转为饥饿模式   mutexWoken (1 位): 从正常模式被从唤醒 mutexLocked (1 位): 互斥锁的锁定状态    " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/design/runtime/concurrent/" /><meta property="article:section" content="docs" />
 
@@ -17,7 +17,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1322,7 +1322,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1374,11 +1374,11 @@ https://github.com/alex-shpak/hugo-book
   Mutex
   <a class="anchor" href="#mutex">#</a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Mutex</span> <span style="color:#66d9ef">struct</span> {
-	<span style="color:#a6e22e">state</span> <span style="color:#66d9ef">int32</span>  <span style="color:#75715e">// 状态
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sema</span>  <span style="color:#66d9ef">uint32</span> <span style="color:#75715e">// 信号量
-</span><span style="color:#75715e"></span>}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Mutex</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">state</span> <span style="color:#66d9ef">int32</span>  <span style="color:#75715e">// 状态
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sema</span>  <span style="color:#66d9ef">uint32</span> <span style="color:#75715e">// 信号量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><ul>
 <li>state (32 位)
 <ul>
 <li>waitersCount (29 位): 当前互斥锁上等待的 Goroutine 个数</li>

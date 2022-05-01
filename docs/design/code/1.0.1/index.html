@@ -2,11 +2,11 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Go 1.0.0 源码分析 #  https://github.com/golang/go/tree/go1.0.1
- 代码行数 #  AlDanial/cloc $ cloc . 15969 text files. 15884 unique files. 13164 files ignored. github.com/AlDanial/cloc v 1.86 T=19.15 s (146.5 files/s, 35024.2 lines/s) -------------------------------------------------------------------------------- Language files blank comment code -------------------------------------------------------------------------------- Go 2023 38800 49499 302225 C 369 20497 20388 149600 HTML 58 4234 252 25508 C/C&#43;&#43; Header 98 1752 2759 15100 Assembly 134 1510 2073 8203 yacc 6 449 396 5212 Perl 12 718 937 4774 Python 6 577 749 2898 JavaScript 6 591 422 2594 XML 16 91 20 1298 Bourne Shell 13 172 348 1064 CSS 6 121 32 888 Bourne Again Shell 17 173 147 758 Lisp 2 108 147 618 vim script 9 94 157 456 Pascal 1 48 222 256 DOS Batch 4 44 1 193 make 19 64 64 161 WiX source 1 12 13 139 awk 2 12 35 104 YAML 3 14 12 60 JSON 2 0 0 20 -------------------------------------------------------------------------------- SUM: 2807 70081 78673 522129 -------------------------------------------------------------------------------- ">
+ 代码行数 #  AlDanial/cloc $ cloc .  15969 text files.  15884 unique files.  13164 files ignored.  github.com/AlDanial/cloc v 1.86 T=19.15 s (146.5 files/s, 35024.2 lines/s) -------------------------------------------------------------------------------- Language files blank comment code -------------------------------------------------------------------------------- Go 2023 38800 49499 302225 C 369 20497 20388 149600 HTML 58 4234 252 25508 C/C&#43;&#43; Header 98 1752 2759 15100 Assembly 134 1510 2073 8203 yacc 6 449 396 5212 Perl 12 718 937 4774 Python 6 577 749 2898 JavaScript 6 591 422 2594 XML 16 91 20 1298 Bourne Shell 13 172 348 1064 CSS 6 121 32 888 Bourne Again Shell 17 173 147 758 Lisp 2 108 147 618 vim script 9 94 157 456 Pascal 1 48 222 256 DOS Batch 4 44 1 193 make 19 64 64 161 WiX source 1 12 13 139 awk 2 12 35 104 YAML 3 14 12 60 JSON 2 0 0 20 -------------------------------------------------------------------------------- SUM: 2807 70081 78673 522129 -------------------------------------------------------------------------------- ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="1.0.0" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -16,7 +16,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <link rel="alternate" type="application/rss+xml" href="https://kingye.me/study-go/docs/design/code/1.0.1/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
@@ -1322,7 +1322,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1377,41 +1377,41 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#%e4%bb%a3%e7%a0%81%e8%a1%8c%e6%95%b0">#</a>
 </h2>
 <p><a href="https://github.com/AlDanial/cloc">AlDanial/cloc</a> <img src="https://img.shields.io/github/stars/AlDanial/cloc.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/AlDanial/cloc.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/AlDanial/cloc.svg?sort=semver" alt="Last Tag" /> <img src="https://img.shields.io/github/last-commit/AlDanial/cloc.svg" alt="Last commit" /></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cloc .
-   <span style="color:#ae81ff">15969</span> text files.
-   <span style="color:#ae81ff">15884</span> unique files.
-   <span style="color:#ae81ff">13164</span> files ignored.
-
-github.com/AlDanial/cloc v 1.86  T<span style="color:#f92672">=</span>19.15 s <span style="color:#f92672">(</span>146.5 files/s, 35024.2 lines/s<span style="color:#f92672">)</span>
---------------------------------------------------------------------------------
-Language                      files          blank        comment           code
---------------------------------------------------------------------------------
-Go                             <span style="color:#ae81ff">2023</span>          <span style="color:#ae81ff">38800</span>          <span style="color:#ae81ff">49499</span>         <span style="color:#ae81ff">302225</span>
-C                               <span style="color:#ae81ff">369</span>          <span style="color:#ae81ff">20497</span>          <span style="color:#ae81ff">20388</span>         <span style="color:#ae81ff">149600</span>
-HTML                             <span style="color:#ae81ff">58</span>           <span style="color:#ae81ff">4234</span>            <span style="color:#ae81ff">252</span>          <span style="color:#ae81ff">25508</span>
-C/C++ Header                     <span style="color:#ae81ff">98</span>           <span style="color:#ae81ff">1752</span>           <span style="color:#ae81ff">2759</span>          <span style="color:#ae81ff">15100</span>
-Assembly                        <span style="color:#ae81ff">134</span>           <span style="color:#ae81ff">1510</span>           <span style="color:#ae81ff">2073</span>           <span style="color:#ae81ff">8203</span>
-yacc                              <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">449</span>            <span style="color:#ae81ff">396</span>           <span style="color:#ae81ff">5212</span>
-Perl                             <span style="color:#ae81ff">12</span>            <span style="color:#ae81ff">718</span>            <span style="color:#ae81ff">937</span>           <span style="color:#ae81ff">4774</span>
-Python                            <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">577</span>            <span style="color:#ae81ff">749</span>           <span style="color:#ae81ff">2898</span>
-JavaScript                        <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">591</span>            <span style="color:#ae81ff">422</span>           <span style="color:#ae81ff">2594</span>
-XML                              <span style="color:#ae81ff">16</span>             <span style="color:#ae81ff">91</span>             <span style="color:#ae81ff">20</span>           <span style="color:#ae81ff">1298</span>
-Bourne Shell                     <span style="color:#ae81ff">13</span>            <span style="color:#ae81ff">172</span>            <span style="color:#ae81ff">348</span>           <span style="color:#ae81ff">1064</span>
-CSS                               <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">121</span>             <span style="color:#ae81ff">32</span>            <span style="color:#ae81ff">888</span>
-Bourne Again Shell               <span style="color:#ae81ff">17</span>            <span style="color:#ae81ff">173</span>            <span style="color:#ae81ff">147</span>            <span style="color:#ae81ff">758</span>
-Lisp                              <span style="color:#ae81ff">2</span>            <span style="color:#ae81ff">108</span>            <span style="color:#ae81ff">147</span>            <span style="color:#ae81ff">618</span>
-vim script                        <span style="color:#ae81ff">9</span>             <span style="color:#ae81ff">94</span>            <span style="color:#ae81ff">157</span>            <span style="color:#ae81ff">456</span>
-Pascal                            <span style="color:#ae81ff">1</span>             <span style="color:#ae81ff">48</span>            <span style="color:#ae81ff">222</span>            <span style="color:#ae81ff">256</span>
-DOS Batch                         <span style="color:#ae81ff">4</span>             <span style="color:#ae81ff">44</span>              <span style="color:#ae81ff">1</span>            <span style="color:#ae81ff">193</span>
-make                             <span style="color:#ae81ff">19</span>             <span style="color:#ae81ff">64</span>             <span style="color:#ae81ff">64</span>            <span style="color:#ae81ff">161</span>
-WiX source                        <span style="color:#ae81ff">1</span>             <span style="color:#ae81ff">12</span>             <span style="color:#ae81ff">13</span>            <span style="color:#ae81ff">139</span>
-awk                               <span style="color:#ae81ff">2</span>             <span style="color:#ae81ff">12</span>             <span style="color:#ae81ff">35</span>            <span style="color:#ae81ff">104</span>
-YAML                              <span style="color:#ae81ff">3</span>             <span style="color:#ae81ff">14</span>             <span style="color:#ae81ff">12</span>             <span style="color:#ae81ff">60</span>
-JSON                              <span style="color:#ae81ff">2</span>              <span style="color:#ae81ff">0</span>              <span style="color:#ae81ff">0</span>             <span style="color:#ae81ff">20</span>
---------------------------------------------------------------------------------
-SUM:                           <span style="color:#ae81ff">2807</span>          <span style="color:#ae81ff">70081</span>          <span style="color:#ae81ff">78673</span>         <span style="color:#ae81ff">522129</span>
---------------------------------------------------------------------------------
-</code></pre></div></article>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ cloc .
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">15969</span> text files.
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">15884</span> unique files.
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">13164</span> files ignored.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>github.com/AlDanial/cloc v 1.86  T<span style="color:#f92672">=</span>19.15 s <span style="color:#f92672">(</span>146.5 files/s, 35024.2 lines/s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>--------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>Language                      files          blank        comment           code
+</span></span><span style="display:flex;"><span>--------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>Go                             <span style="color:#ae81ff">2023</span>          <span style="color:#ae81ff">38800</span>          <span style="color:#ae81ff">49499</span>         <span style="color:#ae81ff">302225</span>
+</span></span><span style="display:flex;"><span>C                               <span style="color:#ae81ff">369</span>          <span style="color:#ae81ff">20497</span>          <span style="color:#ae81ff">20388</span>         <span style="color:#ae81ff">149600</span>
+</span></span><span style="display:flex;"><span>HTML                             <span style="color:#ae81ff">58</span>           <span style="color:#ae81ff">4234</span>            <span style="color:#ae81ff">252</span>          <span style="color:#ae81ff">25508</span>
+</span></span><span style="display:flex;"><span>C/C++ Header                     <span style="color:#ae81ff">98</span>           <span style="color:#ae81ff">1752</span>           <span style="color:#ae81ff">2759</span>          <span style="color:#ae81ff">15100</span>
+</span></span><span style="display:flex;"><span>Assembly                        <span style="color:#ae81ff">134</span>           <span style="color:#ae81ff">1510</span>           <span style="color:#ae81ff">2073</span>           <span style="color:#ae81ff">8203</span>
+</span></span><span style="display:flex;"><span>yacc                              <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">449</span>            <span style="color:#ae81ff">396</span>           <span style="color:#ae81ff">5212</span>
+</span></span><span style="display:flex;"><span>Perl                             <span style="color:#ae81ff">12</span>            <span style="color:#ae81ff">718</span>            <span style="color:#ae81ff">937</span>           <span style="color:#ae81ff">4774</span>
+</span></span><span style="display:flex;"><span>Python                            <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">577</span>            <span style="color:#ae81ff">749</span>           <span style="color:#ae81ff">2898</span>
+</span></span><span style="display:flex;"><span>JavaScript                        <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">591</span>            <span style="color:#ae81ff">422</span>           <span style="color:#ae81ff">2594</span>
+</span></span><span style="display:flex;"><span>XML                              <span style="color:#ae81ff">16</span>             <span style="color:#ae81ff">91</span>             <span style="color:#ae81ff">20</span>           <span style="color:#ae81ff">1298</span>
+</span></span><span style="display:flex;"><span>Bourne Shell                     <span style="color:#ae81ff">13</span>            <span style="color:#ae81ff">172</span>            <span style="color:#ae81ff">348</span>           <span style="color:#ae81ff">1064</span>
+</span></span><span style="display:flex;"><span>CSS                               <span style="color:#ae81ff">6</span>            <span style="color:#ae81ff">121</span>             <span style="color:#ae81ff">32</span>            <span style="color:#ae81ff">888</span>
+</span></span><span style="display:flex;"><span>Bourne Again Shell               <span style="color:#ae81ff">17</span>            <span style="color:#ae81ff">173</span>            <span style="color:#ae81ff">147</span>            <span style="color:#ae81ff">758</span>
+</span></span><span style="display:flex;"><span>Lisp                              <span style="color:#ae81ff">2</span>            <span style="color:#ae81ff">108</span>            <span style="color:#ae81ff">147</span>            <span style="color:#ae81ff">618</span>
+</span></span><span style="display:flex;"><span>vim script                        <span style="color:#ae81ff">9</span>             <span style="color:#ae81ff">94</span>            <span style="color:#ae81ff">157</span>            <span style="color:#ae81ff">456</span>
+</span></span><span style="display:flex;"><span>Pascal                            <span style="color:#ae81ff">1</span>             <span style="color:#ae81ff">48</span>            <span style="color:#ae81ff">222</span>            <span style="color:#ae81ff">256</span>
+</span></span><span style="display:flex;"><span>DOS Batch                         <span style="color:#ae81ff">4</span>             <span style="color:#ae81ff">44</span>              <span style="color:#ae81ff">1</span>            <span style="color:#ae81ff">193</span>
+</span></span><span style="display:flex;"><span>make                             <span style="color:#ae81ff">19</span>             <span style="color:#ae81ff">64</span>             <span style="color:#ae81ff">64</span>            <span style="color:#ae81ff">161</span>
+</span></span><span style="display:flex;"><span>WiX source                        <span style="color:#ae81ff">1</span>             <span style="color:#ae81ff">12</span>             <span style="color:#ae81ff">13</span>            <span style="color:#ae81ff">139</span>
+</span></span><span style="display:flex;"><span>awk                               <span style="color:#ae81ff">2</span>             <span style="color:#ae81ff">12</span>             <span style="color:#ae81ff">35</span>            <span style="color:#ae81ff">104</span>
+</span></span><span style="display:flex;"><span>YAML                              <span style="color:#ae81ff">3</span>             <span style="color:#ae81ff">14</span>             <span style="color:#ae81ff">12</span>             <span style="color:#ae81ff">60</span>
+</span></span><span style="display:flex;"><span>JSON                              <span style="color:#ae81ff">2</span>              <span style="color:#ae81ff">0</span>              <span style="color:#ae81ff">0</span>             <span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span>--------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>SUM:                           <span style="color:#ae81ff">2807</span>          <span style="color:#ae81ff">70081</span>          <span style="color:#ae81ff">78673</span>         <span style="color:#ae81ff">522129</span>
+</span></span><span style="display:flex;"><span>--------------------------------------------------------------------------------
+</span></span></code></pre></div></article>
  
       
 

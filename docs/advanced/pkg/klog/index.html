@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="klog #  V() 级别 #     级别 含义     v=0 Generally useful for this to always be visible to a cluster operator.   v=1 A reasonable default log level if you don&rsquo;t want verbosity.   v=2 Useful steady state information about the service and important log messages that may correlate to significant changes in the system. This is the recommended default log level for most systems.">
@@ -17,7 +17,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1322,7 +1322,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1483,61 +1483,61 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/logging.md">Logging Conventions</a></li>
 <li><a href="https://github.com/kubernetes/klog/blob/4c895e832e858e50ba4d0bda3a0b764481292737/klog.go#L1283">V function, Verbose</a></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// V reports whether verbosity at the call site is at least the requested level.
-</span><span style="color:#75715e">// The returned value is a struct of type Verbose, which implements Info, Infoln
-</span><span style="color:#75715e">// and Infof. These methods will write to the Info log if called.
-</span><span style="color:#75715e">// Thus, one may write either
-</span><span style="color:#75715e">//	if glog.V(2).Enabled() { klog.Info(&#34;log this&#34;) }
-</span><span style="color:#75715e">// or
-</span><span style="color:#75715e">//	klog.V(2).Info(&#34;log this&#34;)
-</span><span style="color:#75715e">// The second form is shorter but the first is cheaper if logging is off because it does
-</span><span style="color:#75715e">// not evaluate its arguments.
-</span><span style="color:#75715e">//
-</span><span style="color:#75715e">// Whether an individual call to V generates a log record depends on the setting of
-</span><span style="color:#75715e">// the -v and -vmodule flags; both are off by default. The V call will log if its level
-</span><span style="color:#75715e">// is less than or equal to the value of the -v flag, or alternatively if its level is
-</span><span style="color:#75715e">// less than or equal to the value of the -vmodule pattern matching the source file
-</span><span style="color:#75715e">// containing the call.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">V</span>(<span style="color:#a6e22e">level</span> <span style="color:#a6e22e">Level</span>) <span style="color:#a6e22e">Verbose</span> {
-	<span style="color:#75715e">// This function tries hard to be cheap unless there&#39;s work to do.
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// The fast path is two atomic loads and compares.
-</span><span style="color:#75715e"></span>
-	<span style="color:#75715e">// Here is a cheap but safe test to see if V logging is enabled globally.
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">verbosity</span>.<span style="color:#a6e22e">get</span>() <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">level</span> {
-		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newVerbose</span>(<span style="color:#a6e22e">level</span>, <span style="color:#66d9ef">true</span>)
-	}
-
-	<span style="color:#75715e">// It&#39;s off globally but vmodule may still be set.
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// Here is another cheap but safe test to see if vmodule is enabled.
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">atomic</span>.<span style="color:#a6e22e">LoadInt32</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filterLength</span>) &gt; <span style="color:#ae81ff">0</span> {
-		<span style="color:#75715e">// Now we need a proper lock to use the logging structure. The pcs field
-</span><span style="color:#75715e"></span>		<span style="color:#75715e">// is shared so we must lock before accessing it. This is fairly expensive,
-</span><span style="color:#75715e"></span>		<span style="color:#75715e">// but if V logging is enabled we&#39;re slow anyway.
-</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
-		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
-		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">Callers</span>(<span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">pcs</span>[:]) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
-			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newVerbose</span>(<span style="color:#a6e22e">level</span>, <span style="color:#66d9ef">false</span>)
-		}
-		<span style="color:#a6e22e">v</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">vmap</span>[<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">pcs</span>[<span style="color:#ae81ff">0</span>]]
-		<span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">ok</span> {
-			<span style="color:#a6e22e">v</span> = <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">setV</span>(<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">pcs</span>[<span style="color:#ae81ff">0</span>])
-		}
-		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newVerbose</span>(<span style="color:#a6e22e">level</span>, <span style="color:#a6e22e">v</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">level</span>)
-	}
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newVerbose</span>(<span style="color:#a6e22e">level</span>, <span style="color:#66d9ef">false</span>)
-}
-</code></pre></div><h2 id="verbose-函数列表">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// V reports whether verbosity at the call site is at least the requested level.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The returned value is a struct of type Verbose, which implements Info, Infoln
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// and Infof. These methods will write to the Info log if called.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Thus, one may write either
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//	if glog.V(2).Enabled() { klog.Info(&#34;log this&#34;) }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// or
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//	klog.V(2).Info(&#34;log this&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The second form is shorter but the first is cheaper if logging is off because it does
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// not evaluate its arguments.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Whether an individual call to V generates a log record depends on the setting of
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// the -v and -vmodule flags; both are off by default. The V call will log if its level
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// is less than or equal to the value of the -v flag, or alternatively if its level is
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// less than or equal to the value of the -vmodule pattern matching the source file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// containing the call.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">V</span>(<span style="color:#a6e22e">level</span> <span style="color:#a6e22e">Level</span>) <span style="color:#a6e22e">Verbose</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// This function tries hard to be cheap unless there&#39;s work to do.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// The fast path is two atomic loads and compares.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Here is a cheap but safe test to see if V logging is enabled globally.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">verbosity</span>.<span style="color:#a6e22e">get</span>() <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">level</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newVerbose</span>(<span style="color:#a6e22e">level</span>, <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// It&#39;s off globally but vmodule may still be set.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// Here is another cheap but safe test to see if vmodule is enabled.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">atomic</span>.<span style="color:#a6e22e">LoadInt32</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filterLength</span>) &gt; <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Now we need a proper lock to use the logging structure. The pcs field
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// is shared so we must lock before accessing it. This is fairly expensive,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// but if V logging is enabled we&#39;re slow anyway.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">Callers</span>(<span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">pcs</span>[:]) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newVerbose</span>(<span style="color:#a6e22e">level</span>, <span style="color:#66d9ef">false</span>)
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">v</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">vmap</span>[<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">pcs</span>[<span style="color:#ae81ff">0</span>]]
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">ok</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">v</span> = <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">setV</span>(<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">pcs</span>[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newVerbose</span>(<span style="color:#a6e22e">level</span>, <span style="color:#a6e22e">v</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">level</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newVerbose</span>(<span style="color:#a6e22e">level</span>, <span style="color:#66d9ef">false</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="verbose-函数列表">
   Verbose 函数列表
   <a class="anchor" href="#verbose-%e5%87%bd%e6%95%b0%e5%88%97%e8%a1%a8">#</a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Enabled</span>() <span style="color:#66d9ef">bool</span>
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Infoln</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Infof</span>(<span style="color:#a6e22e">format</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">InfoS</span>(<span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>, <span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">ErrorS</span>(<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>, <span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Enabled</span>() <span style="color:#66d9ef">bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Infoln</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Infof</span>(<span style="color:#a6e22e">format</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">InfoS</span>(<span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>, <span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Verbose</span>) <span style="color:#a6e22e">ErrorS</span>(<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>, <span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+</span></span></code></pre></div><hr>
 <h2 id="注意事项">
   注意事项
   <a class="anchor" href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9">#</a>
@@ -1557,65 +1557,65 @@ https://github.com/alex-shpak/hugo-book
 <li><code>klog.Fatal</code>, <code>klog.Fatalf</code>, <code>klog.Fatalln</code> -&gt; <code>klog.ErrorS</code> followed by <code>os.Exit(1)</code></li>
 <li><code>klog.FatalDepth</code> -&gt; <code>klog.ErrorDepth</code> followed by <code>os.Exit(1)</code></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Info logs to the INFO log.
-</span><span style="color:#75715e">// Arguments are handled in the manner of fmt.Print; a newline is appended if missing.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
-	<span style="color:#a6e22e">logging</span>.print(<span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
-}
-
-<span style="color:#75715e">// InfoDepth acts as Info but uses depth to determine which call frame to log.
-</span><span style="color:#75715e">// InfoDepth(0, &#34;msg&#34;) is the same as Info(&#34;msg&#34;).
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">InfoDepth</span>(<span style="color:#a6e22e">depth</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
-	<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">printDepth</span>(<span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">depth</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
-}
-
-<span style="color:#75715e">// Infoln logs to the INFO log.
-</span><span style="color:#75715e">// Arguments are handled in the manner of fmt.Println; a newline is always appended.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Infoln</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
-	<span style="color:#a6e22e">logging</span>.println(<span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
-}
-
-<span style="color:#75715e">// Infof logs to the INFO log.
-</span><span style="color:#75715e">// Arguments are handled in the manner of fmt.Printf; a newline is appended if missing.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Infof</span>(<span style="color:#a6e22e">format</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
-	<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">printf</span>(<span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">format</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
-}
-
-<span style="color:#75715e">// InfoS structured logs to the INFO log.
-</span><span style="color:#75715e">// The msg argument used to add constant description to the log line.
-</span><span style="color:#75715e">// The key/value pairs would be join by &#34;=&#34; ; a newline is always appended.
-</span><span style="color:#75715e">//
-</span><span style="color:#75715e">// Basic examples:
-</span><span style="color:#75715e">// &gt;&gt; klog.InfoS(&#34;Pod status updated&#34;, &#34;pod&#34;, &#34;kubedns&#34;, &#34;status&#34;, &#34;ready&#34;)
-</span><span style="color:#75715e">// output:
-</span><span style="color:#75715e">// &gt;&gt; I1025 00:15:15.525108       1 controller_utils.go:116] &#34;Pod status updated&#34; pod=&#34;kubedns&#34; status=&#34;ready&#34;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">InfoS</span>(<span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
-	<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">infoS</span>(<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span><span style="color:#f92672">...</span>)
-}
-
-<span style="color:#75715e">// if loggr is specified, will call loggr.Info, otherwise output with logging module.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">l</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">loggingT</span>) <span style="color:#a6e22e">infoS</span>(<span style="color:#a6e22e">loggr</span> <span style="color:#a6e22e">logr</span>.<span style="color:#a6e22e">Logger</span>, <span style="color:#a6e22e">filter</span> <span style="color:#a6e22e">LogFilter</span>, <span style="color:#a6e22e">depth</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
-	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">filter</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-		<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span> = <span style="color:#a6e22e">filter</span>.<span style="color:#a6e22e">FilterS</span>(<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span>)
-	}
-	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">loggr</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-		<span style="color:#a6e22e">loggr</span>.<span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span><span style="color:#f92672">...</span>)
-		<span style="color:#66d9ef">return</span>
-	}
-	<span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">printS</span>(<span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">depth</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span><span style="color:#f92672">...</span>)
-}
-
-<span style="color:#75715e">// logr.Logger.Info
-</span><span style="color:#75715e">// https://github.com/go-logr/logr
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// Info logs a non-error message with the given key/value pairs as context.
-</span><span style="color:#75715e">//
-</span><span style="color:#75715e">// The msg argument should be used to add some constant description to
-</span><span style="color:#75715e">// the log line.  The key/value pairs can then be used to add additional
-</span><span style="color:#75715e">// variable information.  The key/value pairs should alternate string
-</span><span style="color:#75715e">// keys and arbitrary values.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
-</code></pre></div><p>参考：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Info logs to the INFO log.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Arguments are handled in the manner of fmt.Print; a newline is appended if missing.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">logging</span>.print(<span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// InfoDepth acts as Info but uses depth to determine which call frame to log.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// InfoDepth(0, &#34;msg&#34;) is the same as Info(&#34;msg&#34;).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">InfoDepth</span>(<span style="color:#a6e22e">depth</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">printDepth</span>(<span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">depth</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Infoln logs to the INFO log.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Arguments are handled in the manner of fmt.Println; a newline is always appended.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Infoln</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">logging</span>.println(<span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Infof logs to the INFO log.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Arguments are handled in the manner of fmt.Printf; a newline is appended if missing.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Infof</span>(<span style="color:#a6e22e">format</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">printf</span>(<span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">format</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// InfoS structured logs to the INFO log.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The msg argument used to add constant description to the log line.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The key/value pairs would be join by &#34;=&#34; ; a newline is always appended.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Basic examples:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// &gt;&gt; klog.InfoS(&#34;Pod status updated&#34;, &#34;pod&#34;, &#34;kubedns&#34;, &#34;status&#34;, &#34;ready&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// output:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// &gt;&gt; I1025 00:15:15.525108       1 controller_utils.go:116] &#34;Pod status updated&#34; pod=&#34;kubedns&#34; status=&#34;ready&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">InfoS</span>(<span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">infoS</span>(<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span><span style="color:#f92672">...</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// if loggr is specified, will call loggr.Info, otherwise output with logging module.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">l</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">loggingT</span>) <span style="color:#a6e22e">infoS</span>(<span style="color:#a6e22e">loggr</span> <span style="color:#a6e22e">logr</span>.<span style="color:#a6e22e">Logger</span>, <span style="color:#a6e22e">filter</span> <span style="color:#a6e22e">LogFilter</span>, <span style="color:#a6e22e">depth</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">filter</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span> = <span style="color:#a6e22e">filter</span>.<span style="color:#a6e22e">FilterS</span>(<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">loggr</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">loggr</span>.<span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span><span style="color:#f92672">...</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">printS</span>(<span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">infoLog</span>, <span style="color:#a6e22e">depth</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">keysAndValues</span><span style="color:#f92672">...</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// logr.Logger.Info
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// https://github.com/go-logr/logr
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Info logs a non-error message with the given key/value pairs as context.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The msg argument should be used to add some constant description to
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// the log line.  The key/value pairs can then be used to add additional
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// variable information.  The key/value pairs should alternate string
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// keys and arbitrary values.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">keysAndValues</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{})
+</span></span></code></pre></div><p>参考：</p>
 <ul>
 <li><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/migration-to-structured-logging.md#structured-logging-in-kubernetes">Structured Logging migration instructions</a></li>
 </ul>
@@ -1625,13 +1625,13 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <p><code>klog.Fatal()</code> 打印日志后，会调用 <code>os.Exit(255)</code></p>
 <p>应该改用 <code>klog.ErrorS()</code>，再<strong>自己调用</strong> <code>os.Exit(255)</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Fatal logs to the FATAL, ERROR, WARNING, and INFO logs,
-</span><span style="color:#75715e">// including a stack trace of all running goroutines, then calls os.Exit(255).
-</span><span style="color:#75715e">// Arguments are handled in the manner of fmt.Print; a newline is appended if missing.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
-	<span style="color:#a6e22e">logging</span>.print(<span style="color:#a6e22e">fatalLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
-}
-</code></pre></div><p>参考：<a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/migration-to-structured-logging.md#replacing-fatal-calls">Replacing Fatal calls</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Fatal logs to the FATAL, ERROR, WARNING, and INFO logs,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// including a stack trace of all running goroutines, then calls os.Exit(255).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Arguments are handled in the manner of fmt.Print; a newline is appended if missing.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">args</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">interface</span>{}) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">logging</span>.print(<span style="color:#a6e22e">fatalLog</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">logr</span>, <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">filter</span>, <span style="color:#a6e22e">args</span><span style="color:#f92672">...</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>参考：<a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/migration-to-structured-logging.md#replacing-fatal-calls">Replacing Fatal calls</a></p>
 </article>
  
       

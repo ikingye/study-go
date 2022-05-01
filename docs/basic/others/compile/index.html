@@ -2,12 +2,12 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="编译 #  Makefile #  Go Makefile 样例 #  include .env PROJECTNAME=$(shell basename &#34;$(PWD)&#34;) # Go related variables. GOBASE=$(shell pwd) GOPATH=&#34;$(GOBASE)/vendor:$(GOBASE)&#34; GOBIN=$(GOBASE)/bin GOFILES=$(wildcard *.go) # Redirect error output to a file, so we can show it in development mode. STDERR=/tmp/.$(PROJECTNAME)-stderr.txt # PID file will keep the process id of the server PID=/tmp/.$(PROJECTNAME).pid # Make is verbose in Linux. Make it silent. MAKEFLAGS &#43;= --silent ## install: Install missing dependencies.">
+<meta name="description" content="编译 #  Makefile #  Go Makefile 样例 #  include .env  PROJECTNAME=$(shell basename &#34;$(PWD)&#34;)  # Go related variables. GOBASE=$(shell pwd) GOPATH=&#34;$(GOBASE)/vendor:$(GOBASE)&#34; GOBIN=$(GOBASE)/bin GOFILES=$(wildcard *.go)  # Redirect error output to a file, so we can show it in development mode. STDERR=/tmp/.$(PROJECTNAME)-stderr.txt  # PID file will keep the process id of the server PID=/tmp/.$(PROJECTNAME).pid  # Make is verbose in Linux. Make it silent. MAKEFLAGS &#43;= --silent  ## install: Install missing dependencies.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="编译" />
-<meta property="og:description" content="编译 #  Makefile #  Go Makefile 样例 #  include .env PROJECTNAME=$(shell basename &#34;$(PWD)&#34;) # Go related variables. GOBASE=$(shell pwd) GOPATH=&#34;$(GOBASE)/vendor:$(GOBASE)&#34; GOBIN=$(GOBASE)/bin GOFILES=$(wildcard *.go) # Redirect error output to a file, so we can show it in development mode. STDERR=/tmp/.$(PROJECTNAME)-stderr.txt # PID file will keep the process id of the server PID=/tmp/.$(PROJECTNAME).pid # Make is verbose in Linux. Make it silent. MAKEFLAGS &#43;= --silent ## install: Install missing dependencies." />
+<meta property="og:description" content="编译 #  Makefile #  Go Makefile 样例 #  include .env  PROJECTNAME=$(shell basename &#34;$(PWD)&#34;)  # Go related variables. GOBASE=$(shell pwd) GOPATH=&#34;$(GOBASE)/vendor:$(GOBASE)&#34; GOBIN=$(GOBASE)/bin GOFILES=$(wildcard *.go)  # Redirect error output to a file, so we can show it in development mode. STDERR=/tmp/.$(PROJECTNAME)-stderr.txt  # PID file will keep the process id of the server PID=/tmp/.$(PROJECTNAME).pid  # Make is verbose in Linux. Make it silent. MAKEFLAGS &#43;= --silent  ## install: Install missing dependencies." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/basic/others/compile/" /><meta property="article:section" content="docs" />
 
@@ -17,7 +17,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1322,7 +1322,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1383,96 +1383,96 @@ https://github.com/alex-shpak/hugo-book
   Go Makefile 样例
   <a class="anchor" href="#go-makefile-%e6%a0%b7%e4%be%8b">#</a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#960050;background-color:#1e0010">include</span> <span style="color:#960050;background-color:#1e0010">.env</span>
-
-PROJECTNAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>shell basename <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>PWD<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>
-
-<span style="color:#75715e"># Go related variables.
-</span><span style="color:#75715e"></span>GOBASE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>shell pwd<span style="color:#66d9ef">)</span>
-GOPATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>GOBASE<span style="color:#66d9ef">)</span><span style="color:#e6db74">/vendor:</span><span style="color:#66d9ef">$(</span>GOBASE<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBASE<span style="color:#66d9ef">)</span>/bin
-GOFILES<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>wildcard *.go<span style="color:#66d9ef">)</span>
-
-<span style="color:#75715e"># Redirect error output to a file, so we can show it in development mode.
-</span><span style="color:#75715e"></span>STDERR<span style="color:#f92672">=</span>/tmp/.<span style="color:#66d9ef">$(</span>PROJECTNAME<span style="color:#66d9ef">)</span>-stderr.txt
-
-<span style="color:#75715e"># PID file will keep the process id of the server
-</span><span style="color:#75715e"></span>PID<span style="color:#f92672">=</span>/tmp/.<span style="color:#66d9ef">$(</span>PROJECTNAME<span style="color:#66d9ef">)</span>.pid
-
-<span style="color:#75715e"># Make is verbose in Linux. Make it silent.
-</span><span style="color:#75715e"></span>MAKEFLAGS <span style="color:#f92672">+=</span> --silent
-
-<span style="color:#75715e">## install: Install missing dependencies. Runs `go get` internally. e.g; make install get=github.com/foo/bar
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">install</span><span style="color:#f92672">:</span> go-get
-
-<span style="color:#75715e">## start: Start in development mode. Auto-starts when code changes.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">start</span><span style="color:#f92672">:</span>
-    bash -c <span style="color:#e6db74">&#34;trap &#39;make stop&#39; EXIT; </span><span style="color:#66d9ef">$(</span>MAKE<span style="color:#66d9ef">)</span><span style="color:#e6db74"> compile start-server watch run=&#39;make compile start-server&#39;&#34;</span>
-
-<span style="color:#75715e">## stop: Stop development mode.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">stop</span><span style="color:#f92672">:</span> stop-server
-
-<span style="color:#a6e22e">start-server</span><span style="color:#f92672">:</span> stop-server
-	@echo <span style="color:#e6db74">&#34;  &gt;  </span><span style="color:#66d9ef">$(</span>PROJECTNAME<span style="color:#66d9ef">)</span><span style="color:#e6db74"> is available at </span><span style="color:#66d9ef">$(</span>ADDR<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-	@-<span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span>/<span style="color:#66d9ef">$(</span>PROJECTNAME<span style="color:#66d9ef">)</span> 2&gt;&amp;<span style="color:#ae81ff">1</span> &amp; echo $$! &gt; <span style="color:#66d9ef">$(</span>PID<span style="color:#66d9ef">)</span>
-	@cat <span style="color:#66d9ef">$(</span>PID<span style="color:#66d9ef">)</span> | sed <span style="color:#e6db74">&#34;/^/s/^/  \&gt;  PID: /&#34;</span>
-
-<span style="color:#a6e22e">stop-server</span><span style="color:#f92672">:</span>
-	@-touch <span style="color:#66d9ef">$(</span>PID<span style="color:#66d9ef">)</span>
-	@-kill <span style="color:#e6db74">`</span>cat <span style="color:#66d9ef">$(</span>PID<span style="color:#66d9ef">)</span><span style="color:#e6db74">`</span> 2&gt; /dev/null <span style="color:#f92672">||</span> true
-	@-rm <span style="color:#66d9ef">$(</span>PID<span style="color:#66d9ef">)</span>
-
-<span style="color:#75715e">## watch: Run given command when code changes. e.g; make watch run=&#34;echo &#39;hey&#39;&#34;
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">watch</span><span style="color:#f92672">:</span>
-	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> yolo -i . -e vendor -e bin -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>run<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-
-<span style="color:#a6e22e">restart-server</span><span style="color:#f92672">:</span> stop-server start-server
-
-<span style="color:#75715e">## compile: Compile the binary.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">compile</span><span style="color:#f92672">:</span>
-	@-touch <span style="color:#66d9ef">$(</span>STDERR<span style="color:#66d9ef">)</span>
-	@-rm <span style="color:#66d9ef">$(</span>STDERR<span style="color:#66d9ef">)</span>
-	@-<span style="color:#66d9ef">$(</span>MAKE<span style="color:#66d9ef">)</span> -s go-compile 2&gt; <span style="color:#66d9ef">$(</span>STDERR<span style="color:#66d9ef">)</span>
-	@cat <span style="color:#66d9ef">$(</span>STDERR<span style="color:#66d9ef">)</span> | sed -e <span style="color:#e6db74">&#39;1s/.*/\nError:\n/&#39;</span>  | sed <span style="color:#e6db74">&#39;s/make\[.*/ /&#39;</span> | sed <span style="color:#e6db74">&#34;/^/s/^/     /&#34;</span> 1&gt;&amp;<span style="color:#ae81ff">2</span>
-
-<span style="color:#75715e">## exec: Run given command, wrapped with custom GOPATH. e.g; make exec run=&#34;go test ./...&#34;
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">exec</span><span style="color:#f92672">:</span>
-	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>run<span style="color:#66d9ef">)</span>
-
-<span style="color:#75715e">## clean: Clean build files. Runs `go clean` internally.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>
-	@<span style="color:#f92672">(</span>MAKEFILE<span style="color:#f92672">)</span> go-clean
-
-<span style="color:#a6e22e">go-compile</span><span style="color:#f92672">:</span> go-clean go-get go-build
-
-<span style="color:#a6e22e">go-build</span><span style="color:#f92672">:</span>
-	@echo <span style="color:#e6db74">&#34;  &gt;  Building binary...&#34;</span>
-	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> go build -o <span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span>/<span style="color:#66d9ef">$(</span>PROJECTNAME<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>GOFILES<span style="color:#66d9ef">)</span>
-
-<span style="color:#a6e22e">go-generate</span><span style="color:#f92672">:</span>
-	@echo <span style="color:#e6db74">&#34;  &gt;  Generating dependency files...&#34;</span>
-	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> go generate <span style="color:#66d9ef">$(</span>generate<span style="color:#66d9ef">)</span>
-
-<span style="color:#a6e22e">go-get</span><span style="color:#f92672">:</span>
-	@echo <span style="color:#e6db74">&#34;  &gt;  Checking if there is any missing dependencies...&#34;</span>
-	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> go get <span style="color:#66d9ef">$(</span>get<span style="color:#66d9ef">)</span>
-
-<span style="color:#a6e22e">go-install</span><span style="color:#f92672">:</span>
-	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> go install <span style="color:#66d9ef">$(</span>GOFILES<span style="color:#66d9ef">)</span>
-
-<span style="color:#a6e22e">go-clean</span><span style="color:#f92672">:</span>
-	@echo <span style="color:#e6db74">&#34;  &gt;  Cleaning build cache&#34;</span>
-	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> go clean
-
-<span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> help
-<span style="color:#a6e22e">all</span><span style="color:#f92672">:</span> help
-<span style="color:#a6e22e">help</span><span style="color:#f92672">:</span> Makefile
-	@echo
-	@echo <span style="color:#e6db74">&#34; Choose a command run in &#34;</span><span style="color:#66d9ef">$(</span>PROJECTNAME<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;:&#34;</span>
-	@echo
-	@sed -n <span style="color:#e6db74">&#39;s/^##//p&#39;</span> $&lt; | column -t -s <span style="color:#e6db74">&#39;:&#39;</span> |  sed -e <span style="color:#e6db74">&#39;s/^/ /&#39;</span>
-	@echo
-</code></pre></div><p>参考：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">include</span> <span style="color:#960050;background-color:#1e0010">.env</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PROJECTNAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>shell basename <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>PWD<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Go related variables.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>GOBASE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>shell pwd<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>GOPATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>GOBASE<span style="color:#66d9ef">)</span><span style="color:#e6db74">/vendor:</span><span style="color:#66d9ef">$(</span>GOBASE<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBASE<span style="color:#66d9ef">)</span>/bin
+</span></span><span style="display:flex;"><span>GOFILES<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>wildcard *.go<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Redirect error output to a file, so we can show it in development mode.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>STDERR<span style="color:#f92672">=</span>/tmp/.<span style="color:#66d9ef">$(</span>PROJECTNAME<span style="color:#66d9ef">)</span>-stderr.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># PID file will keep the process id of the server
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>PID<span style="color:#f92672">=</span>/tmp/.<span style="color:#66d9ef">$(</span>PROJECTNAME<span style="color:#66d9ef">)</span>.pid
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Make is verbose in Linux. Make it silent.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>MAKEFLAGS <span style="color:#f92672">+=</span> --silent
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## install: Install missing dependencies. Runs `go get` internally. e.g; make install get=github.com/foo/bar
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">install</span><span style="color:#f92672">:</span> go-get
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## start: Start in development mode. Auto-starts when code changes.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">start</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    bash -c <span style="color:#e6db74">&#34;trap &#39;make stop&#39; EXIT; </span><span style="color:#66d9ef">$(</span>MAKE<span style="color:#66d9ef">)</span><span style="color:#e6db74"> compile start-server watch run=&#39;make compile start-server&#39;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## stop: Stop development mode.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">stop</span><span style="color:#f92672">:</span> stop-server
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">start-server</span><span style="color:#f92672">:</span> stop-server
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;  &gt;  </span><span style="color:#66d9ef">$(</span>PROJECTNAME<span style="color:#66d9ef">)</span><span style="color:#e6db74"> is available at </span><span style="color:#66d9ef">$(</span>ADDR<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>	@-<span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span>/<span style="color:#66d9ef">$(</span>PROJECTNAME<span style="color:#66d9ef">)</span> 2&gt;&amp;<span style="color:#ae81ff">1</span> &amp; echo $$! &gt; <span style="color:#66d9ef">$(</span>PID<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	@cat <span style="color:#66d9ef">$(</span>PID<span style="color:#66d9ef">)</span> | sed <span style="color:#e6db74">&#34;/^/s/^/  \&gt;  PID: /&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">stop-server</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@-touch <span style="color:#66d9ef">$(</span>PID<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	@-kill <span style="color:#e6db74">`</span>cat <span style="color:#66d9ef">$(</span>PID<span style="color:#66d9ef">)</span><span style="color:#e6db74">`</span> 2&gt; /dev/null <span style="color:#f92672">||</span> true
+</span></span><span style="display:flex;"><span>	@-rm <span style="color:#66d9ef">$(</span>PID<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## watch: Run given command when code changes. e.g; make watch run=&#34;echo &#39;hey&#39;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">watch</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> yolo -i . -e vendor -e bin -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>run<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">restart-server</span><span style="color:#f92672">:</span> stop-server start-server
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## compile: Compile the binary.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">compile</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@-touch <span style="color:#66d9ef">$(</span>STDERR<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	@-rm <span style="color:#66d9ef">$(</span>STDERR<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	@-<span style="color:#66d9ef">$(</span>MAKE<span style="color:#66d9ef">)</span> -s go-compile 2&gt; <span style="color:#66d9ef">$(</span>STDERR<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	@cat <span style="color:#66d9ef">$(</span>STDERR<span style="color:#66d9ef">)</span> | sed -e <span style="color:#e6db74">&#39;1s/.*/\nError:\n/&#39;</span>  | sed <span style="color:#e6db74">&#39;s/make\[.*/ /&#39;</span> | sed <span style="color:#e6db74">&#34;/^/s/^/     /&#34;</span> 1&gt;&amp;<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## exec: Run given command, wrapped with custom GOPATH. e.g; make exec run=&#34;go test ./...&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">exec</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>run<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## clean: Clean build files. Runs `go clean` internally.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@<span style="color:#f92672">(</span>MAKEFILE<span style="color:#f92672">)</span> go-clean
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">go-compile</span><span style="color:#f92672">:</span> go-clean go-get go-build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">go-build</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;  &gt;  Building binary...&#34;</span>
+</span></span><span style="display:flex;"><span>	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> go build -o <span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span>/<span style="color:#66d9ef">$(</span>PROJECTNAME<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>GOFILES<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">go-generate</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;  &gt;  Generating dependency files...&#34;</span>
+</span></span><span style="display:flex;"><span>	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> go generate <span style="color:#66d9ef">$(</span>generate<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">go-get</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;  &gt;  Checking if there is any missing dependencies...&#34;</span>
+</span></span><span style="display:flex;"><span>	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> go get <span style="color:#66d9ef">$(</span>get<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">go-install</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> go install <span style="color:#66d9ef">$(</span>GOFILES<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">go-clean</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;  &gt;  Cleaning build cache&#34;</span>
+</span></span><span style="display:flex;"><span>	@GOPATH<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span> GOBIN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>GOBIN<span style="color:#66d9ef">)</span> go clean
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> help
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">all</span><span style="color:#f92672">:</span> help
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">help</span><span style="color:#f92672">:</span> Makefile
+</span></span><span style="display:flex;"><span>	@echo
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34; Choose a command run in &#34;</span><span style="color:#66d9ef">$(</span>PROJECTNAME<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;:&#34;</span>
+</span></span><span style="display:flex;"><span>	@echo
+</span></span><span style="display:flex;"><span>	@sed -n <span style="color:#e6db74">&#39;s/^##//p&#39;</span> $&lt; | column -t -s <span style="color:#e6db74">&#39;:&#39;</span> |  sed -e <span style="color:#e6db74">&#39;s/^/ /&#39;</span>
+</span></span><span style="display:flex;"><span>	@echo
+</span></span></code></pre></div><p>参考：</p>
 <ul>
 <li><a href="https://kodfabrik.com/journal/a-good-makefile-for-go">A Good Makefile for Go</a></li>
 </ul>
@@ -1482,18 +1482,18 @@ GOFILES<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
   <a class="anchor" href="#%e4%ba%a4%e5%8f%89%e7%bc%96%e8%af%91">#</a>
 </h2>
 <p>golang 交叉编译很简单的，只要设置几个环境变量就可以了</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># mac上编译linux和windows二进制</span>
-CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>linux GOARCH<span style="color:#f92672">=</span>amd64 go build
-CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>windows GOARCH<span style="color:#f92672">=</span>amd64 go build
-
-<span style="color:#75715e"># linux上编译mac和windows二进制</span>
-CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>darwin GOARCH<span style="color:#f92672">=</span>amd64 go build
-CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>windows GOARCH<span style="color:#f92672">=</span>amd64 go build
-
-<span style="color:#75715e"># windows上编译mac和linux二进制</span>
-SET CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> SET GOOS<span style="color:#f92672">=</span>darwin SET GOARCH<span style="color:#f92672">=</span>amd64 go build main.go
-SET CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> SET GOOS<span style="color:#f92672">=</span>linux SET GOARCH<span style="color:#f92672">=</span>amd64 go build main.go
-</code></pre></div></article>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># mac上编译linux和windows二进制</span>
+</span></span><span style="display:flex;"><span>CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>linux GOARCH<span style="color:#f92672">=</span>amd64 go build
+</span></span><span style="display:flex;"><span>CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>windows GOARCH<span style="color:#f92672">=</span>amd64 go build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># linux上编译mac和windows二进制</span>
+</span></span><span style="display:flex;"><span>CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>darwin GOARCH<span style="color:#f92672">=</span>amd64 go build
+</span></span><span style="display:flex;"><span>CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>windows GOARCH<span style="color:#f92672">=</span>amd64 go build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># windows上编译mac和linux二进制</span>
+</span></span><span style="display:flex;"><span>SET CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> SET GOOS<span style="color:#f92672">=</span>darwin SET GOARCH<span style="color:#f92672">=</span>amd64 go build main.go
+</span></span><span style="display:flex;"><span>SET CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> SET GOOS<span style="color:#f92672">=</span>linux SET GOARCH<span style="color:#f92672">=</span>amd64 go build main.go
+</span></span></code></pre></div></article>
  
       
 

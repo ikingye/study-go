@@ -2,12 +2,12 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="格式化输出 #  // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p) // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p) // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // &#43;123 (输出符号) fmt.Printf(&#34;%&#43;d\n&#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&#34;%f\n&#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt.">
+<meta name="description" content="格式化输出 #  // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p)  // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p)  // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p)  // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p)  // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true)  // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // &#43;123 (输出符号) fmt.Printf(&#34;%&#43;d\n&#34;, 123)  // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14)  // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33)  // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456)  // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="格式化输出" />
-<meta property="og:description" content="格式化输出 #  // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p) // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p) // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // &#43;123 (输出符号) fmt.Printf(&#34;%&#43;d\n&#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&#34;%f\n&#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt." />
+<meta property="og:description" content="格式化输出 #  // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&#34;%v\n&#34;, p)  // 如果值是一个结构体，`%&#43;v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&#34;%&#43;v\n&#34;, p)  // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&#34;%#v\n&#34;, p)  // 需要打印值的类型，使用 `%T`。 fmt.Printf(&#34;%T\n&#34;, p)  // 格式化布尔值很简单。 fmt.Printf(&#34;%t\n&#34;, true)  // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&#34;%d\n&#34;, 123) // &#43;123 (输出符号) fmt.Printf(&#34;%&#43;d\n&#34;, 123)  // 这个输出二进制表示形式。 fmt.Printf(&#34;%b\n&#34;, 14)  // 输出给定整数的对应字符。 fmt.Printf(&#34;%c\n&#34;, 33)  // `%x` 提供了十六进制编码。 fmt.Printf(&#34;%x\n&#34;, 456)  // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/basic/std/format/" /><meta property="article:section" content="docs" />
 
@@ -17,7 +17,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1322,7 +1322,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1366,85 +1366,85 @@ https://github.com/alex-shpak/hugo-book
   格式化输出
   <a class="anchor" href="#%e6%a0%bc%e5%bc%8f%e5%8c%96%e8%be%93%e5%87%ba">#</a>
 </h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Go 提供了一些用于格式化常规值的打印“动词”。
-</span><span style="color:#75715e">// 例如，这样打印 `point` 结构体的实例。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">point</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}
-<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%v\n&#34;</span>, <span style="color:#a6e22e">p</span>)
-
-<span style="color:#75715e">// 如果值是一个结构体，`%+v` 的格式化输出内容将包括结构体的字段名。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%+v\n&#34;</span>, <span style="color:#a6e22e">p</span>)
-
-<span style="color:#75715e">// `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%#v\n&#34;</span>, <span style="color:#a6e22e">p</span>)
-
-<span style="color:#75715e">// 需要打印值的类型，使用 `%T`。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%T\n&#34;</span>, <span style="color:#a6e22e">p</span>)
-
-<span style="color:#75715e">// 格式化布尔值很简单。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%t\n&#34;</span>, <span style="color:#66d9ef">true</span>)
-
-<span style="color:#75715e">// 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\n&#34;</span>, <span style="color:#ae81ff">123</span>)
-<span style="color:#75715e">// +123 (输出符号)
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%+d\n&#34;</span>, <span style="color:#ae81ff">123</span>)
-
-<span style="color:#75715e">// 这个输出二进制表示形式。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%b\n&#34;</span>, <span style="color:#ae81ff">14</span>)
-
-<span style="color:#75715e">// 输出给定整数的对应字符。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%c\n&#34;</span>, <span style="color:#ae81ff">33</span>)
-
-<span style="color:#75715e">// `%x` 提供了十六进制编码。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%x\n&#34;</span>, <span style="color:#ae81ff">456</span>)
-
-<span style="color:#75715e">// 同样的，也为浮点型提供了多种格式化选项。
-</span><span style="color:#75715e">// 使用 `%f` 进行最基本的十进制格式化。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%f\n&#34;</span>, <span style="color:#ae81ff">78.9</span>)
-
-<span style="color:#75715e">// `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%e\n&#34;</span>, <span style="color:#ae81ff">123400000.0</span>)
-<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%E\n&#34;</span>, <span style="color:#ae81ff">123400000.0</span>)
-
-<span style="color:#75715e">// 使用 `%s` 进行基本的字符串输出。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%s\n&#34;</span>, <span style="color:#e6db74">&#34;\&#34;string\&#34;&#34;</span>)
-
-<span style="color:#75715e">// 像 Go 源代码中那样带有双引号的输出，使用 `%q`。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%q\n&#34;</span>, <span style="color:#e6db74">&#34;\&#34;string\&#34;&#34;</span>)
-
-<span style="color:#75715e">// 和上面的整型数一样，`%x` 输出使用 base-16 编码的字符串，
-</span><span style="color:#75715e">// 每个字节使用 2 个字符表示。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%x\n&#34;</span>, <span style="color:#e6db74">&#34;hex this&#34;</span>)
-
-<span style="color:#75715e">// 要输出一个指针的值，使用 `%p`。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%p\n&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">p</span>)
-
-<span style="color:#75715e">// 格式化数字时，您经常会希望控制输出结果的宽度和精度。
-</span><span style="color:#75715e">// 要指定整数的宽度，请在动词 &#34;%&#34; 之后使用数字。
-</span><span style="color:#75715e">// 默认情况下，结果会右对齐并用空格填充。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%6d|%6d|\n&#34;</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">345</span>)
-
-<span style="color:#75715e">// 你也可以指定浮点型的输出宽度，同时也可以通过 `宽度.精度` 的语法来指定输出的精度。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%6.2f|%6.2f|\n&#34;</span>, <span style="color:#ae81ff">1.2</span>, <span style="color:#ae81ff">3.45</span>)
-
-<span style="color:#75715e">// 要左对齐，使用 `-` 标志。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%-6.2f|%-6.2f|\n&#34;</span>, <span style="color:#ae81ff">1.2</span>, <span style="color:#ae81ff">3.45</span>)
-
-<span style="color:#75715e">// 你也许也想控制字符串输出时的宽度，特别是要确保他们在类表格输出时的对齐。
-</span><span style="color:#75715e">// 这是基本的宽度右对齐方法。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%6s|%6s|\n&#34;</span>, <span style="color:#e6db74">&#34;foo&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>)
-
-<span style="color:#75715e">// 要左对齐，和数字一样，使用 `-` 标志。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%-6s|%-6s|\n&#34;</span>, <span style="color:#e6db74">&#34;foo&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>)
-
-<span style="color:#75715e">// 到目前为止，我们已经看过 `Printf` 了，
-</span><span style="color:#75715e">// 它通过 `os.Stdout` 输出格式化的字符串。
-</span><span style="color:#75715e">// `Sprintf` 则格式化并返回一个字符串而没有任何输出。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;a %s&#34;</span>, <span style="color:#e6db74">&#34;string&#34;</span>)
-<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">s</span>)
-
-<span style="color:#75715e">// 你可以使用 `Fprintf` 来格式化并输出到 `io.Writers` 而不是 `os.Stdout`。
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stderr</span>, <span style="color:#e6db74">&#34;an %s\n&#34;</span>, <span style="color:#e6db74">&#34;error&#34;</span>)
-</code></pre></div></article>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Go 提供了一些用于格式化常规值的打印“动词”。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 例如，这样打印 `point` 结构体的实例。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">point</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%v\n&#34;</span>, <span style="color:#a6e22e">p</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 如果值是一个结构体，`%+v` 的格式化输出内容将包括结构体的字段名。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%+v\n&#34;</span>, <span style="color:#a6e22e">p</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%#v\n&#34;</span>, <span style="color:#a6e22e">p</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 需要打印值的类型，使用 `%T`。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%T\n&#34;</span>, <span style="color:#a6e22e">p</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 格式化布尔值很简单。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%t\n&#34;</span>, <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\n&#34;</span>, <span style="color:#ae81ff">123</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// +123 (输出符号)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%+d\n&#34;</span>, <span style="color:#ae81ff">123</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 这个输出二进制表示形式。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%b\n&#34;</span>, <span style="color:#ae81ff">14</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出给定整数的对应字符。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%c\n&#34;</span>, <span style="color:#ae81ff">33</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// `%x` 提供了十六进制编码。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%x\n&#34;</span>, <span style="color:#ae81ff">456</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 同样的，也为浮点型提供了多种格式化选项。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 使用 `%f` 进行最基本的十进制格式化。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%f\n&#34;</span>, <span style="color:#ae81ff">78.9</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%e\n&#34;</span>, <span style="color:#ae81ff">123400000.0</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%E\n&#34;</span>, <span style="color:#ae81ff">123400000.0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 使用 `%s` 进行基本的字符串输出。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%s\n&#34;</span>, <span style="color:#e6db74">&#34;\&#34;string\&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 像 Go 源代码中那样带有双引号的输出，使用 `%q`。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%q\n&#34;</span>, <span style="color:#e6db74">&#34;\&#34;string\&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 和上面的整型数一样，`%x` 输出使用 base-16 编码的字符串，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 每个字节使用 2 个字符表示。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%x\n&#34;</span>, <span style="color:#e6db74">&#34;hex this&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 要输出一个指针的值，使用 `%p`。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%p\n&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">p</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 格式化数字时，您经常会希望控制输出结果的宽度和精度。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 要指定整数的宽度，请在动词 &#34;%&#34; 之后使用数字。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 默认情况下，结果会右对齐并用空格填充。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%6d|%6d|\n&#34;</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">345</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 你也可以指定浮点型的输出宽度，同时也可以通过 `宽度.精度` 的语法来指定输出的精度。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%6.2f|%6.2f|\n&#34;</span>, <span style="color:#ae81ff">1.2</span>, <span style="color:#ae81ff">3.45</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 要左对齐，使用 `-` 标志。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%-6.2f|%-6.2f|\n&#34;</span>, <span style="color:#ae81ff">1.2</span>, <span style="color:#ae81ff">3.45</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 你也许也想控制字符串输出时的宽度，特别是要确保他们在类表格输出时的对齐。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 这是基本的宽度右对齐方法。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%6s|%6s|\n&#34;</span>, <span style="color:#e6db74">&#34;foo&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 要左对齐，和数字一样，使用 `-` 标志。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;|%-6s|%-6s|\n&#34;</span>, <span style="color:#e6db74">&#34;foo&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 到目前为止，我们已经看过 `Printf` 了，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 它通过 `os.Stdout` 输出格式化的字符串。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// `Sprintf` 则格式化并返回一个字符串而没有任何输出。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;a %s&#34;</span>, <span style="color:#e6db74">&#34;string&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">s</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 你可以使用 `Fprintf` 来格式化并输出到 `io.Writers` 而不是 `os.Stdout`。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stderr</span>, <span style="color:#e6db74">&#34;an %s\n&#34;</span>, <span style="color:#e6db74">&#34;error&#34;</span>)
+</span></span></code></pre></div></article>
  
       
 

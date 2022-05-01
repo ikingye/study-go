@@ -25,7 +25,7 @@ Go 1.0 之后，go tool 利用 GOROOT 查找 Go 编译器（保存在 $GOROOT/pk
       
       <guid>https://kingye.me/study-go/docs/basic/std/sort/</guid>
       <description>sort #  自定义排序 #  实现 Len、Less 和 Swap 方法
-// 有时候，我们可能想根据自然顺序以外的方式来对集合进行排序。 // 例如，假设我们要按字符串的长度而不是按字母顺序对它们进行排序。 // 这儿有一个在 Go 中自定义排序的示例。  package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sort&amp;#34; ) // 为了在 Go 中使用自定义函数进行排序，我们需要一个对应的类型。 // 我们在这里创建了一个 `byLength` 类型，它只是内建类型 `[]string` 的别名。 type byLength []string // 我们为该类型实现了 `sort.Interface` 接口的 `Len`、`Less` 和 `Swap` 方法， // 这样我们就可以使用 `sort` 包的通用 `Sort` 方法了， // `Len` 和 `Swap` 在各个类型中的实现都差不多， // `Less` 将控制实际的自定义排序逻辑。 // 在这个的例子中，我们想按字符串长度递增的顺序来排序， // 所以这里使用了 `len(s[i])` 和 `len(s[j])` 来实现 `Less`。 func (s byLength) Len() int { return len(s) } func (s byLength) Swap(i, j int) { s[i], s[j] = s[j], s[i] } func (s byLength) Less(i, j int) bool { return len(s[i]) &amp;lt; len(s[j]) } // 一切准备就绪后，我们就可以通过将切片 `fruits` 强转为 `byLength` 类型的切片， // 然后对该切片使用 `sort.</description>
+// 有时候，我们可能想根据自然顺序以外的方式来对集合进行排序。 // 例如，假设我们要按字符串的长度而不是按字母顺序对它们进行排序。 // 这儿有一个在 Go 中自定义排序的示例。  package main  import ( 	&amp;#34;fmt&amp;#34; 	&amp;#34;sort&amp;#34; )  // 为了在 Go 中使用自定义函数进行排序，我们需要一个对应的类型。 // 我们在这里创建了一个 `byLength` 类型，它只是内建类型 `[]string` 的别名。 type byLength []string  // 我们为该类型实现了 `sort.Interface` 接口的 `Len`、`Less` 和 `Swap` 方法， // 这样我们就可以使用 `sort` 包的通用 `Sort` 方法了， // `Len` 和 `Swap` 在各个类型中的实现都差不多， // `Less` 将控制实际的自定义排序逻辑。 // 在这个的例子中，我们想按字符串长度递增的顺序来排序， // 所以这里使用了 `len(s[i])` 和 `len(s[j])` 来实现 `Less`。 func (s byLength) Len() int { 	return len(s) } func (s byLength) Swap(i, j int) { 	s[i], s[j] = s[j], s[i] } func (s byLength) Less(i, j int) bool { 	return len(s[i]) &amp;lt; len(s[j]) }  // 一切准备就绪后，我们就可以通过将切片 `fruits` 强转为 `byLength` 类型的切片， // 然后对该切片使用 `sort.</description>
     </item>
     
     <item>
@@ -49,9 +49,8 @@ Go 语言 101 #  go101/go101 An online book focusing on Go syntax/semantics and 
       <guid>https://kingye.me/study-go/docs/advanced/pkg/cobra/</guid>
       <description>cobra #  spf13/cobra A Commander for modern Go CLI interactions
 quick start #  typically a Cobra-based application will follow the following organizational structure:
-▾ appName/ ▾ cmd/ add.go your.go commands.go here.go main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
-package main import ( &amp;#34;{pathToYourApp}/cmd&amp;#34; ) func main() { cmd.Execute() } Ideally you place this in app/cmd/root.go:
-var rootCmd = &amp;amp;cobra.</description>
+ ▾ appName/  ▾ cmd/  add.go  your.go  commands.go  here.go  main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
+package main  import (  &amp;#34;{pathToYourApp}/cmd&amp;#34; )  func main() {  cmd.</description>
     </item>
     
     <item>
@@ -74,7 +73,7 @@ var rootCmd = &amp;amp;cobra.</description>
  计算 return 语句的返回值 赋值给匿名 / 有名返回值 执行 defer return 退出函数  Defer 的用途跟其他语言的 ensure 或 finally 类似。
 当 defer 释放锁遇到尾递归，会产生死锁 #   如果一个函数中所有递归形式的调用都出现在函数的末尾，我们称这个递归函数是尾递归的。
  计算 return 语句的值，赋值给匿名/有名返回值 -&amp;gt; defer -&amp;gt; return 退出函数
-var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 { return i } i++ return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。</description>
+var mut = sync.Mutex{} func tailRec(i int) int {  mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 {  return i  }  i++  return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。</description>
     </item>
     
     <item>
@@ -84,7 +83,7 @@ var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁  defer mut
       
       <guid>https://kingye.me/study-go/docs/basic/ref/type/error/</guid>
       <description>error #  实现 Error() string 方法的类型，都是 error 类型
-type error interface { Error() string } errors.New(&amp;#34;xxxx&amp;#34;) fmt.Errorf(format string, a ...interface{}) </description>
+type error interface { 	Error() string } errors.New(&amp;#34;xxxx&amp;#34;)  fmt.Errorf(format string, a ...interface{}) </description>
     </item>
     
     <item>
@@ -183,7 +182,7 @@ package 级别的变量 #  初始化顺序与初始化依赖有关</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kingye.me/study-go/docs/basic/std/format/</guid>
-      <description>格式化输出 #  // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&amp;#34;%v\n&amp;#34;, p) // 如果值是一个结构体，`%+v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&amp;#34;%+v\n&amp;#34;, p) // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&amp;#34;%#v\n&amp;#34;, p) // 需要打印值的类型，使用 `%T`。 fmt.Printf(&amp;#34;%T\n&amp;#34;, p) // 格式化布尔值很简单。 fmt.Printf(&amp;#34;%t\n&amp;#34;, true) // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&amp;#34;%d\n&amp;#34;, 123) // +123 (输出符号) fmt.Printf(&amp;#34;%+d\n&amp;#34;, 123) // 这个输出二进制表示形式。 fmt.Printf(&amp;#34;%b\n&amp;#34;, 14) // 输出给定整数的对应字符。 fmt.Printf(&amp;#34;%c\n&amp;#34;, 33) // `%x` 提供了十六进制编码。 fmt.Printf(&amp;#34;%x\n&amp;#34;, 456) // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.Printf(&amp;#34;%f\n&amp;#34;, 78.9) // `%e` 和 `%E` 将浮点型格式化为（稍微有一点不同的）科学记数法表示形式。 fmt.</description>
+      <description>格式化输出 #  // Go 提供了一些用于格式化常规值的打印“动词”。 // 例如，这样打印 `point` 结构体的实例。 p := point{1, 2} fmt.Printf(&amp;#34;%v\n&amp;#34;, p)  // 如果值是一个结构体，`%+v` 的格式化输出内容将包括结构体的字段名。 fmt.Printf(&amp;#34;%+v\n&amp;#34;, p)  // `%#v` 根据 Go 语法输出值，即会产生该值的源码片段。 fmt.Printf(&amp;#34;%#v\n&amp;#34;, p)  // 需要打印值的类型，使用 `%T`。 fmt.Printf(&amp;#34;%T\n&amp;#34;, p)  // 格式化布尔值很简单。 fmt.Printf(&amp;#34;%t\n&amp;#34;, true)  // 格式化整型数有多种方式，使用 `%d` 进行标准的十进制格式化。 fmt.Printf(&amp;#34;%d\n&amp;#34;, 123) // +123 (输出符号) fmt.Printf(&amp;#34;%+d\n&amp;#34;, 123)  // 这个输出二进制表示形式。 fmt.Printf(&amp;#34;%b\n&amp;#34;, 14)  // 输出给定整数的对应字符。 fmt.Printf(&amp;#34;%c\n&amp;#34;, 33)  // `%x` 提供了十六进制编码。 fmt.Printf(&amp;#34;%x\n&amp;#34;, 456)  // 同样的，也为浮点型提供了多种格式化选项。 // 使用 `%f` 进行最基本的十进制格式化。 fmt.</description>
     </item>
     
     <item>
@@ -203,8 +202,8 @@ package 级别的变量 #  初始化顺序与初始化依赖有关</description>
       
       <guid>https://kingye.me/study-go/docs/basic/others/gobuild/</guid>
       <description>Go build #  -tag #  // +build dev 前后须有一个空行隔开
- release_config.go 文件 go build -tags dev -o dev_version  // +build dev  package main var version = &amp;#34;DEV&amp;#34;  dev_config.go 文件 go build -tags dev -o dev_version  // +build release  package main const version = &amp;#34;RELEASE&amp;#34;  Go 热编译工具 #  caixw/gobuild #  gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。
-gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示 gobuild 和 Go 程序的版本信息； -r 是否搜索子目录，默认为 true； -i 是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示； -o 执行编译后的可执行文件名； -x 传递给编译程序的参数； -ext 需要监视的扩展名，默认值为&amp;#34;go&amp;#34;，区分大小写，会去掉每个扩展名的首尾空格。 若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件； -main 指定需要编译的文件，默认为&amp;#34;&amp;#34;。 dependents: 指定其它依赖的目录，只能出现在命令的尾部。 penggy/gobuild #  EasyDarwin 依赖</description>
+ release_config.go 文件 go build -tags dev -o dev_version  // +build dev  package main  var version = &amp;#34;DEV&amp;#34;  dev_config.go 文件 go build -tags dev -o dev_version  // +build release  package main  const version = &amp;#34;RELEASE&amp;#34;  Go 热编译工具 #  caixw/gobuild #  gobuild 是一个简单的 Go 代码热编译工具。 会实时监控指定目录下的文件变化 (重命名，删除，创建，添加)，并编译和运行程序。
+gobuild [options] [dependents]  options:  -h 显示当前帮助信息；  -v 显示 gobuild 和 Go 程序的版本信息；  -r 是否搜索子目录，默认为 true；  -i 是否显示被标记为 IGNORE 的日志内容，默认为 false，即不显示；  -o 执行编译后的可执行文件名；  -x 传递给编译程序的参数；  -ext 需要监视的扩展名，默认值为&amp;#34;go&amp;#34;，区分大小写，会去掉每个扩展名的首尾空格。  若需要监视所有类型文件，请使用 *，传递空值代表不监视任何文件；  -main 指定需要编译的文件，默认为&amp;#34;&amp;#34;。  dependents:  指定其它依赖的目录，只能出现在命令的尾部。 penggy/gobuild #  EasyDarwin 依赖</description>
     </item>
     
     <item>
@@ -213,7 +212,7 @@ gobuild [options] [dependents] options: -h 显示当前帮助信息； -v 显示
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kingye.me/study-go/docs/basic/others/gomod/</guid>
-      <description>Go Modules #   Using Go Modules  import #  import &amp;#34;目录&amp;#34; // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
+      <description>Go Modules #   Using Go Modules  import #  import &amp;#34;目录&amp;#34;  // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
 它的 go.mod 第一行是 module k8s.io/klog/v2
 根目录有个文件 klog.go，第一行 package klog
 所以我们在使用 klog 库时，
@@ -284,7 +283,7 @@ Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 expo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kingye.me/study-go/docs/basic/others/compile/</guid>
-      <description>编译 #  Makefile #  Go Makefile 样例 #  include .env PROJECTNAME=$(shell basename &amp;#34;$(PWD)&amp;#34;) # Go related variables. GOBASE=$(shell pwd) GOPATH=&amp;#34;$(GOBASE)/vendor:$(GOBASE)&amp;#34; GOBIN=$(GOBASE)/bin GOFILES=$(wildcard *.go) # Redirect error output to a file, so we can show it in development mode. STDERR=/tmp/.$(PROJECTNAME)-stderr.txt # PID file will keep the process id of the server PID=/tmp/.$(PROJECTNAME).pid # Make is verbose in Linux. Make it silent. MAKEFLAGS += --silent ## install: Install missing dependencies.</description>
+      <description>编译 #  Makefile #  Go Makefile 样例 #  include .env  PROJECTNAME=$(shell basename &amp;#34;$(PWD)&amp;#34;)  # Go related variables. GOBASE=$(shell pwd) GOPATH=&amp;#34;$(GOBASE)/vendor:$(GOBASE)&amp;#34; GOBIN=$(GOBASE)/bin GOFILES=$(wildcard *.go)  # Redirect error output to a file, so we can show it in development mode. STDERR=/tmp/.$(PROJECTNAME)-stderr.txt  # PID file will keep the process id of the server PID=/tmp/.$(PROJECTNAME).pid  # Make is verbose in Linux. Make it silent. MAKEFLAGS += --silent  ## install: Install missing dependencies.</description>
     </item>
     
     <item>
@@ -331,7 +330,7 @@ Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 expo
       
       <guid>https://kingye.me/study-go/docs/basic/ref/type/channel/</guid>
       <description>Chiannel #  channel 类型 #  chan T // can be used to send and receive values of type T chan&amp;lt;- float64 // can only be used to send float64s &amp;lt;-chan int // can only be used to receive ints The &amp;lt;- operator associates with the leftmost chan possible:
-chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt;-chan int // same as chan&amp;lt;- (&amp;lt;-chan int) &amp;lt;-chan &amp;lt;-chan int // same as &amp;lt;-chan (&amp;lt;-chan int) chan (&amp;lt;-chan int)  常见用法 #  // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &amp;lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&amp;#34;ping&amp;#34;` 到上面创建的 `messages` 通道中。 go func() { messages &amp;lt;- &amp;#34;ping&amp;#34; }() // 使用 `&amp;lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&amp;#34;ping&amp;#34;` 消息并将其打印出来。 msg := &amp;lt;-messages fmt.</description>
+chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt;-chan int // same as chan&amp;lt;- (&amp;lt;-chan int) &amp;lt;-chan &amp;lt;-chan int // same as &amp;lt;-chan (&amp;lt;-chan int) chan (&amp;lt;-chan int)  常见用法 #  // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string)  // 使用 `channel &amp;lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&amp;#34;ping&amp;#34;` 到上面创建的 `messages` 通道中。 go func() { messages &amp;lt;- &amp;#34;ping&amp;#34; }()  // 使用 `&amp;lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&amp;#34;ping&amp;#34;` 消息并将其打印出来。 msg := &amp;lt;-messages fmt.</description>
     </item>
     
     <item>
@@ -362,7 +361,7 @@ chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt
       <guid>https://kingye.me/study-go/docs/basic/ref/keyword/select/</guid>
       <description>select #  Go 的 选择器（select） 让你可以同时等待多个通道操作。
 将协程、通道和选择器结合，是 Go 的一个强大特性。
-// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string) // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() { time.Sleep(1 * time.Second) c1 &amp;lt;- &amp;#34;one&amp;#34; }() go func() { time.Sleep(2 * time.Second) c2 &amp;lt;- &amp;#34;two&amp;#34; }() // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &amp;lt; 2; i++ { select { case msg1 := &amp;lt;-c1: fmt.Println(&amp;#34;received&amp;#34;, msg1) case msg2 := &amp;lt;-c2: fmt.</description>
+// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string)  // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() {  time.Sleep(1 * time.Second)  c1 &amp;lt;- &amp;#34;one&amp;#34; }() go func() {  time.Sleep(2 * time.Second)  c2 &amp;lt;- &amp;#34;two&amp;#34; }()  // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &amp;lt; 2; i++ {  select {  case msg1 := &amp;lt;-c1:  fmt.</description>
     </item>
     
     <item>
@@ -407,7 +406,7 @@ Go 语言的调度器通过使用与 CPU 数量相等的线程减少线程频繁
       <guid>https://kingye.me/study-go/docs/basic/others/version/gvm/</guid>
       <description>gvm #  moovweb/gvm 安装：
 zsh &amp;lt; &amp;lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 使用：
-$ gvm listall $ gvm list $ gvm install go1.15 $ gvm user go1.15 $ gvm uninstall go1.15 # 使用二进制安装 $ gvm install go1.15 -B $ gvm install -h Invalid version: -h Usage: gvm install [version] [options] -s, --source=SOURCE Install Go from specified source. -n, --name=NAME Override the default name for this version. -pb, --with-protobuf Install Go protocol buffers.</description>
+$ gvm listall $ gvm list $ gvm install go1.15 $ gvm user go1.15 $ gvm uninstall go1.15  # 使用二进制安装 $ gvm install go1.15 -B  $ gvm install -h Invalid version: -h Usage: gvm install [version] [options]  -s, --source=SOURCE Install Go from specified source.  -n, --name=NAME Override the default name for this version.  -pb, --with-protobuf Install Go protocol buffers.</description>
     </item>
     
     <item>
@@ -448,7 +447,7 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kingye.me/study-go/docs/basic/std/sync/</guid>
-      <description>sync #   sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond  锁的类型 #  Mutex 互斥锁 #  type Mutex struct { state int32 sema uint32 // semaphore 信号量 }  sync.Mutex.Lock 和 sync.Mutex.Unlock  state #  # 8 位 **** **** ***** * * * waitersCount mutexStarving mutexWoken mutexLocked  mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态  Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时   waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个)   RWMutex #  type RWMutex struct { w Mutex writerSem uint32 readerSem uint32 readerCount int32 readerWait int32 }  写操作使用 sync.</description>
+      <description>sync #   sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond  锁的类型 #  Mutex 互斥锁 #  type Mutex struct { 	state int32 	sema uint32 // semaphore 信号量 }  sync.Mutex.Lock 和 sync.Mutex.Unlock  state #  # 8 位 **** ****  ***** * * * waitersCount mutexStarving mutexWoken mutexLocked  mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态  Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时   waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个)   RWMutex #  type RWMutex struct { 	w Mutex 	writerSem uint32 	readerSem uint32 	readerCount int32 	readerWait int32 }  写操作使用 sync.</description>
     </item>
     
     <item>
@@ -457,7 +456,7 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kingye.me/study-go/docs/basic/std/strings/</guid>
-      <description>time #  格式化 #  // 1 2 3 4 5 6 const ANSIC = &amp;#34;Mon Jan _2 15:04:05 2006&amp;#34; time.Now().Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) </description>
+      <description>time #  格式化 #  // 1 2 3 4 5 6 const ANSIC = &amp;#34;Mon Jan _2 15:04:05 2006&amp;#34;  time.Now().Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) </description>
     </item>
     
     <item>
@@ -466,7 +465,7 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kingye.me/study-go/docs/basic/std/time/</guid>
-      <description>time #  格式化 #  // 1 2 3 4 5 6 const ANSIC = &amp;#34;Mon Jan _2 15:04:05 2006&amp;#34; time.Now().Unix() time.Now().Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) </description>
+      <description>time #  格式化 #  // 1 2 3 4 5 6 const ANSIC = &amp;#34;Mon Jan _2 15:04:05 2006&amp;#34;  time.Now().Unix()  time.Now().Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) </description>
     </item>
     
     <item>
@@ -475,7 +474,7 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kingye.me/study-go/docs/design/runtime/concurrent/</guid>
-      <description>Go 并发 #  Mutex #  type Mutex struct { state int32 // 状态 	sema uint32 // 信号量 }  state (32 位)  waitersCount (29 位): 当前互斥锁上等待的 Goroutine 个数 mutexStarving (1 位): 当前的互斥锁进入饥饿状态  Goroutine 超过 1 ms 没有获取到锁，就会转为饥饿模式   mutexWoken (1 位): 从正常模式被从唤醒 mutexLocked (1 位): 互斥锁的锁定状态    </description>
+      <description>Go 并发 #  Mutex #  type Mutex struct { 	state int32 // 状态 	sema uint32 // 信号量 }  state (32 位)  waitersCount (29 位): 当前互斥锁上等待的 Goroutine 个数 mutexStarving (1 位): 当前的互斥锁进入饥饿状态  Goroutine 超过 1 ms 没有获取到锁，就会转为饥饿模式   mutexWoken (1 位): 从正常模式被从唤醒 mutexLocked (1 位): 互斥锁的锁定状态    </description>
     </item>
     
   </channel>

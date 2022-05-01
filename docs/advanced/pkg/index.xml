@@ -13,9 +13,8 @@
       <guid>https://kingye.me/study-go/docs/advanced/pkg/cobra/</guid>
       <description>cobra #  spf13/cobra A Commander for modern Go CLI interactions
 quick start #  typically a Cobra-based application will follow the following organizational structure:
-▾ appName/ ▾ cmd/ add.go your.go commands.go here.go main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
-package main import ( &amp;#34;{pathToYourApp}/cmd&amp;#34; ) func main() { cmd.Execute() } Ideally you place this in app/cmd/root.go:
-var rootCmd = &amp;amp;cobra.</description>
+ ▾ appName/  ▾ cmd/  add.go  your.go  commands.go  here.go  main.go In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.
+package main  import (  &amp;#34;{pathToYourApp}/cmd&amp;#34; )  func main() {  cmd.</description>
     </item>
     
     <item>

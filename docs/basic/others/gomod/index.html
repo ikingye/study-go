@@ -2,10 +2,10 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.98.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go Modules #   Using Go Modules  import #  import &#34;目录&#34; // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
+<meta name="description" content="Go Modules #   Using Go Modules  import #  import &#34;目录&#34;  // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
 它的 go.mod 第一行是 module k8s.io/klog/v2
 根目录有个文件 klog.go，第一行 package klog
 所以我们在使用 klog 库时，
@@ -16,7 +16,7 @@ klog 库自身升级，只需要在它的 go.mod 里第一行改成 module k8s.i
 参考：
  Relationship between a package statement and the directory of a .">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Go Modules" />
-<meta property="og:description" content="Go Modules #   Using Go Modules  import #  import &#34;目录&#34; // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
+<meta property="og:description" content="Go Modules #   Using Go Modules  import #  import &#34;目录&#34;  // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
 它的 go.mod 第一行是 module k8s.io/klog/v2
 根目录有个文件 klog.go，第一行 package klog
 所以我们在使用 klog 库时，
@@ -35,7 +35,7 @@ klog 库自身升级，只需要在它的 go.mod 里第一行改成 module k8s.i
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.f7aaef2e45e3286be188d2ca8b618f30b60a6b4fc0ecefb0fa4a0cc1efbea25e.js" integrity="sha256-96rvLkXjKGvhiNLKi2GPMLYKa0/A7O&#43;w&#43;koMwe&#43;&#43;ol4="></script>
+<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1340,7 +1340,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -1399,11 +1399,11 @@ https://github.com/alex-shpak/hugo-book
   import
   <a class="anchor" href="#import">#</a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;目录&#34;</span>
-
-<span style="color:#75715e">// 调用是使用 go 文件里的 package xxx
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">xxx</span>.<span style="color:#a6e22e">Function</span>()
-</code></pre></div><h3 id="klog-import">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;目录&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 调用是使用 go 文件里的 package xxx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">xxx</span>.<span style="color:#a6e22e">Function</span>()
+</span></span></code></pre></div><h3 id="klog-import">
   klog import
   <a class="anchor" href="#klog-import">#</a>
 </h3>
