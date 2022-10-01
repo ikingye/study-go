@@ -2,12 +2,12 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.98.0" />
+  <meta name="generator" content="Hugo 0.104.2" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="sync #   sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond  锁的类型 #  Mutex 互斥锁 #  type Mutex struct { 	state int32 	sema uint32 // semaphore 信号量 }  sync.Mutex.Lock 和 sync.Mutex.Unlock  state #  # 8 位 **** ****  ***** * * * waitersCount mutexStarving mutexWoken mutexLocked  mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态  Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时   waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个)   RWMutex #  type RWMutex struct { 	w Mutex 	writerSem uint32 	readerSem uint32 	readerCount int32 	readerWait int32 }  写操作使用 sync.">
+<meta name="description" content="sync # sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond 锁的类型 # Mutex 互斥锁 # type Mutex struct { state int32 sema uint32 // semaphore 信号量 } sync.Mutex.Lock 和 sync.Mutex.Unlock state # # 8 位 **** **** ***** * * * waitersCount mutexStarving mutexWoken mutexLocked mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态 Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时 waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个) RWMutex # type RWMutex struct { w Mutex writerSem uint32 readerSem uint32 readerCount int32 readerWait int32 } 写操作使用 sync.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="sync" />
-<meta property="og:description" content="sync #   sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond  锁的类型 #  Mutex 互斥锁 #  type Mutex struct { 	state int32 	sema uint32 // semaphore 信号量 }  sync.Mutex.Lock 和 sync.Mutex.Unlock  state #  # 8 位 **** ****  ***** * * * waitersCount mutexStarving mutexWoken mutexLocked  mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态  Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时   waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个)   RWMutex #  type RWMutex struct { 	w Mutex 	writerSem uint32 	readerSem uint32 	readerCount int32 	readerWait int32 }  写操作使用 sync." />
+<meta property="og:description" content="sync # sync.Mutex sync.RWMutex sync.WaitGroup sync.Once sync.Cond 锁的类型 # Mutex 互斥锁 # type Mutex struct { state int32 sema uint32 // semaphore 信号量 } sync.Mutex.Lock 和 sync.Mutex.Unlock state # # 8 位 **** **** ***** * * * waitersCount mutexStarving mutexWoken mutexLocked mutexLocked — 表示互斥锁的锁定状态 mutexWoken — 表示从正常模式被从唤醒 mutexStarving — 当前的互斥锁进入饥饿状态 Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止被饿死，造成高尾延时 waitersCount — 当前互斥锁上等待的 Goroutine 个数 (最多 128 个) RWMutex # type RWMutex struct { w Mutex writerSem uint32 readerSem uint32 readerCount int32 readerWait int32 } 写操作使用 sync." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/basic/std/sync/" /><meta property="article:section" content="docs" />
 
@@ -17,7 +17,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
+<script defer src="/study-go/en.search.min.f2d01c4af91cf18fad9cbfc47e082913fcdc90578f90a6b9adfcae693057d6f0.js" integrity="sha256-8tAcSvkc8Y&#43;tnL/EfggpE/zckFePkKa5rfyuaTBX1vA="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book

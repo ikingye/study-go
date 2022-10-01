@@ -11,9 +11,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kingye.me/study-go/docs/basic/others/version/gvm/</guid>
-      <description>gvm #  moovweb/gvm 安装：
+      <description>gvm # moovweb/gvm 安装：
 zsh &amp;lt; &amp;lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 使用：
-$ gvm listall $ gvm list $ gvm install go1.15 $ gvm user go1.15 $ gvm uninstall go1.15  # 使用二进制安装 $ gvm install go1.15 -B  $ gvm install -h Invalid version: -h Usage: gvm install [version] [options]  -s, --source=SOURCE Install Go from specified source.  -n, --name=NAME Override the default name for this version.  -pb, --with-protobuf Install Go protocol buffers.</description>
+$ gvm listall $ gvm list $ gvm install go1.15 $ gvm user go1.15 $ gvm uninstall go1.15 # 使用二进制安装 $ gvm install go1.15 -B $ gvm install -h Invalid version: -h Usage: gvm install [version] [options] -s, --source=SOURCE Install Go from specified source. -n, --name=NAME Override the default name for this version. -pb, --with-protobuf Install Go protocol buffers.</description>
     </item>
     
   </channel>

@@ -2,14 +2,14 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.98.0" />
+  <meta name="generator" content="Hugo 0.104.2" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="context #  context.Context #   在 Goroutine 构成的树形结构中对信号进行同步以减少计算资源的浪费是 context.Context 的最大作用。 我们可能会创建多个 Goroutine 来处理一次请求，而 context.Context 的作用就是在不同 Goroutine 之间同步  请求特定数据 取消信号 处理请求的截止时间   多个 Goroutine 同时订阅 ctx.Done() 管道中的消息，一旦接收到取消信号就立刻停止当前正在执行的工作  context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：
- Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期； Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel； Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值；  如果 context.Context 被取消，会返回 Canceled 错误； 如果 context.Context 超时，会返回 DeadlineExceeded 错误；   Value — 从 context.">
+<meta name="description" content="context # context.Context # 在 Goroutine 构成的树形结构中对信号进行同步以减少计算资源的浪费是 context.Context 的最大作用。 我们可能会创建多个 Goroutine 来处理一次请求，而 context.Context 的作用就是在不同 Goroutine 之间同步 请求特定数据 取消信号 处理请求的截止时间 多个 Goroutine 同时订阅 ctx.Done() 管道中的消息，一旦接收到取消信号就立刻停止当前正在执行的工作 context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：
+Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期； Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel； Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值； 如果 context.Context 被取消，会返回 Canceled 错误； 如果 context.Context 超时，会返回 DeadlineExceeded 错误； Value — 从 context.Context 中获取键对应的值，对于同一个上下文来说，多次调用 Value 并传入相同的 Key 会返回相同的结果，该方法可以用来传递请求特定的数据； type Context interface { Deadline() (deadline time.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="context" />
-<meta property="og:description" content="context #  context.Context #   在 Goroutine 构成的树形结构中对信号进行同步以减少计算资源的浪费是 context.Context 的最大作用。 我们可能会创建多个 Goroutine 来处理一次请求，而 context.Context 的作用就是在不同 Goroutine 之间同步  请求特定数据 取消信号 处理请求的截止时间   多个 Goroutine 同时订阅 ctx.Done() 管道中的消息，一旦接收到取消信号就立刻停止当前正在执行的工作  context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：
- Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期； Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel； Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值；  如果 context.Context 被取消，会返回 Canceled 错误； 如果 context.Context 超时，会返回 DeadlineExceeded 错误；   Value — 从 context." />
+<meta property="og:description" content="context # context.Context # 在 Goroutine 构成的树形结构中对信号进行同步以减少计算资源的浪费是 context.Context 的最大作用。 我们可能会创建多个 Goroutine 来处理一次请求，而 context.Context 的作用就是在不同 Goroutine 之间同步 请求特定数据 取消信号 处理请求的截止时间 多个 Goroutine 同时订阅 ctx.Done() 管道中的消息，一旦接收到取消信号就立刻停止当前正在执行的工作 context.Context 是 Go 语言在 1.7 版本中引入标准库的接口 1，该接口定义了四个需要实现的方法，其中包括：
+Deadline — 返回 context.Context 被取消的时间，也就是完成工作的截止日期； Done — 返回一个 Channel，这个 Channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 Done 方法会返回同一个 Channel； Err — 返回 context.Context 结束的原因，它只会在 Done 返回的 Channel 被关闭时才会返回非空的值； 如果 context.Context 被取消，会返回 Canceled 错误； 如果 context.Context 超时，会返回 DeadlineExceeded 错误； Value — 从 context.Context 中获取键对应的值，对于同一个上下文来说，多次调用 Value 并传入相同的 Key 会返回相同的结果，该方法可以用来传递请求特定的数据； type Context interface { Deadline() (deadline time." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/basic/std/context/" /><meta property="article:section" content="docs" />
 
@@ -19,7 +19,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.c5f022569c87950a66c93cb5392991edb17f91d24e8d56a24f64d60456347c1d.js" integrity="sha256-xfAiVpyHlQpmyTy1OSmR7bF/kdJOjVaiT2TWBFY0fB0="></script>
+<script defer src="/study-go/en.search.min.f2d01c4af91cf18fad9cbfc47e082913fcdc90578f90a6b9adfcae693057d6f0.js" integrity="sha256-8tAcSvkc8Y&#43;tnL/EfggpE/zckFePkKa5rfyuaTBX1vA="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
