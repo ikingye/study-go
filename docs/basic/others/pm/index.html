@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.99.1" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="包管理 #  Go 包管理概述 #  Go 1.4 及之前 #   必须设置 GOPATH 环境变量，且源代码必须存放在 GOPATH 下 拉取外部依赖包时，总是拉取最新的版本，无法指定需要的版本  设置 GOPATH 环境变量有两个原因：
+ 它规定了 go get 命令下载的依赖包的存储位置（$GOPATH/src） 通过设置 GOPATH，可以方便 Golang 计算出 import 的路径  Go 1.5 至 Go 1.10 #  每个项目的根目录下可以有一个 vendor 目录，里面存放了该项目的依赖的包
+Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 export GO111MODULE=on，使用 Go Modules  GO111MODULE 为 off 时：
+ 优先使用 vendor 目录下面的包， 如果 vendor 下面没有搜索到，再搜索 $GOPATH/src 下面的包， 如果 $GOPATH 下面没有搜索到，那么搜索 $GOROOT/src 下面的包  Go 1.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="包管理" />
+<meta property="og:description" content="包管理 #  Go 包管理概述 #  Go 1.4 及之前 #   必须设置 GOPATH 环境变量，且源代码必须存放在 GOPATH 下 拉取外部依赖包时，总是拉取最新的版本，无法指定需要的版本  设置 GOPATH 环境变量有两个原因：
+ 它规定了 go get 命令下载的依赖包的存储位置（$GOPATH/src） 通过设置 GOPATH，可以方便 Golang 计算出 import 的路径  Go 1.5 至 Go 1.10 #  每个项目的根目录下可以有一个 vendor 目录，里面存放了该项目的依赖的包
+Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 export GO111MODULE=on，使用 Go Modules  GO111MODULE 为 off 时：
+ 优先使用 vendor 目录下面的包， 如果 vendor 下面没有搜索到，再搜索 $GOPATH/src 下面的包， 如果 $GOPATH 下面没有搜索到，那么搜索 $GOROOT/src 下面的包  Go 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kingye.me/study-go/docs/basic/others/pm/" /><meta property="article:section" content="docs" />
+
+<meta property="article:modified_time" content="2021-04-20T13:11:05+08:00" />
+
+<title>包管理 | Go 学习笔记</title>
+<link rel="manifest" href="/study-go/manifest.json">
+<link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
+<script defer src="/study-go/en.search.min.debde0a92b32cd1bc7ebfd26c87bcbade7530eedc18c86555e1f29855b7ac3b8.js" integrity="sha256-3r3gqSsyzRvH6/0myHvLredTDu3BjIZVXh8phVt6w7g="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/study-go"><span>Go 学习笔记</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+<ul>
+  <li><a href="https://kingye.me" target="_blank" rel="noopener noreferrer">博客</a></li>
+  <li><a href="https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200417021727.png" target="_blank" rel="noopener noreferrer">公众号</a></li>
+  <li><a href="https://github.com/ikingye" target="_blank" rel="noopener noreferrer">Github</a></li>
+  <li><a href="https://weibo.com/kingyip15215" target="_blank" rel="noopener noreferrer">微博</a></li>
+  <li><a href="https://www.zhihu.com/people/wutongyip" target="_blank" rel="noopener noreferrer">知乎</a></li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>第一部分 基础入门</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1345454d7b2c77448bcdfba005efd882" class="toggle"  />
+    <label for="section-1345454d7b2c77448bcdfba005efd882" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/ref/" class="">1.1 语法</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5cfb8ad3f25979c0f273faaa1f5918f3" class="toggle"  />
+    <label for="section-5cfb8ad3f25979c0f273faaa1f5918f3" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/ref/type/" class="">1.1.1 数据类型</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c827952bb72dbdb2b1836c814cb17160" class="toggle"  />
+    <label for="section-c827952bb72dbdb2b1836c814cb17160" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/ref/type/error/" class="">error</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://kingye.me/study-go/docs/basic/ref/type/slice/" class="">切片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://kingye.me/study-go/docs/basic/ref/type/array/" class="">数组</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d81a9f0c91d6694cc5219a24ba516774" class="toggle"  />
+    <label for="section-d81a9f0c91d6694cc5219a24ba516774" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/ref/type/interface/" class="">Interface</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4434aa3fd3b034e3d585aee1ba7458a5" class="toggle"  />
+    <label for="section-4434aa3fd3b034e3d585aee1ba7458a5" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/ref/type/channel/" class="">Chiannel</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52130db237ffc4fad275e7bb1834c028" class="toggle"  />
+    <label for="section-52130db237ffc4fad275e7bb1834c028" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/ref/type/map/" class="">Map</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d307893b4aa4c19c4e6ff5d8d3d1fd94" class="toggle"  />
+    <label for="section-d307893b4aa4c19c4e6ff5d8d3d1fd94" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/ref/keyword/" class="">1.1.2 关键字</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bc81e08862d962518d11a7d4d96146d2" class="toggle"  />
+    <label for="section-bc81e08862d962518d11a7d4d96146d2" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/ref/keyword/defer/" class="">defer</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-369615bc8fa30e509bd7005060577229" class="toggle"  />
+    <label for="section-369615bc8fa30e509bd7005060577229" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/ref/keyword/for/" class="">for 和 range</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://kingye.me/study-go/docs/basic/ref/keyword/func/" class="">函数</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a67d6e91287fe595cda5521122effa3b" class="toggle"  />
+    <label for="section-a67d6e91287fe595cda5521122effa3b" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/ref/keyword/func/init/" class="">init</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://kingye.me/study-go/docs/basic/ref/keyword/func/receiver/" class="">Receiver</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-420ded6b0b95ff9a5795a1dea133a7f5" class="toggle"  />
+    <label for="section-420ded6b0b95ff9a5795a1dea133a7f5" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/ref/keyword/make/" class="">make</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a407b47a29e89badfb7fe0728ed752b1" class="toggle"  />
+    <label for="section-a407b47a29e89badfb7fe0728ed752b1" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/ref/keyword/select/" class="">select</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6b15250934f01eea443005575ff8ee35" class="toggle"  />
+    <label for="section-6b15250934f01eea443005575ff8ee35" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/std/" class="">1.2 标准库</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ad4370a93fadc3f24c9902e89a4ec1cc" class="toggle"  />
+    <label for="section-ad4370a93fadc3f24c9902e89a4ec1cc" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/std/sort/" class="">sort</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d29a514e59de4729c6ca34e26c240687" class="toggle"  />
+    <label for="section-d29a514e59de4729c6ca34e26c240687" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/std/context/" class="">context</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ce46dd0eff2aa715954788d8275c02cd" class="toggle"  />
+    <label for="section-ce46dd0eff2aa715954788d8275c02cd" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/std/format/" class="">格式化输出</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-166aac2fd0d3f4f02712564f8818e139" class="toggle"  />
+    <label for="section-166aac2fd0d3f4f02712564f8818e139" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/std/io/" class="">io</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0ac55e5ade0fdfc89cee82f125ca60f9" class="toggle"  />
+    <label for="section-0ac55e5ade0fdfc89cee82f125ca60f9" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/std/net/" class="">net</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6f9f8ce20b7789b98f1ae57ad9901d6" class="toggle"  />
+    <label for="section-d6f9f8ce20b7789b98f1ae57ad9901d6" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/std/signal/" class="">signal</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c1e4a8f9ab9c7424ba0a41bcce0ad64e" class="toggle"  />
+    <label for="section-c1e4a8f9ab9c7424ba0a41bcce0ad64e" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/std/sync/" class="">sync</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-965415ec685e120aad29ef08d7987edf" class="toggle"  />
+    <label for="section-965415ec685e120aad29ef08d7987edf" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/std/strings/" class="">time</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4dc6bf744616bc8b8569fd96fc0608f" class="toggle"  />
+    <label for="section-f4dc6bf744616bc8b8569fd96fc0608f" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/std/time/" class="">time</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ea095051f8c6af1e76ea021673f5a018" class="toggle"  />
+    <label for="section-ea095051f8c6af1e76ea021673f5a018" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/spec/" class="">1.3 编程规范</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-88f1811bb6a396226176f604fec52cf2" class="toggle" checked />
+    <label for="section-88f1811bb6a396226176f604fec52cf2" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/others/" class="">1.4 其他</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-95f2a5f4bc57151577e16148d5329018" class="toggle"  />
+    <label for="section-95f2a5f4bc57151577e16148d5329018" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/others/quick/" class="">Go 快速上手</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-576243b6bdc0636b2725325b9c5dd44a" class="toggle"  />
+    <label for="section-576243b6bdc0636b2725325b9c5dd44a" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/others/pros-and-cons/" class="">优劣</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://kingye.me/study-go/docs/basic/others/gobuild/" class="">Go build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://kingye.me/study-go/docs/basic/others/gomod/" class="">Go Modules</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://kingye.me/study-go/docs/basic/others/gopls/" class="">gopls</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://kingye.me/study-go/docs/basic/others/pm/" class=" active">包管理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://kingye.me/study-go/docs/basic/others/compile/" class="">编译</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5cbc1b525b4974b3de37752a2d557571" class="toggle"  />
+    <label for="section-5cbc1b525b4974b3de37752a2d557571" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/others/command/" class="">Go 命令</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c2c0afc44119d7291bb3edbe0d8d9d8e" class="toggle"  />
+    <label for="section-c2c0afc44119d7291bb3edbe0d8d9d8e" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/others/command/install/" class="">安装</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-857772ac4252625cd8ba1cd723727472" class="toggle"  />
+    <label for="section-857772ac4252625cd8ba1cd723727472" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/others/history/" class="">历史</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c2b1e27f5a37f34f4043514d277c23a2" class="toggle"  />
+    <label for="section-c2b1e27f5a37f34f4043514d277c23a2" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/others/plugin/" class="">Go 插件系统</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fde257483291d00ec8ab109a8e6a08b2" class="toggle"  />
+    <label for="section-fde257483291d00ec8ab109a8e6a08b2" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/others/goroutine/" class="">goroutine</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f3d1ca8a2a117833ec179440581da987" class="toggle"  />
+    <label for="section-f3d1ca8a2a117833ec179440581da987" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/others/version/" class="">版本</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-189e185ff023153da5890f463cebd142" class="toggle"  />
+    <label for="section-189e185ff023153da5890f463cebd142" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/basic/others/version/gvm/" class="">gvm</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>第二部分 进阶实战</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3695224c3b2b3ff4822b00b536e6168b" class="toggle"  />
+    <label for="section-3695224c3b2b3ff4822b00b536e6168b" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/advanced/pattern/" class="">2.1 设计模式</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-afac21ff0b0b9877d980857f29b9767a" class="toggle"  />
+    <label for="section-afac21ff0b0b9877d980857f29b9767a" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/advanced/algs/" class="">2.2 算法实现</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b656c687691a7584675f479cafc084bf" class="toggle"  />
+    <label for="section-b656c687691a7584675f479cafc084bf" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/advanced/pkg/" class="">2.3 常用库</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3b14519c1e97ba1b937b3eeecb962e88" class="toggle"  />
+    <label for="section-3b14519c1e97ba1b937b3eeecb962e88" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/advanced/pkg/cobra/" class="">cobra</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-de1f0ff0ed1402844a572bc986921c78" class="toggle"  />
+    <label for="section-de1f0ff0ed1402844a572bc986921c78" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/advanced/pkg/klog/" class="">klog</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1a56e51bd16a3008ab3330849a82ab65" class="toggle"  />
+    <label for="section-1a56e51bd16a3008ab3330849a82ab65" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/advanced/snippet/" class="">2.4 代码片段</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ddfc8bac02c5156348ef18159a2d157" class="toggle"  />
+    <label for="section-7ddfc8bac02c5156348ef18159a2d157" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/advanced/test/" class="">2.5 测试</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-44663a755dbc8f64101cf03e4f3aad6a" class="toggle"  />
+    <label for="section-44663a755dbc8f64101cf03e4f3aad6a" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/advanced/prof/" class="">2.6 性能</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e317404e8797aec2dfe5780bb677c7e6" class="toggle"  />
+    <label for="section-e317404e8797aec2dfe5780bb677c7e6" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/advanced/frame/" class="">2.7 框架</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e722ab78a36a3d546012857620d4590" class="toggle"  />
+    <label for="section-0e722ab78a36a3d546012857620d4590" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/advanced/frame/beego/" class="">Beego</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>第三部分 设计与实现</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-aaf02f04309ebf960c0668046a136929" class="toggle"  />
+    <label for="section-aaf02f04309ebf960c0668046a136929" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/design/type/" class="">3.1 数据类型</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-221c2feeb76da2c573a0e8093b02a0e6" class="toggle"  />
+    <label for="section-221c2feeb76da2c573a0e8093b02a0e6" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/design/type/type/" class="">类型系统</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-04f123cc9a87e9e64680fa0fd29a97e8" class="toggle"  />
+    <label for="section-04f123cc9a87e9e64680fa0fd29a97e8" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/design/keyword/" class="">3.2 关键字</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dd92374434f716188d0a0725e3d96dc5" class="toggle"  />
+    <label for="section-dd92374434f716188d0a0725e3d96dc5" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/design/keyword/interface/" class="">interface</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7f0bd8ed1ead1f5e1c351a5e0d7ab339" class="toggle"  />
+    <label for="section-7f0bd8ed1ead1f5e1c351a5e0d7ab339" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/design/runtime/" class="">3.3 运行时</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5f598dec44876bb8e9d30bcb25c1464b" class="toggle"  />
+    <label for="section-5f598dec44876bb8e9d30bcb25c1464b" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/design/runtime/init/" class="">Go 初始化</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5c872a4f182dfd871ee4afe673eeac2e" class="toggle"  />
+    <label for="section-5c872a4f182dfd871ee4afe673eeac2e" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/design/runtime/scheduling/" class="">Go 调度</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1863bc83fe1866561c4abdd674bad9b8" class="toggle"  />
+    <label for="section-1863bc83fe1866561c4abdd674bad9b8" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/design/runtime/gc/" class="">GC</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0d2a4ede046ba86396afd018f7b28795" class="toggle"  />
+    <label for="section-0d2a4ede046ba86396afd018f7b28795" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/design/runtime/concurrent/" class="">并发</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://kingye.me/study-go/docs/design/code/" class="">3.7 源码分析</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1961cb32dbcc8253c93f50df2027950b" class="toggle"  />
+    <label for="section-1961cb32dbcc8253c93f50df2027950b" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/design/code/1.0.1/" class="">1.0.0</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>第四部分 附录</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d181cd3861ca7652e852d22b5c3ff21" class="toggle"  />
+    <label for="section-2d181cd3861ca7652e852d22b5c3ff21" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1141a4bba37d01f14e63bf36d9c7071d" class="toggle"  />
+    <label for="section-1141a4bba37d01f14e63bf36d9c7071d" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/appendix/interview/" class="">4.2 面试题</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c743998336860c656367010fc7573b86" class="toggle"  />
+    <label for="section-c743998336860c656367010fc7573b86" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/appendix/attention/" class="">4.3 关注项目</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-88a08300a7ed6d7ed5e491d9bdec39e1" class="toggle"  />
+    <label for="section-88a08300a7ed6d7ed5e491d9bdec39e1" class="flex justify-between">
+      <a href="https://kingye.me/study-go/docs/appendix/gossip/" class="">4.4 一些八卦</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr />
+<ul>
+  <li><a href="https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200417022040.png" target="_blank" rel="noopener noreferrer">微信</a></li>
+  <li><a href="https://qm.qq.com/cgi-bin/qm/qr?k=EUhzg0UwUksxpQnwEmPngRLezlC6qrnn&jump_from=webapi" target="_blank" rel="noopener noreferrer"><img src="//pub.idqqimg.com/wpa/images/group.png"></a></li>
+</ul>
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>包管理</strong>
+
+  <label for="toc-control">
+    
+    <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#go-包管理概述">Go 包管理概述</a>
+      <ul>
+        <li><a href="#go-14-及之前">Go 1.4 及之前</a></li>
+        <li><a href="#go-15-至-go-110">Go 1.5 至 Go 1.10</a></li>
+        <li><a href="#go-111-至-go-112">Go 1.11 至 Go 1.12</a></li>
+        <li><a href="#go-113-及之后">Go 1.13 及之后</a></li>
+      </ul>
+    </li>
+    <li><a href="#go-包管理工具发展">Go 包管理工具发展</a>
+      <ul>
+        <li><a href="#monorepo">monorepo</a></li>
+        <li><a href="#vendor">vendor</a>
+          <ul>
+            <li><a href="#dep">Dep</a></li>
+            <li><a href="#glide">Glide</a></li>
+            <li><a href="#govendor">govendor</a></li>
+          </ul>
+        </li>
+        <li><a href="#go-modules">Go Modules</a></li>
+      </ul>
+    </li>
+    <li><a href="#go-modules-原理">Go Modules 原理</a>
+      <ul>
+        <li><a href="#命令">命令</a>
+          <ul>
+            <li><a href="#go-mod-vendor">go mod vendor</a></li>
+          </ul>
+        </li>
+        <li><a href="#module-aware-mode-vs-gopath-mode"><code>Module-aware mode</code> vs <code>GOPATH mode</code></a></li>
+        <li><a href="#replace">replace</a>
+          <ul>
+            <li><a href="#replace-不会生成-gosum-信息">replace 不会生成 <code>go.sum</code> 信息</a></li>
+            <li><a href="#replace-命令只能管理顶层依赖">replace 命令只能管理<code>顶层依赖</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#gosum">go.sum</a>
+          <ul>
+            <li><a href="#gosum-不是锁文件">go.sum 不是锁文件</a></li>
+          </ul>
+        </li>
+        <li><a href="#go-mod-vendor-1"><code>go mod vendor</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article id="article" class="markdown"><h1 id="包管理">
+  包管理
+  <a class="anchor" href="#%e5%8c%85%e7%ae%a1%e7%90%86">#</a>
+</h1>
+<h2 id="go-包管理概述">
+  Go 包管理概述
+  <a class="anchor" href="#go-%e5%8c%85%e7%ae%a1%e7%90%86%e6%a6%82%e8%bf%b0">#</a>
+</h2>
+<h3 id="go-14-及之前">
+  Go 1.4 及之前
+  <a class="anchor" href="#go-14-%e5%8f%8a%e4%b9%8b%e5%89%8d">#</a>
+</h3>
+<ul>
+<li>必须设置 <code>GOPATH</code> 环境变量，且源代码必须存放在 <code>GOPATH</code> 下</li>
+<li>拉取外部依赖包时，总是拉取最新的版本，无法指定需要的版本</li>
+</ul>
+<p>设置 <code>GOPATH</code> 环境变量有两个原因：</p>
+<ul>
+<li>它规定了 <code>go get</code> 命令下载的依赖包的存储位置（<code>$GOPATH/src</code>）</li>
+<li>通过设置 <code>GOPATH</code>，可以方便 Golang 计算出 import 的路径</li>
+</ul>
+<h3 id="go-15-至-go-110">
+  Go 1.5 至 Go 1.10
+  <a class="anchor" href="#go-15-%e8%87%b3-go-110">#</a>
+</h3>
+<p>每个项目的根目录下可以有一个 vendor 目录，里面存放了该项目的依赖的包</p>
+<h3 id="go-111-至-go-112">
+  Go 1.11 至 Go 1.12
+  <a class="anchor" href="#go-111-%e8%87%b3-go-112">#</a>
+</h3>
+<ul>
+<li>默认使用的还是 GOPATH 的管理方式</li>
+<li>运行 <code>export GO111MODULE=on</code>，使用 <code>Go Modules</code></li>
+</ul>
+<p><code>GO111MODULE</code> 为 <code>off</code> 时：</p>
+<ol>
+<li>优先使用 <code>vendor</code> 目录下面的包，</li>
+<li>如果 <code>vendor</code> 下面没有搜索到，再搜索 <code>$GOPATH/src</code> 下面的包，</li>
+<li>如果 <code>$GOPATH</code> 下面没有搜索到，那么搜索 <code>$GOROOT/src</code> 下面的包</li>
+</ol>
+<h3 id="go-113-及之后">
+  Go 1.13 及之后
+  <a class="anchor" href="#go-113-%e5%8f%8a%e4%b9%8b%e5%90%8e">#</a>
+</h3>
+<p>Golang 的包管理默认使用 <code>Go Modules</code></p>
+<hr>
+<h2 id="go-包管理工具发展">
+  Go 包管理工具发展
+  <a class="anchor" href="#go-%e5%8c%85%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7%e5%8f%91%e5%b1%95">#</a>
+</h2>
+<h3 id="monorepo">
+  monorepo
+  <a class="anchor" href="#monorepo">#</a>
+</h3>
+<p>所有的包都放在 GOPATH 里面，使用类似命名空间的包路径区分包</p>
+<hr>
+<h3 id="vendor">
+  vendor
+  <a class="anchor" href="#vendor">#</a>
+</h3>
+<p>从 <code>Go 1.5</code> 开始开始引入 vendor 包模式，如果项目目录下有 vendor 目录，那么 go 工具链会优先使用 vendor 内的包进行编译、测试等，
+这之后第三方的包管理思路都是通过这种方式来实现，比如说由社区维护准官方包管理工具 dep</p>
+<h4 id="dep">
+  Dep
+  <a class="anchor" href="#dep">#</a>
+</h4>
+<p><a href="https://github.com/golang/dep">golang/dep</a> <img src="https://img.shields.io/github/stars/golang/dep.svg" alt="Github stars" /></p>
+<p><code>Go 1.9</code> 及之后</p>
+<p>由于 Golang 作者跟 Dep 作者在 Dep 设计上的分歧，Golang 官方在 2018 年 5 月开始推 Go modules，并在 Go 1.13 中默认启用。
+曾今自认为 Golang 官方的实验性工具就此没落，很少再有人维护了。
+因此，建议 Dep 用户迁移到 Go modules。</p>
+<h4 id="glide">
+  Glide
+  <a class="anchor" href="#glide">#</a>
+</h4>
+<p><a href="https://github.com/Masterminds/glide">Masterminds/glide</a> <img src="https://img.shields.io/github/stars/Masterminds/glide.svg" alt="Github stars" /></p>
+<h4 id="govendor">
+  govendor
+  <a class="anchor" href="#govendor">#</a>
+</h4>
+<p><a href="https://github.com/kardianos/govendor">kardianos/govendor</a> <img src="https://img.shields.io/github/stars/kardianos/govendor.svg" alt="Github stars" /></p>
+<hr>
+<h3 id="go-modules">
+  Go Modules
+  <a class="anchor" href="#go-modules">#</a>
+</h3>
+<ul>
+<li><code>Go 1.11</code> - <code>Go 1.12</code>，运行 <code>export GO111MODULE=on</code>，使用 <code>Go Modules</code></li>
+<li><code>Go 1.13</code> 之后，默认使用 <code>Go Modules</code></li>
+</ul>
+<p><code>$GOPATH</code> 不再作为 build 时导入的角色，
+依赖包会存放在 <code>$GOPATH/pkg/mod</code> 目录下。</p>
+<hr>
+<h2 id="go-modules-原理">
+  Go Modules 原理
+  <a class="anchor" href="#go-modules-%e5%8e%9f%e7%90%86">#</a>
+</h2>
+<h3 id="命令">
+  命令
+  <a class="anchor" href="#%e5%91%bd%e4%bb%a4">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 下载所有依赖</span>
+</span></span><span style="display:flex;"><span>go mod download
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 升级次级或补丁版本号</span>
+</span></span><span style="display:flex;"><span>go get -u rsc.io/quote
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 仅升级补丁版本号</span>
+</span></span><span style="display:flex;"><span>go get -u<span style="color:#f92672">=</span>patch rscio/quote
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 整理并更新 go.mod</span>
+</span></span><span style="display:flex;"><span>go mod tidy
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 仅仅修改 go.mod 配置文件的内容</span>
+</span></span><span style="display:flex;"><span>go mod edit --droprequire<span style="color:#f92672">=</span>golang.org/x/crypto
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看 go.mod 内容</span>
+</span></span><span style="display:flex;"><span>go list -m all
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># json 格式输出</span>
+</span></span><span style="display:flex;"><span>go list -m -json all
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 格式化 go.mod</span>
+</span></span><span style="display:flex;"><span>go mod edit -fmt
+</span></span></code></pre></div><h4 id="go-mod-vendor">
+  go mod vendor
+  <a class="anchor" href="#go-mod-vendor">#</a>
+</h4>
+<hr>
+<h3 id="module-aware-mode-vs-gopath-mode">
+  <code>Module-aware mode</code> vs <code>GOPATH mode</code>
+  <a class="anchor" href="#module-aware-mode-vs-gopath-mode">#</a>
+</h3>
+<p><code>Module-aware mode</code> is active by default whenever a <code>go.mod</code> file is found in the current directory or in any parent directory.</p>
+<ul>
+<li><code>GO111MODULE</code>
+<ul>
+<li>off
+<ul>
+<li>the go command never uses module support. Instead it looks in vendor directories and GOPATH to find dependencies</li>
+</ul>
+</li>
+<li>on
+<ul>
+<li>the go command requires the use of modules, never consulting GOPATH.</li>
+</ul>
+</li>
+<li>or auto (the default)
+<ul>
+<li>Module support is enabled only when the current directory contains a <code>go.mod</code> file or is below a directory containing a <code>go.mod</code> file.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>In module-aware mode, GOPATH no longer defines the meaning of imports during a build,
+but it still stores downloaded dependencies (in <code>GOPATH/pkg/mod</code>)
+and installed commands (in <code>GOPATH/bin</code>, unless <code>GOBIN</code> is set).</p>
+<hr>
+<h3 id="replace">
+  replace
+  <a class="anchor" href="#replace">#</a>
+</h3>
+<p><code>go modules</code> 下 import <strong>不再支持使用相对路径导入包</strong>，例如 <code>import &quot;./mypkg&quot;</code>，所以需要考虑 replace</p>
+<p>本地替换的价值在于它提供了一种使自动生成的代码进入 go modules 系统的途径，
+毕竟不管是 go tools 还是 rpc 工具，这些自动生成代码也是项目的一部分，如果不能纳入包管理器的管理范围想必会带来很大的麻烦。</p>
+<h4 id="replace-不会生成-gosum-信息">
+  replace 不会生成 <code>go.sum</code> 信息
+  <a class="anchor" href="#replace-%e4%b8%8d%e4%bc%9a%e7%94%9f%e6%88%90-gosum-%e4%bf%a1%e6%81%af">#</a>
+</h4>
+<p>使用本地包进行替换时并不会生成 <code>go.sum</code> 所需的信息，所以 <code>go.sum</code> 文件也没有生成。</p>
+<h4 id="replace-命令只能管理顶层依赖">
+  replace 命令只能管理<code>顶层依赖</code>
+  <a class="anchor" href="#replace-%e5%91%bd%e4%bb%a4%e5%8f%aa%e8%83%bd%e7%ae%a1%e7%90%86%e9%a1%b6%e5%b1%82%e4%be%9d%e8%b5%96">#</a>
+</h4>
+<p>一个包是顶层依赖还是间接依赖，取决于它在本 module 中是否被直接 import，而不是在 go.mod 文件中是否包含 <code>// indirect</code> 注释。</p>
+<p>不管是直接编辑还是 go mod edit 修改，我们为 go.mod 添加的信息都只是对 go mod 的一种提示而已，
+当运行 go build 或是 go mod tidy 时 golang 会自动更新 go.mod 导致某些修改无效，</p>
+<hr>
+<h3 id="gosum">
+  go.sum
+  <a class="anchor" href="#gosum">#</a>
+</h3>
+<p>go.sum 是一个构建状态跟踪文件。它会记录当前 module 所有的顶层和间接依赖，以及这些依赖的校验和，从而提供一个可以 100% 复现的构建过程并对构建对象提供安全性的保证。</p>
+<p>应该把 go.sum 和 go.mod 一同<strong>添加进版本控制</strong>工具的跟踪列表，同时需要随着你的模块一起发布。如果你发布的模块中不包含此文件，使用者在构建时会报错，同时还可能出现安全风险（go.sum 提供了安全性的校验）。</p>
+<h4 id="gosum-不是锁文件">
+  go.sum 不是锁文件
+  <a class="anchor" href="#gosum-%e4%b8%8d%e6%98%af%e9%94%81%e6%96%87%e4%bb%b6">#</a>
+</h4>
+<p>npm 的 package-lock.json 是锁文件，go.sum 不是。</p>
+<p>go.sum 同时还会保留过去使用的包的版本信息，以便日后可能的版本回退，这一点也与普通的锁文件不同。所以 go.sum 并不是包管理器的锁文件。</p>
+<hr>
+<h3 id="go-mod-vendor-1">
+  <code>go mod vendor</code>
+  <a class="anchor" href="#go-mod-vendor-1">#</a>
+</h3>
+<p>这个命令并不能让你从 godep 之类的工具迁移到 go modules，它只是单纯地把 go.sum 中的所有依赖下载到 vendor 目录里</p>
+<p>使用 <code>go build -mod=vendor</code> 来构建项目</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://blog.golang.org/using-go-modules">Using Go Modules</a></li>
+</ul>
+<hr>
+<h2 id="参考">
+  参考
+  <a class="anchor" href="#%e5%8f%82%e8%80%83">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/63929808718d2076d1272987b43d517a8c7b852c" title='Last modified by yewang | 2021-04-20' target="_blank" rel="noopener">
+      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2021-04-20</span>
+    </a>
+  </div>
+
+
+
+</div>
+
+ 
+        <div>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <p><span id="busuanzi_container_page_pv">本文访问量 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> 次</span></p>
+    <p><span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span> 次</span></p>
+    <p><span id="busuanzi_container_site_uv">本站总访客数 <span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span> 人</span></p>
+</div>
+
+
+
+
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<script src="https://utteranc.es/client.js"
+  repo="ikingye/study-go"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async
+></script>
+
+<div id="footer">
+  <p>
+    <a href="https://kingye.me">叶王</a> &copy; 2013-2021
+    版权所有。如果本文档对你有所帮助，可以<a
+      href="https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200428110046.png"
+      target="_blank"
+      rel="noopener noreferrer"
+      >请作者喝饮料</a
+    >。
+  </p>
+</div>
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#go-包管理概述">Go 包管理概述</a>
+      <ul>
+        <li><a href="#go-14-及之前">Go 1.4 及之前</a></li>
+        <li><a href="#go-15-至-go-110">Go 1.5 至 Go 1.10</a></li>
+        <li><a href="#go-111-至-go-112">Go 1.11 至 Go 1.12</a></li>
+        <li><a href="#go-113-及之后">Go 1.13 及之后</a></li>
+      </ul>
+    </li>
+    <li><a href="#go-包管理工具发展">Go 包管理工具发展</a>
+      <ul>
+        <li><a href="#monorepo">monorepo</a></li>
+        <li><a href="#vendor">vendor</a>
+          <ul>
+            <li><a href="#dep">Dep</a></li>
+            <li><a href="#glide">Glide</a></li>
+            <li><a href="#govendor">govendor</a></li>
+          </ul>
+        </li>
+        <li><a href="#go-modules">Go Modules</a></li>
+      </ul>
+    </li>
+    <li><a href="#go-modules-原理">Go Modules 原理</a>
+      <ul>
+        <li><a href="#命令">命令</a>
+          <ul>
+            <li><a href="#go-mod-vendor">go mod vendor</a></li>
+          </ul>
+        </li>
+        <li><a href="#module-aware-mode-vs-gopath-mode"><code>Module-aware mode</code> vs <code>GOPATH mode</code></a></li>
+        <li><a href="#replace">replace</a>
+          <ul>
+            <li><a href="#replace-不会生成-gosum-信息">replace 不会生成 <code>go.sum</code> 信息</a></li>
+            <li><a href="#replace-命令只能管理顶层依赖">replace 命令只能管理<code>顶层依赖</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#gosum">go.sum</a>
+          <ul>
+            <li><a href="#gosum-不是锁文件">go.sum 不是锁文件</a></li>
+          </ul>
+        </li>
+        <li><a href="#go-mod-vendor-1"><code>go mod vendor</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
