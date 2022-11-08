@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>3.3 运行时 on Go 学习笔记</title>
+    <link>https://kingye.me/study-go/docs/design/runtime/</link>
+    <description>Recent content in 3.3 运行时 on Go 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://kingye.me/study-go/docs/design/runtime/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go 初始化</title>
+      <link>https://kingye.me/study-go/docs/design/runtime/init/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kingye.me/study-go/docs/design/runtime/init/</guid>
+      <description>Go 初始化 #  golang 程序初始化先于 main 函数执行，由 runtime 进行初始化，初始化顺序如下：
+ 初始化导入的包（包的初始化顺序并不是按导入顺序（“从上到下”）执行的，runtime 需要解析包依赖关系，没有依赖的包最先初始化，与变量初始化依赖关系类似，参见 golang 变量的初始化）； 初始化包作用域的变量（该作用域的变量的初始化也并非按照 “从上到下、从左到右” 的顺序，runtime 解析变量依赖关系，没有依赖的变量最先初始化，参见 golang 变量的初始化）； 执行包的 init 函数；   变量初始化 -&amp;gt;init ()-&amp;gt;main () 由于 pack 包的初始化依赖 test_util，因此运行时先初始化 test_util 再初始化 pack 包；   同一个包不同源文件的 init 函数执行顺序，golang spec 没做说明  一般是源文件名称的字典序，但不能依赖这个假定     在每一个初始化周期，运行时（runtime）会挑选一个没有任何依赖的变量初始化  该过程一直持续到所有的变量均被初始化或者出现依赖嵌套的情形   同一个 package 下多个文件的变量初始化依赖也遵循相同的规则   变量初始化 #  不同作用域类型的变量初始化顺序不同
+函数作用域内的局部变量 #  初始化顺序：从左到右、从上到下
+package 级别的变量 #  初始化顺序与初始化依赖有关</description>
+    </item>
+    
+    <item>
+      <title>Go 调度</title>
+      <link>https://kingye.me/study-go/docs/design/runtime/scheduling/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kingye.me/study-go/docs/design/runtime/scheduling/</guid>
+      <description>Go 调度 #  Go 调度器的发展 #   单线程调度器・0.x  只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成；   多线程调度器・1.0  允许运行多线程的程序； 全局锁导致竞争严重；   任务窃取调度器・1.1  引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；   抢占式调度器・1.2 ~ 至今  基于协作的抢占式调度器 - 1.2 ~ 1.13  通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；   基于信号的抢占式调度器 - 1.14 ~ 至今  实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况；     非均匀存储访问调度器・提案  对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程；    除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。</description>
+    </item>
+    
+    <item>
+      <title>GC</title>
+      <link>https://kingye.me/study-go/docs/design/runtime/gc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kingye.me/study-go/docs/design/runtime/gc/</guid>
+      <description>Go GC #  Garbage Collection</description>
+    </item>
+    
+    <item>
+      <title>并发</title>
+      <link>https://kingye.me/study-go/docs/design/runtime/concurrent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kingye.me/study-go/docs/design/runtime/concurrent/</guid>
+      <description>Go 并发 #  Mutex #  type Mutex struct { 	state int32 // 状态 	sema uint32 // 信号量 }  state (32 位)  waitersCount (29 位): 当前互斥锁上等待的 Goroutine 个数 mutexStarving (1 位): 当前的互斥锁进入饥饿状态  Goroutine 超过 1 ms 没有获取到锁，就会转为饥饿模式   mutexWoken (1 位): 从正常模式被从唤醒 mutexLocked (1 位): 互斥锁的锁定状态    </description>
+    </item>
+    
+  </channel>
+</rss>
