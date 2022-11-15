@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>3.2 关键字 on Go 学习笔记</title>
+    <link>https://kingye.me/study-go/docs/design/keyword/</link>
+    <description>Recent content in 3.2 关键字 on Go 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://kingye.me/study-go/docs/design/keyword/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>interface</title>
+      <link>https://kingye.me/study-go/docs/design/keyword/interface/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kingye.me/study-go/docs/design/keyword/interface/</guid>
+      <description>interface #  Go Data Structures: Interfaces
+读完这篇 go 作者的 blog，interface 就没什么秘密可言了。每个 interface 至少包含两个字段，type 和 data，不论什么形式，然后是 itable 什么时候生成，如何调用。
+结合 Comparison operators，记住 interface 的 compare 规则。</description>
+    </item>
+    
+  </channel>
+</rss>
