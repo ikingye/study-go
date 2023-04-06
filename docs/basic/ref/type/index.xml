@@ -25,6 +25,15 @@ type error interface { 	Error() string } errors.New(&amp;#34;xxxx&amp;#34;)  fmt
     </item>
     
     <item>
+      <title>字符串</title>
+      <link>https://kingye.me/study-go/docs/basic/ref/type/string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kingye.me/study-go/docs/basic/ref/type/string/</guid>
+      <description>Go 字符串 #  字符串是一个只读的切片类型 #  // 包含指向字节数组的指针和数组的大小 type StringHeader struct {  Data uintptr  Len int  // 比 slice 少了 Cap 字段 }  // 比字符串多了表示容量的 Cap 字段 type SliceHeader struct {  Data uintptr  Len int  Cap int } </description>
+    </item>
+    
+    <item>
       <title>数组</title>
       <link>https://kingye.me/study-go/docs/basic/ref/type/array/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

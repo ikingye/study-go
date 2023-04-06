@@ -21,7 +21,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.cabd7c1e4d710f8cbcf83eed281415e96ec71d3e71b544210e7d957e0030e2fe.js" integrity="sha256-yr18Hk1xD4y8&#43;D7tKBQV6W7HHT5xtUQhDn2VfgAw4v4="></script>
+<script defer src="/study-go/en.search.min.5b26e00f2b5c5682c4d853b3ae54a0370baed6a3faa8d4ee2f142ccf1a4404be.js" integrity="sha256-WybgDytcVoLE2FOzrlSgNwuu1qP6qNTuLxQszxpEBL4="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -144,6 +144,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="https://kingye.me/study-go/docs/basic/ref/type/slice/" class="">切片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://kingye.me/study-go/docs/basic/ref/type/string/" class="">字符串</a>
   
 
         </li>
@@ -1382,11 +1395,6 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#10-2012-03-28">1.0 (2012-03-28)</a></li>
       </ul>
     </li>
-    <li><a href="#版本控制">版本控制</a>
-      <ul>
-        <li><a href="#gvm">gvm</a></li>
-      </ul>
-    </li>
     <li><a href="#gopath-被篡改">GOPATH 被篡改</a></li>
   </ul>
 </nav>
@@ -1585,61 +1593,6 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#10-2012-03-28">#</a>
 </h3>
 <hr>
-<h2 id="版本控制">
-  版本控制
-  <a class="anchor" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">#</a>
-</h2>
-<h3 id="gvm">
-  gvm
-  <a class="anchor" href="#gvm">#</a>
-</h3>
-<p><a href="https://github.com/moovweb/gvm">moovweb/gvm</a> <img src="https://img.shields.io/github/stars/moovweb/gvm.svg" alt="Github stars" /> <img src="https://img.shields.io/github/languages/top/moovweb/gvm.svg" alt="Language" /> <img src="https://img.shields.io/github/v/tag/moovweb/gvm.svg?sort=semver" alt="Last Tag" /> <img src="https://img.shields.io/github/last-commit/moovweb/gvm.svg" alt="Last commit" /></p>
-<p>安装：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>zsh &lt; &lt;<span style="color:#f92672">(</span>curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer<span style="color:#f92672">)</span>
-</span></span></code></pre></div><p>使用：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ gvm listall
-</span></span><span style="display:flex;"><span>$ gvm list
-</span></span><span style="display:flex;"><span>$ gvm install go1.15
-</span></span><span style="display:flex;"><span>$ gvm user go1.15
-</span></span><span style="display:flex;"><span>$ gvm uninstall go1.15
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用二进制安装</span>
-</span></span><span style="display:flex;"><span>$ gvm install go1.15 -B
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$ gvm install -h
-</span></span><span style="display:flex;"><span>Invalid version: -h
-</span></span><span style="display:flex;"><span>Usage: gvm install <span style="color:#f92672">[</span>version<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>    -s,  --source<span style="color:#f92672">=</span>SOURCE      Install Go from specified source.
-</span></span><span style="display:flex;"><span>    -n,  --name<span style="color:#f92672">=</span>NAME          Override the default name <span style="color:#66d9ef">for</span> this version.
-</span></span><span style="display:flex;"><span>    -pb, --with-protobuf      Install Go protocol buffers.
-</span></span><span style="display:flex;"><span>    -b,  --with-build-tools   Install package build tools.
-</span></span><span style="display:flex;"><span>    -B,  --binary             Only install from binary.
-</span></span><span style="display:flex;"><span>         --prefer-binary      Attempt a binary install, falling back to source.
-</span></span><span style="display:flex;"><span>    -h,  --help               Display this message.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$ gvm help
-</span></span><span style="display:flex;"><span>Usage: gvm <span style="color:#f92672">[</span>command<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Description:
-</span></span><span style="display:flex;"><span>  GVM is the Go Version Manager
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Commands:
-</span></span><span style="display:flex;"><span>  version    - print the gvm version number
-</span></span><span style="display:flex;"><span>  get        - gets the latest code <span style="color:#f92672">(</span><span style="color:#66d9ef">for</span> debugging<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  use        - <span style="color:#66d9ef">select</span> a go version to use <span style="color:#f92672">(</span>--default to set permanently<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  diff       - view changes to Go root
-</span></span><span style="display:flex;"><span>  help       - display this usage text
-</span></span><span style="display:flex;"><span>  implode    - completely remove gvm
-</span></span><span style="display:flex;"><span>  install    - install go versions
-</span></span><span style="display:flex;"><span>  uninstall  - uninstall go versions
-</span></span><span style="display:flex;"><span>  cross      - install go cross compilers
-</span></span><span style="display:flex;"><span>  linkthis   - link this directory into GOPATH
-</span></span><span style="display:flex;"><span>  list       - list installed go versions
-</span></span><span style="display:flex;"><span>  listall    - list available versions
-</span></span><span style="display:flex;"><span>  alias      - manage go version aliases
-</span></span><span style="display:flex;"><span>  pkgset     - manage go packages sets
-</span></span><span style="display:flex;"><span>  pkgenv     - edit the environment <span style="color:#66d9ef">for</span> a package set
-</span></span></code></pre></div><hr>
 <h2 id="gopath-被篡改">
   GOPATH 被篡改
   <a class="anchor" href="#gopath-%e8%a2%ab%e7%af%a1%e6%94%b9">#</a>
@@ -1751,11 +1704,6 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#12-2013-12-01">1.2 (2013-12-01)</a></li>
         <li><a href="#11-2013-05-13">1.1 (2013-05-13)</a></li>
         <li><a href="#10-2012-03-28">1.0 (2012-03-28)</a></li>
-      </ul>
-    </li>
-    <li><a href="#版本控制">版本控制</a>
-      <ul>
-        <li><a href="#gvm">gvm</a></li>
       </ul>
     </li>
     <li><a href="#gopath-被篡改">GOPATH 被篡改</a></li>

@@ -5,18 +5,19 @@
   <meta name="generator" content="Hugo 0.99.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 关键字 #  ">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="3.2 关键字" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://kingye.me/study-go/docs/design/keyword/" />
+<meta name="description" content="Go 字符串 #  字符串是一个只读的切片类型 #  // 包含指向字节数组的指针和数组的大小 type StringHeader struct {  Data uintptr  Len int  // 比 slice 少了 Cap 字段 }  // 比字符串多了表示容量的 Cap 字段 type SliceHeader struct {  Data uintptr  Len int  Cap int } ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="字符串" />
+<meta property="og:description" content="Go 字符串 #  字符串是一个只读的切片类型 #  // 包含指向字节数组的指针和数组的大小 type StringHeader struct {  Data uintptr  Len int  // 比 slice 少了 Cap 字段 }  // 比字符串多了表示容量的 Cap 字段 type SliceHeader struct {  Data uintptr  Len int  Cap int } " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kingye.me/study-go/docs/basic/ref/type/string/" /><meta property="article:section" content="docs" />
 
-<title>3.2 关键字 | Go 学习笔记</title>
+
+
+<title>字符串 | Go 学习笔记</title>
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
 <script defer src="/study-go/en.search.min.5b26e00f2b5c5682c4d853b3ae54a0370baed6a3faa8d4ee2f142ccf1a4404be.js" integrity="sha256-WybgDytcVoLE2FOzrlSgNwuu1qP6qNTuLxQszxpEBL4="></script>
-<link rel="alternate" type="application/rss+xml" href="https://kingye.me/study-go/docs/design/keyword/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -90,7 +91,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1345454d7b2c77448bcdfba005efd882" class="toggle"  />
+    <input type="checkbox" id="section-1345454d7b2c77448bcdfba005efd882" class="toggle" checked />
     <label for="section-1345454d7b2c77448bcdfba005efd882" class="flex justify-between">
       <a href="https://kingye.me/study-go/docs/basic/ref/" class="">1.1 语法</a>
     </label>
@@ -106,7 +107,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-5cfb8ad3f25979c0f273faaa1f5918f3" class="toggle"  />
+    <input type="checkbox" id="section-5cfb8ad3f25979c0f273faaa1f5918f3" class="toggle" checked />
     <label for="section-5cfb8ad3f25979c0f273faaa1f5918f3" class="flex justify-between">
       <a href="https://kingye.me/study-go/docs/basic/ref/type/" class="">1.1.1 数据类型</a>
     </label>
@@ -151,7 +152,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://kingye.me/study-go/docs/basic/ref/type/string/" class="">字符串</a>
+    <a href="https://kingye.me/study-go/docs/basic/ref/type/string/" class=" active">字符串</a>
   
 
         </li>
@@ -1045,9 +1046,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-04f123cc9a87e9e64680fa0fd29a97e8" class="toggle" checked />
+    <input type="checkbox" id="section-04f123cc9a87e9e64680fa0fd29a97e8" class="toggle"  />
     <label for="section-04f123cc9a87e9e64680fa0fd29a97e8" class="flex justify-between">
-      <a href="https://kingye.me/study-go/docs/design/keyword/" class="active">3.2 关键字</a>
+      <a href="https://kingye.me/study-go/docs/design/keyword/" class="">3.2 关键字</a>
     </label>
   
 
@@ -1349,7 +1350,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>3.2 关键字</strong>
+  <strong>字符串</strong>
 
   <label for="toc-control">
     
@@ -1363,7 +1364,11 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#字符串是一个只读的切片类型">字符串是一个只读的切片类型</a></li>
+  </ul>
+</nav>
 
 
 
@@ -1374,11 +1379,28 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article id="article" class="markdown"><h1 id="go-关键字">
-  Go 关键字
-  <a class="anchor" href="#go-%e5%85%b3%e9%94%ae%e5%ad%97">#</a>
+  <article id="article" class="markdown"><h1 id="go-字符串">
+  Go 字符串
+  <a class="anchor" href="#go-%e5%ad%97%e7%ac%a6%e4%b8%b2">#</a>
 </h1>
-</article>
+<h2 id="字符串是一个只读的切片类型">
+  字符串是一个只读的切片类型
+  <a class="anchor" href="#%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%98%af%e4%b8%80%e4%b8%aa%e5%8f%aa%e8%af%bb%e7%9a%84%e5%88%87%e7%89%87%e7%b1%bb%e5%9e%8b">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// 包含指向字节数组的指针和数组的大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">StringHeader</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Data</span> <span style="color:#66d9ef">uintptr</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Len</span>  <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 比 slice 少了 Cap 字段
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 比字符串多了表示容量的 Cap 字段
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">SliceHeader</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Data</span> <span style="color:#66d9ef">uintptr</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Len</span>  <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Cap</span>  <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></article>
  
       
 
@@ -1387,12 +1409,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-
-  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/b2146723b4645b4317559ebc96f453e4c195dd63" title='Last modified by yewang | 2021-06-25' target="_blank" rel="noopener">
-      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2021-06-25</span>
-    </a>
-  </div>
 
 
 
@@ -1449,7 +1465,11 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#字符串是一个只读的切片类型">字符串是一个只读的切片类型</a></li>
+  </ul>
+</nav>
 
 
  
