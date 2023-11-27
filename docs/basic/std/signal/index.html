@@ -25,7 +25,7 @@ A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these si
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.5b26e00f2b5c5682c4d853b3ae54a0370baed6a3faa8d4ee2f142ccf1a4404be.js" integrity="sha256-WybgDytcVoLE2FOzrlSgNwuu1qP6qNTuLxQszxpEBL4="></script>
+<script defer src="/study-go/en.search.min.8d65920a1d382f1d58bc800bf726feda322e9fbf877a6ab0051a53c0104f1d0b.js" integrity="sha256-jWWSCh04Lx1YvIAL9yb&#43;2jIun7&#43;HemqwBRpTwBBPHQs="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1449,7 +1449,9 @@ not when sent using <code>os.Process.Kill</code> or the kill program or some sim
 </ul>
 </li>
 </ul>
-<p>The remaining signals are asynchronous signals.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kill -s SIGUSR2 xxx-pid
+</span></span></code></pre></div><p>The remaining signals are asynchronous signals.
 They are not triggered by program errors, but are instead sent from the kernel or from some other program.</p>
 <hr>
 <h2 id="func">
