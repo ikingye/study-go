@@ -2,18 +2,20 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.99.1" />
+  <meta name="generator" content="Hugo 0.121.1">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 插件系统 #  Go 1.8 版本开始提供了一个创建共享库的新工具，称为 Plugins.
+<meta name="description" content="Go 插件系统 # Go 1.8 版本开始提供了一个创建共享库的新工具，称为 Plugins.
 Go 插件是使用 -buildmode=plugin 标记编译的一个包，用于生成一个共享对象（.so）库文件。 Go 包中的导出的函数和变量被公开为 ELF 符号，可以使用 plugin 包在运行时查找并绑定 ELF 符号。
 Go 编译器能够使用 build flag -buildmode=c-shared 创建 C 风格的动态共享库。
- 编写 plugin #   包名称必须是 main 没有 main 函数 必须有可以导出 (访问) 的变量或者方法   使用 plugin #   加载编译好的插件 plugin.Open(&quot;./plugin_doctor.so&quot;) (*.so 文件路径相对与可执行文件的路径，可以是绝对路径) 寻找插件可到变量 plug.Lookup(&quot;Doctor&quot;), TypeAssert: Symbol (interface {}) 转换成 API 的接口类型 执行 API interface 的方法   优点 #  缺陷 #  插件实现和主应用程序都必须使用完全相同的 Go 工具链版本构建。 由于插件提供的代码将与主代码在相同的进程空间中运行，因此编译的二进制文件应与主应用程序 100% 兼容。">
+编写 plugin # 包名称必须是 main 没有 main 函数 必须有可以导出 (访问) 的变量或者方法 使用 plugin # 加载编译好的插件 plugin.Open(&quot;./plugin_doctor.so&quot;) (*.so 文件路径相对与可执行文件的路径，可以是绝对路径) 寻找插件可到变量 plug.Lookup(&quot;Doctor&quot;), TypeAssert: Symbol (interface {}) 转换成 API 的接口类型 执行 API interface 的方法 优点 # 缺陷 # 插件实现和主应用程序都必须使用完全相同的 Go 工具链版本构建。 由于插件提供的代码将与主代码在相同的进程空间中运行，因此编译的二进制文件应与主应用程序 100% 兼容。
+插件系统迫使你的插件实现与主应用程序产生高度耦合。 即使你可以控制插件和主应用程序，最终结果也非常脆弱且难以维护。 如果插件的作者对主应用程序没有任何控制权，开销会更高。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Go 插件系统" />
-<meta property="og:description" content="Go 插件系统 #  Go 1.8 版本开始提供了一个创建共享库的新工具，称为 Plugins.
+<meta property="og:description" content="Go 插件系统 # Go 1.8 版本开始提供了一个创建共享库的新工具，称为 Plugins.
 Go 插件是使用 -buildmode=plugin 标记编译的一个包，用于生成一个共享对象（.so）库文件。 Go 包中的导出的函数和变量被公开为 ELF 符号，可以使用 plugin 包在运行时查找并绑定 ELF 符号。
 Go 编译器能够使用 build flag -buildmode=c-shared 创建 C 风格的动态共享库。
- 编写 plugin #   包名称必须是 main 没有 main 函数 必须有可以导出 (访问) 的变量或者方法   使用 plugin #   加载编译好的插件 plugin.Open(&quot;./plugin_doctor.so&quot;) (*.so 文件路径相对与可执行文件的路径，可以是绝对路径) 寻找插件可到变量 plug.Lookup(&quot;Doctor&quot;), TypeAssert: Symbol (interface {}) 转换成 API 的接口类型 执行 API interface 的方法   优点 #  缺陷 #  插件实现和主应用程序都必须使用完全相同的 Go 工具链版本构建。 由于插件提供的代码将与主代码在相同的进程空间中运行，因此编译的二进制文件应与主应用程序 100% 兼容。" />
+编写 plugin # 包名称必须是 main 没有 main 函数 必须有可以导出 (访问) 的变量或者方法 使用 plugin # 加载编译好的插件 plugin.Open(&quot;./plugin_doctor.so&quot;) (*.so 文件路径相对与可执行文件的路径，可以是绝对路径) 寻找插件可到变量 plug.Lookup(&quot;Doctor&quot;), TypeAssert: Symbol (interface {}) 转换成 API 的接口类型 执行 API interface 的方法 优点 # 缺陷 # 插件实现和主应用程序都必须使用完全相同的 Go 工具链版本构建。 由于插件提供的代码将与主代码在相同的进程空间中运行，因此编译的二进制文件应与主应用程序 100% 兼容。
+插件系统迫使你的插件实现与主应用程序产生高度耦合。 即使你可以控制插件和主应用程序，最终结果也非常脆弱且难以维护。 如果插件的作者对主应用程序没有任何控制权，开销会更高。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/basic/others/plugin/" /><meta property="article:section" content="docs" />
 
@@ -23,7 +25,7 @@ Go 编译器能够使用 build flag -buildmode=c-shared 创建 C 风格的动态
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.8d65920a1d382f1d58bc800bf726feda322e9fbf877a6ab0051a53c0104f1d0b.js" integrity="sha256-jWWSCh04Lx1YvIAL9yb&#43;2jIun7&#43;HemqwBRpTwBBPHQs="></script>
+<script defer src="/study-go/en.search.min.23a046e86c986c743827cbccc4896ce43a28f71177117fce7029381087d01938.js" integrity="sha256-I6BG6GyYbHQ4J8vMxIls5Doo9xF3EX/OcCk4EIfQGTg="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book

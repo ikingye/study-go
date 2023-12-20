@@ -2,16 +2,16 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.99.1" />
+  <meta name="generator" content="Hugo 0.121.1">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="select #  Go 的 选择器（select） 让你可以同时等待多个通道操作。
+<meta name="description" content="select # Go 的 选择器（select） 让你可以同时等待多个通道操作。
 将协程、通道和选择器结合，是 Go 的一个强大特性。
-// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string)  // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() {  time.Sleep(1 * time.Second)  c1 &lt;- &#34;one&#34; }() go func() {  time.Sleep(2 * time.Second)  c2 &lt;- &#34;two&#34; }()  // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &lt; 2; i&#43;&#43; {  select {  case msg1 := &lt;-c1:  fmt.">
+// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string) // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() { time.Sleep(1 * time.Second) c1 &lt;- &#34;one&#34; }() go func() { time.Sleep(2 * time.Second) c2 &lt;- &#34;two&#34; }() // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &lt; 2; i&#43;&#43; { select { case msg1 := &lt;-c1: fmt.Println(&#34;received&#34;, msg1) case msg2 := &lt;-c2: fmt.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="select" />
-<meta property="og:description" content="select #  Go 的 选择器（select） 让你可以同时等待多个通道操作。
+<meta property="og:description" content="select # Go 的 选择器（select） 让你可以同时等待多个通道操作。
 将协程、通道和选择器结合，是 Go 的一个强大特性。
-// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string)  // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() {  time.Sleep(1 * time.Second)  c1 &lt;- &#34;one&#34; }() go func() {  time.Sleep(2 * time.Second)  c2 &lt;- &#34;two&#34; }()  // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &lt; 2; i&#43;&#43; {  select {  case msg1 := &lt;-c1:  fmt." />
+// 在这个例子中，我们将从两个通道中选择。 c1 := make(chan string) c2 := make(chan string) // 各个通道将在一定时间后接收一个值， // 通过这种方式来模拟并行的协程执行（例如，RPC 操作）时造成的阻塞（耗时）。 go func() { time.Sleep(1 * time.Second) c1 &lt;- &#34;one&#34; }() go func() { time.Sleep(2 * time.Second) c2 &lt;- &#34;two&#34; }() // 我们使用 `select` 关键字来同时等待这两个值， // 并打印各自接收到的值。 for i := 0; i &lt; 2; i&#43;&#43; { select { case msg1 := &lt;-c1: fmt.Println(&#34;received&#34;, msg1) case msg2 := &lt;-c2: fmt." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/basic/ref/keyword/select/" /><meta property="article:section" content="docs" />
 
@@ -21,7 +21,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.8d65920a1d382f1d58bc800bf726feda322e9fbf877a6ab0051a53c0104f1d0b.js" integrity="sha256-jWWSCh04Lx1YvIAL9yb&#43;2jIun7&#43;HemqwBRpTwBBPHQs="></script>
+<script defer src="/study-go/en.search.min.23a046e86c986c743827cbccc4896ce43a28f71177117fce7029381087d01938.js" integrity="sha256-I6BG6GyYbHQ4J8vMxIls5Doo9xF3EX/OcCk4EIfQGTg="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book

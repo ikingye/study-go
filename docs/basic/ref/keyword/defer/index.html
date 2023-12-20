@@ -2,20 +2,20 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.99.1" />
+  <meta name="generator" content="Hugo 0.121.1">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="defer #  Go 处理 defer 和 return 的顺序为：
- 计算 return 语句的返回值 赋值给匿名 / 有名返回值 执行 defer return 退出函数  Defer 的用途跟其他语言的 ensure 或 finally 类似。
-当 defer 释放锁遇到尾递归，会产生死锁 #   如果一个函数中所有递归形式的调用都出现在函数的末尾，我们称这个递归函数是尾递归的。
- 计算 return 语句的值，赋值给匿名/有名返回值 -&gt; defer -&gt; return 退出函数
-var mut = sync.Mutex{} func tailRec(i int) int {  mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 {  return i  }  i&#43;&#43;  return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。">
+<meta name="description" content="defer # Go 处理 defer 和 return 的顺序为：
+计算 return 语句的返回值 赋值给匿名 / 有名返回值 执行 defer return 退出函数 Defer 的用途跟其他语言的 ensure 或 finally 类似。
+当 defer 释放锁遇到尾递归，会产生死锁 # 如果一个函数中所有递归形式的调用都出现在函数的末尾，我们称这个递归函数是尾递归的。
+计算 return 语句的值，赋值给匿名/有名返回值 -&gt; defer -&gt; return 退出函数
+var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁 defer mut.Unlock() // defer 释放锁 if i == 10 { return i } i&#43;&#43; return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="defer" />
-<meta property="og:description" content="defer #  Go 处理 defer 和 return 的顺序为：
- 计算 return 语句的返回值 赋值给匿名 / 有名返回值 执行 defer return 退出函数  Defer 的用途跟其他语言的 ensure 或 finally 类似。
-当 defer 释放锁遇到尾递归，会产生死锁 #   如果一个函数中所有递归形式的调用都出现在函数的末尾，我们称这个递归函数是尾递归的。
- 计算 return 语句的值，赋值给匿名/有名返回值 -&gt; defer -&gt; return 退出函数
-var mut = sync.Mutex{} func tailRec(i int) int {  mut.Lock() // 加锁  defer mut.Unlock() // defer 释放锁  if i == 10 {  return i  }  i&#43;&#43;  return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。" />
+<meta property="og:description" content="defer # Go 处理 defer 和 return 的顺序为：
+计算 return 语句的返回值 赋值给匿名 / 有名返回值 执行 defer return 退出函数 Defer 的用途跟其他语言的 ensure 或 finally 类似。
+当 defer 释放锁遇到尾递归，会产生死锁 # 如果一个函数中所有递归形式的调用都出现在函数的末尾，我们称这个递归函数是尾递归的。
+计算 return 语句的值，赋值给匿名/有名返回值 -&gt; defer -&gt; return 退出函数
+var mut = sync.Mutex{} func tailRec(i int) int { mut.Lock() // 加锁 defer mut.Unlock() // defer 释放锁 if i == 10 { return i } i&#43;&#43; return tailRec(i) // return 尾递归 } 以上代码执行会发生死锁，原因是 return 语句后的命令先执行，赋值给匿名返回值后，再调用 defer， 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/basic/ref/keyword/defer/" /><meta property="article:section" content="docs" />
 
@@ -25,7 +25,7 @@ var mut = sync.Mutex{} func tailRec(i int) int {  mut.Lock() // 加锁  defer mu
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.8d65920a1d382f1d58bc800bf726feda322e9fbf877a6ab0051a53c0104f1d0b.js" integrity="sha256-jWWSCh04Lx1YvIAL9yb&#43;2jIun7&#43;HemqwBRpTwBBPHQs="></script>
+<script defer src="/study-go/en.search.min.23a046e86c986c743827cbccc4896ce43a28f71177117fce7029381087d01938.js" integrity="sha256-I6BG6GyYbHQ4J8vMxIls5Doo9xF3EX/OcCk4EIfQGTg="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book

@@ -2,12 +2,12 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.99.1" />
+  <meta name="generator" content="Hugo 0.121.1">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="函数 #  函数参数 #  值传递 #  golang 中函数的参数传递采用的是值传递。
+<meta name="description" content="函数 # 函数参数 # 值传递 # golang 中函数的参数传递采用的是值传递。
 在处理 map，channel 和 slice 等这些内置结构的数据时，其实处理的是一个指针类型的数据。
-可变参数 #  package main  import &#34;fmt&#34;  // 这个函数接受任意数量的 `int` 作为参数。 func sum(nums ...int) { 	fmt.Print(nums, &#34; &#34;) 	total := 0 	for _, num := range nums { 	total &#43;= num 	} 	fmt.Println(total) }  func main() {  	// 变参函数使用常规的调用方式，传入独立的参数。 	sum(1, 2) 	sum(1, 2, 3)  	// 如果你有一个含有多个值的 slice，想把它们作为参数使用， 	// 你需要这样调用 `func(slice.">
+可变参数 # package main import &#34;fmt&#34; // 这个函数接受任意数量的 `int` 作为参数。 func sum(nums ...int) { fmt.Print(nums, &#34; &#34;) total := 0 for _, num := range nums { total &#43;= num } fmt.Println(total) } func main() { // 变参函数使用常规的调用方式，传入独立的参数。 sum(1, 2) sum(1, 2, 3) // 如果你有一个含有多个值的 slice，想把它们作为参数使用， // 你需要这样调用 `func(slice...)`。 nums := []int{1, 2, 3, 4} sum(nums...) } 方法 # 调用方法时产生一个拷贝 # r := rect{width: 10, height: 5} // 调用方法时，Go 会自动处理值和指针之间的转换。 // 想要避免在调用方法时产生一个拷贝，或者想让方法可以修改接受结构体的值， // 你都可以使用指针来调用方法。 rp := &amp;r fmt.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="函数" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -17,7 +17,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.8d65920a1d382f1d58bc800bf726feda322e9fbf877a6ab0051a53c0104f1d0b.js" integrity="sha256-jWWSCh04Lx1YvIAL9yb&#43;2jIun7&#43;HemqwBRpTwBBPHQs="></script>
+<script defer src="/study-go/en.search.min.23a046e86c986c743827cbccc4896ce43a28f71177117fce7029381087d01938.js" integrity="sha256-I6BG6GyYbHQ4J8vMxIls5Doo9xF3EX/OcCk4EIfQGTg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://kingye.me/study-go/docs/basic/ref/keyword/func/index.xml" title="Go 学习笔记" />
 <!--
 Made with Book Theme

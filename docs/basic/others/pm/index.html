@@ -2,18 +2,18 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.99.1" />
+  <meta name="generator" content="Hugo 0.121.1">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="包管理 #  Go 包管理概述 #  Go 1.4 及之前 #   必须设置 GOPATH 环境变量，且源代码必须存放在 GOPATH 下 拉取外部依赖包时，总是拉取最新的版本，无法指定需要的版本  设置 GOPATH 环境变量有两个原因：
- 它规定了 go get 命令下载的依赖包的存储位置（$GOPATH/src） 通过设置 GOPATH，可以方便 Golang 计算出 import 的路径  Go 1.5 至 Go 1.10 #  每个项目的根目录下可以有一个 vendor 目录，里面存放了该项目的依赖的包
-Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 export GO111MODULE=on，使用 Go Modules  GO111MODULE 为 off 时：
- 优先使用 vendor 目录下面的包， 如果 vendor 下面没有搜索到，再搜索 $GOPATH/src 下面的包， 如果 $GOPATH 下面没有搜索到，那么搜索 $GOROOT/src 下面的包  Go 1.">
+<meta name="description" content="包管理 # Go 包管理概述 # Go 1.4 及之前 # 必须设置 GOPATH 环境变量，且源代码必须存放在 GOPATH 下 拉取外部依赖包时，总是拉取最新的版本，无法指定需要的版本 设置 GOPATH 环境变量有两个原因：
+它规定了 go get 命令下载的依赖包的存储位置（$GOPATH/src） 通过设置 GOPATH，可以方便 Golang 计算出 import 的路径 Go 1.5 至 Go 1.10 # 每个项目的根目录下可以有一个 vendor 目录，里面存放了该项目的依赖的包
+Go 1.11 至 Go 1.12 # 默认使用的还是 GOPATH 的管理方式 运行 export GO111MODULE=on，使用 Go Modules GO111MODULE 为 off 时：
+优先使用 vendor 目录下面的包， 如果 vendor 下面没有搜索到，再搜索 $GOPATH/src 下面的包， 如果 $GOPATH 下面没有搜索到，那么搜索 $GOROOT/src 下面的包 Go 1.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="包管理" />
-<meta property="og:description" content="包管理 #  Go 包管理概述 #  Go 1.4 及之前 #   必须设置 GOPATH 环境变量，且源代码必须存放在 GOPATH 下 拉取外部依赖包时，总是拉取最新的版本，无法指定需要的版本  设置 GOPATH 环境变量有两个原因：
- 它规定了 go get 命令下载的依赖包的存储位置（$GOPATH/src） 通过设置 GOPATH，可以方便 Golang 计算出 import 的路径  Go 1.5 至 Go 1.10 #  每个项目的根目录下可以有一个 vendor 目录，里面存放了该项目的依赖的包
-Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 export GO111MODULE=on，使用 Go Modules  GO111MODULE 为 off 时：
- 优先使用 vendor 目录下面的包， 如果 vendor 下面没有搜索到，再搜索 $GOPATH/src 下面的包， 如果 $GOPATH 下面没有搜索到，那么搜索 $GOROOT/src 下面的包  Go 1." />
+<meta property="og:description" content="包管理 # Go 包管理概述 # Go 1.4 及之前 # 必须设置 GOPATH 环境变量，且源代码必须存放在 GOPATH 下 拉取外部依赖包时，总是拉取最新的版本，无法指定需要的版本 设置 GOPATH 环境变量有两个原因：
+它规定了 go get 命令下载的依赖包的存储位置（$GOPATH/src） 通过设置 GOPATH，可以方便 Golang 计算出 import 的路径 Go 1.5 至 Go 1.10 # 每个项目的根目录下可以有一个 vendor 目录，里面存放了该项目的依赖的包
+Go 1.11 至 Go 1.12 # 默认使用的还是 GOPATH 的管理方式 运行 export GO111MODULE=on，使用 Go Modules GO111MODULE 为 off 时：
+优先使用 vendor 目录下面的包， 如果 vendor 下面没有搜索到，再搜索 $GOPATH/src 下面的包， 如果 $GOPATH 下面没有搜索到，那么搜索 $GOROOT/src 下面的包 Go 1." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/basic/others/pm/" /><meta property="article:section" content="docs" />
 
@@ -23,7 +23,7 @@ Go 1.11 至 Go 1.12 #   默认使用的还是 GOPATH 的管理方式 运行 expo
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.8d65920a1d382f1d58bc800bf726feda322e9fbf877a6ab0051a53c0104f1d0b.js" integrity="sha256-jWWSCh04Lx1YvIAL9yb&#43;2jIun7&#43;HemqwBRpTwBBPHQs="></script>
+<script defer src="/study-go/en.search.min.23a046e86c986c743827cbccc4896ce43a28f71177117fce7029381087d01938.js" integrity="sha256-I6BG6GyYbHQ4J8vMxIls5Doo9xF3EX/OcCk4EIfQGTg="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book

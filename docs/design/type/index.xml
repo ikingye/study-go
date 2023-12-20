@@ -4,15 +4,15 @@
     <title>3.1 数据类型 on Go 学习笔记</title>
     <link>https://kingye.me/study-go/docs/design/type/</link>
     <description>Recent content in 3.1 数据类型 on Go 学习笔记</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://kingye.me/study-go/docs/design/type/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://kingye.me/study-go/docs/design/type/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>类型系统</title>
       <link>https://kingye.me/study-go/docs/design/type/type/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://kingye.me/study-go/docs/design/type/type/</guid>
-      <description>Go 类型系统 #  Underlying Type #   每一个类型都有自己的 Underlying Type  如果 T 是 Pre-declared type 或者 Type Literal，它们对应的 Underlying Type 就是自身 T  比如 type T int 的 Underlying Type 是 int  int 是 Pre-declared   type T map[int]string 的 Underlying Type 是 map[int]string  map[int]string 是 Type Literal     否则 T 的 Underlying Type 是 T 定义时引用的类型的 Underlying Type    Underlying Type 相同 #  如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：</description>
+      <description>Go 类型系统 # Underlying Type # 每一个类型都有自己的 Underlying Type 如果 T 是 Pre-declared type 或者 Type Literal，它们对应的 Underlying Type 就是自身 T 比如 type T int 的 Underlying Type 是 int int 是 Pre-declared type T map[int]string 的 Underlying Type 是 map[int]string map[int]string 是 Type Literal 否则 T 的 Underlying Type 是 T 定义时引用的类型的 Underlying Type Underlying Type 相同 # 如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：&#xA;如果两个 type 都是 named type ，彼此之间不能相互赋值</description>
     </item>
-    
   </channel>
 </rss>

@@ -2,12 +2,14 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.99.1" />
+  <meta name="generator" content="Hugo 0.121.1">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go 调度 #  Go 调度器的发展 #   单线程调度器・0.x  只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成；   多线程调度器・1.0  允许运行多线程的程序； 全局锁导致竞争严重；   任务窃取调度器・1.1  引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；   抢占式调度器・1.2 ~ 至今  基于协作的抢占式调度器 - 1.2 ~ 1.13  通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；   基于信号的抢占式调度器 - 1.14 ~ 至今  实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况；     非均匀存储访问调度器・提案  对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程；    除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。">
+<meta name="description" content=" Go 调度 # Go 调度器的发展 # 单线程调度器・0.x 只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成； 多线程调度器・1.0 允许运行多线程的程序； 全局锁导致竞争严重； 任务窃取调度器・1.1 引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作； 抢占式调度器・1.2 ~ 至今 基于协作的抢占式调度器 - 1.2 ~ 1.13 通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停； 基于信号的抢占式调度器 - 1.14 ~ 至今 实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况； 非均匀存储访问调度器・提案 对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程； 除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。
+参考 # Go 语言调度器与 Goroutine 实现原理 The Go scheduler (Go 1.1) Scheduling In Go # Scheduling In Go : Part I - OS Scheduler Scheduling In Go : Part II - Go Scheduler Scheduling In Go : Part III - Concurrency Garbage Collection In Go # Garbage Collection In Go : Part I - Semantics Garbage Collection In Go : Part II - GC Traces Garbage Collection In Go : Part III - GC Pacing ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Go 调度" />
-<meta property="og:description" content="Go 调度 #  Go 调度器的发展 #   单线程调度器・0.x  只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成；   多线程调度器・1.0  允许运行多线程的程序； 全局锁导致竞争严重；   任务窃取调度器・1.1  引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作；   抢占式调度器・1.2 ~ 至今  基于协作的抢占式调度器 - 1.2 ~ 1.13  通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停；   基于信号的抢占式调度器 - 1.14 ~ 至今  实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况；     非均匀存储访问调度器・提案  对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程；    除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。" />
+<meta property="og:description" content=" Go 调度 # Go 调度器的发展 # 单线程调度器・0.x 只包含 40 多行代码； 程序中只能存在一个活跃线程，由 G-M 模型组成； 多线程调度器・1.0 允许运行多线程的程序； 全局锁导致竞争严重； 任务窃取调度器・1.1 引入了处理器 P，构成了目前的 G-M-P 模型； 在处理器 P 的基础上实现了基于工作窃取的调度器； 在某些情况下，Goroutine 不会让出线程，进而造成饥饿问题； 时间过长的垃圾回收（Stop-the-world，STW）会导致程序长时间无法工作； 抢占式调度器・1.2 ~ 至今 基于协作的抢占式调度器 - 1.2 ~ 1.13 通过编译器在函数调用时插入抢占检查指令，在函数调用时检查当前 Goroutine 是否发起了抢占请求，实现基于协作的抢占式调度； Goroutine 可能会因为垃圾回收和循环长时间占用资源导致程序暂停； 基于信号的抢占式调度器 - 1.14 ~ 至今 实现基于信号的真抢占式调度； 垃圾回收在扫描栈时会触发抢占调度； 抢占的时间点不够多，还不能覆盖全部的边缘情况； 非均匀存储访问调度器・提案 对运行时的各种资源进行分区； 实现非常复杂，到今天还没有提上日程； 除了多线程、任务窃取和抢占式调度器之外，Go 语言社区目前还有一个非均匀存储访问（Non-uniform memory access，NUMA）调度器的提案，Go 语言在未来也有实现该提案的可能。
+参考 # Go 语言调度器与 Goroutine 实现原理 The Go scheduler (Go 1.1) Scheduling In Go # Scheduling In Go : Part I - OS Scheduler Scheduling In Go : Part II - Go Scheduler Scheduling In Go : Part III - Concurrency Garbage Collection In Go # Garbage Collection In Go : Part I - Semantics Garbage Collection In Go : Part II - GC Traces Garbage Collection In Go : Part III - GC Pacing " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/design/runtime/scheduling/" /><meta property="article:section" content="docs" />
 
@@ -17,7 +19,7 @@
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.8d65920a1d382f1d58bc800bf726feda322e9fbf877a6ab0051a53c0104f1d0b.js" integrity="sha256-jWWSCh04Lx1YvIAL9yb&#43;2jIun7&#43;HemqwBRpTwBBPHQs="></script>
+<script defer src="/study-go/en.search.min.23a046e86c986c743827cbccc4896ce43a28f71177117fce7029381087d01938.js" integrity="sha256-I6BG6GyYbHQ4J8vMxIls5Doo9xF3EX/OcCk4EIfQGTg="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book

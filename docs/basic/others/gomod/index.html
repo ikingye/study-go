@@ -2,10 +2,10 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.99.1" />
+  <meta name="generator" content="Hugo 0.121.1">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Go Modules #   Using Go Modules  import #  import &#34;目录&#34;  // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
+<meta name="description" content="Go Modules # Using Go Modules import # import &#34;目录&#34; // 调用是使用 go 文件里的 package xxx xxx.Function() klog import # klog 库 https://github.com/kubernetes/klog
 它的 go.mod 第一行是 module k8s.io/klog/v2
 根目录有个文件 klog.go，第一行 package klog
 所以我们在使用 klog 库时，
@@ -14,9 +14,9 @@ import k8s.io/klog/v2 就是 import 了这个库的根目录，根目录的 *.go
 klog 库自身升级，只需要在它的 go.mod 里第一行改成 module k8s.io/klog/v3 就行。
 而我们使用新版本，也只需要改成 import k8s.io/klog/v3，里面 klog.Info() 都不用改（如果接口兼容的话）。
 参考：
- Relationship between a package statement and the directory of a .">
+Relationship between a package statement and the directory of a .">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Go Modules" />
-<meta property="og:description" content="Go Modules #   Using Go Modules  import #  import &#34;目录&#34;  // 调用是使用 go 文件里的 package xxx xxx.Function() klog import #  klog 库 https://github.com/kubernetes/klog
+<meta property="og:description" content="Go Modules # Using Go Modules import # import &#34;目录&#34; // 调用是使用 go 文件里的 package xxx xxx.Function() klog import # klog 库 https://github.com/kubernetes/klog
 它的 go.mod 第一行是 module k8s.io/klog/v2
 根目录有个文件 klog.go，第一行 package klog
 所以我们在使用 klog 库时，
@@ -25,7 +25,7 @@ import k8s.io/klog/v2 就是 import 了这个库的根目录，根目录的 *.go
 klog 库自身升级，只需要在它的 go.mod 里第一行改成 module k8s.io/klog/v3 就行。
 而我们使用新版本，也只需要改成 import k8s.io/klog/v3，里面 klog.Info() 都不用改（如果接口兼容的话）。
 参考：
- Relationship between a package statement and the directory of a ." />
+Relationship between a package statement and the directory of a ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kingye.me/study-go/docs/basic/others/gomod/" /><meta property="article:section" content="docs" />
 
@@ -35,7 +35,7 @@ klog 库自身升级，只需要在它的 go.mod 里第一行改成 module k8s.i
 <link rel="manifest" href="/study-go/manifest.json">
 <link rel="icon" href="/study-go/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/study-go/book.min.e3d401e975fe9e04a41f82b0c90be4c8773f2541f197dba3ff2ae80293cb78c2.css" integrity="sha256-49QB6XX&#43;ngSkH4KwyQvkyHc/JUHxl9uj/yroApPLeMI=">
-<script defer src="/study-go/en.search.min.8d65920a1d382f1d58bc800bf726feda322e9fbf877a6ab0051a53c0104f1d0b.js" integrity="sha256-jWWSCh04Lx1YvIAL9yb&#43;2jIun7&#43;HemqwBRpTwBBPHQs="></script>
+<script defer src="/study-go/en.search.min.23a046e86c986c743827cbccc4896ce43a28f71177117fce7029381087d01938.js" integrity="sha256-I6BG6GyYbHQ4J8vMxIls5Doo9xF3EX/OcCk4EIfQGTg="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
