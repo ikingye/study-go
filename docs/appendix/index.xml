@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>第四部分 附录 on Go 学习笔记</title>
+    <link>https://kingye.me/study-go/docs/appendix/</link>
+    <description>Recent content in 第四部分 附录 on Go 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://kingye.me/study-go/docs/appendix/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>4.1 教程</title>
+      <link>https://kingye.me/study-go/docs/appendix/tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kingye.me/study-go/docs/appendix/tutorial/</guid>
+      <description>Go 教程 # 基础 # Go 学习笔记，第六版 - 雨痕 # 50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs # Go 新手可能会踩的 50 个坑&#xA;Go by Example # mmcgrana/gobyexample 中文翻译： gobyexample-cn/gobyexample https://gobyexample-cn.github.io/&#xA;build web application with golang # astaxie/build-web-application-with-golang A golang ebook intro how to build a web with golang&#xA;Go 语言高性能编程 # geektutu/high-performance-go 7days-golang # geektutu/7days-golang 7 天用 Go 从零实现系列&#xA;Go 语言 101 # go101/go101 An online book focusing on Go syntax/semantics and runtime related things</description>
+    </item>
+    <item>
+      <title>4.2 面试题</title>
+      <link>https://kingye.me/study-go/docs/appendix/interview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kingye.me/study-go/docs/appendix/interview/</guid>
+      <description> Go 语言面试题 # 基础题 # Using reference to loop iterator variable Using goroutines on loop iterator variables 参考：go 易错点&#xA;进阶题 # 综合 # shomali11/go-interview lifei6671/interview-go 你遇到过哪些高质量的 Go 语言面试题？ </description>
+    </item>
+    <item>
+      <title>4.3 关注项目</title>
+      <link>https://kingye.me/study-go/docs/appendix/attention/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kingye.me/study-go/docs/appendix/attention/</guid>
+      <description>关注项目 # 主流 # golang/go # kubernetes/kubernetes # moby/moby # etcd-io/etcd # Distributed reliable key-value store for the most critical data of a distributed system&#xA;Web 框架 # gin-gonic/gin # Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance &amp;ndash; up to 40 times faster. If you need smashing performance, get yourself some Gin. https://gin-gonic.com/&#xA;beego/beego # beego is an open-source, high-performance web framework for the Go programming language.</description>
+    </item>
+    <item>
+      <title>4.4 一些八卦</title>
+      <link>https://kingye.me/study-go/docs/appendix/gossip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kingye.me/study-go/docs/appendix/gossip/</guid>
+      <description>一些八卦 # golang.org/pkg/ vs pkg.go.dev # golang.org/pkg/ 等于 pkg.go.dev/std pkg.go.dev/std 有各种版本 godoc.org # godoc.org 会跳转到 pkg.go.dev/?utm_source=godoc 再跳转到 pkg.go.dev</description>
+    </item>
+  </channel>
+</rss>

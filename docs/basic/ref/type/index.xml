@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1.1.1 数据类型 on Go 学习笔记</title>
+    <link>https://kingye.me/study-go/docs/basic/ref/type/</link>
+    <description>Recent content in 1.1.1 数据类型 on Go 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://kingye.me/study-go/docs/basic/ref/type/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>error</title>
+      <link>https://kingye.me/study-go/docs/basic/ref/type/error/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kingye.me/study-go/docs/basic/ref/type/error/</guid>
+      <description> error # 实现 Error() string 方法的类型，都是 error 类型&#xA;type error interface { Error() string } errors.New(&amp;#34;xxxx&amp;#34;) fmt.Errorf(format string, a ...interface{}) </description>
+    </item>
+    <item>
+      <title>切片</title>
+      <link>https://kingye.me/study-go/docs/basic/ref/type/slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kingye.me/study-go/docs/basic/ref/type/slice/</guid>
+      <description> Go 切片 # </description>
+    </item>
+    <item>
+      <title>字符串</title>
+      <link>https://kingye.me/study-go/docs/basic/ref/type/string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kingye.me/study-go/docs/basic/ref/type/string/</guid>
+      <description> Go 字符串 # 字符串是一个只读的切片类型 # // 包含指向字节数组的指针和数组的大小 type StringHeader struct { Data uintptr Len int // 比 slice 少了 Cap 字段 } // 比字符串多了表示容量的 Cap 字段 type SliceHeader struct { Data uintptr Len int Cap int } </description>
+    </item>
+    <item>
+      <title>数组</title>
+      <link>https://kingye.me/study-go/docs/basic/ref/type/array/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kingye.me/study-go/docs/basic/ref/type/array/</guid>
+      <description> Go 数组 # 什么时候使用数组，而不是切片？ # arrays are hashable. That means they can be used as a key to a map can be serialized by encoding/binary pass by value. planning the detailed layout of memory 参考：&#xA;Why use arrays instead of slices? </description>
+    </item>
+    <item>
+      <title>Interface</title>
+      <link>https://kingye.me/study-go/docs/basic/ref/type/interface/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kingye.me/study-go/docs/basic/ref/type/interface/</guid>
+      <description> Go Interface # </description>
+    </item>
+    <item>
+      <title>Chiannel</title>
+      <link>https://kingye.me/study-go/docs/basic/ref/type/channel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kingye.me/study-go/docs/basic/ref/type/channel/</guid>
+      <description>Chiannel # channel 类型 # chan T // can be used to send and receive values of type T chan&amp;lt;- float64 // can only be used to send float64s &amp;lt;-chan int // can only be used to receive ints The &amp;lt;- operator associates with the leftmost chan possible:&#xA;chan&amp;lt;- chan int // same as chan&amp;lt;- (chan int) chan&amp;lt;- &amp;lt;-chan int // same as chan&amp;lt;- (&amp;lt;-chan int) &amp;lt;-chan &amp;lt;-chan int // same as &amp;lt;-chan (&amp;lt;-chan int) chan (&amp;lt;-chan int) 常见用法 # // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &amp;lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&amp;#34;ping&amp;#34;` 到上面创建的 `messages` 通道中。 go func() { messages &amp;lt;- &amp;#34;ping&amp;#34; }() // 使用 `&amp;lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&amp;#34;ping&amp;#34;` 消息并将其打印出来。 msg := &amp;lt;-messages fmt.</description>
+    </item>
+    <item>
+      <title>Map</title>
+      <link>https://kingye.me/study-go/docs/basic/ref/type/map/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kingye.me/study-go/docs/basic/ref/type/map/</guid>
+      <description>Map # Golang 中的 map，实际上就是一个 hashtable&#xA;在 golang 中，当 map 作为形参时，虽然是值传递，但是由于 make () 返回的是一个指针类型&#xA;// makemap implements Go map creation for make(map[k]v, hint). // If the compiler has determined that the map or the first bucket // can be created on the stack, h and/or bucket may be non-nil. // If h != nil, the map can be created directly in h. // If h.buckets != nil, bucket pointed to can be used as the first bucket.</description>
+    </item>
+  </channel>
+</rss>
