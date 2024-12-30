@@ -1,18 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Go 命令 on Go 学习笔记</title>
-    <link>https://kingye.me/study-go/docs/basic/others/command/</link>
-    <description>Recent content in Go 命令 on Go 学习笔记</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <atom:link href="https://kingye.me/study-go/docs/basic/others/command/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>安装</title>
-      <link>https://kingye.me/study-go/docs/basic/others/command/install/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://kingye.me/study-go/docs/basic/others/command/install/</guid>
-      <description>&lt;h1 id=&#34;安装&#34;&gt;&#xA;  安装&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%ae%89%e8%a3%85&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go 命令 on Go 学习笔记</title><link>https://kingye.me/study-go/docs/basic/others/command/</link><description>Recent content in Go 命令 on Go 学习笔记</description><generator>Hugo</generator><language>en</language><atom:link href="https://kingye.me/study-go/docs/basic/others/command/index.xml" rel="self" type="application/rss+xml"/><item><title>安装</title><link>https://kingye.me/study-go/docs/basic/others/command/install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/others/command/install/</guid><description>&lt;h1 id="安装">
+ 安装
+ &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85">#&lt;/a>
+&lt;/h1></description></item></channel></rss>

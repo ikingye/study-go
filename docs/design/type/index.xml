@@ -1,18 +1,37 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>3.1 数据类型 on Go 学习笔记</title>
-    <link>https://kingye.me/study-go/docs/design/type/</link>
-    <description>Recent content in 3.1 数据类型 on Go 学习笔记</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <atom:link href="https://kingye.me/study-go/docs/design/type/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>类型系统</title>
-      <link>https://kingye.me/study-go/docs/design/type/type/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://kingye.me/study-go/docs/design/type/type/</guid>
-      <description>&lt;h1 id=&#34;go-类型系统&#34;&gt;&#xA;  Go 类型系统&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#go-%e7%b1%bb%e5%9e%8b%e7%b3%bb%e7%bb%9f&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;underlying-type&#34;&gt;&#xA;  &lt;code&gt;Underlying Type&lt;/code&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#underlying-type&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;每一个类型都有自己的 &lt;code&gt;Underlying Type&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;如果 &lt;code&gt;T&lt;/code&gt; 是 &lt;code&gt;Pre-declared&lt;/code&gt; type 或者 &lt;code&gt;Type Literal&lt;/code&gt;，它们对应的 &lt;code&gt;Underlying Type&lt;/code&gt; 就是自身 &lt;code&gt;T&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;比如 &lt;code&gt;type T int&lt;/code&gt; 的 &lt;code&gt;Underlying Type&lt;/code&gt; 是 &lt;code&gt;int&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;int&lt;/code&gt; 是 &lt;code&gt;Pre-declared&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;type T map[int]string&lt;/code&gt; 的 &lt;code&gt;Underlying Type&lt;/code&gt; 是 &lt;code&gt;map[int]string&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;map[int]string&lt;/code&gt; 是 &lt;code&gt;Type Literal&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;否则 &lt;code&gt;T&lt;/code&gt; 的 &lt;code&gt;Underlying Type&lt;/code&gt; 是 &lt;code&gt;T&lt;/code&gt; 定义时引用的类型的 &lt;code&gt;Underlying Type&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;underlying-type-相同&#34;&gt;&#xA;  Underlying Type 相同&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#underlying-type-%e7%9b%b8%e5%90%8c&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;如果两个 type 都是 named type ，彼此之间不能相互赋值&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>3.1 数据类型 on Go 学习笔记</title><link>https://kingye.me/study-go/docs/design/type/</link><description>Recent content in 3.1 数据类型 on Go 学习笔记</description><generator>Hugo</generator><language>en</language><atom:link href="https://kingye.me/study-go/docs/design/type/index.xml" rel="self" type="application/rss+xml"/><item><title>类型系统</title><link>https://kingye.me/study-go/docs/design/type/type/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/design/type/type/</guid><description>&lt;h1 id="go-类型系统">
+ Go 类型系统
+ &lt;a class="anchor" href="#go-%e7%b1%bb%e5%9e%8b%e7%b3%bb%e7%bb%9f">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="underlying-type">
+ &lt;code>Underlying Type&lt;/code>
+ &lt;a class="anchor" href="#underlying-type">#&lt;/a>
+&lt;/h2>
+&lt;ul>
+&lt;li>每一个类型都有自己的 &lt;code>Underlying Type&lt;/code>
+&lt;ul>
+&lt;li>如果 &lt;code>T&lt;/code> 是 &lt;code>Pre-declared&lt;/code> type 或者 &lt;code>Type Literal&lt;/code>，它们对应的 &lt;code>Underlying Type&lt;/code> 就是自身 &lt;code>T&lt;/code>
+&lt;ul>
+&lt;li>比如 &lt;code>type T int&lt;/code> 的 &lt;code>Underlying Type&lt;/code> 是 &lt;code>int&lt;/code>
+&lt;ul>
+&lt;li>&lt;code>int&lt;/code> 是 &lt;code>Pre-declared&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;code>type T map[int]string&lt;/code> 的 &lt;code>Underlying Type&lt;/code> 是 &lt;code>map[int]string&lt;/code>
+&lt;ul>
+&lt;li>&lt;code>map[int]string&lt;/code> 是 &lt;code>Type Literal&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>否则 &lt;code>T&lt;/code> 的 &lt;code>Underlying Type&lt;/code> 是 &lt;code>T&lt;/code> 定义时引用的类型的 &lt;code>Underlying Type&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="underlying-type-相同">
+ Underlying Type 相同
+ &lt;a class="anchor" href="#underlying-type-%e7%9b%b8%e5%90%8c">#&lt;/a>
+&lt;/h3>
+&lt;p>如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>如果两个 type 都是 named type ，彼此之间不能相互赋值&lt;/p></description></item></channel></rss>

@@ -1,25 +1,130 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>2.3 常用库 on Go 学习笔记</title>
-    <link>https://kingye.me/study-go/docs/advanced/pkg/</link>
-    <description>Recent content in 2.3 常用库 on Go 学习笔记</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <atom:link href="https://kingye.me/study-go/docs/advanced/pkg/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>cobra</title>
-      <link>https://kingye.me/study-go/docs/advanced/pkg/cobra/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://kingye.me/study-go/docs/advanced/pkg/cobra/</guid>
-      <description>&lt;h1 id=&#34;cobra&#34;&gt;&#xA;  cobra&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#cobra&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/cobra&#34;&gt;spf13/cobra&lt;/a&gt; &lt;img src=&#34;https://img.shields.io/github/stars/spf13/cobra.svg&#34; alt=&#34;Github stars&#34; /&gt; &lt;img src=&#34;https://img.shields.io/github/languages/top/spf13/cobra.svg&#34; alt=&#34;Language&#34; /&gt; &lt;img src=&#34;https://img.shields.io/github/v/tag/spf13/cobra.svg?sort=semver&#34; alt=&#34;Last Tag&#34; /&gt; &lt;img src=&#34;https://img.shields.io/github/last-commit/spf13/cobra.svg&#34; alt=&#34;Last commit&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;A Commander for modern Go CLI interactions&lt;/p&gt;&#xA;&lt;h2 id=&#34;quick-start&#34;&gt;&#xA;  quick start&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;typically a Cobra-based application will follow the following organizational structure:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ▾ appName/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ▾ cmd/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        add.go&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        your.go&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        commands.go&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        here.go&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      main.go&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;package&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; (&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{pathToYourApp}/cmd&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;cmd&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Execute&lt;/span&gt;()&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ideally you place this in app/cmd/root.go:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>klog</title>
-      <link>https://kingye.me/study-go/docs/advanced/pkg/klog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://kingye.me/study-go/docs/advanced/pkg/klog/</guid>
-      <description>&lt;h1 id=&#34;klog&#34;&gt;&#xA;  klog&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#klog&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;v-级别&#34;&gt;&#xA;  V() 级别&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#v-%e7%ba%a7%e5%88%ab&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;级别&lt;/th&gt;&#xA;          &lt;th&gt;含义&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;v=0&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Generally useful for this to &lt;em&gt;always&lt;/em&gt; be visible to a cluster operator.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;v=1&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;A reasonable default log level if you don&amp;rsquo;t want verbosity.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;v=2&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Useful steady state information about the service and important log messages that may correlate to significant changes in the system. &lt;br&gt; This is the recommended default log level for most systems.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;v=3&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Extended information about changes.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;v=4&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Debug level verbosity.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;v=5&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Trace level verbosity.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;v=6&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Display requested resources.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;v=7&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Display HTTP request headers.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;v=8&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Display HTTP request contents.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;v=9&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Display HTTP request contents without truncation of contents.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h3 id=&#34;详细说明&#34;&gt;&#xA;  详细说明&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e8%af%a6%e7%bb%86%e8%af%b4%e6%98%8e&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;klog.V(0) - Generally useful for this to ALWAYS be visible to an operator&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Programmer errors&lt;/li&gt;&#xA;&lt;li&gt;Logging extra info about a panic&lt;/li&gt;&#xA;&lt;li&gt;CLI argument handling&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;klog.V(1) - A reasonable default log level if you don&amp;rsquo;t want verbosity.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Information about config (listening on X, watching Y)&lt;/li&gt;&#xA;&lt;li&gt;Errors that repeat frequently that relate to conditions that can be corrected (pod detected as unhealthy)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;klog.V(2) - Useful steady state information about the service and important log messages that may correlate to significant changes in the system. This is the recommended default log level for most systems.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Logging HTTP requests and their exit code&lt;/li&gt;&#xA;&lt;li&gt;System state changing (killing pod)&lt;/li&gt;&#xA;&lt;li&gt;Controller state change events (starting pods)&lt;/li&gt;&#xA;&lt;li&gt;Scheduler log messages&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;klog.V(3) - Extended information about changes&#xA;&lt;ul&gt;&#xA;&lt;li&gt;More info about system state changes&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;klog.V(4) - Debug level verbosity&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Logging in particularly thorny parts of code where you may want to come back later and check it&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;klog.V(5) - Trace level verbosity&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Context to understand the steps leading up to errors and warnings&lt;/li&gt;&#xA;&lt;li&gt;More information for troubleshooting reported issues&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;参考：&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>2.3 常用库 on Go 学习笔记</title><link>https://kingye.me/study-go/docs/advanced/pkg/</link><description>Recent content in 2.3 常用库 on Go 学习笔记</description><generator>Hugo</generator><language>en</language><atom:link href="https://kingye.me/study-go/docs/advanced/pkg/index.xml" rel="self" type="application/rss+xml"/><item><title>cobra</title><link>https://kingye.me/study-go/docs/advanced/pkg/cobra/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/advanced/pkg/cobra/</guid><description>&lt;h1 id="cobra">
+ cobra
+ &lt;a class="anchor" href="#cobra">#&lt;/a>
+&lt;/h1>
+&lt;p>&lt;a href="https://github.com/spf13/cobra">spf13/cobra&lt;/a> &lt;img src="https://img.shields.io/github/stars/spf13/cobra.svg" alt="Github stars" /> &lt;img src="https://img.shields.io/github/languages/top/spf13/cobra.svg" alt="Language" /> &lt;img src="https://img.shields.io/github/v/tag/spf13/cobra.svg?sort=semver" alt="Last Tag" /> &lt;img src="https://img.shields.io/github/last-commit/spf13/cobra.svg" alt="Last commit" />&lt;/p>
+&lt;p>A Commander for modern Go CLI interactions&lt;/p>
+&lt;h2 id="quick-start">
+ quick start
+ &lt;a class="anchor" href="#quick-start">#&lt;/a>
+&lt;/h2>
+&lt;p>typically a Cobra-based application will follow the following organizational structure:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span> ▾ appName/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ▾ cmd/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> add.go
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> your.go
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> commands.go
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> here.go
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> main.go
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>In a Cobra app, typically the main.go file is very bare. It serves one purpose: initializing Cobra.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-go" data-lang="go">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> (
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;{pathToYourApp}/cmd&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">func&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">cmd&lt;/span>.&lt;span style="color:#a6e22e">Execute&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Ideally you place this in app/cmd/root.go:&lt;/p></description></item><item><title>klog</title><link>https://kingye.me/study-go/docs/advanced/pkg/klog/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/advanced/pkg/klog/</guid><description>&lt;h1 id="klog">
+ klog
+ &lt;a class="anchor" href="#klog">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="v-级别">
+ V() 级别
+ &lt;a class="anchor" href="#v-%e7%ba%a7%e5%88%ab">#&lt;/a>
+&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>级别&lt;/th>
+ &lt;th>含义&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>v=0&lt;/code>&lt;/td>
+ &lt;td>Generally useful for this to &lt;em>always&lt;/em> be visible to a cluster operator.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>v=1&lt;/code>&lt;/td>
+ &lt;td>A reasonable default log level if you don&amp;rsquo;t want verbosity.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>v=2&lt;/code>&lt;/td>
+ &lt;td>Useful steady state information about the service and important log messages that may correlate to significant changes in the system. &lt;br> This is the recommended default log level for most systems.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>v=3&lt;/code>&lt;/td>
+ &lt;td>Extended information about changes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>v=4&lt;/code>&lt;/td>
+ &lt;td>Debug level verbosity.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>v=5&lt;/code>&lt;/td>
+ &lt;td>Trace level verbosity.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>v=6&lt;/code>&lt;/td>
+ &lt;td>Display requested resources.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>v=7&lt;/code>&lt;/td>
+ &lt;td>Display HTTP request headers.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>v=8&lt;/code>&lt;/td>
+ &lt;td>Display HTTP request contents.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>v=9&lt;/code>&lt;/td>
+ &lt;td>Display HTTP request contents without truncation of contents.&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="详细说明">
+ 详细说明
+ &lt;a class="anchor" href="#%e8%af%a6%e7%bb%86%e8%af%b4%e6%98%8e">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>klog.V(0) - Generally useful for this to ALWAYS be visible to an operator
+&lt;ul>
+&lt;li>Programmer errors&lt;/li>
+&lt;li>Logging extra info about a panic&lt;/li>
+&lt;li>CLI argument handling&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>klog.V(1) - A reasonable default log level if you don&amp;rsquo;t want verbosity.
+&lt;ul>
+&lt;li>Information about config (listening on X, watching Y)&lt;/li>
+&lt;li>Errors that repeat frequently that relate to conditions that can be corrected (pod detected as unhealthy)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>klog.V(2) - Useful steady state information about the service and important log messages that may correlate to significant changes in the system. This is the recommended default log level for most systems.
+&lt;ul>
+&lt;li>Logging HTTP requests and their exit code&lt;/li>
+&lt;li>System state changing (killing pod)&lt;/li>
+&lt;li>Controller state change events (starting pods)&lt;/li>
+&lt;li>Scheduler log messages&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>klog.V(3) - Extended information about changes
+&lt;ul>
+&lt;li>More info about system state changes&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>klog.V(4) - Debug level verbosity
+&lt;ul>
+&lt;li>Logging in particularly thorny parts of code where you may want to come back later and check it&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>klog.V(5) - Trace level verbosity
+&lt;ul>
+&lt;li>Context to understand the steps leading up to errors and warnings&lt;/li>
+&lt;li>More information for troubleshooting reported issues&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>参考：&lt;/p></description></item></channel></rss>
