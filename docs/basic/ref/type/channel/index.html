@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.140.1">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Chiannel
+  #
+
+
+  channel 类型
+  #
+
+chan T          // can be used to send and receive values of type T
+chan&lt;- float64  // can only be used to send float64s
+&lt;-chan int      // can only be used to receive ints
+The &lt;- operator associates with the leftmost chan possible:
+chan&lt;- chan int    // same as chan&lt;- (chan int)
+chan&lt;- &lt;-chan int  // same as chan&lt;- (&lt;-chan int)
+&lt;-chan &lt;-chan int  // same as &lt;-chan (&lt;-chan int)
+chan (&lt;-chan int)
+
+
+  常见用法
+  #
+
+// 使用 `make(chan val-type)` 创建一个新的通道。
+// 通道类型就是他们需要传递值的类型。
+messages := make(chan string)
+
+// 使用 `channel &lt;-` 语法 _发送_ 一个新的值到通道中。
+// 这里我们在一个新的协程中发送 `&#34;ping&#34;` 到上面创建的 `messages` 通道中。
+go func() { messages &lt;- &#34;ping&#34; }()
+
+// 使用 `&lt;-channel` 语法从通道中 _接收_ 一个值。
+// 这里我们会收到在上面发送的 `&#34;ping&#34;` 消息并将其打印出来。
+msg := &lt;-messages
+fmt.Println(msg)
+
+// 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。
+msg, ok := &lt;-messages
+
+  done channel
+  #
+
+用于保证流水线上每个阶段 goroutine 的退出">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://kingye.me/study-go/docs/basic/ref/type/channel/">
+  <meta property="og:site_name" content="Go 学习笔记">
+  <meta property="og:title" content="Chiannel">
+  <meta property="og:description" content="Chiannel # channel 类型 # chan T // can be used to send and receive values of type T chan&lt;- float64 // can only be used to send float64s &lt;-chan int // can only be used to receive ints The &lt;- operator associates with the leftmost chan possible:
+chan&lt;- chan int // same as chan&lt;- (chan int) chan&lt;- &lt;-chan int // same as chan&lt;- (&lt;-chan int) &lt;-chan &lt;-chan int // same as &lt;-chan (&lt;-chan int) chan (&lt;-chan int) 常见用法 # // 使用 `make(chan val-type)` 创建一个新的通道。 // 通道类型就是他们需要传递值的类型。 messages := make(chan string) // 使用 `channel &lt;-` 语法 _发送_ 一个新的值到通道中。 // 这里我们在一个新的协程中发送 `&#34;ping&#34;` 到上面创建的 `messages` 通道中。 go func() { messages &lt;- &#34;ping&#34; }() // 使用 `&lt;-channel` 语法从通道中 _接收_ 一个值。 // 这里我们会收到在上面发送的 `&#34;ping&#34;` 消息并将其打印出来。 msg := &lt;-messages fmt.Println(msg) // 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。 msg, ok := &lt;-messages done channel # 用于保证流水线上每个阶段 goroutine 的退出">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2021-04-29T10:53:24+08:00">
+<title>Chiannel | Go 学习笔记</title>
+<link rel="manifest" href="/study-go/manifest.json">
+<link rel="icon" href="/study-go/favicon.png" >
+<link rel="canonical" href="https://kingye.me/study-go/docs/basic/ref/type/channel/">
+<link rel="stylesheet" href="/study-go/book.min.45ab58199f84c9a33853fdef2e41664c57a49ca55c9badf2dd2dd071f39975a3.css" integrity="sha256-RatYGZ&#43;EyaM4U/3vLkFmTFeknKVcm63y3S3QcfOZdaM=" crossorigin="anonymous">
+  <script defer src="/study-go/fuse.min.js"></script>
+  <script defer src="/study-go/en.search.min.cff675cc4aead4e28c4ab07c7bb96b38e51862190ef3b050a8ab95db897ae4a3.js" integrity="sha256-z/Z1zErq1OKMSrB8e7lrOOUYYhkO87BQqKuV24l65KM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/study-go/"><span>Go 学习笔记</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+<ul>
+  <li><a href="https://kingye.me" target="_blank" rel="noopener noreferrer">博客</a></li>
+  <li><a href="https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200417021727.png" target="_blank" rel="noopener noreferrer">公众号</a></li>
+  <li><a href="https://github.com/ikingye" target="_blank" rel="noopener noreferrer">Github</a></li>
+  <li><a href="https://weibo.com/kingyip15215" target="_blank" rel="noopener noreferrer">微博</a></li>
+  <li><a href="https://www.zhihu.com/people/wutongyip" target="_blank" rel="noopener noreferrer">知乎</a></li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>第一部分 基础入门</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cf26a2b65f20aeeda3cacf0d31bc9892" class="toggle" checked />
+    <label for="section-cf26a2b65f20aeeda3cacf0d31bc9892" class="flex justify-between">
+      <a href="/study-go/docs/basic/ref/" class="">1.1 语法</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fc4e1a169d5d1ed76d609fe243e0067" class="toggle" checked />
+    <label for="section-8fc4e1a169d5d1ed76d609fe243e0067" class="flex justify-between">
+      <a href="/study-go/docs/basic/ref/type/" class="">1.1.1 数据类型</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6995ebaf8bf7c4f4f5c2f7cbdaaa7063" class="toggle"  />
+    <label for="section-6995ebaf8bf7c4f4f5c2f7cbdaaa7063" class="flex justify-between">
+      <a href="/study-go/docs/basic/ref/type/error/" class="">error</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/study-go/docs/basic/ref/type/slice/" class="">切片</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/study-go/docs/basic/ref/type/string/" class="">字符串</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/study-go/docs/basic/ref/type/array/" class="">数组</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-903e200364223546b4418c02f06eb32a" class="toggle"  />
+    <label for="section-903e200364223546b4418c02f06eb32a" class="flex justify-between">
+      <a href="/study-go/docs/basic/ref/type/interface/" class="">Interface</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-05475f39ea7acf355beffd64d6328380" class="toggle" checked />
+    <label for="section-05475f39ea7acf355beffd64d6328380" class="flex justify-between">
+      <a href="/study-go/docs/basic/ref/type/channel/" class="active">Chiannel</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f667d710022efdab26dd032143e13ea4" class="toggle"  />
+    <label for="section-f667d710022efdab26dd032143e13ea4" class="flex justify-between">
+      <a href="/study-go/docs/basic/ref/type/map/" class="">Map</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b74f28be7f390435a6ddc867eda31244" class="toggle"  />
+    <label for="section-b74f28be7f390435a6ddc867eda31244" class="flex justify-between">
+      <a href="/study-go/docs/basic/ref/keyword/" class="">1.1.2 关键字</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-91ef0b916beb2e673103f21c8529d38b" class="toggle"  />
+    <label for="section-91ef0b916beb2e673103f21c8529d38b" class="flex justify-between">
+      <a href="/study-go/docs/basic/ref/keyword/defer/" class="">defer</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fe5d4054ab40a9388275c406bfdabef2" class="toggle"  />
+    <label for="section-fe5d4054ab40a9388275c406bfdabef2" class="flex justify-between">
+      <a href="/study-go/docs/basic/ref/keyword/for/" class="">for 和 range</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/study-go/docs/basic/ref/keyword/func/" class="">函数</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2b5bab33c305bc288a6ffea6baae611a" class="toggle"  />
+    <label for="section-2b5bab33c305bc288a6ffea6baae611a" class="flex justify-between">
+      <a href="/study-go/docs/basic/ref/keyword/func/init/" class="">init</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/study-go/docs/basic/ref/keyword/func/receiver/" class="">Receiver</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6e1b8572d9a7726f06aa28d12aa20cc8" class="toggle"  />
+    <label for="section-6e1b8572d9a7726f06aa28d12aa20cc8" class="flex justify-between">
+      <a href="/study-go/docs/basic/ref/keyword/make/" class="">make</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6e5b8c5cfd9952241c043eeea9146ee6" class="toggle"  />
+    <label for="section-6e5b8c5cfd9952241c043eeea9146ee6" class="flex justify-between">
+      <a href="/study-go/docs/basic/ref/keyword/select/" class="">select</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85397eb26451fc3d656caf9aa8eea957" class="toggle"  />
+    <label for="section-85397eb26451fc3d656caf9aa8eea957" class="flex justify-between">
+      <a href="/study-go/docs/basic/std/" class="">1.2 标准库</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-501293d2e27d7c8de6445498afa117ae" class="toggle"  />
+    <label for="section-501293d2e27d7c8de6445498afa117ae" class="flex justify-between">
+      <a href="/study-go/docs/basic/std/sort/" class="">sort</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-aa776ed5233dfe83c839a82873cde28d" class="toggle"  />
+    <label for="section-aa776ed5233dfe83c839a82873cde28d" class="flex justify-between">
+      <a href="/study-go/docs/basic/std/context/" class="">context</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b5f0a33d9fbb59c688059280b417615e" class="toggle"  />
+    <label for="section-b5f0a33d9fbb59c688059280b417615e" class="flex justify-between">
+      <a href="/study-go/docs/basic/std/format/" class="">格式化输出</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-858e75705b059b70b5cc0cb1a392c87c" class="toggle"  />
+    <label for="section-858e75705b059b70b5cc0cb1a392c87c" class="flex justify-between">
+      <a href="/study-go/docs/basic/std/io/" class="">io</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-35db8cb790005717608e58bfeb15d85f" class="toggle"  />
+    <label for="section-35db8cb790005717608e58bfeb15d85f" class="flex justify-between">
+      <a href="/study-go/docs/basic/std/net/" class="">net</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a49267c9e55cc7ac8b97bddfbc517659" class="toggle"  />
+    <label for="section-a49267c9e55cc7ac8b97bddfbc517659" class="flex justify-between">
+      <a href="/study-go/docs/basic/std/signal/" class="">signal</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9b28a0967ba2a32d2009aafd5f5f9ad1" class="toggle"  />
+    <label for="section-9b28a0967ba2a32d2009aafd5f5f9ad1" class="flex justify-between">
+      <a href="/study-go/docs/basic/std/sync/" class="">sync</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-740e5e0f3012abbd6afbd6c63b24b299" class="toggle"  />
+    <label for="section-740e5e0f3012abbd6afbd6c63b24b299" class="flex justify-between">
+      <a href="/study-go/docs/basic/std/strings/" class="">time</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5be4090bbd164052e09ead66e60a38ce" class="toggle"  />
+    <label for="section-5be4090bbd164052e09ead66e60a38ce" class="flex justify-between">
+      <a href="/study-go/docs/basic/std/time/" class="">time</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8912eace3ae26a10ec6a7d7f77f73c95" class="toggle"  />
+    <label for="section-8912eace3ae26a10ec6a7d7f77f73c95" class="flex justify-between">
+      <a href="/study-go/docs/basic/spec/" class="">1.3 编程规范</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8437a105c6e7fbf77a115319ec34d2f0" class="toggle"  />
+    <label for="section-8437a105c6e7fbf77a115319ec34d2f0" class="flex justify-between">
+      <a href="/study-go/docs/basic/others/" class="">1.4 其他</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fec70b728db077c65ab1452db2929a79" class="toggle"  />
+    <label for="section-fec70b728db077c65ab1452db2929a79" class="flex justify-between">
+      <a href="/study-go/docs/basic/others/quick/" class="">Go 快速上手</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-836703fcedaa005754288a32c6d9ba6b" class="toggle"  />
+    <label for="section-836703fcedaa005754288a32c6d9ba6b" class="flex justify-between">
+      <a href="/study-go/docs/basic/others/pros-and-cons/" class="">优劣</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/study-go/docs/basic/others/gobuild/" class="">Go build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/study-go/docs/basic/others/gomod/" class="">Go Modules</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/study-go/docs/basic/others/gopls/" class="">gopls</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/study-go/docs/basic/others/pm/" class="">包管理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/study-go/docs/basic/others/compile/" class="">编译</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7bcd44a23c5090c8cd4571cfb3a46a76" class="toggle"  />
+    <label for="section-7bcd44a23c5090c8cd4571cfb3a46a76" class="flex justify-between">
+      <a href="/study-go/docs/basic/others/command/" class="">Go 命令</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b455fda431bf18f1c1f29ceb0e873707" class="toggle"  />
+    <label for="section-b455fda431bf18f1c1f29ceb0e873707" class="flex justify-between">
+      <a href="/study-go/docs/basic/others/command/install/" class="">安装</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6a596f3f6f240a9312ce04a989a61a7f" class="toggle"  />
+    <label for="section-6a596f3f6f240a9312ce04a989a61a7f" class="flex justify-between">
+      <a href="/study-go/docs/basic/others/history/" class="">历史</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dd07e4000a7cbe35560cd5836896be98" class="toggle"  />
+    <label for="section-dd07e4000a7cbe35560cd5836896be98" class="flex justify-between">
+      <a href="/study-go/docs/basic/others/plugin/" class="">Go 插件系统</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6a97dd977285d401b99cbb086b793113" class="toggle"  />
+    <label for="section-6a97dd977285d401b99cbb086b793113" class="flex justify-between">
+      <a href="/study-go/docs/basic/others/goroutine/" class="">goroutine</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03ff83c59e29325546629824c988535d" class="toggle"  />
+    <label for="section-03ff83c59e29325546629824c988535d" class="flex justify-between">
+      <a href="/study-go/docs/basic/others/version/" class="">版本</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>第二部分 进阶实战</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70922a3b1ab657008b9130da19418da8" class="toggle"  />
+    <label for="section-70922a3b1ab657008b9130da19418da8" class="flex justify-between">
+      <a href="/study-go/docs/advanced/pattern/" class="">2.1 设计模式</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-30cd0f4cc17fdb0776ce429cc199abfa" class="toggle"  />
+    <label for="section-30cd0f4cc17fdb0776ce429cc199abfa" class="flex justify-between">
+      <a href="/study-go/docs/advanced/algs/" class="">2.2 算法实现</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3407c0075d7e1358acc2b8d2cd4ee640" class="toggle"  />
+    <label for="section-3407c0075d7e1358acc2b8d2cd4ee640" class="flex justify-between">
+      <a href="/study-go/docs/advanced/pkg/" class="">2.3 常用库</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8e56e3a4b42ca5c1a9641c14b3e3d168" class="toggle"  />
+    <label for="section-8e56e3a4b42ca5c1a9641c14b3e3d168" class="flex justify-between">
+      <a href="/study-go/docs/advanced/pkg/cobra/" class="">cobra</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b208f828541038f587faae823e932095" class="toggle"  />
+    <label for="section-b208f828541038f587faae823e932095" class="flex justify-between">
+      <a href="/study-go/docs/advanced/pkg/klog/" class="">klog</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f823e7e1e006aeb718633221b06f9b6d" class="toggle"  />
+    <label for="section-f823e7e1e006aeb718633221b06f9b6d" class="flex justify-between">
+      <a href="/study-go/docs/advanced/snippet/" class="">2.4 代码片段</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7de94f625308567b0f182d7cf38f991a" class="toggle"  />
+    <label for="section-7de94f625308567b0f182d7cf38f991a" class="flex justify-between">
+      <a href="/study-go/docs/advanced/test/" class="">2.5 测试</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-855b28cf7ef76983806d5c935a56d1ab" class="toggle"  />
+    <label for="section-855b28cf7ef76983806d5c935a56d1ab" class="flex justify-between">
+      <a href="/study-go/docs/advanced/prof/" class="">2.6 性能</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52bf9c0157813674b548f1bce7bcdb36" class="toggle"  />
+    <label for="section-52bf9c0157813674b548f1bce7bcdb36" class="flex justify-between">
+      <a href="/study-go/docs/advanced/frame/" class="">2.7 框架</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0b43069f47deae14e320f38cab0ec6ae" class="toggle"  />
+    <label for="section-0b43069f47deae14e320f38cab0ec6ae" class="flex justify-between">
+      <a href="/study-go/docs/advanced/frame/beego/" class="">Beego</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>第三部分 设计与实现</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5d55dfdebbda4ae0010fc4951ce81e7f" class="toggle"  />
+    <label for="section-5d55dfdebbda4ae0010fc4951ce81e7f" class="flex justify-between">
+      <a href="/study-go/docs/design/type/" class="">3.1 数据类型</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ea1e6ba0016587050d8e7571c5aa9ab0" class="toggle"  />
+    <label for="section-ea1e6ba0016587050d8e7571c5aa9ab0" class="flex justify-between">
+      <a href="/study-go/docs/design/type/type/" class="">类型系统</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d769b31c004a8a420e09e8207d350c86" class="toggle"  />
+    <label for="section-d769b31c004a8a420e09e8207d350c86" class="flex justify-between">
+      <a href="/study-go/docs/design/keyword/" class="">3.2 关键字</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f64c3a979d0515a193bd91464ad97bd7" class="toggle"  />
+    <label for="section-f64c3a979d0515a193bd91464ad97bd7" class="flex justify-between">
+      <a href="/study-go/docs/design/keyword/interface/" class="">interface</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ebca84eadd201ae9c1d26f2472564746" class="toggle"  />
+    <label for="section-ebca84eadd201ae9c1d26f2472564746" class="flex justify-between">
+      <a href="/study-go/docs/design/runtime/" class="">3.3 运行时</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-15069cec777c6e5c864e9ce29658240c" class="toggle"  />
+    <label for="section-15069cec777c6e5c864e9ce29658240c" class="flex justify-between">
+      <a href="/study-go/docs/design/runtime/init/" class="">Go 初始化</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e52f9b3f06eae4470b308876fedb24c6" class="toggle"  />
+    <label for="section-e52f9b3f06eae4470b308876fedb24c6" class="flex justify-between">
+      <a href="/study-go/docs/design/runtime/scheduling/" class="">Go 调度</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7bf7fa5ee04ceb63938717a3b17cd2e7" class="toggle"  />
+    <label for="section-7bf7fa5ee04ceb63938717a3b17cd2e7" class="flex justify-between">
+      <a href="/study-go/docs/design/runtime/gc/" class="">GC</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4f0ffaafba38159272629206bdb4b5bc" class="toggle"  />
+    <label for="section-4f0ffaafba38159272629206bdb4b5bc" class="flex justify-between">
+      <a href="/study-go/docs/design/runtime/concurrent/" class="">并发</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/study-go/docs/design/code/" class="">3.7 源码分析</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5aa83432328c738e4a45003c577aa54d" class="toggle"  />
+    <label for="section-5aa83432328c738e4a45003c577aa54d" class="flex justify-between">
+      <a href="/study-go/docs/design/code/1.0.0/" class="">1.0.0</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3c8139a2e506f7115d19c36cfe592298" class="toggle"  />
+    <label for="section-3c8139a2e506f7115d19c36cfe592298" class="flex justify-between">
+      <a href="/study-go/docs/design/code/1.5.0/" class="">1.5.0</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>第四部分 附录</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a07fef98452506b80b867d121d3a2164" class="toggle"  />
+    <label for="section-a07fef98452506b80b867d121d3a2164" class="flex justify-between">
+      <a href="/study-go/docs/appendix/tutorial/" class="">4.1 教程</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4b89657782ab0cb5c9404691f696e2a4" class="toggle"  />
+    <label for="section-4b89657782ab0cb5c9404691f696e2a4" class="flex justify-between">
+      <a href="/study-go/docs/appendix/interview/" class="">4.2 面试题</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f71a573a8e93fb879a514522fb08b820" class="toggle"  />
+    <label for="section-f71a573a8e93fb879a514522fb08b820" class="flex justify-between">
+      <a href="/study-go/docs/appendix/attention/" class="">4.3 关注项目</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-109ca1f1db2d61fab34851e9ec713995" class="toggle"  />
+    <label for="section-109ca1f1db2d61fab34851e9ec713995" class="flex justify-between">
+      <a href="/study-go/docs/appendix/gossip/" class="">4.4 一些八卦</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr />
+<ul>
+  <li><a href="https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200417022040.png" target="_blank" rel="noopener noreferrer">微信</a></li>
+  <li><a href="https://qm.qq.com/cgi-bin/qm/qr?k=EUhzg0UwUksxpQnwEmPngRLezlC6qrnn&jump_from=webapi" target="_blank" rel="noopener noreferrer"><img src="//pub.idqqimg.com/wpa/images/group.png"></a></li>
+</ul>
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/study-go/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Chiannel</strong>
+
+  <label for="toc-control">
+    
+    <img src="/study-go/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#channel-类型">channel 类型</a></li>
+    <li><a href="#常见用法">常见用法</a>
+      <ul>
+        <li><a href="#done-channel">done channel</a></li>
+      </ul>
+    </li>
+    <li><a href="#注意点">注意点</a>
+      <ul>
+        <li><a href="#关闭-channel">关闭 channel</a></li>
+        <li><a href="#golang-chan-避免死锁">Golang chan 避免死锁</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article id="article" class="markdown"><h1 id="chiannel">
+  Chiannel
+  <a class="anchor" href="#chiannel">#</a>
+</h1>
+<h2 id="channel-类型">
+  channel 类型
+  <a class="anchor" href="#channel-%e7%b1%bb%e5%9e%8b">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">T</span>          <span style="color:#75715e">// can be used to send and receive values of type T
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">chan</span><span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">float64</span>  <span style="color:#75715e">// can only be used to send float64s
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>      <span style="color:#75715e">// can only be used to receive ints
+</span></span></span></code></pre></div><p>The <code>&lt;-</code> operator associates with the leftmost chan possible:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">chan</span><span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>    <span style="color:#75715e">// same as chan&lt;- (chan int)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">chan</span><span style="color:#f92672">&lt;-</span> <span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>  <span style="color:#75715e">// same as chan&lt;- (&lt;-chan int)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>  <span style="color:#75715e">// same as &lt;-chan (&lt;-chan int)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">chan</span> (<span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+</span></span></code></pre></div><hr>
+<h2 id="常见用法">
+  常见用法
+  <a class="anchor" href="#%e5%b8%b8%e8%a7%81%e7%94%a8%e6%b3%95">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// 使用 `make(chan val-type)` 创建一个新的通道。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 通道类型就是他们需要传递值的类型。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">messages</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 使用 `channel &lt;-` 语法 _发送_ 一个新的值到通道中。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 这里我们在一个新的协程中发送 `&#34;ping&#34;` 到上面创建的 `messages` 通道中。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() { <span style="color:#a6e22e">messages</span> <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;ping&#34;</span> }()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 使用 `&lt;-channel` 语法从通道中 _接收_ 一个值。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 这里我们会收到在上面发送的 `&#34;ping&#34;` 消息并将其打印出来。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">msg</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">messages</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">msg</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">messages</span>
+</span></span></code></pre></div><h3 id="done-channel">
+  done channel
+  <a class="anchor" href="#done-channel">#</a>
+</h3>
+<p>用于保证流水线上每个阶段 goroutine 的退出</p>
+<p>golang.org/x/net/context/ctxhttp 中 Do 方法的实现：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// https://github.com/golang/net/blob/release-branch.go1.7/context/ctxhttp/ctxhttp.go
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Do sends an HTTP request with the provided http.Client and returns
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// an HTTP response.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// If the client is nil, http.DefaultClient is used.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The provided ctx must be non-nil. If it is canceled or times out,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// ctx.Err() will be returned.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Do</span>(<span style="color:#a6e22e">ctx</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Context</span>, <span style="color:#a6e22e">client</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Client</span>, <span style="color:#a6e22e">req</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Response</span>, <span style="color:#66d9ef">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">client</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">client</span> = <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">DefaultClient</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">resp</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Do</span>(<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">WithContext</span>(<span style="color:#a6e22e">ctx</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// If we got an error, and the context has been canceled,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// the context&#39;s error is probably more useful.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">select</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Done</span>():
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Err</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">default</span>:
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">resp</span>, <span style="color:#a6e22e">err</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="注意点">
+  注意点
+  <a class="anchor" href="#%e6%b3%a8%e6%84%8f%e7%82%b9">#</a>
+</h2>
+<ul>
+<li>无缓冲 chan 的发送和接收是否同步</li>
+<li>channel 一定记得 close</li>
+<li>channel 是通过注册相关 goroutine id 实现消息通知的</li>
+</ul>
+<h3 id="关闭-channel">
+  关闭 channel
+  <a class="anchor" href="#%e5%85%b3%e9%97%ad-channel">#</a>
+</h3>
+<ul>
+<li>不要从接收端关闭 channel</li>
+<li>不要关闭有<strong>多个并发发送者</strong>的 channel</li>
+</ul>
+<p>如果 sender 是唯一的 sender 或是 channel 最后一个活跃的 sender，
+那么你应该在 sender 的 goroutine 关闭 channel，
+从而通知 receiver (s)(接收者们) 已经没有值可以读了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// _关闭_ 一个通道意味着不能再向这个通道发送值了。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 该特性可以向通道的接收方传达工作已经完成的信息。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 在这个例子中，我们将使用一个 `jobs` 通道，将工作内容，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 从 `main()` 协程传递到一个工作协程中。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 当我们没有更多的任务传递给工作协程时，我们将 `close` 这个 `jobs` 通道。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">jobs</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">done</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">bool</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 这是工作协程。使用 `j, more := &lt;- jobs` 循环的从 `jobs` 接收数据。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// 根据接收的第二个值，如果 `jobs` 已经关闭了，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// 并且通道中所有的值都已经接收完毕，那么 `more` 的值将是 `false`。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// 当我们完成所有的任务时，会使用这个特性通过 `done` 通道通知 main 协程。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">j</span>, <span style="color:#a6e22e">more</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">jobs</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">more</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;received job&#34;</span>, <span style="color:#a6e22e">j</span>)
+</span></span><span style="display:flex;"><span>			} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;received all jobs&#34;</span>)
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">done</span> <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 使用 `jobs` 发送 3 个任务到工作协程中，然后关闭 `jobs`。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">3</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">jobs</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">j</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;sent job&#34;</span>, <span style="color:#a6e22e">j</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	close(<span style="color:#a6e22e">jobs</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;sent all jobs&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 使用前面学到的[通道同步](channel-synchronization)方法等待任务结束。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">done</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>参考：</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/d24dfbb33781">如何优雅地关闭 Go channel</a></li>
+</ul>
+<h3 id="golang-chan-避免死锁">
+  Golang chan 避免死锁
+  <a class="anchor" href="#golang-chan-%e9%81%bf%e5%85%8d%e6%ad%bb%e9%94%81">#</a>
+</h3>
+<p>Golang 的管道 (chan) 无论是否有缓冲，生产者和消费者不可能做到完全解耦，
+一旦管道满了，就相当于生产者直接调用消费者。</p>
+<p>如果生产者和消费者使用同一个锁，就是死锁了.</p>
+<p>所以，一个重要的原则就是，在写管道之前，把所有可能的锁 unlock 掉.</p>
+<p>Related posts:</p>
+<ol>
+<li><a href="http://www.ideawu.net/blog/archives/790.html" title="Permanent Link: 异步编程语言的常见坑">异步编程语言的常见坑</a></li>
+<li><a href="http://www.ideawu.net/blog/archives/1063.html" title="Permanent Link: CVPixelBufferRef 与 CVOpenGLTextureRef: 图像处理中内存与显存的交互">CVPixelBufferRef 与 CVOpenGLTextureRef: 图像处理中内存与显存的交互</a></li>
+<li><a href="http://www.ideawu.net/blog/archives/966.html" title="Permanent Link: 集成于 iphp 框架的 PHP 并发模型和工具">集成于 iphp 框架的 PHP 并发模型和工具</a></li>
+<li><a href="http://www.ideawu.net/blog/archives/1078.html" title="Permanent Link: 蛇形遍历数组">蛇形遍历数组</a></li>
+<li><a href="http://www.ideawu.net/blog/archives/868.html" title="Permanent Link: 流式布局的原理和代码实现">流式布局的原理和代码实现</a></li>
+</ol>
+<h2 id="参考">
+  参考
+  <a class="anchor" href="#%e5%8f%82%e8%80%83">#</a>
+</h2>
+<ul>
+<li><a href="http://www.ideawu.net/blog/archives/1129.html">Golang chan 避免死锁</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/ikingye/study-go/commit/c115ebc6bf261dff1420687e8432fa66b13b1f2f" title='Last modified by yewang | 2021-04-29' target="_blank" rel="noopener">
+      <img src="/study-go/svg/calendar.svg" class="book-icon" alt="" />
+      <span>2021-04-29</span>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <div>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <p><span id="busuanzi_container_page_pv">本文访问量 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> 次</span></p>
+    <p><span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span> 次</span></p>
+    <p><span id="busuanzi_container_site_uv">本站总访客数 <span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span> 人</span></p>
+</div>
+
+
+
+
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<script src="https://utteranc.es/client.js"
+  repo="ikingye/study-go"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async
+></script>
+
+<div id="footer">
+  <p>
+    <a href="https://kingye.me">叶王</a> &copy; 2013-2024
+    版权所有。如果本文档对你有所帮助，可以<a
+      href="https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200428110046.png"
+      target="_blank"
+      rel="noopener noreferrer"
+      >请作者喝饮料</a
+    >。
+  </p>
+</div>
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#channel-类型">channel 类型</a></li>
+    <li><a href="#常见用法">常见用法</a>
+      <ul>
+        <li><a href="#done-channel">done channel</a></li>
+      </ul>
+    </li>
+    <li><a href="#注意点">注意点</a>
+      <ul>
+        <li><a href="#关闭-channel">关闭 channel</a></li>
+        <li><a href="#golang-chan-避免死锁">Golang chan 避免死锁</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
