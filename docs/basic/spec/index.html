@@ -1,154 +1,139 @@
-<!doctype html><html lang=en dir=ltr><head><meta name=generator content="Hugo 0.151.0"><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
-  Go 编程规范
-  
-  #
-  
-
-
-Go Code Review Comments
-
-
-  代码组织
-  
-  #
-  
-
-
-  目录
-  
-  #
-  
-
-/cmd
-
-# 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的.
-# 把你真正的应用代码放在 /internal/app 目录 (比如: /internal/app/myapp) 把你的应用间共享的代码放在 /internal/pkg 目录 (比如: internal/pkg/myprivlib)
-/internal
-
-/pkg
-
-  不应该存在的目录
-  
-  #
-  
-
-/src
-参考：
-
-golang-standards/project-layout 
-
-
-
-  文件内容
-  
-  #
-  
-
-建议文件按以下顺序进行布局：
-
-General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。
-package: 当前 package 定义
-imports: 包含的头文件
-Constants: 常量
-Typedefs: 类型定义
-Globals: 全局变量定义
-functions: 函数实现
-
-
-
-  语言规范
-  
-  #
-  
-
-
-  申明 slice
-  
-  #
-  
-
-申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://kingye.me/study-go/docs/basic/spec/"><meta property="og:site_name" content="Go 学习笔记"><meta property="og:title" content="1.3 编程规范"><meta property="og:description" content="Go 编程规范 # Go Code Review Comments 代码组织 # 目录 # /cmd # 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的. # 把你真正的应用代码放在 /internal/app 目录 (比如: /internal/app/myapp) 把你的应用间共享的代码放在 /internal/pkg 目录 (比如: internal/pkg/myprivlib) /internal /pkg 不应该存在的目录 # /src 参考：
-golang-standards/project-layout 文件内容 # 建议文件按以下顺序进行布局：
-General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。 package: 当前 package 定义 imports: 包含的头文件 Constants: 常量 Typedefs: 类型定义 Globals: 全局变量定义 functions: 函数实现 语言规范 # 申明 slice # 申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式"><meta property="og:locale" content="en"><meta property="og:type" content="website"><title>1.3 编程规范 | Go 学习笔记</title><link rel=icon href=/study-go/favicon.png><link rel=manifest href=/study-go/manifest.json><link rel=canonical href=https://kingye.me/study-go/docs/basic/spec/><link rel=stylesheet href=/study-go/book.min.4113bbcb6333b68fd5b25cfb3b9f2a325a597ef49f8d1dd59a7239731166d309.css integrity="sha256-QRO7y2Mzto/Vslz7O58qMlpZfvSfjR3VmnI5cxFm0wk=" crossorigin=anonymous><script defer src=/study-go/fuse.min.js></script><script defer src=/study-go/en.search.min.110c73c4ff52e604efa2c2356be5e09f7441674cabbe8f2150cfc4795096ca55.js integrity="sha256-EQxzxP9S5gTvosI1a+Xgn3RBZ0yrvo8hUM/EeVCWylU=" crossorigin=anonymous></script><link rel=alternate type=application/rss+xml href=https://kingye.me/study-go/docs/basic/spec/index.xml title="Go 学习笔记"></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/study-go/><span>Go 学习笔记</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><a href=https://kingye.me target=_blank rel="noopener noreferrer">博客</a></li><li><a href=https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200417021727.png target=_blank rel="noopener noreferrer">公众号</a></li><li><a href=https://github.com/ikingye target=_blank rel="noopener noreferrer">Github</a></li><li><a href=https://weibo.com/kingyip15215 target=_blank rel="noopener noreferrer">微博</a></li><li><a href=https://www.zhihu.com/people/wutongyip target=_blank rel="noopener noreferrer">知乎</a></li></ul><hr><ul><li><span>第一部分 基础入门</span><ul><li><input type=checkbox id=section-62d343ebd9f86bfbe70c482245b20882 class=toggle>
-<label for=section-62d343ebd9f86bfbe70c482245b20882 class=flex><a href=/study-go/docs/basic/ref/ class=flex-auto>1.1 语法</a></label><ul><li><input type=checkbox id=section-57b75c17b366a0048a5ad2206824ecd6 class=toggle>
-<label for=section-57b75c17b366a0048a5ad2206824ecd6 class=flex><a href=/study-go/docs/basic/ref/type/ class=flex-auto>1.1.1 数据类型</a></label><ul><li><input type=checkbox id=section-ef9d6955c317fbbc0ed7742cc2a55590 class=toggle>
-<label for=section-ef9d6955c317fbbc0ed7742cc2a55590 class=flex><a href=/study-go/docs/basic/ref/type/error/ class=flex-auto>error</a></label></li><li><a href=/study-go/docs/basic/ref/type/slice/>切片</a></li><li><a href=/study-go/docs/basic/ref/type/string/>字符串</a></li><li><a href=/study-go/docs/basic/ref/type/array/>数组</a></li><li><input type=checkbox id=section-a49da4c7ef38a27697cf13f6cba77ad1 class=toggle>
-<label for=section-a49da4c7ef38a27697cf13f6cba77ad1 class=flex><a href=/study-go/docs/basic/ref/type/interface/ class=flex-auto>Interface</a></label></li><li><input type=checkbox id=section-151143ad09d2fa1e3a97d90e9ed3a57d class=toggle>
-<label for=section-151143ad09d2fa1e3a97d90e9ed3a57d class=flex><a href=/study-go/docs/basic/ref/type/channel/ class=flex-auto>Chiannel</a></label></li><li><input type=checkbox id=section-be80bc9bd5206a061ff302e9dea01064 class=toggle>
-<label for=section-be80bc9bd5206a061ff302e9dea01064 class=flex><a href=/study-go/docs/basic/ref/type/map/ class=flex-auto>Map</a></label></li></ul></li><li><input type=checkbox id=section-3ead29187a2855f6e1dc1cc7d20820e1 class=toggle>
-<label for=section-3ead29187a2855f6e1dc1cc7d20820e1 class=flex><a href=/study-go/docs/basic/ref/keyword/ class=flex-auto>1.1.2 关键字</a></label><ul><li><input type=checkbox id=section-ef07c23d45d6437fa285c758f3c76722 class=toggle>
-<label for=section-ef07c23d45d6437fa285c758f3c76722 class=flex><a href=/study-go/docs/basic/ref/keyword/defer/ class=flex-auto>defer</a></label></li><li><input type=checkbox id=section-3336b9cb660e521853f079ec263228b9 class=toggle>
-<label for=section-3336b9cb660e521853f079ec263228b9 class=flex><a href=/study-go/docs/basic/ref/keyword/for/ class=flex-auto>for 和 range</a></label></li><li><a href=/study-go/docs/basic/ref/keyword/func/>函数</a><ul><li><input type=checkbox id=section-4e935048858aa9f9fc2fef1d7fc4972c class=toggle>
-<label for=section-4e935048858aa9f9fc2fef1d7fc4972c class=flex><a href=/study-go/docs/basic/ref/keyword/func/init/ class=flex-auto>init</a></label></li><li><a href=/study-go/docs/basic/ref/keyword/func/receiver/>Receiver</a></li></ul></li><li><input type=checkbox id=section-f78a127e78c54b5f706fae6db3ebcd54 class=toggle>
-<label for=section-f78a127e78c54b5f706fae6db3ebcd54 class=flex><a href=/study-go/docs/basic/ref/keyword/make/ class=flex-auto>make</a></label></li><li><input type=checkbox id=section-c9265d34c0730a36567a410eacc7d6da class=toggle>
-<label for=section-c9265d34c0730a36567a410eacc7d6da class=flex><a href=/study-go/docs/basic/ref/keyword/select/ class=flex-auto>select</a></label></li></ul></li></ul></li><li><input type=checkbox id=section-f89fd2402cec999ba8a37f74304748bd class=toggle>
-<label for=section-f89fd2402cec999ba8a37f74304748bd class=flex><a href=/study-go/docs/basic/std/ class=flex-auto>1.2 标准库</a></label><ul><li><input type=checkbox id=section-a7e8e61c0ce6e3b313923ef21a1a698a class=toggle>
-<label for=section-a7e8e61c0ce6e3b313923ef21a1a698a class=flex><a href=/study-go/docs/basic/std/sort/ class=flex-auto>sort</a></label></li><li><input type=checkbox id=section-a21d051b79df96d06915b1acaa586211 class=toggle>
-<label for=section-a21d051b79df96d06915b1acaa586211 class=flex><a href=/study-go/docs/basic/std/context/ class=flex-auto>context</a></label></li><li><input type=checkbox id=section-c1519e1d83112267635714858cf04a14 class=toggle>
-<label for=section-c1519e1d83112267635714858cf04a14 class=flex><a href=/study-go/docs/basic/std/format/ class=flex-auto>格式化输出</a></label></li><li><input type=checkbox id=section-cd5c3d2f1be17cc15cb25feb56cccb1c class=toggle>
-<label for=section-cd5c3d2f1be17cc15cb25feb56cccb1c class=flex><a href=/study-go/docs/basic/std/io/ class=flex-auto>io</a></label></li><li><input type=checkbox id=section-4ba2044ff111a9bb5135df0771354d57 class=toggle>
-<label for=section-4ba2044ff111a9bb5135df0771354d57 class=flex><a href=/study-go/docs/basic/std/net/ class=flex-auto>net</a></label></li><li><input type=checkbox id=section-9b138066563f9dc638026016f2e4df81 class=toggle>
-<label for=section-9b138066563f9dc638026016f2e4df81 class=flex><a href=/study-go/docs/basic/std/signal/ class=flex-auto>signal</a></label></li><li><input type=checkbox id=section-e3c6480dd0edc4bc89563349be19b9f7 class=toggle>
-<label for=section-e3c6480dd0edc4bc89563349be19b9f7 class=flex><a href=/study-go/docs/basic/std/sync/ class=flex-auto>sync</a></label></li><li><input type=checkbox id=section-bf675fc8b70480a80a037da0fd423478 class=toggle>
-<label for=section-bf675fc8b70480a80a037da0fd423478 class=flex><a href=/study-go/docs/basic/std/strings/ class=flex-auto>time</a></label></li><li><input type=checkbox id=section-1ce563954cdc03aeac9c6b360390cabd class=toggle>
-<label for=section-1ce563954cdc03aeac9c6b360390cabd class=flex><a href=/study-go/docs/basic/std/time/ class=flex-auto>time</a></label></li></ul></li><li><input type=checkbox id=section-3f200322935b10c5c778cbb926edf5bc class=toggle checked>
-<label for=section-3f200322935b10c5c778cbb926edf5bc class=flex><a href=/study-go/docs/basic/spec/ class="flex-auto active">1.3 编程规范</a></label><ul></ul></li><li><input type=checkbox id=section-d6e529c09374dced9d22a0b8f80f0da6 class=toggle>
-<label for=section-d6e529c09374dced9d22a0b8f80f0da6 class=flex><a href=/study-go/docs/basic/others/ class=flex-auto>1.4 其他</a></label><ul><li><input type=checkbox id=section-f606ad1a56e61a2a729043ffcd578eb5 class=toggle>
-<label for=section-f606ad1a56e61a2a729043ffcd578eb5 class=flex><a href=/study-go/docs/basic/others/quick/ class=flex-auto>Go 快速上手</a></label></li><li><input type=checkbox id=section-6989658eb8e890a1112a53b8cb458b4d class=toggle>
-<label for=section-6989658eb8e890a1112a53b8cb458b4d class=flex><a href=/study-go/docs/basic/others/pros-and-cons/ class=flex-auto>优劣</a></label></li><li><a href=/study-go/docs/basic/others/gobuild/>Go build</a></li><li><a href=/study-go/docs/basic/others/gomod/>Go Modules</a></li><li><a href=/study-go/docs/basic/others/gopls/>gopls</a></li><li><a href=/study-go/docs/basic/others/pm/>包管理</a></li><li><a href=/study-go/docs/basic/others/compile/>编译</a></li><li><input type=checkbox id=section-32030b9eca5bd49e6f830c36e7a62f9f class=toggle>
-<label for=section-32030b9eca5bd49e6f830c36e7a62f9f class=flex><a href=/study-go/docs/basic/others/command/ class=flex-auto>Go 命令</a></label><ul><li><input type=checkbox id=section-a5c0335ed7ed776797976e707def96f1 class=toggle>
-<label for=section-a5c0335ed7ed776797976e707def96f1 class=flex><a href=/study-go/docs/basic/others/command/install/ class=flex-auto>安装</a></label></li></ul></li><li><input type=checkbox id=section-bf594102c70a51cb6090b79e0488ba12 class=toggle>
-<label for=section-bf594102c70a51cb6090b79e0488ba12 class=flex><a href=/study-go/docs/basic/others/history/ class=flex-auto>历史</a></label></li><li><input type=checkbox id=section-a8d12887d59ffbaf6f390b47fc4158f1 class=toggle>
-<label for=section-a8d12887d59ffbaf6f390b47fc4158f1 class=flex><a href=/study-go/docs/basic/others/plugin/ class=flex-auto>Go 插件系统</a></label></li><li><input type=checkbox id=section-55345ae3ff95926e663463c15468d6cb class=toggle>
-<label for=section-55345ae3ff95926e663463c15468d6cb class=flex><a href=/study-go/docs/basic/others/goroutine/ class=flex-auto>goroutine</a></label></li><li><input type=checkbox id=section-53be5fa12f87e663e383a349a5cc57eb class=toggle>
-<label for=section-53be5fa12f87e663e383a349a5cc57eb class=flex><a href=/study-go/docs/basic/others/version/ class=flex-auto>版本</a></label></li></ul></li></ul></li><li><span>第二部分 进阶实战</span><ul><li><input type=checkbox id=section-4fb8200a6f8cf3bc7aa09e9911eea3eb class=toggle>
-<label for=section-4fb8200a6f8cf3bc7aa09e9911eea3eb class=flex><a href=/study-go/docs/advanced/pattern/ class=flex-auto>2.1 设计模式</a></label><ul></ul></li><li><input type=checkbox id=section-882c152fddf41beafe31b6e43e76a655 class=toggle>
-<label for=section-882c152fddf41beafe31b6e43e76a655 class=flex><a href=/study-go/docs/advanced/algs/ class=flex-auto>2.2 算法实现</a></label><ul></ul></li><li><input type=checkbox id=section-2c0dfa3b09c233d85489c5dcdd511f0c class=toggle>
-<label for=section-2c0dfa3b09c233d85489c5dcdd511f0c class=flex><a href=/study-go/docs/advanced/pkg/ class=flex-auto>2.3 常用库</a></label><ul><li><input type=checkbox id=section-c1515215b5ebf8e2674048de38f6b4cd class=toggle>
-<label for=section-c1515215b5ebf8e2674048de38f6b4cd class=flex><a href=/study-go/docs/advanced/pkg/cobra/ class=flex-auto>cobra</a></label></li><li><input type=checkbox id=section-2680fd3f27db155384764e9b5d2ea6fa class=toggle>
-<label for=section-2680fd3f27db155384764e9b5d2ea6fa class=flex><a href=/study-go/docs/advanced/pkg/klog/ class=flex-auto>klog</a></label></li></ul></li><li><input type=checkbox id=section-357e32afd3a307ad512ae9eb62faff43 class=toggle>
-<label for=section-357e32afd3a307ad512ae9eb62faff43 class=flex><a href=/study-go/docs/advanced/snippet/ class=flex-auto>2.4 代码片段</a></label><ul></ul></li><li><input type=checkbox id=section-67dd37fd58bd2727728aa0266a638750 class=toggle>
-<label for=section-67dd37fd58bd2727728aa0266a638750 class=flex><a href=/study-go/docs/advanced/test/ class=flex-auto>2.5 测试</a></label><ul></ul></li><li><input type=checkbox id=section-4397c16502fe7f140f5ea7a4e4c7396f class=toggle>
-<label for=section-4397c16502fe7f140f5ea7a4e4c7396f class=flex><a href=/study-go/docs/advanced/prof/ class=flex-auto>2.6 性能</a></label><ul></ul></li><li><input type=checkbox id=section-78cec0e6317251f72394a5a327c94511 class=toggle>
-<label for=section-78cec0e6317251f72394a5a327c94511 class=flex><a href=/study-go/docs/advanced/frame/ class=flex-auto>2.7 框架</a></label><ul><li><input type=checkbox id=section-c054d53f94fcb4ae3cc650e211dac8ee class=toggle>
-<label for=section-c054d53f94fcb4ae3cc650e211dac8ee class=flex><a href=/study-go/docs/advanced/frame/beego/ class=flex-auto>Beego</a></label><ul></ul></li></ul></li></ul></li><li><span>第三部分 设计与实现</span><ul><li><input type=checkbox id=section-76e0ef9d879b5edf9e0e038285e20379 class=toggle>
-<label for=section-76e0ef9d879b5edf9e0e038285e20379 class=flex><a href=/study-go/docs/design/type/ class=flex-auto>3.1 数据类型</a></label><ul><li><input type=checkbox id=section-33eb1283c0c6246715ab3e858e8bc59b class=toggle>
-<label for=section-33eb1283c0c6246715ab3e858e8bc59b class=flex><a href=/study-go/docs/design/type/type/ class=flex-auto>类型系统</a></label></li></ul></li><li><input type=checkbox id=section-6465d212bb182eaa3b2636ee00f192d4 class=toggle>
-<label for=section-6465d212bb182eaa3b2636ee00f192d4 class=flex><a href=/study-go/docs/design/keyword/ class=flex-auto>3.2 关键字</a></label><ul><li><input type=checkbox id=section-8b73f46fa194db56c52d72144d63d615 class=toggle>
-<label for=section-8b73f46fa194db56c52d72144d63d615 class=flex><a href=/study-go/docs/design/keyword/interface/ class=flex-auto>interface</a></label></li></ul></li><li><input type=checkbox id=section-44db9bd8058c99326e384d5b73e4e801 class=toggle>
-<label for=section-44db9bd8058c99326e384d5b73e4e801 class=flex><a href=/study-go/docs/design/runtime/ class=flex-auto>3.3 运行时</a></label><ul><li><input type=checkbox id=section-8a9d0cc89541146580e4d2ad3c580ab0 class=toggle>
-<label for=section-8a9d0cc89541146580e4d2ad3c580ab0 class=flex><a href=/study-go/docs/design/runtime/init/ class=flex-auto>Go 初始化</a></label></li><li><input type=checkbox id=section-e09ef9041cb6cb0e9591068cb19b9a62 class=toggle>
-<label for=section-e09ef9041cb6cb0e9591068cb19b9a62 class=flex><a href=/study-go/docs/design/runtime/scheduling/ class=flex-auto>Go 调度</a></label></li><li><input type=checkbox id=section-d8efd8468423151faa0e94e01baa6ae2 class=toggle>
-<label for=section-d8efd8468423151faa0e94e01baa6ae2 class=flex><a href=/study-go/docs/design/runtime/gc/ class=flex-auto>GC</a></label></li><li><input type=checkbox id=section-9a69d7db2b86804063758e66762c71e9 class=toggle>
-<label for=section-9a69d7db2b86804063758e66762c71e9 class=flex><a href=/study-go/docs/design/runtime/concurrent/ class=flex-auto>并发</a></label></li></ul></li><li><a href=/study-go/docs/design/code/>3.7 源码分析</a><ul><li><input type=checkbox id=section-1eaffa0472c8a8da4716b5f7f00ef522 class=toggle>
-<label for=section-1eaffa0472c8a8da4716b5f7f00ef522 class=flex><a href=/study-go/docs/design/code/1.0.0/ class=flex-auto>1.0.0</a></label><ul></ul></li><li><input type=checkbox id=section-db3df76096845ebcdd1240afda3c54e5 class=toggle>
-<label for=section-db3df76096845ebcdd1240afda3c54e5 class=flex><a href=/study-go/docs/design/code/1.5.0/ class=flex-auto>1.5.0</a></label><ul></ul></li></ul></li></ul></li><li><span>第四部分 附录</span><ul><li><input type=checkbox id=section-45a2d01aeff5da7df828bc0a233454d9 class=toggle>
-<label for=section-45a2d01aeff5da7df828bc0a233454d9 class=flex><a href=/study-go/docs/appendix/tutorial/ class=flex-auto>4.1 教程</a></label></li><li><input type=checkbox id=section-a44655df518bf51efbec82ccb01a3b36 class=toggle>
-<label for=section-a44655df518bf51efbec82ccb01a3b36 class=flex><a href=/study-go/docs/appendix/interview/ class=flex-auto>4.2 面试题</a></label></li><li><input type=checkbox id=section-8a0a05d540a97462c000bd9a472ffd7c class=toggle>
-<label for=section-8a0a05d540a97462c000bd9a472ffd7c class=flex><a href=/study-go/docs/appendix/attention/ class=flex-auto>4.3 关注项目</a></label></li><li><input type=checkbox id=section-cd468ea640811cdf1c7aadd0ab624b39 class=toggle>
-<label for=section-cd468ea640811cdf1c7aadd0ab624b39 class=flex><a href=/study-go/docs/appendix/gossip/ class=flex-auto>4.4 一些八卦</a></label></li></ul></li></ul><hr><ul><li><a href=https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200417022040.png target=_blank rel="noopener noreferrer">微信</a></li><li><a href="https://qm.qq.com/cgi-bin/qm/qr?k=EUhzg0UwUksxpQnwEmPngRLezlC6qrnn&jump_from=webapi" target=_blank rel="noopener noreferrer"><img src=//pub.idqqimg.com/wpa/images/group.png></a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/study-go/svg/menu.svg class=book-icon alt=Menu></label><h3>1.3 编程规范</h3><label for=toc-control><img src=/study-go/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#代码组织>代码组织</a><ul><li><a href=#目录>目录</a><ul><li><a href=#不应该存在的目录>不应该存在的目录</a></li></ul></li><li><a href=#文件内容>文件内容</a></li></ul></li><li><a href=#语言规范>语言规范</a><ul><li><a href=#申明-slice>申明 slice</a></li><li><a href=#embedding>embedding</a></li><li><a href=#函数参数和返回值>函数参数和返回值</a></li><li><a href=#缩进>缩进</a></li><li><a href=#空格>空格</a></li></ul></li><li><a href=#命名>命名</a><ul><li><a href=#文件名>文件名</a></li><li><a href=#函数名--变量名>函数名 / 变量名</a></li><li><a href=#常量>常量</a></li><li><a href=#包名>包名</a></li></ul></li><li><a href=#编程实践>编程实践</a><ul><li><a href=#error-string>error string</a></li><li><a href=#dont-panic>Don&rsquo;t panic</a></li><li><a href=#关于-lock-的保护>关于 lock 的保护</a></li><li><a href=#unsafe-package>unsafe package</a></li></ul></li></ul></nav></aside></header><article id=article class=markdown><h1 id=go-编程规范>Go 编程规范
-<a class=anchor href=#go-%e7%bc%96%e7%a8%8b%e8%a7%84%e8%8c%83>#</a></h1><ul><li><a href=https://github.com/golang/go/wiki/CodeReviewComments>Go Code Review Comments</a></li></ul><h2 id=代码组织>代码组织
-<a class=anchor href=#%e4%bb%a3%e7%a0%81%e7%bb%84%e7%bb%87>#</a></h2><h3 id=目录>目录
-<a class=anchor href=#%e7%9b%ae%e5%bd%95>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>/cmd
+<!doctype html><html lang=en dir=ltr><head><meta name=generator content="Hugo 0.151.0"><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Go 编程规范# Go Code Review Comments 代码组织# 目录# /cmd # 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的. # 把你真正的应用代码放在 /internal/app 目录 (比如: /internal/app/myapp) 把你的应用间共享的代码放在 /internal/pkg 目录 (比如: internal/pkg/myprivlib) /internal /pkg不应该存在的目录# /src参考：
+golang-standards/project-layout 文件内容# 建议文件按以下顺序进行布局：
+General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。 package: 当前 package 定义 imports: 包含的头文件 Constants: 常量 Typedefs: 类型定义 Globals: 全局变量定义 functions: 函数实现 语言规范# 申明 slice# 申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式
+// GOOD: var t []string // BAD: t := []string{}embedding# embedding 只用于 “is a” 的语义下，而不用于 “has a” 的语义下 语义上 embedding 是一种继承关系，而不是成员关系 一个定义内，多于一个的 embedding 尽量少用 一个定义内有多个 embedding，则很难判断某个成员变量或函数是从哪里继承得到的 一个定义内有多个 embedding，危害和在 python 中使用 from xxx import * 是类似的 type Automobile struct { // ... } type Engine struct { // .... } // GOOD: type Car struct { Automobile // Car is a Automobile engine Engine // Car has a Engine } // BAD: type Car struct { Automobile // Car is a Automobile Engine // Car has a Engine, but Car is NOT a Engine }函数参数和返回值# 必须
+"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://kingye.me/study-go/docs/basic/spec/"><meta property="og:site_name" content="Go 学习笔记"><meta property="og:title" content="1.3 编程规范"><meta property="og:description" content="Go 编程规范# Go Code Review Comments 代码组织# 目录# /cmd # 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的. # 把你真正的应用代码放在 /internal/app 目录 (比如: /internal/app/myapp) 把你的应用间共享的代码放在 /internal/pkg 目录 (比如: internal/pkg/myprivlib) /internal /pkg不应该存在的目录# /src参考：
+golang-standards/project-layout 文件内容# 建议文件按以下顺序进行布局：
+General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。 package: 当前 package 定义 imports: 包含的头文件 Constants: 常量 Typedefs: 类型定义 Globals: 全局变量定义 functions: 函数实现 语言规范# 申明 slice# 申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式
+// GOOD: var t []string // BAD: t := []string{}embedding# embedding 只用于 “is a” 的语义下，而不用于 “has a” 的语义下 语义上 embedding 是一种继承关系，而不是成员关系 一个定义内，多于一个的 embedding 尽量少用 一个定义内有多个 embedding，则很难判断某个成员变量或函数是从哪里继承得到的 一个定义内有多个 embedding，危害和在 python 中使用 from xxx import * 是类似的 type Automobile struct { // ... } type Engine struct { // .... } // GOOD: type Car struct { Automobile // Car is a Automobile engine Engine // Car has a Engine } // BAD: type Car struct { Automobile // Car is a Automobile Engine // Car has a Engine, but Car is NOT a Engine }函数参数和返回值# 必须"><meta property="og:locale" content="en"><meta property="og:type" content="website"><meta itemprop=name content="1.3 编程规范"><meta itemprop=description content="Go 编程规范# Go Code Review Comments 代码组织# 目录# /cmd # 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的. # 把你真正的应用代码放在 /internal/app 目录 (比如: /internal/app/myapp) 把你的应用间共享的代码放在 /internal/pkg 目录 (比如: internal/pkg/myprivlib) /internal /pkg不应该存在的目录# /src参考：
+golang-standards/project-layout 文件内容# 建议文件按以下顺序进行布局：
+General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。 package: 当前 package 定义 imports: 包含的头文件 Constants: 常量 Typedefs: 类型定义 Globals: 全局变量定义 functions: 函数实现 语言规范# 申明 slice# 申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式
+// GOOD: var t []string // BAD: t := []string{}embedding# embedding 只用于 “is a” 的语义下，而不用于 “has a” 的语义下 语义上 embedding 是一种继承关系，而不是成员关系 一个定义内，多于一个的 embedding 尽量少用 一个定义内有多个 embedding，则很难判断某个成员变量或函数是从哪里继承得到的 一个定义内有多个 embedding，危害和在 python 中使用 from xxx import * 是类似的 type Automobile struct { // ... } type Engine struct { // .... } // GOOD: type Car struct { Automobile // Car is a Automobile engine Engine // Car has a Engine } // BAD: type Car struct { Automobile // Car is a Automobile Engine // Car has a Engine, but Car is NOT a Engine }函数参数和返回值# 必须"><meta itemprop=dateModified content="2021-07-08T15:05:44+08:00"><meta itemprop=wordCount content="355"><title>1.3 编程规范 | Go 学习笔记</title><link rel=icon href=/study-go/favicon.png><link rel=manifest href=/study-go/manifest.json><link rel=canonical href=https://kingye.me/study-go/docs/basic/spec/><link rel=stylesheet href=/study-go/book.min.c3b69a70cf38d3ba0ae6f9e4459007b9d084940656d8e82e633879099cb6eac0.css integrity="sha256-w7aacM8407oK5vnkRZAHudCElAZW2OguYzh5CZy26sA=" crossorigin=anonymous><script defer src=/study-go/fuse.min.js></script><script defer src=/study-go/en.search.min.c88dd2aa0260aa02aeb9fd99e1d6a24d9660ed7c0a844860d48b1e011d5b66ae.js integrity="sha256-yI3SqgJgqgKuuf2Z4daiTZZg7XwKhEhg1IseAR1bZq4=" crossorigin=anonymous></script><link rel=alternate type=application/rss+xml href=https://kingye.me/study-go/docs/basic/spec/index.xml title="Go 学习笔记"></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/study-go/><span>Go 学习笔记</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><a href=https://kingye.me target=_blank rel="noopener noreferrer">博客</a></li><li><a href=https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200417021727.png target=_blank rel="noopener noreferrer">公众号</a></li><li><a href=https://github.com/ikingye target=_blank rel="noopener noreferrer">Github</a></li><li><a href=https://weibo.com/kingyip15215 target=_blank rel="noopener noreferrer">微博</a></li><li><a href=https://www.zhihu.com/people/wutongyip target=_blank rel="noopener noreferrer">知乎</a></li></ul><hr><ul><li><a>第一部分 基础入门</a><ul><li><input type=checkbox id=section-62d343ebd9f86bfbe70c482245b20882 class=toggle>
+<label for=section-62d343ebd9f86bfbe70c482245b20882 class=flex><a href=/study-go/docs/basic/ref/>1.1 语法</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-57b75c17b366a0048a5ad2206824ecd6 class=toggle>
+<label for=section-57b75c17b366a0048a5ad2206824ecd6 class=flex><a href=/study-go/docs/basic/ref/type/>1.1.1 数据类型</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-ef9d6955c317fbbc0ed7742cc2a55590 class=toggle>
+<label for=section-ef9d6955c317fbbc0ed7742cc2a55590 class=flex><a href=/study-go/docs/basic/ref/type/error/>error</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><a href=/study-go/docs/basic/ref/type/slice/>切片</a></li><li><a href=/study-go/docs/basic/ref/type/string/>字符串</a></li><li><a href=/study-go/docs/basic/ref/type/array/>数组</a></li><li><input type=checkbox id=section-a49da4c7ef38a27697cf13f6cba77ad1 class=toggle>
+<label for=section-a49da4c7ef38a27697cf13f6cba77ad1 class=flex><a href=/study-go/docs/basic/ref/type/interface/>Interface</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-151143ad09d2fa1e3a97d90e9ed3a57d class=toggle>
+<label for=section-151143ad09d2fa1e3a97d90e9ed3a57d class=flex><a href=/study-go/docs/basic/ref/type/channel/>Chiannel</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-be80bc9bd5206a061ff302e9dea01064 class=toggle>
+<label for=section-be80bc9bd5206a061ff302e9dea01064 class=flex><a href=/study-go/docs/basic/ref/type/map/>Map</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li></ul></li><li><input type=checkbox id=section-3ead29187a2855f6e1dc1cc7d20820e1 class=toggle>
+<label for=section-3ead29187a2855f6e1dc1cc7d20820e1 class=flex><a href=/study-go/docs/basic/ref/keyword/>1.1.2 关键字</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-ef07c23d45d6437fa285c758f3c76722 class=toggle>
+<label for=section-ef07c23d45d6437fa285c758f3c76722 class=flex><a href=/study-go/docs/basic/ref/keyword/defer/>defer</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-3336b9cb660e521853f079ec263228b9 class=toggle>
+<label for=section-3336b9cb660e521853f079ec263228b9 class=flex><a href=/study-go/docs/basic/ref/keyword/for/>for 和 range</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><a href=/study-go/docs/basic/ref/keyword/func/>函数</a><ul><li><input type=checkbox id=section-4e935048858aa9f9fc2fef1d7fc4972c class=toggle>
+<label for=section-4e935048858aa9f9fc2fef1d7fc4972c class=flex><a href=/study-go/docs/basic/ref/keyword/func/init/>init</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><a href=/study-go/docs/basic/ref/keyword/func/receiver/>Receiver</a></li></ul></li><li><input type=checkbox id=section-f78a127e78c54b5f706fae6db3ebcd54 class=toggle>
+<label for=section-f78a127e78c54b5f706fae6db3ebcd54 class=flex><a href=/study-go/docs/basic/ref/keyword/make/>make</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-c9265d34c0730a36567a410eacc7d6da class=toggle>
+<label for=section-c9265d34c0730a36567a410eacc7d6da class=flex><a href=/study-go/docs/basic/ref/keyword/select/>select</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li></ul></li></ul></li><li><input type=checkbox id=section-f89fd2402cec999ba8a37f74304748bd class=toggle>
+<label for=section-f89fd2402cec999ba8a37f74304748bd class=flex><a href=/study-go/docs/basic/std/>1.2 标准库</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-a7e8e61c0ce6e3b313923ef21a1a698a class=toggle>
+<label for=section-a7e8e61c0ce6e3b313923ef21a1a698a class=flex><a href=/study-go/docs/basic/std/sort/>sort</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-a21d051b79df96d06915b1acaa586211 class=toggle>
+<label for=section-a21d051b79df96d06915b1acaa586211 class=flex><a href=/study-go/docs/basic/std/context/>context</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-c1519e1d83112267635714858cf04a14 class=toggle>
+<label for=section-c1519e1d83112267635714858cf04a14 class=flex><a href=/study-go/docs/basic/std/format/>格式化输出</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-cd5c3d2f1be17cc15cb25feb56cccb1c class=toggle>
+<label for=section-cd5c3d2f1be17cc15cb25feb56cccb1c class=flex><a href=/study-go/docs/basic/std/io/>io</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-4ba2044ff111a9bb5135df0771354d57 class=toggle>
+<label for=section-4ba2044ff111a9bb5135df0771354d57 class=flex><a href=/study-go/docs/basic/std/net/>net</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-9b138066563f9dc638026016f2e4df81 class=toggle>
+<label for=section-9b138066563f9dc638026016f2e4df81 class=flex><a href=/study-go/docs/basic/std/signal/>signal</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-e3c6480dd0edc4bc89563349be19b9f7 class=toggle>
+<label for=section-e3c6480dd0edc4bc89563349be19b9f7 class=flex><a href=/study-go/docs/basic/std/sync/>sync</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-bf675fc8b70480a80a037da0fd423478 class=toggle>
+<label for=section-bf675fc8b70480a80a037da0fd423478 class=flex><a href=/study-go/docs/basic/std/strings/>time</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-1ce563954cdc03aeac9c6b360390cabd class=toggle>
+<label for=section-1ce563954cdc03aeac9c6b360390cabd class=flex><a href=/study-go/docs/basic/std/time/>time</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li></ul></li><li><input type=checkbox id=section-3f200322935b10c5c778cbb926edf5bc class=toggle checked>
+<label for=section-3f200322935b10c5c778cbb926edf5bc class=flex><a href=/study-go/docs/basic/spec/ class=active>1.3 编程规范</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul></ul></li><li><input type=checkbox id=section-d6e529c09374dced9d22a0b8f80f0da6 class=toggle>
+<label for=section-d6e529c09374dced9d22a0b8f80f0da6 class=flex><a href=/study-go/docs/basic/others/>1.4 其他</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-f606ad1a56e61a2a729043ffcd578eb5 class=toggle>
+<label for=section-f606ad1a56e61a2a729043ffcd578eb5 class=flex><a href=/study-go/docs/basic/others/quick/>Go 快速上手</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-6989658eb8e890a1112a53b8cb458b4d class=toggle>
+<label for=section-6989658eb8e890a1112a53b8cb458b4d class=flex><a href=/study-go/docs/basic/others/pros-and-cons/>优劣</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><a href=/study-go/docs/basic/others/gobuild/>Go build</a></li><li><a href=/study-go/docs/basic/others/gomod/>Go Modules</a></li><li><a href=/study-go/docs/basic/others/gopls/>gopls</a></li><li><a href=/study-go/docs/basic/others/pm/>包管理</a></li><li><a href=/study-go/docs/basic/others/compile/>编译</a></li><li><input type=checkbox id=section-32030b9eca5bd49e6f830c36e7a62f9f class=toggle>
+<label for=section-32030b9eca5bd49e6f830c36e7a62f9f class=flex><a href=/study-go/docs/basic/others/command/>Go 命令</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-a5c0335ed7ed776797976e707def96f1 class=toggle>
+<label for=section-a5c0335ed7ed776797976e707def96f1 class=flex><a href=/study-go/docs/basic/others/command/install/>安装</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li></ul></li><li><input type=checkbox id=section-bf594102c70a51cb6090b79e0488ba12 class=toggle>
+<label for=section-bf594102c70a51cb6090b79e0488ba12 class=flex><a href=/study-go/docs/basic/others/history/>历史</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-a8d12887d59ffbaf6f390b47fc4158f1 class=toggle>
+<label for=section-a8d12887d59ffbaf6f390b47fc4158f1 class=flex><a href=/study-go/docs/basic/others/plugin/>Go 插件系统</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-55345ae3ff95926e663463c15468d6cb class=toggle>
+<label for=section-55345ae3ff95926e663463c15468d6cb class=flex><a href=/study-go/docs/basic/others/goroutine/>goroutine</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-53be5fa12f87e663e383a349a5cc57eb class=toggle>
+<label for=section-53be5fa12f87e663e383a349a5cc57eb class=flex><a href=/study-go/docs/basic/others/version/>版本</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li></ul></li></ul></li><li><a>第二部分 进阶实战</a><ul><li><input type=checkbox id=section-4fb8200a6f8cf3bc7aa09e9911eea3eb class=toggle>
+<label for=section-4fb8200a6f8cf3bc7aa09e9911eea3eb class=flex><a href=/study-go/docs/advanced/pattern/>2.1 设计模式</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul></ul></li><li><input type=checkbox id=section-882c152fddf41beafe31b6e43e76a655 class=toggle>
+<label for=section-882c152fddf41beafe31b6e43e76a655 class=flex><a href=/study-go/docs/advanced/algs/>2.2 算法实现</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul></ul></li><li><input type=checkbox id=section-2c0dfa3b09c233d85489c5dcdd511f0c class=toggle>
+<label for=section-2c0dfa3b09c233d85489c5dcdd511f0c class=flex><a href=/study-go/docs/advanced/pkg/>2.3 常用库</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-c1515215b5ebf8e2674048de38f6b4cd class=toggle>
+<label for=section-c1515215b5ebf8e2674048de38f6b4cd class=flex><a href=/study-go/docs/advanced/pkg/cobra/>cobra</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-2680fd3f27db155384764e9b5d2ea6fa class=toggle>
+<label for=section-2680fd3f27db155384764e9b5d2ea6fa class=flex><a href=/study-go/docs/advanced/pkg/klog/>klog</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li></ul></li><li><input type=checkbox id=section-357e32afd3a307ad512ae9eb62faff43 class=toggle>
+<label for=section-357e32afd3a307ad512ae9eb62faff43 class=flex><a href=/study-go/docs/advanced/snippet/>2.4 代码片段</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul></ul></li><li><input type=checkbox id=section-67dd37fd58bd2727728aa0266a638750 class=toggle>
+<label for=section-67dd37fd58bd2727728aa0266a638750 class=flex><a href=/study-go/docs/advanced/test/>2.5 测试</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul></ul></li><li><input type=checkbox id=section-4397c16502fe7f140f5ea7a4e4c7396f class=toggle>
+<label for=section-4397c16502fe7f140f5ea7a4e4c7396f class=flex><a href=/study-go/docs/advanced/prof/>2.6 性能</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul></ul></li><li><input type=checkbox id=section-78cec0e6317251f72394a5a327c94511 class=toggle>
+<label for=section-78cec0e6317251f72394a5a327c94511 class=flex><a href=/study-go/docs/advanced/frame/>2.7 框架</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-c054d53f94fcb4ae3cc650e211dac8ee class=toggle>
+<label for=section-c054d53f94fcb4ae3cc650e211dac8ee class=flex><a href=/study-go/docs/advanced/frame/beego/>Beego</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul></ul></li></ul></li></ul></li><li><a>第三部分 设计与实现</a><ul><li><input type=checkbox id=section-76e0ef9d879b5edf9e0e038285e20379 class=toggle>
+<label for=section-76e0ef9d879b5edf9e0e038285e20379 class=flex><a href=/study-go/docs/design/type/>3.1 数据类型</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-33eb1283c0c6246715ab3e858e8bc59b class=toggle>
+<label for=section-33eb1283c0c6246715ab3e858e8bc59b class=flex><a href=/study-go/docs/design/type/type/>类型系统</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li></ul></li><li><input type=checkbox id=section-6465d212bb182eaa3b2636ee00f192d4 class=toggle>
+<label for=section-6465d212bb182eaa3b2636ee00f192d4 class=flex><a href=/study-go/docs/design/keyword/>3.2 关键字</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-8b73f46fa194db56c52d72144d63d615 class=toggle>
+<label for=section-8b73f46fa194db56c52d72144d63d615 class=flex><a href=/study-go/docs/design/keyword/interface/>interface</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li></ul></li><li><input type=checkbox id=section-44db9bd8058c99326e384d5b73e4e801 class=toggle>
+<label for=section-44db9bd8058c99326e384d5b73e4e801 class=flex><a href=/study-go/docs/design/runtime/>3.3 运行时</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><input type=checkbox id=section-8a9d0cc89541146580e4d2ad3c580ab0 class=toggle>
+<label for=section-8a9d0cc89541146580e4d2ad3c580ab0 class=flex><a href=/study-go/docs/design/runtime/init/>Go 初始化</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-e09ef9041cb6cb0e9591068cb19b9a62 class=toggle>
+<label for=section-e09ef9041cb6cb0e9591068cb19b9a62 class=flex><a href=/study-go/docs/design/runtime/scheduling/>Go 调度</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-d8efd8468423151faa0e94e01baa6ae2 class=toggle>
+<label for=section-d8efd8468423151faa0e94e01baa6ae2 class=flex><a href=/study-go/docs/design/runtime/gc/>GC</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-9a69d7db2b86804063758e66762c71e9 class=toggle>
+<label for=section-9a69d7db2b86804063758e66762c71e9 class=flex><a href=/study-go/docs/design/runtime/concurrent/>并发</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li></ul></li><li><a href=/study-go/docs/design/code/>3.7 源码分析</a><ul><li><input type=checkbox id=section-1eaffa0472c8a8da4716b5f7f00ef522 class=toggle>
+<label for=section-1eaffa0472c8a8da4716b5f7f00ef522 class=flex><a href=/study-go/docs/design/code/1.0.0/>1.0.0</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul></ul></li><li><input type=checkbox id=section-db3df76096845ebcdd1240afda3c54e5 class=toggle>
+<label for=section-db3df76096845ebcdd1240afda3c54e5 class=flex><a href=/study-go/docs/design/code/1.5.0/>1.5.0</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label><ul></ul></li></ul></li></ul></li><li><a>第四部分 附录</a><ul><li><input type=checkbox id=section-45a2d01aeff5da7df828bc0a233454d9 class=toggle>
+<label for=section-45a2d01aeff5da7df828bc0a233454d9 class=flex><a href=/study-go/docs/appendix/tutorial/>4.1 教程</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-a44655df518bf51efbec82ccb01a3b36 class=toggle>
+<label for=section-a44655df518bf51efbec82ccb01a3b36 class=flex><a href=/study-go/docs/appendix/interview/>4.2 面试题</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-8a0a05d540a97462c000bd9a472ffd7c class=toggle>
+<label for=section-8a0a05d540a97462c000bd9a472ffd7c class=flex><a href=/study-go/docs/appendix/attention/>4.3 关注项目</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li><li><input type=checkbox id=section-cd468ea640811cdf1c7aadd0ab624b39 class=toggle>
+<label for=section-cd468ea640811cdf1c7aadd0ab624b39 class=flex><a href=/study-go/docs/appendix/gossip/>4.4 一些八卦</a>
+<img src=/study-go/icons/chevron-right.svg class=book-icon alt=Expand></label></li></ul></li></ul><hr><ul><li><a href=https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200417022040.png target=_blank rel="noopener noreferrer">微信</a></li><li><a href="https://qm.qq.com/cgi-bin/qm/qr?k=EUhzg0UwUksxpQnwEmPngRLezlC6qrnn&jump_from=webapi" target=_blank rel="noopener noreferrer"><img src=//pub.idqqimg.com/wpa/images/group.png></a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/study-go/icons/menu.svg class=book-icon alt=Menu></label><h3>1.3 编程规范</h3><label for=toc-control><img src=/study-go/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#代码组织>代码组织</a><ul><li><a href=#目录>目录</a><ul><li><a href=#不应该存在的目录>不应该存在的目录</a></li></ul></li><li><a href=#文件内容>文件内容</a></li></ul></li><li><a href=#语言规范>语言规范</a><ul><li><a href=#申明-slice>申明 slice</a></li><li><a href=#embedding>embedding</a></li><li><a href=#函数参数和返回值>函数参数和返回值</a></li><li><a href=#缩进>缩进</a></li><li><a href=#空格>空格</a></li></ul></li><li><a href=#命名>命名</a><ul><li><a href=#文件名>文件名</a></li><li><a href=#函数名--变量名>函数名 / 变量名</a></li><li><a href=#常量>常量</a></li><li><a href=#包名>包名</a></li></ul></li><li><a href=#编程实践>编程实践</a><ul><li><a href=#error-string>error string</a></li><li><a href=#dont-panic>Don&rsquo;t panic</a></li><li><a href=#关于-lock-的保护>关于 lock 的保护</a></li><li><a href=#unsafe-package>unsafe package</a></li></ul></li></ul></nav></aside></header><article id=article class=markdown><h1 id=go-编程规范>Go 编程规范<a class=anchor href=#go-%e7%bc%96%e7%a8%8b%e8%a7%84%e8%8c%83>#</a></h1><ul><li><a href=https://github.com/golang/go/wiki/CodeReviewComments>Go Code Review Comments</a></li></ul><h2 id=代码组织>代码组织<a class=anchor href=#%e4%bb%a3%e7%a0%81%e7%bb%84%e7%bb%87>#</a></h2><h3 id=目录>目录<a class=anchor href=#%e7%9b%ae%e5%bd%95>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>/cmd
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e># 程序和库的私有代码。这里的代码都是你不希望被别的应用和库所引用的.</span>
 </span></span><span style=display:flex><span><span style=color:#75715e># 把你真正的应用代码放在 /internal/app 目录 (比如: /internal/app/myapp) 把你的应用间共享的代码放在 /internal/pkg 目录 (比如: internal/pkg/myprivlib)</span>
 </span></span><span style=display:flex><span>/internal
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>/pkg
-</span></span></code></pre></div><h4 id=不应该存在的目录>不应该存在的目录
-<a class=anchor href=#%e4%b8%8d%e5%ba%94%e8%af%a5%e5%ad%98%e5%9c%a8%e7%9a%84%e7%9b%ae%e5%bd%95>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>/src
-</span></span></code></pre></div><p>参考：</p><ul><li><a href=https://github.com/golang-standards/project-layout>golang-standards/project-layout</a> <img src=https://img.shields.io/github/stars/golang-standards/project-layout.svg alt="Github stars"></li></ul><hr><h3 id=文件内容>文件内容
-<a class=anchor href=#%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9>#</a></h3><p>建议文件按以下顺序进行布局：</p><ul><li>General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。</li><li>package: 当前 package 定义</li><li>imports: 包含的头文件</li><li>Constants: 常量</li><li>Typedefs: 类型定义</li><li>Globals: 全局变量定义</li><li>functions: 函数实现</li></ul><hr><h2 id=语言规范>语言规范
-<a class=anchor href=#%e8%af%ad%e8%a8%80%e8%a7%84%e8%8c%83>#</a></h2><h3 id=申明-slice>申明 slice
-<a class=anchor href=#%e7%94%b3%e6%98%8e-slice>#</a></h3><p>申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#75715e>// GOOD:</span>
+</span></span><span style=display:flex><span>/pkg</span></span></code></pre></div><h4 id=不应该存在的目录>不应该存在的目录<a class=anchor href=#%e4%b8%8d%e5%ba%94%e8%af%a5%e5%ad%98%e5%9c%a8%e7%9a%84%e7%9b%ae%e5%bd%95>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>/src</span></span></code></pre></div><p>参考：</p><ul><li><a href=https://github.com/golang-standards/project-layout>golang-standards/project-layout</a> <img src=https://img.shields.io/github/stars/golang-standards/project-layout.svg alt="Github stars"></li></ul><hr><h3 id=文件内容>文件内容<a class=anchor href=#%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9>#</a></h3><p>建议文件按以下顺序进行布局：</p><ul><li>General Documentation: 对整个模块和功能的完整描述注释，写在文件头部。</li><li>package: 当前 package 定义</li><li>imports: 包含的头文件</li><li>Constants: 常量</li><li>Typedefs: 类型定义</li><li>Globals: 全局变量定义</li><li>functions: 函数实现</li></ul><hr><h2 id=语言规范>语言规范<a class=anchor href=#%e8%af%ad%e8%a8%80%e8%a7%84%e8%8c%83>#</a></h2><h3 id=申明-slice>申明 slice<a class=anchor href=#%e7%94%b3%e6%98%8e-slice>#</a></h3><p>申明 slice 时，建议使用 var 方式申明，不建议使用大括号的方式</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#75715e>// GOOD:</span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>t</span> []<span style=color:#66d9ef>string</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e>// BAD:</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>string</span>{}
-</span></span></code></pre></div><h3 id=embedding><a href=http://golang.org/doc/effective_go.html#embedding>embedding</a>
-<a class=anchor href=#embedding>#</a></h3><ul><li>embedding 只用于 &ldquo;is a&rdquo; 的语义下，而不用于 &ldquo;has a&rdquo; 的语义下<ul><li>语义上 embedding 是一种<strong>继承关系</strong>，而不是<strong>成员关系</strong></li></ul></li><li>一个定义内，多于一个的 embedding 尽量少用<ul><li>一个定义内有多个 embedding，则很难判断某个成员变量或函数是从哪里继承得到的</li><li>一个定义内有多个 embedding，危害和在 python 中使用 <code>from xxx import *</code> 是类似的</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Automobile</span> <span style=color:#66d9ef>struct</span> {
+</span></span><span style=display:flex><span><span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>string</span>{}</span></span></code></pre></div><h3 id=embedding><a href=http://golang.org/doc/effective_go.html#embedding>embedding</a><a class=anchor href=#embedding>#</a></h3><ul><li>embedding 只用于 &ldquo;is a&rdquo; 的语义下，而不用于 &ldquo;has a&rdquo; 的语义下<ul><li>语义上 embedding 是一种<strong>继承关系</strong>，而不是<strong>成员关系</strong></li></ul></li><li>一个定义内，多于一个的 embedding 尽量少用<ul><li>一个定义内有多个 embedding，则很难判断某个成员变量或函数是从哪里继承得到的</li><li>一个定义内有多个 embedding，危害和在 python 中使用 <code>from xxx import *</code> 是类似的</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Automobile</span> <span style=color:#66d9ef>struct</span> {
 </span></span><span style=display:flex><span>    <span style=color:#75715e>// ...</span>
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
@@ -166,11 +151,7 @@ General Documentation: 对整个模块和功能的完整描述注释，写在文
 </span></span><span style=display:flex><span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Car</span> <span style=color:#66d9ef>struct</span> {
 </span></span><span style=display:flex><span>    <span style=color:#a6e22e>Automobile</span>      <span style=color:#75715e>//  Car is a Automobile</span>
 </span></span><span style=display:flex><span>    <span style=color:#a6e22e>Engine</span>          <span style=color:#75715e>//  Car has a Engine, but Car is NOT a Engine</span>
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=函数参数和返回值>函数参数和返回值
-<a class=anchor href=#%e5%87%bd%e6%95%b0%e5%8f%82%e6%95%b0%e5%92%8c%e8%bf%94%e5%9b%9e%e5%80%bc>#</a></h3><ul><li><p>必须</p><ul><li>函数返回值小于等于 3 个，大于 3 个时必须通过 struct 进行包装</li></ul></li><li><p>建议</p><ul><li>函数参数不建议超过 3 个，大于 3 个时建议通过 struct 进行包装</li><li>函数返回值<ul><li>逻辑判断型：返回值的意义代表 “真” 或 “假”，返回值类型定义为 bool</li><li>操作型：返回值的意义代表 “成功” 或 “失败”，返回值类型定义为 error</li><li>获取数据型：返回值的意义代表 “有数据” 或 “无数据 / 获取数据失败”，返回值类型定义为（data, error）</li></ul></li></ul></li></ul><h3 id=缩进>缩进
-<a class=anchor href=#%e7%bc%a9%e8%bf%9b>#</a></h3><ul><li>使用 tab 进行缩进。</li><li>跨行的缩进使用 gofmt 的缩进方式。</li><li>设置 <code>tabstop=4</code></li></ul><h3 id=空格>空格
-<a class=anchor href=#%e7%a9%ba%e6%a0%bc>#</a></h3><ul><li>圆括号、方括号、花括号内侧都不加空格</li><li>逗号、冒号（slice 中冒号除外）前不加空格，后边加一个空格</li><li>所有二元运算符前后各加一个空格（<strong>作为函数参数时除外</strong>）</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>var</span> (
+</span></span><span style=display:flex><span>}</span></span></code></pre></div><h3 id=函数参数和返回值>函数参数和返回值<a class=anchor href=#%e5%87%bd%e6%95%b0%e5%8f%82%e6%95%b0%e5%92%8c%e8%bf%94%e5%9b%9e%e5%80%bc>#</a></h3><ul><li><p>必须</p><ul><li>函数返回值小于等于 3 个，大于 3 个时必须通过 struct 进行包装</li></ul></li><li><p>建议</p><ul><li>函数参数不建议超过 3 个，大于 3 个时建议通过 struct 进行包装</li><li>函数返回值<ul><li>逻辑判断型：返回值的意义代表 “真” 或 “假”，返回值类型定义为 bool</li><li>操作型：返回值的意义代表 “成功” 或 “失败”，返回值类型定义为 error</li><li>获取数据型：返回值的意义代表 “有数据” 或 “无数据 / 获取数据失败”，返回值类型定义为（data, error）</li></ul></li></ul></li></ul><h3 id=缩进>缩进<a class=anchor href=#%e7%bc%a9%e8%bf%9b>#</a></h3><ul><li>使用 tab 进行缩进。</li><li>跨行的缩进使用 gofmt 的缩进方式。</li><li>设置 <code>tabstop=4</code></li></ul><h3 id=空格>空格<a class=anchor href=#%e7%a9%ba%e6%a0%bc>#</a></h3><ul><li>圆括号、方括号、花括号内侧都不加空格</li><li>逗号、冒号（slice 中冒号除外）前不加空格，后边加一个空格</li><li>所有二元运算符前后各加一个空格（<strong>作为函数参数时除外</strong>）</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>var</span> (
 </span></span><span style=display:flex><span>    <span style=color:#a6e22e>s</span> = make([]<span style=color:#66d9ef>int</span>, <span style=color:#ae81ff>10</span>)
 </span></span><span style=display:flex><span>)
 </span></span><span style=display:flex><span>
@@ -188,18 +169,8 @@ General Documentation: 对整个模块和功能的完整描述注释，写在文
 </span></span><span style=display:flex><span>    <span style=color:#a6e22e>r</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>1</span><span style=color:#f92672>+</span><span style=color:#ae81ff>2</span>
 </span></span><span style=display:flex><span>    <span style=color:#a6e22e>func1</span>(<span style=color:#ae81ff>1</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>2</span>)
 </span></span><span style=display:flex><span>    <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>m</span>[ <span style=color:#e6db74>&#34;language&#34;</span> ])
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><hr><h2 id=命名>命名
-<a class=anchor href=#%e5%91%bd%e5%90%8d>#</a></h2><h3 id=文件名>文件名
-<a class=anchor href=#%e6%96%87%e4%bb%b6%e5%90%8d>#</a></h3><p>文件名都使用小写字母，如果需要，可以使用下划线分割</p><p>文件名的后缀使用小写字母</p><h3 id=函数名--变量名>函数名 / 变量名
-<a class=anchor href=#%e5%87%bd%e6%95%b0%e5%90%8d--%e5%8f%98%e9%87%8f%e5%90%8d>#</a></h3><p>采用驼峰方式命名，禁止使用下划线命名</p><p>首字母是否大写，根据是否需要外部访问来决定</p><h3 id=常量>常量
-<a class=anchor href=#%e5%b8%b8%e9%87%8f>#</a></h3><p>尽量不要在程序中直接写数字，特殊字符串，全部用常量替代</p><h3 id=包名>包名
-<a class=anchor href=#%e5%8c%85%e5%90%8d>#</a></h3><p>关于包的命名，Go 团队建议以简单，扁平为原则。
-例如，<code>strutils</code> 是 <code>string utility</code> 函数的名字，http 是 HTTP 请求的名字。</p><p>包的名字应避免使用下划线，中划线或掺杂大写字母。</p><hr><h2 id=编程实践>编程实践
-<a class=anchor href=#%e7%bc%96%e7%a8%8b%e5%ae%9e%e8%b7%b5>#</a></h2><h3 id=error-string>error string
-<a class=anchor href=#error-string>#</a></h3><p>error string 尽量使用小写字母，并且结尾不带标点符号</p><h3 id=dont-panic>Don&rsquo;t panic
-<a class=anchor href=#dont-panic>#</a></h3><p>除非出现不可恢复的程序错误，不要使用 panic，用多返回值和 error。</p><h3 id=关于-lock-的保护>关于 lock 的保护
-<a class=anchor href=#%e5%85%b3%e4%ba%8e-lock-%e7%9a%84%e4%bf%9d%e6%8a%a4>#</a></h3><ul><li>如果临界区内的逻辑较复杂、无法完全避免 panic 的发生，则要求适用 <strong>defer</strong> 来调用 Unlock，即使在临界区过程中发生了 panic，也会在函数退出时调用 Unlock 释放锁<ul><li>go 提供了 recover，可以对 panic 进行捕获，但如果 panic 发生在临界区内，则可能导致对锁的使用没有释放</li><li>这种情况下，即使 panic 不会导致整个程序的奔溃，也会由于” 锁不释放 “的问题而使临界区无法被后续的调用访问</li></ul></li></ul><ul><li>上述操作如果造成临界区扩大后，需要建立单独的一个函数访问临界区。</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>doDemo</span>() {
+</span></span><span style=display:flex><span>}</span></span></code></pre></div><hr><h2 id=命名>命名<a class=anchor href=#%e5%91%bd%e5%90%8d>#</a></h2><h3 id=文件名>文件名<a class=anchor href=#%e6%96%87%e4%bb%b6%e5%90%8d>#</a></h3><p>文件名都使用小写字母，如果需要，可以使用下划线分割</p><p>文件名的后缀使用小写字母</p><h3 id=函数名--变量名>函数名 / 变量名<a class=anchor href=#%e5%87%bd%e6%95%b0%e5%90%8d--%e5%8f%98%e9%87%8f%e5%90%8d>#</a></h3><p>采用驼峰方式命名，禁止使用下划线命名</p><p>首字母是否大写，根据是否需要外部访问来决定</p><h3 id=常量>常量<a class=anchor href=#%e5%b8%b8%e9%87%8f>#</a></h3><p>尽量不要在程序中直接写数字，特殊字符串，全部用常量替代</p><h3 id=包名>包名<a class=anchor href=#%e5%8c%85%e5%90%8d>#</a></h3><p>关于包的命名，Go 团队建议以简单，扁平为原则。
+例如，<code>strutils</code> 是 <code>string utility</code> 函数的名字，http 是 HTTP 请求的名字。</p><p>包的名字应避免使用下划线，中划线或掺杂大写字母。</p><hr><h2 id=编程实践>编程实践<a class=anchor href=#%e7%bc%96%e7%a8%8b%e5%ae%9e%e8%b7%b5>#</a></h2><h3 id=error-string>error string<a class=anchor href=#error-string>#</a></h3><p>error string 尽量使用小写字母，并且结尾不带标点符号</p><h3 id=dont-panic>Don&rsquo;t panic<a class=anchor href=#dont-panic>#</a></h3><p>除非出现不可恢复的程序错误，不要使用 panic，用多返回值和 error。</p><h3 id=关于-lock-的保护>关于 lock 的保护<a class=anchor href=#%e5%85%b3%e4%ba%8e-lock-%e7%9a%84%e4%bf%9d%e6%8a%a4>#</a></h3><ul><li>如果临界区内的逻辑较复杂、无法完全避免 panic 的发生，则要求适用 <strong>defer</strong> 来调用 Unlock，即使在临界区过程中发生了 panic，也会在函数退出时调用 Unlock 释放锁<ul><li>go 提供了 recover，可以对 panic 进行捕获，但如果 panic 发生在临界区内，则可能导致对锁的使用没有释放</li><li>这种情况下，即使 panic 不会导致整个程序的奔溃，也会由于” 锁不释放 “的问题而使临界区无法被后续的调用访问</li></ul></li></ul><ul><li>上述操作如果造成临界区扩大后，需要建立单独的一个函数访问临界区。</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>doDemo</span>() {
 </span></span><span style=display:flex><span>    <span style=color:#a6e22e>lock</span>.<span style=color:#a6e22e>Lock</span>()
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#75715e>// step1: 临界区内的操作</span>
@@ -230,10 +201,8 @@ General Documentation: 对整个模块和功能的完整描述注释，写在文
 </span></span><span style=display:flex><span>    }()
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#75715e>// step2: 临界区外的操作</span>
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=unsafe-package>unsafe package
-<a class=anchor href=#unsafe-package>#</a></h3><ul><li>除非特殊原因，不建议使用 unsafe package<ul><li>比如进行指针和数值 uintptr 之间转换就是一个特殊原因</li></ul></li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><div class="flex flex-wrap justify-between"><span><a href=/study-go/docs/basic/std/time/ class="flex align-center"><img src=/study-go/svg/backward.svg class=book-icon alt=Previous title=time>
+</span></span><span style=display:flex><span>}</span></span></code></pre></div><h3 id=unsafe-package>unsafe package<a class=anchor href=#unsafe-package>#</a></h3><ul><li>除非特殊原因，不建议使用 unsafe package<ul><li>比如进行指针和数值 uintptr 之间转换就是一个特殊原因</li></ul></li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><div class="flex flex-wrap justify-between"><span><a href=/study-go/docs/basic/std/time/ class="flex align-center"><img src=/study-go/icons/backward.svg class=book-icon alt=Backward>
 <span>time</span>
 </a></span><span><a href=/study-go/docs/basic/others/ class="flex align-center"><span>1.4 其他</span>
-<img src=/study-go/svg/forward.svg class=book-icon alt=Next title="1.4 其他"></a></span></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script><div><br><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><link rel=stylesheet href=//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css><p><span id=busuanzi_container_page_pv>本文访问量 <span id=busuanzi_value_page_pv><i class="fa fa-spinner fa-spin"></i></span> 次</span></p><p><span id=busuanzi_container_site_pv>本站总访问量 <span id=busuanzi_value_site_pv><i class="fa fa-spinner fa-spin"></i></span> 次</span></p><p><span id=busuanzi_container_site_uv>本站总访客数 <span id=busuanzi_value_site_uv><i class="fa fa-spinner fa-spin"></i></span> 人</span></p></div></footer><div class=book-comments><script src=https://utteranc.es/client.js repo=ikingye/study-go issue-term=pathname theme=github-light crossorigin=anonymous async></script><div id=footer><p><a href=https://kingye.me>叶王</a> &copy; 2013-2026
+<img src=/study-go/icons/forward.svg class=book-icon alt=Forward></a></span></div><div><br><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><link rel=stylesheet href=//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css><p><span id=busuanzi_container_page_pv>本文访问量 <span id=busuanzi_value_page_pv><i class="fa fa-spinner fa-spin"></i></span> 次</span></p><p><span id=busuanzi_container_site_pv>本站总访问量 <span id=busuanzi_value_site_pv><i class="fa fa-spinner fa-spin"></i></span> 次</span></p><p><span id=busuanzi_container_site_uv>本站总访客数 <span id=busuanzi_value_site_uv><i class="fa fa-spinner fa-spin"></i></span> 人</span></p></div></footer><div class=book-comments><script src=https://utteranc.es/client.js repo=ikingye/study-go issue-term=pathname theme=github-light crossorigin=anonymous async></script><div id=footer><p><a href=https://kingye.me>叶王</a> &copy; 2013-2026
 版权所有。如果本文档对你有所帮助，可以<a href=https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200428110046.png target=_blank rel="noopener noreferrer">请作者喝饮料</a>。</p></div></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#代码组织>代码组织</a><ul><li><a href=#目录>目录</a><ul><li><a href=#不应该存在的目录>不应该存在的目录</a></li></ul></li><li><a href=#文件内容>文件内容</a></li></ul></li><li><a href=#语言规范>语言规范</a><ul><li><a href=#申明-slice>申明 slice</a></li><li><a href=#embedding>embedding</a></li><li><a href=#函数参数和返回值>函数参数和返回值</a></li><li><a href=#缩进>缩进</a></li><li><a href=#空格>空格</a></li></ul></li><li><a href=#命名>命名</a><ul><li><a href=#文件名>文件名</a></li><li><a href=#函数名--变量名>函数名 / 变量名</a></li><li><a href=#常量>常量</a></li><li><a href=#包名>包名</a></li></ul></li><li><a href=#编程实践>编程实践</a><ul><li><a href=#error-string>error string</a></li><li><a href=#dont-panic>Don&rsquo;t panic</a></li><li><a href=#关于-lock-的保护>关于 lock 的保护</a></li><li><a href=#unsafe-package>unsafe package</a></li></ul></li></ul></nav></div></aside></main></body></html>

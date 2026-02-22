@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>1.1.2 关键字 on Go 学习笔记</title><link>https://kingye.me/study-go/docs/basic/ref/keyword/</link><description>Recent content in 1.1.2 关键字 on Go 学习笔记</description><generator>Hugo</generator><language>en</language><atom:link href="https://kingye.me/study-go/docs/basic/ref/keyword/index.xml" rel="self" type="application/rss+xml"/><item><title>defer</title><link>https://kingye.me/study-go/docs/basic/ref/keyword/defer/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/keyword/defer/</guid><description>&lt;h1 id="defer"&gt;
- defer
- 
- &lt;a class="anchor" href="#defer"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>1.1.2 关键字 on Go 学习笔记</title><link>https://kingye.me/study-go/docs/basic/ref/keyword/</link><description>Recent content in 1.1.2 关键字 on Go 学习笔记</description><generator>Hugo</generator><language>en</language><atom:link href="https://kingye.me/study-go/docs/basic/ref/keyword/index.xml" rel="self" type="application/rss+xml"/><item><title>defer</title><link>https://kingye.me/study-go/docs/basic/ref/keyword/defer/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/keyword/defer/</guid><description>&lt;h1 id="defer"&gt;defer&lt;a class="anchor" href="#defer"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;Go 处理 defer 和 return 的顺序为：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;计算 return 语句的返回值&lt;/li&gt;
@@ -12,16 +7,9 @@
 &lt;li&gt;return 退出函数&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Defer 的用途跟其他语言的 &lt;code&gt;ensure&lt;/code&gt; 或 &lt;code&gt;finally&lt;/code&gt; 类似。&lt;/p&gt;
-&lt;h2 id="当-defer-释放锁遇到尾递归会产生死锁"&gt;
- 当 defer 释放锁遇到&lt;strong&gt;尾递归&lt;/strong&gt;，会产生死锁
- 
- &lt;a class="anchor" href="#%e5%bd%93-defer-%e9%87%8a%e6%94%be%e9%94%81%e9%81%87%e5%88%b0%e5%b0%be%e9%80%92%e5%bd%92%e4%bc%9a%e4%ba%a7%e7%94%9f%e6%ad%bb%e9%94%81"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
-
+&lt;h2 id="当-defer-释放锁遇到尾递归会产生死锁"&gt;当 defer 释放锁遇到&lt;strong&gt;尾递归&lt;/strong&gt;，会产生死锁&lt;a class="anchor" href="#%e5%bd%93-defer-%e9%87%8a%e6%94%be%e9%94%81%e9%81%87%e5%88%b0%e5%b0%be%e9%80%92%e5%bd%92%e4%bc%9a%e4%ba%a7%e7%94%9f%e6%ad%bb%e9%94%81"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote class='book-hint '&gt;
- &lt;p&gt;如果一个函数中所有递归形式的调用都出现在函数的末尾，我们称这个递归函数是&lt;strong&gt;尾递归&lt;/strong&gt;的。&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;计算 return 语句的值，赋值给匿名/有名返回值 -&amp;gt; defer -&amp;gt; return 退出函数&lt;/p&gt;
+&lt;p&gt;如果一个函数中所有递归形式的调用都出现在函数的末尾，我们称这个递归函数是&lt;strong&gt;尾递归&lt;/strong&gt;的。&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;计算 return 语句的值，赋值给匿名/有名返回值 -&amp;gt; defer -&amp;gt; return 退出函数&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;mut&lt;/span&gt; = &lt;span style="color:#a6e22e"&gt;sync&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Mutex&lt;/span&gt;{}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;tailRec&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;i&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;mut&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Lock&lt;/span&gt;() &lt;span style="color:#75715e"&gt;// 加锁&lt;/span&gt;
@@ -31,19 +19,13 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;i&lt;/span&gt;&lt;span style="color:#f92672"&gt;++&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;tailRec&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;i&lt;/span&gt;) &lt;span style="color:#75715e"&gt;// return 尾递归&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上代码执行会发生&lt;strong&gt;死锁&lt;/strong&gt;，原因是 return 语句后的命令先执行，赋值给&lt;em&gt;匿名返回值&lt;/em&gt;后，再调用 defer，
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上代码执行会发生&lt;strong&gt;死锁&lt;/strong&gt;，原因是 return 语句后的命令先执行，赋值给&lt;em&gt;匿名返回值&lt;/em&gt;后，再调用 defer，
 因此尾递归中 tailRec 的加锁会在 defer 释放锁之前进行，形成死锁。&lt;/p&gt;
 &lt;p&gt;参考：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/golang/go/issues/14939"&gt;defer 有性能消耗&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="返回值求值"&gt;
- 返回值求值
- 
- &lt;a class="anchor" href="#%e8%bf%94%e5%9b%9e%e5%80%bc%e6%b1%82%e5%80%bc"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+&lt;h2 id="返回值求值"&gt;返回值求值&lt;a class="anchor" href="#%e8%bf%94%e5%9b%9e%e5%80%bc%e6%b1%82%e5%80%bc"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 匿名返回值&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;test_unnamed&lt;/span&gt;()(&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;) {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;i&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;
@@ -69,31 +51,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;defer d :&amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;i&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }()
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;i&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 2&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>for 和 range</title><link>https://kingye.me/study-go/docs/basic/ref/keyword/for/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/keyword/for/</guid><description>&lt;h1 id="for-和-range"&gt;
- for 和 range
- 
- &lt;a class="anchor" href="#for-%e5%92%8c-range"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
-&lt;h2 id="map-遍历"&gt;
- map 遍历
- 
- &lt;a class="anchor" href="#map-%e9%81%8d%e5%8e%86"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
-&lt;p&gt;Go 在运行时为&lt;strong&gt;哈希表的遍历&lt;/strong&gt;引入&lt;strong&gt;不确定性&lt;/strong&gt;，程序不要依赖于哈希表的稳定遍历&lt;/p&gt;</description></item><item><title>make</title><link>https://kingye.me/study-go/docs/basic/ref/keyword/make/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/keyword/make/</guid><description>&lt;h1 id="make"&gt;
- make
- 
- &lt;a class="anchor" href="#make"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
-&lt;p&gt;运算符&lt;code&gt;:=&lt;/code&gt; 是 &lt;code&gt;make()&lt;/code&gt; 的语法糖&lt;/p&gt;</description></item><item><title>select</title><link>https://kingye.me/study-go/docs/basic/ref/keyword/select/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/keyword/select/</guid><description>&lt;h1 id="select"&gt;
- select
- 
- &lt;a class="anchor" href="#select"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>for 和 range</title><link>https://kingye.me/study-go/docs/basic/ref/keyword/for/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/keyword/for/</guid><description>&lt;h1 id="for-和-range"&gt;for 和 range&lt;a class="anchor" href="#for-%e5%92%8c-range"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="map-遍历"&gt;map 遍历&lt;a class="anchor" href="#map-%e9%81%8d%e5%8e%86"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Go 在运行时为&lt;strong&gt;哈希表的遍历&lt;/strong&gt;引入&lt;strong&gt;不确定性&lt;/strong&gt;，程序不要依赖于哈希表的稳定遍历&lt;/p&gt;</description></item><item><title>make</title><link>https://kingye.me/study-go/docs/basic/ref/keyword/make/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/keyword/make/</guid><description>&lt;h1 id="make"&gt;make&lt;a class="anchor" href="#make"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;运算符&lt;code&gt;:=&lt;/code&gt; 是 &lt;code&gt;make()&lt;/code&gt; 的语法糖&lt;/p&gt;</description></item><item><title>select</title><link>https://kingye.me/study-go/docs/basic/ref/keyword/select/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/keyword/select/</guid><description>&lt;h1 id="select"&gt;select&lt;a class="anchor" href="#select"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;Go 的 &lt;strong&gt;选择器（select）&lt;/strong&gt; 让你可以同时等待多个通道操作。&lt;/p&gt;
 &lt;p&gt;将协程、通道和选择器结合，是 Go 的一个强大特性。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 在这个例子中，我们将从两个通道中选择。&lt;/span&gt;
@@ -120,26 +81,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;case&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;msg2&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;c2&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;received&amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;msg2&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="随机选则"&gt;
- 随机选则
- 
- &lt;a class="anchor" href="#%e9%9a%8f%e6%9c%ba%e9%80%89%e5%88%99"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="随机选则"&gt;随机选则&lt;a class="anchor" href="#%e9%9a%8f%e6%9c%ba%e9%80%89%e5%88%99"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;除 default 外，如果有多个 case 语句评估通过，那么通过&lt;strong&gt;伪随机&lt;/strong&gt;的方式随机选一个&lt;/p&gt;
-&lt;h2 id="非阻塞"&gt;
- 非阻塞
- 
- &lt;a class="anchor" href="#%e9%9d%9e%e9%98%bb%e5%a1%9e"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
-&lt;h3 id="default-为空"&gt;
- default 为空
- 
- &lt;a class="anchor" href="#default-%e4%b8%ba%e7%a9%ba"&gt;#&lt;/a&gt;
- 
-&lt;/h3&gt;
+&lt;h2 id="非阻塞"&gt;非阻塞&lt;a class="anchor" href="#%e9%9d%9e%e9%98%bb%e5%a1%9e"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="default-为空"&gt;default 为空&lt;a class="anchor" href="#default-%e4%b8%ba%e7%a9%ba"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sendTime&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;c&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt;{}, &lt;span style="color:#a6e22e"&gt;seq&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uintptr&lt;/span&gt;) {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#75715e"&gt;// Non-blocking send of time on c.&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#75715e"&gt;// Used in NewTimer, it cannot block anyway (buffer).&lt;/span&gt;
@@ -150,5 +95,4 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;case&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;c&lt;/span&gt;.(&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Time&lt;/span&gt;) &lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Now&lt;/span&gt;():
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#66d9ef"&gt;default&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	}
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

@@ -1,15 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>3.1 数据类型 on Go 学习笔记</title><link>https://kingye.me/study-go/docs/design/type/</link><description>Recent content in 3.1 数据类型 on Go 学习笔记</description><generator>Hugo</generator><language>en</language><atom:link href="https://kingye.me/study-go/docs/design/type/index.xml" rel="self" type="application/rss+xml"/><item><title>类型系统</title><link>https://kingye.me/study-go/docs/design/type/type/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/design/type/type/</guid><description>&lt;h1 id="go-类型系统"&gt;
- Go 类型系统
- 
- &lt;a class="anchor" href="#go-%e7%b1%bb%e5%9e%8b%e7%b3%bb%e7%bb%9f"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
-&lt;h2 id="underlying-type"&gt;
- &lt;code&gt;Underlying Type&lt;/code&gt;
- 
- &lt;a class="anchor" href="#underlying-type"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>3.1 数据类型 on Go 学习笔记</title><link>https://kingye.me/study-go/docs/design/type/</link><description>Recent content in 3.1 数据类型 on Go 学习笔记</description><generator>Hugo</generator><language>en</language><atom:link href="https://kingye.me/study-go/docs/design/type/index.xml" rel="self" type="application/rss+xml"/><item><title>类型系统</title><link>https://kingye.me/study-go/docs/design/type/type/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/design/type/type/</guid><description>&lt;h1 id="go-类型系统"&gt;Go 类型系统&lt;a class="anchor" href="#go-%e7%b1%bb%e5%9e%8b%e7%b3%bb%e7%bb%9f"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="underlying-type"&gt;&lt;code&gt;Underlying Type&lt;/code&gt;&lt;a class="anchor" href="#underlying-type"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;每一个类型都有自己的 &lt;code&gt;Underlying Type&lt;/code&gt;
 &lt;ul&gt;
@@ -31,13 +21,15 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="underlying-type-相同"&gt;
- Underlying Type 相同
- 
- &lt;a class="anchor" href="#underlying-type-%e7%9b%b8%e5%90%8c"&gt;#&lt;/a&gt;
- 
-&lt;/h3&gt;
+&lt;h3 id="underlying-type-相同"&gt;Underlying Type 相同&lt;a class="anchor" href="#underlying-type-%e7%9b%b8%e5%90%8c"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;如果两个 type 的 Underlying Type 相同，则它们可以有以下特性：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;如果两个 type 都是 named type ，彼此之间不能相互赋值&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;如果两个 type 都是 named type ，彼此之间不能相互赋值&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;type&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;NewString&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;my&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; =&lt;span style="color:#e6db74"&gt;&amp;#34;a&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// cannot use my (type string) as type NewString in assignment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 虽然它们的 Underlying Type 都是 string，但 string 类型的 my 不能赋值给 NewString 类型的 you&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;you&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;NewString&lt;/span&gt; = &lt;span style="color:#a6e22e"&gt;my&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果两个 type 其中一个是 Unnamed Type，彼此之间可以相互赋值&lt;/p&gt;</description></item></channel></rss>

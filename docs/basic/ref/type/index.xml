@@ -1,33 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>1.1.1 数据类型 on Go 学习笔记</title><link>https://kingye.me/study-go/docs/basic/ref/type/</link><description>Recent content in 1.1.1 数据类型 on Go 学习笔记</description><generator>Hugo</generator><language>en</language><atom:link href="https://kingye.me/study-go/docs/basic/ref/type/index.xml" rel="self" type="application/rss+xml"/><item><title>error</title><link>https://kingye.me/study-go/docs/basic/ref/type/error/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/error/</guid><description>&lt;h1 id="error"&gt;
- error
- 
- &lt;a class="anchor" href="#error"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>1.1.1 数据类型 on Go 学习笔记</title><link>https://kingye.me/study-go/docs/basic/ref/type/</link><description>Recent content in 1.1.1 数据类型 on Go 学习笔记</description><generator>Hugo</generator><language>en</language><atom:link href="https://kingye.me/study-go/docs/basic/ref/type/index.xml" rel="self" type="application/rss+xml"/><item><title>error</title><link>https://kingye.me/study-go/docs/basic/ref/type/error/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/error/</guid><description>&lt;h1 id="error"&gt;error&lt;a class="anchor" href="#error"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;实现 &lt;code&gt;Error() string&lt;/code&gt; 方法的类型，都是 error 类型&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;type&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;error&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;Error&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;errors&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;New&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;xxxx&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;errors&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;New&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;xxxx&amp;#34;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Errorf&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;format&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;a&lt;/span&gt; &lt;span style="color:#f92672"&gt;...&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt;{})
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>切片</title><link>https://kingye.me/study-go/docs/basic/ref/type/slice/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/slice/</guid><description>&lt;h1 id="go-切片"&gt;
- Go 切片
- 
- &lt;a class="anchor" href="#go-%e5%88%87%e7%89%87"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;</description></item><item><title>字符串</title><link>https://kingye.me/study-go/docs/basic/ref/type/string/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/string/</guid><description>&lt;h1 id="go-字符串"&gt;
- Go 字符串
- 
- &lt;a class="anchor" href="#go-%e5%ad%97%e7%ac%a6%e4%b8%b2"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
-&lt;h2 id="字符串是一个只读的切片类型"&gt;
- 字符串是一个只读的切片类型
- 
- &lt;a class="anchor" href="#%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%98%af%e4%b8%80%e4%b8%aa%e5%8f%aa%e8%af%bb%e7%9a%84%e5%88%87%e7%89%87%e7%b1%bb%e5%9e%8b"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Errorf&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;format&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;a&lt;/span&gt; &lt;span style="color:#f92672"&gt;...&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt;{})&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>切片</title><link>https://kingye.me/study-go/docs/basic/ref/type/slice/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/slice/</guid><description>&lt;h1 id="go-切片"&gt;Go 切片&lt;a class="anchor" href="#go-%e5%88%87%e7%89%87"&gt;#&lt;/a&gt;&lt;/h1&gt;</description></item><item><title>字符串</title><link>https://kingye.me/study-go/docs/basic/ref/type/string/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/string/</guid><description>&lt;h1 id="go-字符串"&gt;Go 字符串&lt;a class="anchor" href="#go-%e5%ad%97%e7%ac%a6%e4%b8%b2"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="字符串是一个只读的切片类型"&gt;字符串是一个只读的切片类型&lt;a class="anchor" href="#%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%98%af%e4%b8%80%e4%b8%aa%e5%8f%aa%e8%af%bb%e7%9a%84%e5%88%87%e7%89%87%e7%b1%bb%e5%9e%8b"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 包含指向字节数组的指针和数组的大小&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;type&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;StringHeader&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Data&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uintptr&lt;/span&gt;
@@ -40,19 +18,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Data&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uintptr&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Len&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Cap&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>数组</title><link>https://kingye.me/study-go/docs/basic/ref/type/array/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/array/</guid><description>&lt;h1 id="go-数组"&gt;
- Go 数组
- 
- &lt;a class="anchor" href="#go-%e6%95%b0%e7%bb%84"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
-&lt;h2 id="什么时候使用数组而不是切片"&gt;
- 什么时候使用数组，而不是切片？
- 
- &lt;a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e4%bd%bf%e7%94%a8%e6%95%b0%e7%bb%84%e8%80%8c%e4%b8%8d%e6%98%af%e5%88%87%e7%89%87"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>数组</title><link>https://kingye.me/study-go/docs/basic/ref/type/array/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/array/</guid><description>&lt;h1 id="go-数组"&gt;Go 数组&lt;a class="anchor" href="#go-%e6%95%b0%e7%bb%84"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="什么时候使用数组而不是切片"&gt;什么时候使用数组，而不是切片？&lt;a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e4%bd%bf%e7%94%a8%e6%95%b0%e7%bb%84%e8%80%8c%e4%b8%8d%e6%98%af%e5%88%87%e7%89%87"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;arrays are &lt;strong&gt;hashable&lt;/strong&gt;. That means they can be used as a key to a map&lt;/li&gt;
 &lt;li&gt;can be &lt;strong&gt;serialized&lt;/strong&gt; by encoding/binary&lt;/li&gt;
@@ -61,38 +28,16 @@
 &lt;p&gt;参考：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://stackoverflow.com/questions/30694652/why-use-arrays-instead-of-slices"&gt;Why use arrays instead of slices?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Interface</title><link>https://kingye.me/study-go/docs/basic/ref/type/interface/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/interface/</guid><description>&lt;h1 id="go-interface"&gt;
- Go Interface
- 
- &lt;a class="anchor" href="#go-interface"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;</description></item><item><title>Chiannel</title><link>https://kingye.me/study-go/docs/basic/ref/type/channel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/channel/</guid><description>&lt;h1 id="chiannel"&gt;
- Chiannel
- 
- &lt;a class="anchor" href="#chiannel"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
-&lt;h2 id="channel-类型"&gt;
- channel 类型
- 
- &lt;a class="anchor" href="#channel-%e7%b1%bb%e5%9e%8b"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+&lt;/ul&gt;</description></item><item><title>Interface</title><link>https://kingye.me/study-go/docs/basic/ref/type/interface/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/interface/</guid><description>&lt;h1 id="go-interface"&gt;Go Interface&lt;a class="anchor" href="#go-interface"&gt;#&lt;/a&gt;&lt;/h1&gt;</description></item><item><title>Chiannel</title><link>https://kingye.me/study-go/docs/basic/ref/type/channel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/channel/</guid><description>&lt;h1 id="chiannel"&gt;Chiannel&lt;a class="anchor" href="#chiannel"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="channel-类型"&gt;channel 类型&lt;a class="anchor" href="#channel-%e7%b1%bb%e5%9e%8b"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;T&lt;/span&gt; &lt;span style="color:#75715e"&gt;// can be used to send and receive values of type T&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;float64&lt;/span&gt; &lt;span style="color:#75715e"&gt;// can only be used to send float64s&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#75715e"&gt;// can only be used to receive ints&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;&amp;lt;-&lt;/code&gt; operator associates with the leftmost chan possible:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#75715e"&gt;// can only be used to receive ints&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;&amp;lt;-&lt;/code&gt; operator associates with the leftmost chan possible:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#75715e"&gt;// same as chan&amp;lt;- (chan int)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#75715e"&gt;// same as chan&amp;lt;- (&amp;lt;-chan int)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#75715e"&gt;// same as &amp;lt;-chan (&amp;lt;-chan int)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; (&lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id="常见用法"&gt;
- 常见用法
- 
- &lt;a class="anchor" href="#%e5%b8%b8%e8%a7%81%e7%94%a8%e6%b3%95"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; (&lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="常见用法"&gt;常见用法&lt;a class="anchor" href="#%e5%b8%b8%e8%a7%81%e7%94%a8%e6%b3%95"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 使用 `make(chan val-type)` 创建一个新的通道。&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 通道类型就是他们需要传递值的类型。&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;messages&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; make(&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;)
@@ -107,19 +52,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;msg&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 如果 ok 的值是 false，表明 接收到的是 特别制造的 0 值 —— 因为发送通道关闭了并且为空（closed and empty）。&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;msg&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;ok&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;messages&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="done-channel"&gt;
- done channel
- 
- &lt;a class="anchor" href="#done-channel"&gt;#&lt;/a&gt;
- 
-&lt;/h3&gt;
-&lt;p&gt;用于保证流水线上每个阶段 goroutine 的退出&lt;/p&gt;</description></item><item><title>Map</title><link>https://kingye.me/study-go/docs/basic/ref/type/map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/map/</guid><description>&lt;h1 id="map"&gt;
- Map
- 
- &lt;a class="anchor" href="#map"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;msg&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;ok&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;messages&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="done-channel"&gt;done channel&lt;a class="anchor" href="#done-channel"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;用于保证流水线上每个阶段 goroutine 的退出&lt;/p&gt;</description></item><item><title>Map</title><link>https://kingye.me/study-go/docs/basic/ref/type/map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/ref/type/map/</guid><description>&lt;h1 id="map"&gt;Map&lt;a class="anchor" href="#map"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;Golang 中的 map，实际上就是一个 &lt;code&gt;hashtable&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;在 golang 中，当 map 作为形参时，虽然是值传递，但是由于 make () 返回的是一个指针类型&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// makemap implements Go map creation for make(map[k]v, hint).&lt;/span&gt;
@@ -132,20 +66,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;hint&lt;/span&gt; = &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;...&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="删除-map-元素"&gt;
- 删除 map 元素
- 
- &lt;a class="anchor" href="#%e5%88%a0%e9%99%a4-map-%e5%85%83%e7%b4%a0"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;delete(&lt;span style="color:#66d9ef"&gt;map&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;key&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="清空-map"&gt;
- 清空 map
- 
- &lt;a class="anchor" href="#%e6%b8%85%e7%a9%ba-map"&gt;#&lt;/a&gt;
- 
-&lt;/h3&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="删除-map-元素"&gt;删除 map 元素&lt;a class="anchor" href="#%e5%88%a0%e9%99%a4-map-%e5%85%83%e7%b4%a0"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;delete(&lt;span style="color:#66d9ef"&gt;map&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;key&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="清空-map"&gt;清空 map&lt;a class="anchor" href="#%e6%b8%85%e7%a9%ba-map"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Go 语言中并没有为 map 提供任何清空所有元素的函数、方法，
 清空 map 的唯一办法就是&lt;strong&gt;重新 make 一个新的 map&lt;/strong&gt;，
 不用担心垃圾回收的效率，Go 语言中的并行垃圾回收效率比写一个清空函数要高效的多。&lt;/p&gt;</description></item></channel></rss>

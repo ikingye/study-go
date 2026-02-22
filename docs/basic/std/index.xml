@@ -1,15 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>1.2 标准库 on Go 学习笔记</title><link>https://kingye.me/study-go/docs/basic/std/</link><description>Recent content in 1.2 标准库 on Go 学习笔记</description><generator>Hugo</generator><language>en</language><atom:link href="https://kingye.me/study-go/docs/basic/std/index.xml" rel="self" type="application/rss+xml"/><item><title>sort</title><link>https://kingye.me/study-go/docs/basic/std/sort/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/sort/</guid><description>&lt;h1 id="sort"&gt;
- sort
- 
- &lt;a class="anchor" href="#sort"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
-&lt;h2 id="自定义排序"&gt;
- 自定义排序
- 
- &lt;a class="anchor" href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%92%e5%ba%8f"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>1.2 标准库 on Go 学习笔记</title><link>https://kingye.me/study-go/docs/basic/std/</link><description>Recent content in 1.2 标准库 on Go 学习笔记</description><generator>Hugo</generator><language>en</language><atom:link href="https://kingye.me/study-go/docs/basic/std/index.xml" rel="self" type="application/rss+xml"/><item><title>sort</title><link>https://kingye.me/study-go/docs/basic/std/sort/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/sort/</guid><description>&lt;h1 id="sort"&gt;sort&lt;a class="anchor" href="#sort"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="自定义排序"&gt;自定义排序&lt;a class="anchor" href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%92%e5%ba%8f"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;实现 &lt;code&gt;Len&lt;/code&gt;、&lt;code&gt;Less&lt;/code&gt; 和 &lt;code&gt;Swap&lt;/code&gt; 方法&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 有时候，我们可能想根据自然顺序以外的方式来对集合进行排序。&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 例如，假设我们要按字符串的长度而不是按字母顺序对它们进行排序。&lt;/span&gt;
@@ -48,19 +38,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;fruits&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; []&lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;{&lt;span style="color:#e6db74"&gt;&amp;#34;peach&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;banana&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;kiwi&amp;#34;&lt;/span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;sort&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Sort&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;byLength&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;fruits&lt;/span&gt;))
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;fruits&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>context</title><link>https://kingye.me/study-go/docs/basic/std/context/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/context/</guid><description>&lt;h1 id="context"&gt;
- context
- 
- &lt;a class="anchor" href="#context"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
-&lt;h2 id="contextcontext"&gt;
- context.Context
- 
- &lt;a class="anchor" href="#contextcontext"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>context</title><link>https://kingye.me/study-go/docs/basic/std/context/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/context/</guid><description>&lt;h1 id="context"&gt;context&lt;a class="anchor" href="#context"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="contextcontext"&gt;context.Context&lt;a class="anchor" href="#contextcontext"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;在 Goroutine 构成的树形结构中&lt;strong&gt;对信号进行同步&lt;/strong&gt;以减少计算资源的浪费是 context.Context 的最大作用。&lt;/li&gt;
 &lt;li&gt;我们可能会创建多个 Goroutine 来处理&lt;strong&gt;一次请求&lt;/strong&gt;，而 context.Context 的作用就是在不同 Goroutine 之间同步
@@ -89,14 +68,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;Done&lt;/span&gt;() &lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;chan&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt;{}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;Err&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;error&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;Value&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;key&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt;{}) &lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt;{}
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id="background"&gt;
- Background
- 
- &lt;a class="anchor" href="#background"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="background"&gt;Background&lt;a class="anchor" href="#background"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;func Background() Context&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;func TODO() Context&lt;/code&gt;&lt;/li&gt;
@@ -105,12 +78,7 @@
 &lt;li&gt;&lt;code&gt;func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc)&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;func WithValue(parent Context, key, val interface{}) Context&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200728110757.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>格式化输出</title><link>https://kingye.me/study-go/docs/basic/std/format/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/format/</guid><description>&lt;h1 id="格式化输出"&gt;
- 格式化输出
- 
- &lt;a class="anchor" href="#%e6%a0%bc%e5%bc%8f%e5%8c%96%e8%be%93%e5%87%ba"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://cdn.jsdelivr.net/gh/ikingye/imagehost/picgo/20200728110757.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>格式化输出</title><link>https://kingye.me/study-go/docs/basic/std/format/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/format/</guid><description>&lt;h1 id="格式化输出"&gt;格式化输出&lt;a class="anchor" href="#%e6%a0%bc%e5%bc%8f%e5%8c%96%e8%be%93%e5%87%ba"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// Go 提供了一些用于格式化常规值的打印“动词”。&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 例如，这样打印 `point` 结构体的实例。&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;p&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;point&lt;/span&gt;{&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;}
@@ -188,13 +156,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Println&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 你可以使用 `Fprintf` 来格式化并输出到 `io.Writers` 而不是 `os.Stdout`。&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Fprintf&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;os&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Stderr&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;an %s\n&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;error&amp;#34;&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>io</title><link>https://kingye.me/study-go/docs/basic/std/io/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/io/</guid><description>&lt;h1 id="io"&gt;
- &lt;a href="https://golang.org/pkg/io/"&gt;io&lt;/a&gt;
- 
- &lt;a class="anchor" href="#io"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;fmt&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Fprintf&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;os&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Stderr&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;an %s\n&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;error&amp;#34;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>io</title><link>https://kingye.me/study-go/docs/basic/std/io/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/io/</guid><description>&lt;h1 id="io"&gt;&lt;a href="https://golang.org/pkg/io/"&gt;io&lt;/a&gt;&lt;a class="anchor" href="#io"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;小数据量的拷贝，使用 ioutil.ReadAll 无伤大雅；&lt;/li&gt;
 &lt;li&gt;数据量较大时，ReadAll 就是性能炸弹了，最好使用 io.Copy&lt;/li&gt;
@@ -202,77 +164,27 @@
 &lt;p&gt;参考：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://juejin.cn/post/6977640348679929886"&gt;golang 中的 ioutil.ReadAll vs io.Copy&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>net</title><link>https://kingye.me/study-go/docs/basic/std/net/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/net/</guid><description>&lt;h1 id="net"&gt;
- &lt;a href="https://golang.org/pkg/net/"&gt;net&lt;/a&gt;
- 
- &lt;a class="anchor" href="#net"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
-&lt;h2 id="http"&gt;
- http
- 
- &lt;a class="anchor" href="#http"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
-&lt;h3 id="cgi"&gt;
- cgi
- 
- &lt;a class="anchor" href="#cgi"&gt;#&lt;/a&gt;
- 
-&lt;/h3&gt;
+&lt;/ul&gt;</description></item><item><title>net</title><link>https://kingye.me/study-go/docs/basic/std/net/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/net/</guid><description>&lt;h1 id="net"&gt;&lt;a href="https://golang.org/pkg/net/"&gt;net&lt;/a&gt;&lt;a class="anchor" href="#net"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="http"&gt;http&lt;a class="anchor" href="#http"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="cgi"&gt;cgi&lt;a class="anchor" href="#cgi"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
-&lt;h3 id="fcgi"&gt;
- fcgi
- 
- &lt;a class="anchor" href="#fcgi"&gt;#&lt;/a&gt;
- 
-&lt;/h3&gt;
+&lt;h3 id="fcgi"&gt;fcgi&lt;a class="anchor" href="#fcgi"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
-&lt;h3 id="httputil"&gt;
- httputil
- 
- &lt;a class="anchor" href="#httputil"&gt;#&lt;/a&gt;
- 
-&lt;/h3&gt;
+&lt;h3 id="httputil"&gt;httputil&lt;a class="anchor" href="#httputil"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
-&lt;h3 id="pprof"&gt;
- pprof
- 
- &lt;a class="anchor" href="#pprof"&gt;#&lt;/a&gt;
- 
-&lt;/h3&gt;
+&lt;h3 id="pprof"&gt;pprof&lt;a class="anchor" href="#pprof"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
 &lt;hr&gt;
-&lt;h2 id="rpc"&gt;
- rpc
- 
- &lt;a class="anchor" href="#rpc"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+&lt;h2 id="rpc"&gt;rpc&lt;a class="anchor" href="#rpc"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;hr&gt;
 &lt;hr&gt;
-&lt;h2 id="url"&gt;
- url
- 
- &lt;a class="anchor" href="#url"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;</description></item><item><title>signal</title><link>https://kingye.me/study-go/docs/basic/std/signal/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/signal/</guid><description>&lt;h1 id="signal"&gt;
- &lt;a href="https://pkg.go.dev/os/signal"&gt;signal&lt;/a&gt;
- 
- &lt;a class="anchor" href="#signal"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
+&lt;h2 id="url"&gt;url&lt;a class="anchor" href="#url"&gt;#&lt;/a&gt;&lt;/h2&gt;</description></item><item><title>signal</title><link>https://kingye.me/study-go/docs/basic/std/signal/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/signal/</guid><description>&lt;h1 id="signal"&gt;&lt;a href="https://pkg.go.dev/os/signal"&gt;signal&lt;/a&gt;&lt;a class="anchor" href="#signal"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;The signals &lt;code&gt;SIGKILL&lt;/code&gt; and &lt;code&gt;SIGSTOP&lt;/code&gt; may not be caught by a program,
 and therefore cannot be affected by this package.&lt;/p&gt;
 &lt;p&gt;By default, a synchronous signal is converted into a run-time panic.&lt;/p&gt;
 &lt;p&gt;A SIGHUP, SIGINT, or SIGTERM signal causes the program to exit.&lt;/p&gt;
 &lt;p&gt;A SIGQUIT, SIGILL, SIGTRAP, SIGABRT, SIGSTKFLT, SIGEMT, or SIGSYS signal causes the program to exit &lt;strong&gt;with a stack dump&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these signals are used by the shell for job control).&lt;/p&gt;</description></item><item><title>sync</title><link>https://kingye.me/study-go/docs/basic/std/sync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/sync/</guid><description>&lt;h1 id="sync"&gt;
- sync
- 
- &lt;a class="anchor" href="#sync"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
+&lt;p&gt;A SIGTSTP, SIGTTIN, or SIGTTOU signal gets the system default behavior (these signals are used by the shell for job control).&lt;/p&gt;</description></item><item><title>sync</title><link>https://kingye.me/study-go/docs/basic/std/sync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/sync/</guid><description>&lt;h1 id="sync"&gt;sync&lt;a class="anchor" href="#sync"&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;sync.Mutex&lt;/li&gt;
 &lt;li&gt;sync.RWMutex&lt;/li&gt;
@@ -280,37 +192,20 @@ and therefore cannot be affected by this package.&lt;/p&gt;
 &lt;li&gt;sync.Once&lt;/li&gt;
 &lt;li&gt;sync.Cond&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="锁的类型"&gt;
- 锁的类型
- 
- &lt;a class="anchor" href="#%e9%94%81%e7%9a%84%e7%b1%bb%e5%9e%8b"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
-&lt;h3 id="mutex-互斥锁"&gt;
- Mutex 互斥锁
- 
- &lt;a class="anchor" href="#mutex-%e4%ba%92%e6%96%a5%e9%94%81"&gt;#&lt;/a&gt;
- 
-&lt;/h3&gt;
+&lt;h2 id="锁的类型"&gt;锁的类型&lt;a class="anchor" href="#%e9%94%81%e7%9a%84%e7%b1%bb%e5%9e%8b"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="mutex-互斥锁"&gt;Mutex 互斥锁&lt;a class="anchor" href="#mutex-%e4%ba%92%e6%96%a5%e9%94%81"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;type&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Mutex&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;state&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int32&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;sema&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint32&lt;/span&gt; &lt;span style="color:#75715e"&gt;// semaphore 信号量&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;sync.Mutex.Lock 和 sync.Mutex.Unlock&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id="state"&gt;
- state
- 
- &lt;a class="anchor" href="#state"&gt;#&lt;/a&gt;
- 
-&lt;/h4&gt;
+&lt;h4 id="state"&gt;state&lt;a class="anchor" href="#state"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 8 位&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;**** ****
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;***** * * *
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;waitersCount mutexStarving mutexWoken mutexLocked
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;waitersCount mutexStarving mutexWoken mutexLocked&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;mutexLocked — 表示互斥锁的&lt;strong&gt;锁定状态&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;mutexWoken — 表示从正常模式被从唤醒&lt;/li&gt;
 &lt;li&gt;mutexStarving — 当前的互斥锁进入&lt;strong&gt;饥饿状态&lt;/strong&gt;
@@ -321,20 +216,14 @@ and therefore cannot be affected by this package.&lt;/p&gt;
 &lt;li&gt;waitersCount — 当前互斥锁上&lt;strong&gt;等待&lt;/strong&gt;的 Goroutine 个数 (最多 128 个)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h3 id="rwmutex"&gt;
- RWMutex
- 
- &lt;a class="anchor" href="#rwmutex"&gt;#&lt;/a&gt;
- 
-&lt;/h3&gt;
+&lt;h3 id="rwmutex"&gt;RWMutex&lt;a class="anchor" href="#rwmutex"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;type&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;RWMutex&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;w&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Mutex&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;writerSem&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint32&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;readerSem&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;uint32&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;readerCount&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int32&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;readerWait&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int32&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;写操作使用 sync.RWMutex.Lock 和 sync.RWMutex.Unlock 方法；&lt;/li&gt;
 &lt;li&gt;读操作使用 sync.RWMutex.RLock 和 sync.RWMutex.RUnlock 方法；&lt;/li&gt;
 &lt;/ul&gt;
@@ -348,38 +237,16 @@ and therefore cannot be affected by this package.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;调用 &lt;code&gt;sync.RWMutex.Unlock&lt;/code&gt; 释放写锁时，会先通知所有的读操作，然后才会释放持有的互斥锁；&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;读写互斥锁在互斥锁之上提供了额外的更细粒度的控制，能够在读操作远远多于写操作时提升性能。&lt;/p&gt;</description></item><item><title>time</title><link>https://kingye.me/study-go/docs/basic/std/strings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/strings/</guid><description>&lt;h1 id="time"&gt;
- &lt;a href="https://pkg.go.dev/time"&gt;time&lt;/a&gt;
- 
- &lt;a class="anchor" href="#time"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
-&lt;h2 id="格式化"&gt;
- 格式化
- 
- &lt;a class="anchor" href="#%e6%a0%bc%e5%bc%8f%e5%8c%96"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+&lt;p&gt;读写互斥锁在互斥锁之上提供了额外的更细粒度的控制，能够在读操作远远多于写操作时提升性能。&lt;/p&gt;</description></item><item><title>time</title><link>https://kingye.me/study-go/docs/basic/std/strings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/strings/</guid><description>&lt;h1 id="time"&gt;&lt;a href="https://pkg.go.dev/time"&gt;time&lt;/a&gt;&lt;a class="anchor" href="#time"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="格式化"&gt;格式化&lt;a class="anchor" href="#%e6%a0%bc%e5%bc%8f%e5%8c%96"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 1 2 3 4 5 6&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;ANSIC&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;Mon Jan _2 15:04:05 2006&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;time&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Now&lt;/span&gt;().&lt;span style="color:#a6e22e"&gt;Format&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;2006-01-02 15:04:05&amp;#34;&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>time</title><link>https://kingye.me/study-go/docs/basic/std/time/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/time/</guid><description>&lt;h1 id="time"&gt;
- &lt;a href="https://pkg.go.dev/time"&gt;time&lt;/a&gt;
- 
- &lt;a class="anchor" href="#time"&gt;#&lt;/a&gt;
- 
-&lt;/h1&gt;
-&lt;h2 id="格式化"&gt;
- 格式化
- 
- &lt;a class="anchor" href="#%e6%a0%bc%e5%bc%8f%e5%8c%96"&gt;#&lt;/a&gt;
- 
-&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;time&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Now&lt;/span&gt;().&lt;span style="color:#a6e22e"&gt;Format&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;2006-01-02 15:04:05&amp;#34;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>time</title><link>https://kingye.me/study-go/docs/basic/std/time/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kingye.me/study-go/docs/basic/std/time/</guid><description>&lt;h1 id="time"&gt;&lt;a href="https://pkg.go.dev/time"&gt;time&lt;/a&gt;&lt;a class="anchor" href="#time"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="格式化"&gt;格式化&lt;a class="anchor" href="#%e6%a0%bc%e5%bc%8f%e5%8c%96"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 1 2 3 4 5 6&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;ANSIC&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;Mon Jan _2 15:04:05 2006&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;time&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Now&lt;/span&gt;().&lt;span style="color:#a6e22e"&gt;Unix&lt;/span&gt;()
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;time&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Now&lt;/span&gt;().&lt;span style="color:#a6e22e"&gt;Format&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;2006-01-02 15:04:05&amp;#34;&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;time&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;Now&lt;/span&gt;().&lt;span style="color:#a6e22e"&gt;Format&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;2006-01-02 15:04:05&amp;#34;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>
